@@ -1,0 +1,21 @@
+# Local secrets
+.env
+.env.*
+!.env.example
+
+# Runtime data and unredacted logs
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+*.log
+
+# Future development artifacts
+node_modules/
+dist/
+.venv/
+__pycache__/
+.pytest_cache/
+.DS_Store
