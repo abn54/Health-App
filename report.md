@@ -1,220 +1,71 @@
-# Assignment 3 — Part 1: Design and planning
-
-**Project:** Pause — a mental health skills coursework prototype  
-**Milestone:** Part 1, design and planning  
-**Date:** October 13, 2026
-
-This report contains the proposed experience, flow diagram, UI sketches, model role, stored data, research reasoning, and selected design evidence. The planned stack is Vue, FastAPI, and SQLite on localhost. The application has not been implemented at this design milestone.
+# IST 402 — Assignment 3, Part 2 (3.2)
 
-## Repository and submitted version
+## Submitted version and evidence
 
-| Required item | Value |
-| --- | --- |
-| Repository | [Health-App](https://github.com/abn54/Health-App) |
-| Submitted design commit | **Required before submission:** the design has not been committed or published to this repository. |
-| Design and evidence | Included in this report. Hosted links to the supporting repository documents require those files to be published first. |
+**Project:** Pause, a localhost coursework skills prototype. **Milestone:** working implementation. **Date:** October 19, 2026.
 
-## Purpose and chosen skill
+- Repository: [abn54/Health-App](https://github.com/abn54/Health-App).
+- Part 2 branch: [codex/part2-prototype](https://github.com/abn54/Health-App/tree/codex/part2-prototype).
+- Submitted implementation and verification commit: [`c89cef1c918eda2e570e7f800d1d8a6c641c4bd9`](https://github.com/abn54/Health-App/commit/c89cef1c918eda2e570e7f800d1d8a6c641c4bd9). This report was finalized after freezing that code/evidence snapshot; the subsequent report-only commit does not change the implementation.
+- [Run instructions](https://github.com/abn54/Health-App/blob/c89cef1c918eda2e570e7f800d1d8a6c641c4bd9/README.md), [design](https://github.com/abn54/Health-App/blob/c89cef1c918eda2e570e7f800d1d8a6c641c4bd9/docs/design.md), [architecture and implementation revisions](https://github.com/abn54/Health-App/blob/c89cef1c918eda2e570e7f800d1d8a6c641c4bd9/docs/architecture.md).
+- [Actual verification results and screenshots](https://github.com/abn54/Health-App/blob/c89cef1c918eda2e570e7f800d1d8a6c641c4bd9/docs/part2-verification.md), [database inspection](https://github.com/abn54/Health-App/blob/c89cef1c918eda2e570e7f800d1d8a6c641c4bd9/docs/evidence/database-inspection.json), [curated development evidence](https://github.com/abn54/Health-App/blob/c89cef1c918eda2e570e7f800d1d8a6c641c4bd9/docs/evidence-log.md).
+- [AI-use disclosure](https://github.com/abn54/Health-App/blob/c89cef1c918eda2e570e7f800d1d8a6c641c4bd9/AI-USE.md), [coding-agent instructions](https://github.com/abn54/Health-App/blob/c89cef1c918eda2e570e7f800d1d8a6c641c4bd9/AGENTS.md).
 
-Pause will guide the assignment's 4–6 paced-breathing skill: inhale for four counts, exhale for six, and repeat six times. At one second per count, the intended exercise lasts 60 seconds. It will require no typed response or model request during pacing.
+Upload **this one `report.md`** for Part 2. The supporting code, documentation, and evidence are linked in the repository. The supplied brief places the finished demonstration and process screencast in Part 3; no recording is claimed for this milestone.
 
-This skill offers a clear rhythm that the interface can carry with little reading or decision-making. Implementing one skill keeps the design coherent. Sensory grounding would add several prompts, while cognitive reframing would require written judgments. Those alternatives are deferred because of interaction effort and project scope; this choice does not establish clinical superiority.
+## What is implemented
 
-The fictional walkthrough uses Alex, a student preparing for an imagined presentation. Evaluation will use fictional scenarios only. The interface will identify itself as coursework and state that it does not provide therapy, diagnosis, or human monitoring. It must not be offered as a tool to rely on during distress.
+Vue presents one prescribed skill: **six cycles of inhale four counts and exhale six counts, at one second per count**. FastAPI serves the production UI and API on `127.0.0.1:8000`; SQLite stores fictional conversations, session outcomes/events, timing, and an explicit optional cue preference. No other skill, speech input, or therapeutic chatbot is included.
 
-## Main experience
+Ready offers a direct Start action and a choice of Animated circle or Text only. During the exercise, the circle expands over four seconds and contracts over six; the words/count remain the pacing cue. Pause preserves the phase and fractional count, Resume is explicit, and End immediately produces a partial-session summary. Completion leaves the summary visible without forcing another action. Opening History or Crisis support pauses; returning does not resume automatically. Hiding/leaving the page or a scheduling gap over two seconds interrupts rather than falsely completing the sequence.
 
-```mermaid
-flowchart TD
-    Ready[Ready: coursework label and cue choice]
-    Questions[Optional questions about the prototype]
-    Exercise[Exercise: six cycles of 4 in / 6 out]
-    Paused[Paused: resume or end]
-    Summary[Completed or stopped: summary and save status]
-    Interrupted[Interrupted: partial record and new-start option]
-    History[History: sessions and conversations]
-    Support[Bundled crisis-support information]
-    Shell[Persistent shell on every screen]
+History shows Completed, Stopped, Interrupted, or Not started; initial/final or last recorded cue; available timing; events; and saved conversation with Mock, Live local model, or Fixed response metadata. Draft questions can be reopened. Reusing a recorded cue copies it into Ready without starting or remembering it. Per-session deletion cascades to messages/events; Delete all additionally resets the preference after confirmation. Save failures remain visibly unsaved in page memory, with Retry; closing may lose them.
 
-    Ready -->|Optional| Questions
-    Questions --> Ready
-    Ready -->|Start| Exercise
-    Exercise -->|Pause| Paused
-    Paused -->|Resume| Exercise
-    Exercise -->|Finish or End| Summary
-    Paused -->|End| Summary
-    Exercise -->|Automatic interruption| Interrupted
-    Summary --> History
-    Summary -->|Done| Ready
-    Interrupted -->|Review settings to restart| Ready
-    History -->|Reuse settings; explicit Start required| Ready
-    Shell -->|Available throughout, including errors| Support
-    Support -->|Return to active exercise| Paused
-    Support -->|End active session| Summary
-```
+The prototype consistently identifies itself as fictional coursework. It does not diagnose, provide therapy, promise symptom improvement, or imply human monitoring. It is not deployed or offered as a mental health support service.
 
-The normal route is Ready → Exercise → Summary, with History optional. The shell's **Crisis support** control remains available on every screen. Opening support during an exercise pauses it; returning requires a separate Resume action. If support is opened elsewhere, Return restores that prior screen. If an exercise becomes interrupted while support is open, Return shows the interrupted state instead of offering Resume.
+## Model contribution and relevant context
 
-Opening History while running also pauses first. A paused-session banner preserves Return to exercise and End. Reusing another session's settings is available after the active session ends. A conversation saved before Start remains a draft labeled Not started, with no exercise duration.
+Actual local Ollama 0.32.5 calls use **`qwen2.5:1.5b`**, with exact digest in the [model metadata](https://github.com/abn54/Health-App/blob/c89cef1c918eda2e570e7f800d1d8a6c641c4bd9/docs/evidence/models.json). Mock remains the default. Live mode requires explicit host configuration and then an explicit UI choice; no paid key is needed.
 
-## UI sketches
+The final prompt, `catalog-selector-v5`, supplies the current question (at most 500 characters), chosen cue, and seven concise approved app facts. The model interprets natural language and returns one allowlisted `reply_id`. FastAPI validates the exact schema, derives the matching catalog reference, and displays only the authored `app-help-v1` response as text. The model cannot change timing, steps, navigation, preferences, or database state. Unsupported or invalid output and provider failure produce fixed responses. A late response cannot overlay an active exercise.
 
-These sketches illustrate the planned interface; they are not screenshots of an implemented app.
+The [actual three-case live check](https://github.com/abn54/Health-App/blob/c89cef1c918eda2e570e7f800d1d8a6c641c4bd9/docs/evidence/live-selection-catalog-selector-v5.json) selected motion for “Do I have to watch a moving shape?” and storage for “What stays after I close this?” correctly. It incorrectly selected motion for “Can I stop halfway?” The latter was valid schema but irrelevant content. The check therefore exits 1 and is **not reported as a pass**. A subsequent browser storage question returned the correct approved reply, which remained visible in History after reload. This establishes a concrete model contribution, with a known relevance limitation; it does not establish reliable interpretation or clinical safety.
 
-```text
-READY
-Pause · Coursework prototype           [Crisis support]
-Fictional testing only. Not therapy. Nobody monitors this app.
+Earlier attempts asked the model for both a reply ID and an evidence ID; a real response paired motion with the storage reference. The server now derives that redundant reference. Including recent messages also led to irrelevant repeated topics. The final version retains conversations for review but omits them from the model context and uses a shorter factual index. That reduces context/confusion and data sent, at the cost of weaker ambiguous follow-up handling. Earlier failed results remain in the evidence.
 
-4–6 paced breathing · 60 seconds
-In for 4 counts. Out for 6. Repeat 6 times.
+The host recorded **22 provider attempts**, including failures, diagnostic calls, and empty-message preloads. Application/preload reservations use the same persistent, server-owned SQLite budget, capped at 50 per host peer-test session. Retries/failures count; there are no automatic inference retries; exhaustion switches to labeled mocks. History deletion does not reset accounting. A cold-load failure led to a separate counted host preload outside exercise timing.
 
-[Start exercise]
-[Questions about this prototype]       [History]
+## Measured timing and persistence
 
-Pacing cue: [Animated circle | Text only]
-[ ] Remember this choice on this device
-Local saving is attempted. Check the save status. [Data controls]
-```
+These are actual production-build browser observations, distinct from injected-clock tests:
 
-```text
-EXERCISE
-Pause · Coursework prototype           [Crisis support]
+| Completed run | Exercise duration | Raw wall time | Explicit pause/support excluded once | Entry/setup separately |
+| --- | --- | --- | --- | --- |
+| Animated, uninterrupted | **60.014100 s** | 60.014100 s | 0 s | 88.350600 s |
+| Text only, support access and explicit Resume | **60.020400 s** | 77.620000 s | 17.599600 s | 94.876700 s |
 
-                      Inhale
-                         3
-               (expanding pacing circle)
+[Timing records](https://github.com/abn54/Health-App/blob/c89cef1c918eda2e570e7f800d1d8a6c641c4bd9/docs/evidence/browser-timing.json) and [completion screenshot](https://github.com/abn54/Health-App/blob/c89cef1c918eda2e570e7f800d1d8a6c641c4bd9/docs/evidence/completed-with-support.jpg) support these results. Both exercises were below 90 seconds. No typing/response is needed during pacing. Setup includes optional questions and the assistant's inspection in those workflows, so it is not a typical-user benchmark.
 
-                   Cycle 2 of 6
-                    [Pause] [End]
-Pacing cue: [Animated circle | Text only]
-Changes here apply to this session only.
-```
+The timer samples `performance.now()` immediately before the first instruction DOM update and includes the final summary DOM update/following animation frame. This conservatively includes render/application delay, with frame-level paint uncertainty. UTC timestamps are supplementary. Only explicit paused time, including support, is excluded once; interrupted sessions are not completion evidence.
 
-```text
-SUMMARY / HISTORY
-Pause · Coursework prototype           [Crisis support]
+Actual SQL inspection found 10 sessions, 21 events, 36 messages, one preference row, and 22 attempts. Integrity check returned `ok`; foreign-key check returned no rows. Parameterized queries, migration version 1, idempotent revisions/turns, validated transitions, and append-only event prefixes support consistency. The raw SQLite file is ignored; only fictional redacted inspection output is committed. Cascade deletion and concurrency are verified in isolated test databases.
 
-Session status: Completed / Stopped / Interrupted / Not started
-Available timing · initial and last recorded cue
-Save status: Saved / Not saved
+## Crisis access, failures, and leaving
 
-[View conversation] [Use cue settings] [Delete saved session]
-[Done]
-```
+A clearly labeled sticky **Crisis support** control opens bundled, region-labeled information from every view. It has no API/model/classifier prerequisite after the initial page load. During a real FastAPI outage, the loaded page still opened the information and its verified link targets. No service was contacted. The support dialog retains immediate End for an active exercise and restores focus when closed.
 
-The circle will expand during inhale and contract during exhale. The words and count will convey the same pace without motion. The default will honor the operating system's reduced-motion setting. A visible cue selector will allow switching modes before or during the exercise without resetting the phase, count, or fractional progress.
+A small Unicode/case/whitespace-normalized bounded phrase list is checked in the client and again by FastAPI. A fictional quoted phrase opened support immediately and bypassed the model. Quotes/negations may also match; unfamiliar language may be missed. This is a fallible interface cue, not a clinical assessment, and unmatched text is never called safe. Manual access is always available.
 
-Controls will support keyboard use and visible focus. Screen-reader announcements will identify phase changes rather than every animation frame. Browser behavior, zoom, and assistive-technology pacing remain implementation checks. Speech is outside this design's scope.
+Browser evidence shows a fixed fallback after a simulated optional-request failure, with Start and support still enabled. Simulated save failure displayed Not saved; disabling the simulation and retrying persisted the retained stopped-session journal. End worked immediately. Reload during a saved running exercise produced Interrupted with unknown final timing in History, rather than inventing a completed session or an unload save.
 
-## Duration, stopping, and failures
+## Verification, design reasoning, and limits
 
-One cycle lasts `4 + 6 = 10` seconds; six cycles total `60` seconds. The timing measure begins with the first rendered exercise instruction and ends with the final planned step. There are no planned model waits, save waits, intermediate instruction pages, or required user responses inside that interval.
+[Repeatable backend checks](https://github.com/abn54/Health-App/blob/c89cef1c918eda2e570e7f800d1d8a6c641c4bd9/docs/evidence/backend-tests.txt): **16 passed**, using temporary databases/mocked providers. [Client checks](https://github.com/abn54/Health-App/blob/c89cef1c918eda2e570e7f800d1d8a6c641c4bd9/docs/evidence/client-tests.txt): **6 passed**, using an injected clock. [Production build](https://github.com/abn54/Health-App/blob/c89cef1c918eda2e570e7f800d1d8a6c641c4bd9/docs/evidence/build.txt): successful. A Starlette TestClient/httpx deprecation warning is recorded. Mocked tests establish deterministic application behavior; they do not establish live-model relevance. Browser screenshots cover narrow and desktop layouts; comprehensive assistive-technology testing is not claimed.
 
-The controller will use one monotonic clock, `performance.now()`, for pacing and elapsed duration. Animation frames will render the schedule rather than advance a separate timer. Actual rendering and application delays must count toward the measured duration. Sixty seconds is a design calculation, not an observed result; a measured run exceeding 90 seconds would fail the assignment limit.
+R1's attention finding supports a 60-second, no-typing sequence, with setup reported separately and no model wait inside the exercise. The brief's personalization/control/effort discussion supports separate Remember and Reset actions: an explicit preference saves repetition, while avoiding automatic adaptation preserves choice at the cost of an extra deliberate action. A text cue reduces motion without altering the prescribed skill. D1's stated limitation supports keeping crisis access independent of detection. The full R1–R4 / D1–D6 table was missing from the supplied briefs; unavailable label meanings are not invented.
 
-Entry/setup is estimated separately at 10–20 seconds for a reviewer who skips optional questions; this estimate is unmeasured. Optional conversation time depends on the user's choices. Start will remain available while an optional model request is running, and a late response cannot interrupt the exercise.
+The supplied [Kaggle Mental Health Conversational Data resource](https://www.kaggle.com/datasets/elvis23/mental-health-conversational-data) was used as an interaction-design reference. Its inspected intent/pattern/response structure informed authored motion/storage/controls variations, the mock groups, and the model's approved-catalog selection. [Dataset notes](https://github.com/abn54/Health-App/blob/c89cef1c918eda2e570e7f800d1d8a6c641c4bd9/docs/dataset-design-notes.md) distinguish the limited preview inspection from any whole-file, provenance, training, or clinical audit. It does not replace the instructor's research table. No earlier travel/hotel application source code was supplied or reused.
 
-Pause will hold exact progress, including the fraction of the current count. Resume will continue that progress. End will exit immediately without confirmation, including from the support panel or History banner. The completion screen will remain open until the user chooses Done; no timer will force the user to finish, leave, or restart.
+One generated-code decision is the monotonic timer: elapsed time is accumulated active time plus `now - anchor`, rather than incrementing a counter on each callback. Pause retains that exact accumulated fraction; Resume creates a new anchor. A fresh Start resets timing fields. This prevents callback drift and cross-session carryover. A gap over two seconds interrupts rather than skipping unseen steps. Separately, an atomic `BEGIN IMMEDIATE` reservation serializes provider-budget claims before concurrent requests can call the model. These choices and the observed recovery-method, retained-timer, cold-load, and model-context failures are explained in the evidence log.
 
-Explicit user pauses and time spent accessing support are excluded from the assignment measure without double subtraction. A hidden tab, reload, or browser suspension is an interruption, not an excludable voluntary pause. It will stop pacing and require a fresh Start from Ready. Interrupted or stopped runs will not be labeled completed.
-
-A failed model request will produce fixed fallback copy while preserving Start, End, and support access. Database failures will show Not saved and allow explicit retry. Completing an exercise will not imply that its record was successfully saved.
-
-## Model role and relevant context
-
-The conversational model will interpret optional natural-language questions about the application. For example, “Do I have to watch the moving shape?” should select the approved explanation of text-only pacing; “What happens to what I type?” should select the storage explanation.
-
-Its context will contain an approved catalog covering the skill description, controls, cue settings, storage, and prototype limits, plus the explicitly selected cue and at most four recent messages from the current session. A vector database is unnecessary for this small context. It will not retrieve unrelated past conversations by default.
-
-The proposed response contract is a catalog selection:
-
-```json
-{"reply_id":"motion","evidence_ids":["catalog:motion"]}
-```
-
-FastAPI will validate the selected ID and matching catalog reference, then display approved text. Malformed output, unknown IDs, mismatched references, or provider failure will use a fixed fallback. Validation limits displayed content; it cannot prove that a valid selection was relevant to the question.
-
-The model cannot change the prescribed skill, timer, preferences, saved records, or navigation. Vue will control pacing and exits, FastAPI will validate requests and persistence, and static client content will supply support access. This follows the course's contextual-chatbot pattern while keeping application behavior under explicit control.
-
-## Stored data, history, and personalization
-
-| Record | Proposed information | Purpose |
-| --- | --- | --- |
-| Profile/preferences | Generated local ID; explicitly remembered animated/text cue | Avoid repeating a selected presentation preference. |
-| Session | Skill/content version, status, initial and final/last recorded cue, available timestamps and durations | Review what occurred and distinguish completed, stopped, interrupted, and never-started sessions. |
-| Conversation | Submitted fictional question, displayed reply, response source, catalog/prompt version, model identifier when applicable | Review conversations and distinguish fixed, mocked, and live responses when implemented. |
-| Session events | Starts, pauses/resumes, support/history access, cue changes, exits, and interruptions | Explain state and timing without recording every animation frame. |
-
-SQLite will store these records locally. Missing measurements will remain unknown rather than being filled with estimates. A failed write may remain only in page memory and be lost on closing the page; the UI will explain that limitation. Deleting a session will also remove its conversation and events. Preference reset and deletion of all local data will require deliberate user action.
-
-Remembering a cue will require an explicit choice. Ready will show it and allow an override. During-exercise changes will affect that session only. History will show the initial and final/last recorded cue and allow copying the latter into Ready for review; it will not automatically save a preference or start the exercise. Never-started drafts will have no cue-reuse action.
-
-The application will know selected preferences, submitted fictional text, and interaction records. It will not know distress level, diagnosis, whether someone followed the pacing, or whether the skill helped. It will not infer treatment needs or alter duration based on wording, typing speed, or past completion.
-
-| Decision | Benefit | Cost and user control |
-| --- | --- | --- |
-| One prominent Start action | Reduces reading and choice effort | Limits skill selection; the chosen skill is explicit before Start. |
-| Optional questions | Allows explanation without mandatory typing | Less conversation is collected; users can bypass the panel. |
-| Explicit remembered cue | Saves repeated setup | Adds a small setting; override/reset remain available. |
-| Visible history and local saving | Supports review and reuse of chosen settings | Requires upfront notice, truthful save status, and deletion controls. |
-
-## Independent crisis access and input policy
-
-The shell will provide a clearly labeled **Crisis support** control throughout the experience, including loading, model failures, and database errors. It will open bundled, region-labeled support information without an API, model, or classifier decision. External destinations still depend on the device/network and external service. Location will not be inferred from conversation text.
-
-A narrow, documented phrase rule may also display the panel for explicit crisis-related fictional input. Matching will run before a model call, with the same rule checked server-side for direct requests. A match will use fixed prototype-boundary copy and skip the model request. It will not send alerts, contact anyone automatically, or imply monitoring.
-
-The rule is an interface cue, not a risk assessment. It can flag quotations or negations and miss paraphrases, misspellings, or other languages. A false match can be dismissed; an unmatched message cannot be labeled safe. Manual support access will always remain available. When an exercise is paused behind the support view, Return and immediate End will preserve user control.
-
-## Research grounding and alternatives
-
-The supplied assignment describes a study with 15 patients, 13 clinicians, 15 prototype evaluations, and 150 coded participant–task combinations. Mention counts and task references describe where findings appeared; they do not establish clinical effectiveness.
-
-| Finding available in the supplied brief | Design choice and reasoning | Alternative and tradeoff |
-| --- | --- | --- |
-| R1: attention was lost beyond 90–100 seconds; the assignment sets a 90-second limit | Use a 60-second intended sequence with no model or save waits. | Ninety seconds leaves less margin for app delays. Actual timing still needs measurement after implementation. |
-| D1 caveat: a simpler interface does not establish reliable distress detection | Use a consistently simple exercise view and explicit preferences. | Automatic adaptation might reduce effort but relies on uncertain inference and can remove control. |
-| Personalization can save repeated choices but collection adds effort | Make cue memory optional and visible; permit overrides and reset. | Required onboarding asks for more decisions; hidden adaptation obscures why the interface changed. |
-| Skill steps, saved state, exits, and crisis access require deliberate design | Assign them to application code and bundled content. | Chat-led pacing and prompt-only controls introduce variable timing and unreliable behavior. |
-| Reading, typing, and decision effort matter | Require no written input during the exercise; keep explanation optional. | A conversation-first entry would offer more dialogue but delay the direct route to the skill. |
-
-This mapping uses the supplied assignment narrative. Its full R1–R4 / D1–D6 table was not included, so no unavailable label definitions are invented. Checking this mapping against that table remains a research-source question for the design.
-
-### Use of the supplied Kaggle resource
-
-The [Kaggle conversation resource](https://www.kaggle.com/datasets/elvis23/mental-health-conversational-data) was inspected through its public preview and rechecked on October 13. It shows `intents.json` containing 80 intent entries; the sampled greeting uses `tag`, `patterns`, and `responses`. This structure informs the app's mapping of varied questions to approved answers:
-
-| Proposed intent | Authored fictional input variations | Approved response topic |
-| --- | --- | --- |
-| `motion` | “Can I turn off the moving circle?” / “Is there a text-only option?” | Cue choice without changing exercise progress. |
-| `storage` | “What gets saved?” / “Will my question stay after I close the page?” | Local saving, actual save status, and deletion. |
-| `controls` | “Can I stop halfway?” / “What does Pause do?” | Immediate End and pause/resume behavior. |
-
-These are design examples, not copied dataset records or executed model responses. The inspected greeting sample solicited personal context, reinforcing the choice to keep questions optional. The dataset was used as a design reference; its records were not downloaded, imported into the catalog, or used for training. Detailed provenance and the adaptation are documented in `docs/dataset-design-notes.md`.
-
-## Documentation, reuse, and selected process evidence
-
-`README.md` describes the milestone and how to review the documents. `AGENTS.md` records the prescribed sequence, model/application boundary, fictional-test restriction, persistence conventions, and evidence rules. Design and architecture notes are in `docs/`; `AI-USE.md` records the tools and their roles.
-
-No earlier travel-app or hotel-chatbot code was supplied. The familiar frontend/API/SQLite and contextual-conversation patterns informed the design; no concrete code reuse is claimed.
-
-| Design activity | Evidence and resulting decision |
-| --- | --- |
-| Revised entry approach | Considered asking for personal context and waiting for a model reply. Review of the brief's effort/timing requirements led to a directly available Start action and optional questions. This was a design revision, not a runtime failure. |
-| Consistency review | Found ambiguous support-panel exit, cue switching, draft recovery, and save wording. Specified immediate End, uninterrupted cue changes, Not started draft labels, and save status that reflects the actual write result. |
-| Document verification | Checked merged content, internal links, and code fences. These checks establish document consistency, not runtime behavior, measured duration, or clinical effectiveness. |
-
-The curated evidence log records selected prompts, observations, changes, and decisions without credentials or personal health information. No application tests or recordings are claimed for this design milestone.
-
-## Open design questions
-
-1. Does the full instructor research table require changes to the relevant mapping or preference design?
-2. Which target browser and phase-announcement behavior provide usable pacing with keyboard access, zoom, and reduced motion?
-3. Which course-permitted model reliably selects the relevant catalog entry, and what browser scheduling gap should count as an interruption?
-
-## AI-use disclosure
-
-OpenAI Codex, identified in this session as a GPT-6-based agent, assisted with requirement extraction, design alternatives, flow/sketches, model/data planning, document review, and this report. The exact serving-model identifier was not exposed. Earlier review subagents used the inherited model to check dataset fit, requirement coverage, and design consistency.
-
-Web browsing and the Codex in-app browser inspected the supplied dataset/resource pages. Local command/file tools and Python 3.14.7 supported Markdown editing and document checks. GitHub connector tools support publication of the student-authorized Part 1 design documents. No application model has been called or trained, and no real person in distress participated. The student should review the design and disclosure before submission.
+Part 2's working prototype and evidence are complete within this scope. Remaining work includes improving model topic relevance, Part 3's broader evaluation/repeated live cases, independent clean-checkout verification, final demonstration/process screencast, multi-tab reconciliation, and broader browser/accessibility testing. No peer feedback, recording, clinical outcome, or unperformed test is claimed. The AI disclosure identifies the assistant's implementation/testing/documentation role and model identifiers; independent student review and understanding have not yet been recorded.
