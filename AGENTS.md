@@ -2,7 +2,7 @@
 
 ## Current scope
 
-The authorized milestone is Part 3.1: design, flow, and project documentation. Read `README.md`, `docs/design.md`, and `docs/architecture.md` before changing the design. Do not treat planned behavior or planned tests as implemented results.
+The authorized milestone is Part 3.2: a working localhost prototype (requested October 19, 2026). Read `README.md`, `docs/design.md`, and `docs/architecture.md` before changing the design. Do not treat planned behavior or planned tests as implemented results.
 
 ## Domain boundaries
 
@@ -14,7 +14,7 @@ The authorized milestone is Part 3.1: design, flow, and project documentation. R
 - Crisis-support information must be available from the application shell independently of any API, model, or classifier. Preserve this route during loading and error states.
 - Treat any phrase matching as a fallible interface cue, never a clinical assessment or proof of safety.
 
-## Implementation conventions for later milestones
+## Implementation conventions
 
 - Use Vue, FastAPI, and SQLite. Bind development servers to localhost.
 - Implement the exercise as an explicit client state machine with one monotonic timing source.

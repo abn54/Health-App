@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-19T18:54:04.231052+00:00",
+  "method": "Actual local Ollama requests through FastAPI. Three sequential questions in one persisted session. Model receives only current question, explicit cue, and concise approved app facts; no prior conversation. One run per case, not a variation study.",
+  "before": {
+    "status": "ok",
+    "live_enabled": true,
+    "review_tools": true,
+    "model": "qwen2.5:1.5b",
+    "prompt_version": "catalog-selector-v5",
+    "attempts": 18,
+    "limit": 50,
+    "test_run_id": "part2-2026-10-19"
+  },
+  "after": {
+    "status": "ok",
+    "live_enabled": true,
+    "review_tools": true,
+    "model": "qwen2.5:1.5b",
+    "prompt_version": "catalog-selector-v5",
+    "attempts": 21,
+    "limit": 50,
+    "test_run_id": "part2-2026-10-19"
+  },
+  "session_id": "83baa53b-ede0-43a6-bee5-9a373745fac1",
+  "cases": [
+    {
+      "question": "Do I have to watch a moving shape?",
+      "expected_reply_id": "motion",
+      "observed": {
+        "text": "You can choose Text only before or during the exercise. The inhale/exhale words and count still show the pace. Changing the cue does not restart pacing or save a remembered preference.",
+        "source": "live",
+        "reply_id": "motion",
+        "evidence_ids": [
+          "catalog:motion"
+        ],
+        "model_id": "qwen2.5:1.5b",
+        "prompt_version": "catalog-selector-v5",
+        "catalog_version": "app-help-v1",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "9e07ec49-1adc-49b9-bf6f-c919e4a4c740"
+      },
+      "elapsed_ms": 563.52,
+      "matched": true
+    },
+    {
+      "question": "What stays after I close this?",
+      "expected_reply_id": "storage",
+      "observed": {
+        "text": "The app attempts to save fictional questions, displayed replies, and session records in local SQLite. Check the save status; a failed save is not a stored record. Delete sessions and their conversations in History. Live mode sends the current question and limited context to the local Ollama model.",
+        "source": "live",
+        "reply_id": "storage",
+        "evidence_ids": [
+          "catalog:storage"
+        ],
+        "model_id": "qwen2.5:1.5b",
+        "prompt_version": "catalog-selector-v5",
+        "catalog_version": "app-help-v1",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "983b4164-98d7-4972-bfec-21a06e781de5"
+      },
+      "elapsed_ms": 318.61,
+      "matched": true
+    },
+    {
+      "question": "Can I stop halfway?",
+      "expected_reply_id": "controls",
+      "observed": {
+        "text": "You can choose Text only before or during the exercise. The inhale/exhale words and count still show the pace. Changing the cue does not restart pacing or save a remembered preference.",
+        "source": "live",
+        "reply_id": "motion",
+        "evidence_ids": [
+          "catalog:motion"
+        ],
+        "model_id": "qwen2.5:1.5b",
+        "prompt_version": "catalog-selector-v5",
+        "catalog_version": "app-help-v1",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "7d8dce5c-722f-46ee-8071-b49446726576"
+      },
+      "elapsed_ms": 299.78,
+      "matched": false
+    }
+  ]
+}

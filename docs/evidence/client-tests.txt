@@ -1,0 +1,22 @@
+Executed 2026-10-19T18:56:36.357428+00:00
+Command: npm test
+Exit: 0
+
+
+> pause-coursework@0.2.0 test
+> node --test tests/*.test.js
+
+✔ all six cycles retain exact 4/6 boundaries without accumulated interval drift (0.870667ms)
+✔ pause preserves the fraction of a count; overlapping support is excluded once (0.709041ms)
+✔ scheduling interruption includes app delay, without false completion or exclusion (0.12625ms)
+✔ End is immediate, and a terminal exercise does not resume (0.098625ms)
+✔ a new session resets elapsed time and pause accounting (0.094959ms)
+✔ phrase cue is bounded and normalized; negations still match (documented limitation) (0.786208ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 85.578041

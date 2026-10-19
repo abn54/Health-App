@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-19",
+  "method": "Actual Vue production build in Codex in-app browser; no pauses; rendered sequence boundary timestamps from performance.now; setup measured separately",
+  "sessions": [
+    {
+      "id": "3a838e82-ffcb-4d55-b175-29982aa2724a",
+      "assignment_duration_ms": 60014.09999999404,
+      "content_version": "breathing-4-6-v1",
+      "created_at": "2026-10-19T18:42:10.473000Z",
+      "cue_final": "animated",
+      "cue_initial": "animated",
+      "events": [
+        {
+          "details": {},
+          "elapsed_ms": 0.09999999403953552,
+          "id": "416cd8e6-c81e-4b94-8e57-813267b9c990",
+          "sequence": 1,
+          "type": "start"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 60000.0,
+          "id": "f6b3eb73-eb26-478c-bc55-bcdbe0c7b59b",
+          "sequence": 2,
+          "type": "completed"
+        }
+      ],
+      "excluded_ms": 0.0,
+      "final_step_at": "2026-10-19T18:44:04.931000Z",
+      "first_instruction_at": "2026-10-19T18:43:04.917000Z",
+      "revision": 4,
+      "setup_ms": 88350.59999999404,
+      "status": "completed",
+      "wall_ms": 60014.09999999404
+    }
+  ]
+}

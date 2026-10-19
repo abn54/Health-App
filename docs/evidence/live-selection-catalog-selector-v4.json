@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-19T18:53:20.688325+00:00",
+  "method": "Actual local Ollama requests through running FastAPI; same session, sequential context; one run per case, not a variation study",
+  "before": {
+    "status": "ok",
+    "live_enabled": true,
+    "review_tools": true,
+    "model": "qwen2.5:1.5b",
+    "prompt_version": "catalog-selector-v4",
+    "attempts": 15,
+    "limit": 50,
+    "test_run_id": "part2-2026-10-19"
+  },
+  "after": {
+    "status": "ok",
+    "live_enabled": true,
+    "review_tools": true,
+    "model": "qwen2.5:1.5b",
+    "prompt_version": "catalog-selector-v4",
+    "attempts": 18,
+    "limit": 50,
+    "test_run_id": "part2-2026-10-19"
+  },
+  "session_id": "59a3adf0-06c0-4c27-9b8b-2f410141e5e8",
+  "cases": [
+    {
+      "question": "Do I have to watch a moving shape?",
+      "expected_reply_id": "motion",
+      "observed": {
+        "text": "You can choose Text only before or during the exercise. The inhale/exhale words and count still show the pace. Changing the cue does not restart pacing or save a remembered preference.",
+        "source": "live",
+        "reply_id": "motion",
+        "evidence_ids": [
+          "catalog:motion"
+        ],
+        "model_id": "qwen2.5:1.5b",
+        "prompt_version": "catalog-selector-v4",
+        "catalog_version": "app-help-v1",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "7453dcd9-5741-4720-9894-50cd6ef50414"
+      },
+      "elapsed_ms": 775.06,
+      "matched": true
+    },
+    {
+      "question": "What stays after I close this?",
+      "expected_reply_id": "storage",
+      "observed": {
+        "text": "The ready screen shows the 60-second exercise and your cue setting. Start is your choice. You do not need to answer questions first.",
+        "source": "live",
+        "reply_id": "start",
+        "evidence_ids": [
+          "catalog:start"
+        ],
+        "model_id": "qwen2.5:1.5b",
+        "prompt_version": "catalog-selector-v4",
+        "catalog_version": "app-help-v1",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "c03978e0-1329-4a2d-b1b9-6725381ffcf5"
+      },
+      "elapsed_ms": 344.7,
+      "matched": false
+    },
+    {
+      "question": "Can I stop halfway?",
+      "expected_reply_id": "controls",
+      "observed": {
+        "text": "The ready screen shows the 60-second exercise and your cue setting. Start is your choice. You do not need to answer questions first.",
+        "source": "live",
+        "reply_id": "start",
+        "evidence_ids": [
+          "catalog:start"
+        ],
+        "model_id": "qwen2.5:1.5b",
+        "prompt_version": "catalog-selector-v4",
+        "catalog_version": "app-help-v1",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "d669879d-3eb8-4b92-bf80-b7de8564722e"
+      },
+      "elapsed_ms": 347.92,
+      "matched": false
+    }
+  ]
+}

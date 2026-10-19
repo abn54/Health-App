@@ -12,7 +12,7 @@
 *.sqlite3-*
 *.log
 
-# Future development artifacts
+# Development artifacts
 node_modules/
 dist/
 .venv/

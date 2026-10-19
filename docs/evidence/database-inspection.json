@@ -1,0 +1,1047 @@
+{
+  "date": "2026-10-19T18:56:36.917738+00:00",
+  "sqlite_version": "3.50.4",
+  "method": "Read-only SQL inspection of fictional local records, not the test fixture database",
+  "foreign_key_check": [],
+  "integrity_check": "ok",
+  "tables": {
+    "migrations": 1,
+    "sessions": 10,
+    "events": 21,
+    "messages": 36,
+    "preferences": 1,
+    "model_attempts": 22
+  },
+  "preferences": [
+    {
+      "id": 1,
+      "cue": "text"
+    }
+  ],
+  "sessions": [
+    {
+      "id": "3a838e82-ffcb-4d55-b175-29982aa2724a",
+      "assignment_duration_ms": 60014.09999999404,
+      "content_version": "breathing-4-6-v1",
+      "created_at": "2026-10-19T18:42:10.473000Z",
+      "cue_final": "animated",
+      "cue_initial": "animated",
+      "events": [
+        {
+          "details": {},
+          "elapsed_ms": 0.09999999403953552,
+          "id": "416cd8e6-c81e-4b94-8e57-813267b9c990",
+          "sequence": 1,
+          "type": "start"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 60000.0,
+          "id": "f6b3eb73-eb26-478c-bc55-bcdbe0c7b59b",
+          "sequence": 2,
+          "type": "completed"
+        }
+      ],
+      "excluded_ms": 0.0,
+      "final_step_at": "2026-10-19T18:44:04.931000Z",
+      "first_instruction_at": "2026-10-19T18:43:04.917000Z",
+      "revision": 4,
+      "setup_ms": 88350.59999999404,
+      "status": "completed",
+      "wall_ms": 60014.09999999404
+    },
+    {
+      "id": "c6b5e6f8-e89a-4ba2-ba37-640a4ca21565",
+      "assignment_duration_ms": 559.4000000059605,
+      "content_version": "breathing-4-6-v1",
+      "created_at": "2026-10-19T18:45:40.604000Z",
+      "cue_final": "animated",
+      "cue_initial": "text",
+      "events": [
+        {
+          "details": {},
+          "elapsed_ms": 0.10000002384185791,
+          "id": "fe7615ab-a677-42ef-b4de-27186200038d",
+          "sequence": 1,
+          "type": "start"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 266.90000000596046,
+          "id": "250b5885-1218-4d4a-9f5a-12f8e7b6aee2",
+          "sequence": 2,
+          "type": "pause"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 266.90000000596046,
+          "id": "55f2ac13-a979-4868-9b18-f936769eac7e",
+          "sequence": 3,
+          "type": "support_open"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 266.90000000596046,
+          "id": "af8ed6d8-87a0-4afd-be85-fef98a9159c9",
+          "sequence": 4,
+          "type": "support_close"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 266.90000000596046,
+          "id": "61163588-9c46-47c9-a437-d95a7bc05e7e",
+          "sequence": 5,
+          "type": "history_open"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 266.90000000596046,
+          "id": "a020d2ad-20a0-4b8d-b5a0-7d0587174ad3",
+          "sequence": 6,
+          "type": "history_close"
+        },
+        {
+          "details": {
+            "from": "text",
+            "to": "animated"
+          },
+          "elapsed_ms": 266.90000000596046,
+          "id": "b1d879c2-8970-4a0c-a1fb-d9444a8bde8a",
+          "sequence": 7,
+          "type": "cue_changed"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 267.0,
+          "id": "c689310f-68be-44ce-a910-2ce07dfb8d9e",
+          "sequence": 8,
+          "type": "resume"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 551.5,
+          "id": "88cb3caf-eaf2-40fe-a66f-e11f61280d27",
+          "sequence": 9,
+          "type": "stopped"
+        }
+      ],
+      "excluded_ms": 26174.40000000596,
+      "final_step_at": null,
+      "first_instruction_at": "2026-10-19T18:46:31.934000Z",
+      "revision": 11,
+      "setup_ms": 56546.19999998808,
+      "status": "stopped",
+      "wall_ms": 26733.80000001192
+    },
+    {
+      "id": "9be887e1-bade-46ef-98d4-0a3b46593380",
+      "assignment_duration_ms": null,
+      "content_version": "breathing-4-6-v1",
+      "created_at": "2026-10-19T18:47:09.292000Z",
+      "cue_final": null,
+      "cue_initial": null,
+      "events": [],
+      "excluded_ms": 0.0,
+      "final_step_at": null,
+      "first_instruction_at": null,
+      "revision": 2,
+      "setup_ms": null,
+      "status": "draft",
+      "wall_ms": null
+    },
+    {
+      "id": "827c217f-1005-4307-984b-9e2074d35a99",
+      "assignment_duration_ms": 60020.39999997616,
+      "content_version": "breathing-4-6-v1",
+      "created_at": "2026-10-19T18:48:15.176000Z",
+      "cue_final": "text",
+      "cue_initial": "text",
+      "events": [
+        {
+          "details": {},
+          "elapsed_ms": 0.09999999403953552,
+          "id": "c5ab1438-d3f3-4954-9eed-4fbb38d97a47",
+          "sequence": 1,
+          "type": "start"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 10608.699999988079,
+          "id": "e4b8dbf4-5c27-4dfc-a06d-f74ef0778795",
+          "sequence": 2,
+          "type": "pause"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 10608.699999988079,
+          "id": "ea245b97-6792-4466-98b0-dd970dfa8246",
+          "sequence": 3,
+          "type": "support_open"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 10608.699999988079,
+          "id": "e60bd0ab-96ee-498f-b5ff-1352ade8b77d",
+          "sequence": 4,
+          "type": "support_close"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 10608.699999988079,
+          "id": "451ee0b3-2ea9-4e99-ac2e-f2cef8ce822d",
+          "sequence": 5,
+          "type": "resume"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 60000.0,
+          "id": "3eb9009b-2abb-486d-a72c-056bf4695c5b",
+          "sequence": 6,
+          "type": "completed"
+        }
+      ],
+      "excluded_ms": 17599.600000023842,
+      "final_step_at": "2026-10-19T18:51:07.037000Z",
+      "first_instruction_at": "2026-10-19T18:49:49.417000Z",
+      "revision": 8,
+      "setup_ms": 94876.69999998808,
+      "status": "completed",
+      "wall_ms": 77620.0
+    },
+    {
+      "id": "414e856c-2b99-4000-8016-5060f63af533",
+      "assignment_duration_ms": null,
+      "content_version": "breathing-4-6-v1",
+      "created_at": "2026-10-19T18:51:53.868720Z",
+      "cue_final": null,
+      "cue_initial": null,
+      "events": [],
+      "excluded_ms": 0.0,
+      "final_step_at": null,
+      "first_instruction_at": null,
+      "revision": 1,
+      "setup_ms": null,
+      "status": "draft",
+      "wall_ms": null
+    },
+    {
+      "id": "a0fff91b-62ba-4f6d-a51d-a1825362d8b3",
+      "assignment_duration_ms": null,
+      "content_version": "breathing-4-6-v1",
+      "created_at": "2026-10-19T18:52:01.825000Z",
+      "cue_final": "text",
+      "cue_initial": "text",
+      "events": [
+        {
+          "details": {},
+          "elapsed_ms": 0.19999998807907104,
+          "id": "0a873daa-1d9c-4923-89d6-d1cc305d4619",
+          "sequence": 1,
+          "type": "start"
+        },
+        {
+          "details": {
+            "reason": "page-recovery; final time unknown"
+          },
+          "elapsed_ms": null,
+          "id": "1c19fcd1-474e-4fd0-9850-4d8c6db98c96",
+          "sequence": 2,
+          "type": "interrupted"
+        }
+      ],
+      "excluded_ms": 0.0,
+      "final_step_at": null,
+      "first_instruction_at": "2026-10-19T18:52:01.825000Z",
+      "revision": 3,
+      "setup_ms": 222.0,
+      "status": "interrupted",
+      "wall_ms": null
+    },
+    {
+      "id": "59a3adf0-06c0-4c27-9b8b-2f410141e5e8",
+      "assignment_duration_ms": null,
+      "content_version": "breathing-4-6-v1",
+      "created_at": "2026-10-19T18:53:19.216720Z",
+      "cue_final": null,
+      "cue_initial": null,
+      "events": [],
+      "excluded_ms": 0.0,
+      "final_step_at": null,
+      "first_instruction_at": null,
+      "revision": 1,
+      "setup_ms": null,
+      "status": "draft",
+      "wall_ms": null
+    },
+    {
+      "id": "83baa53b-ede0-43a6-bee5-9a373745fac1",
+      "assignment_duration_ms": null,
+      "content_version": "breathing-4-6-v1",
+      "created_at": "2026-10-19T18:54:03.045376Z",
+      "cue_final": null,
+      "cue_initial": null,
+      "events": [],
+      "excluded_ms": 0.0,
+      "final_step_at": null,
+      "first_instruction_at": null,
+      "revision": 1,
+      "setup_ms": null,
+      "status": "draft",
+      "wall_ms": null
+    },
+    {
+      "id": "1172e561-274c-421b-ba99-af01bc731f55",
+      "assignment_duration_ms": 282.2999999821186,
+      "content_version": "breathing-4-6-v1",
+      "created_at": "2026-10-19T18:54:20.375000Z",
+      "cue_final": "text",
+      "cue_initial": "text",
+      "events": [
+        {
+          "details": {},
+          "elapsed_ms": 0.09999999403953552,
+          "id": "589416c4-f7d2-4d84-800f-b9af74807a7d",
+          "sequence": 1,
+          "type": "start"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 275.5,
+          "id": "47f6eda9-5525-43f9-9d31-982137cb0047",
+          "sequence": 2,
+          "type": "stopped"
+        }
+      ],
+      "excluded_ms": 0.0,
+      "final_step_at": null,
+      "first_instruction_at": "2026-10-19T18:54:20.376000Z",
+      "revision": 3,
+      "setup_ms": 138156.0,
+      "status": "stopped",
+      "wall_ms": 282.2999999821186
+    },
+    {
+      "id": "162ac069-333f-4719-958a-1935a705d693",
+      "assignment_duration_ms": null,
+      "content_version": "breathing-4-6-v1",
+      "created_at": "2026-10-19T18:55:10.635000Z",
+      "cue_final": null,
+      "cue_initial": null,
+      "events": [],
+      "excluded_ms": 0.0,
+      "final_step_at": null,
+      "first_instruction_at": null,
+      "revision": 2,
+      "setup_ms": null,
+      "status": "draft",
+      "wall_ms": null
+    }
+  ],
+  "messages": [
+    {
+      "id": "f5dbbb80-1716-4c4f-88cd-68164de9ec26",
+      "session_id": "3a838e82-ffcb-4d55-b175-29982aa2724a",
+      "turn_id": "cd660e1f-57e1-4c6b-a7ef-bafa53e6d9ae",
+      "role": "user",
+      "content": "Do I have to watch a moving shape?",
+      "metadata": {},
+      "created_at": "2026-10-19T18:42:10.504092+00:00"
+    },
+    {
+      "id": "c10e9e7c-672f-4ba4-8358-2b08796bc196",
+      "session_id": "3a838e82-ffcb-4d55-b175-29982aa2724a",
+      "turn_id": "cd660e1f-57e1-4c6b-a7ef-bafa53e6d9ae",
+      "role": "assistant",
+      "content": "The optional explanation is unavailable. You can still start the exercise or open Crisis support.",
+      "metadata": {
+        "source": "fixed",
+        "reply_id": null,
+        "evidence_ids": [],
+        "model_id": "qwen2.5:0.5b",
+        "prompt_version": "app-help-v1",
+        "rule_id": null,
+        "note": "Provider unavailable, timeout, or invalid selection",
+        "attempt_id": "5b0643f0-3412-41f5-9701-e7fe94438d2e"
+      },
+      "created_at": "2026-10-19T18:42:12.658568+00:00"
+    },
+    {
+      "id": "986b5d0c-d0f4-44a7-9e19-e03de5c2b67d",
+      "session_id": "c6b5e6f8-e89a-4ba2-ba37-640a4ca21565",
+      "turn_id": "2bf04e4b-c27e-4585-8d0a-eb89c64288e8",
+      "role": "user",
+      "content": "Do I have to watch a moving shape?",
+      "metadata": {},
+      "created_at": "2026-10-19T18:45:40.633981+00:00"
+    },
+    {
+      "id": "7c53599b-8394-4152-9f39-9a2de69b51c3",
+      "session_id": "c6b5e6f8-e89a-4ba2-ba37-640a4ca21565",
+      "turn_id": "2bf04e4b-c27e-4585-8d0a-eb89c64288e8",
+      "role": "assistant",
+      "content": "The optional explanation is unavailable. You can still start the exercise or open Crisis support.",
+      "metadata": {
+        "source": "fixed",
+        "reply_id": null,
+        "evidence_ids": [],
+        "model_id": "qwen2.5:1.5b",
+        "prompt_version": "app-help-v1",
+        "rule_id": null,
+        "note": "Provider unavailable, timeout, or invalid selection",
+        "attempt_id": "71c7ac9d-da20-432f-aaee-2a13b264c191"
+      },
+      "created_at": "2026-10-19T18:45:48.670927+00:00"
+    },
+    {
+      "id": "7349b619-2afa-440a-9789-9082821faae8",
+      "session_id": "9be887e1-bade-46ef-98d4-0a3b46593380",
+      "turn_id": "631804a3-abbf-4c03-a866-c93d2df76f36",
+      "role": "user",
+      "content": "Do I have to watch a moving shape?",
+      "metadata": {},
+      "created_at": "2026-10-19T18:47:09.320720+00:00"
+    },
+    {
+      "id": "76ef6945-2ecf-4254-acde-3f9bc66c52af",
+      "session_id": "9be887e1-bade-46ef-98d4-0a3b46593380",
+      "turn_id": "631804a3-abbf-4c03-a866-c93d2df76f36",
+      "role": "assistant",
+      "content": "The optional explanation is unavailable. You can still start the exercise or open Crisis support.",
+      "metadata": {
+        "source": "fixed",
+        "reply_id": null,
+        "evidence_ids": [],
+        "model_id": "qwen2.5:1.5b",
+        "prompt_version": "app-help-v1",
+        "rule_id": null,
+        "note": "Provider unavailable, timeout, or invalid selection",
+        "attempt_id": "02879b67-c8d2-4a0f-b2dc-b9f587080ede"
+      },
+      "created_at": "2026-10-19T18:47:10.431238+00:00"
+    },
+    {
+      "id": "703c0f24-c418-4e30-9c08-02c253a7200b",
+      "session_id": "827c217f-1005-4307-984b-9e2074d35a99",
+      "turn_id": "3b6fb6b1-d560-4e0e-bc23-6ddccd260dcd",
+      "role": "user",
+      "content": "Do I have to watch a moving shape?",
+      "metadata": {},
+      "created_at": "2026-10-19T18:48:15.205991+00:00"
+    },
+    {
+      "id": "0103bc90-acf2-4fe6-8a5c-f4ec77e08204",
+      "session_id": "827c217f-1005-4307-984b-9e2074d35a99",
+      "turn_id": "3b6fb6b1-d560-4e0e-bc23-6ddccd260dcd",
+      "role": "assistant",
+      "content": "You can choose Text only before or during the exercise. The inhale/exhale words and count still show the pace. Changing the cue does not restart pacing or save a remembered preference.",
+      "metadata": {
+        "source": "live",
+        "reply_id": "motion",
+        "evidence_ids": [
+          "catalog:motion"
+        ],
+        "model_id": "qwen2.5:1.5b",
+        "prompt_version": "catalog-selector-v2",
+        "catalog_version": "app-help-v1",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "d0bd66b8-9d51-4ec3-a945-3212bf2bebc2"
+      },
+      "created_at": "2026-10-19T18:48:16.034423+00:00"
+    },
+    {
+      "id": "c203dba9-ebed-4576-be4d-0af2d265fdb8",
+      "session_id": "827c217f-1005-4307-984b-9e2074d35a99",
+      "turn_id": "31f1473d-51b1-4a27-ad06-38ddd655e5c8",
+      "role": "user",
+      "content": "What stays after I close this?",
+      "metadata": {},
+      "created_at": "2026-10-19T18:48:28.228539+00:00"
+    },
+    {
+      "id": "9144e8ff-4bba-4dce-a3c0-1944511261f4",
+      "session_id": "827c217f-1005-4307-984b-9e2074d35a99",
+      "turn_id": "31f1473d-51b1-4a27-ad06-38ddd655e5c8",
+      "role": "assistant",
+      "content": "The app attempts to save fictional questions, displayed replies, and session records in local SQLite. Check the save status; a failed save is not a stored record. Delete sessions and their conversations in History. Live mode sends the current question and limited context to the local Ollama model.",
+      "metadata": {
+        "source": "live",
+        "reply_id": "storage",
+        "evidence_ids": [
+          "catalog:storage"
+        ],
+        "model_id": "qwen2.5:1.5b",
+        "prompt_version": "catalog-selector-v2",
+        "catalog_version": "app-help-v1",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "ad8874b5-92e0-481d-9a28-1e4c6ceb80bb"
+      },
+      "created_at": "2026-10-19T18:48:28.601737+00:00"
+    },
+    {
+      "id": "26464e64-088b-494e-86bb-ee54d4ac08e4",
+      "session_id": "827c217f-1005-4307-984b-9e2074d35a99",
+      "turn_id": "712bd4c9-aad8-4024-a43e-093a9246cfeb",
+      "role": "user",
+      "content": "Can I stop halfway?",
+      "metadata": {},
+      "created_at": "2026-10-19T18:49:18.278699+00:00"
+    },
+    {
+      "id": "1f49c7e2-11a4-472d-9480-41c3f61d27c5",
+      "session_id": "827c217f-1005-4307-984b-9e2074d35a99",
+      "turn_id": "712bd4c9-aad8-4024-a43e-093a9246cfeb",
+      "role": "assistant",
+      "content": "You can choose Text only before or during the exercise. The inhale/exhale words and count still show the pace. Changing the cue does not restart pacing or save a remembered preference.",
+      "metadata": {
+        "source": "live",
+        "reply_id": "motion",
+        "evidence_ids": [
+          "catalog:motion"
+        ],
+        "model_id": "qwen2.5:1.5b",
+        "prompt_version": "catalog-selector-v2",
+        "catalog_version": "app-help-v1",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "efe2eafa-dba1-4bb3-994b-7d97c422fd42"
+      },
+      "created_at": "2026-10-19T18:49:18.687266+00:00"
+    },
+    {
+      "id": "eee416d8-be58-4b5a-b2c9-971181060f9b",
+      "session_id": "414e856c-2b99-4000-8016-5060f63af533",
+      "turn_id": "47bb6dd1-4dab-4bf0-8cc6-32868b73c391",
+      "role": "user",
+      "content": "Do I have to watch a moving shape?",
+      "metadata": {},
+      "created_at": "2026-10-19T18:51:53.873906+00:00"
+    },
+    {
+      "id": "58cc2d03-63ab-4571-8a2a-7bdd94460c7d",
+      "session_id": "414e856c-2b99-4000-8016-5060f63af533",
+      "turn_id": "47bb6dd1-4dab-4bf0-8cc6-32868b73c391",
+      "role": "assistant",
+      "content": "You can choose Text only before or during the exercise. The inhale/exhale words and count still show the pace. Changing the cue does not restart pacing or save a remembered preference.",
+      "metadata": {
+        "source": "live",
+        "reply_id": "motion",
+        "evidence_ids": [
+          "catalog:motion"
+        ],
+        "model_id": "qwen2.5:1.5b",
+        "prompt_version": "catalog-selector-v3",
+        "catalog_version": "app-help-v1",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "75a37b0a-be54-4f7e-8798-b165c53e122a"
+      },
+      "created_at": "2026-10-19T18:51:54.688756+00:00"
+    },
+    {
+      "id": "7716466c-2652-4e99-baab-218c73a9cb82",
+      "session_id": "414e856c-2b99-4000-8016-5060f63af533",
+      "turn_id": "622ffe3e-ead6-4648-a06b-e0023f947d2c",
+      "role": "user",
+      "content": "What stays after I close this?",
+      "metadata": {},
+      "created_at": "2026-10-19T18:51:54.691277+00:00"
+    },
+    {
+      "id": "82dd780a-6ee1-4185-91eb-a62fc4d7ebc2",
+      "session_id": "414e856c-2b99-4000-8016-5060f63af533",
+      "turn_id": "622ffe3e-ead6-4648-a06b-e0023f947d2c",
+      "role": "assistant",
+      "content": "You can choose Text only before or during the exercise. The inhale/exhale words and count still show the pace. Changing the cue does not restart pacing or save a remembered preference.",
+      "metadata": {
+        "source": "live",
+        "reply_id": "motion",
+        "evidence_ids": [
+          "catalog:motion"
+        ],
+        "model_id": "qwen2.5:1.5b",
+        "prompt_version": "catalog-selector-v3",
+        "catalog_version": "app-help-v1",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "2d50ffad-76ca-4012-9561-cda1d6111284"
+      },
+      "created_at": "2026-10-19T18:51:55.054907+00:00"
+    },
+    {
+      "id": "9a9d447b-d74f-489f-b934-21ffeba6dc6e",
+      "session_id": "414e856c-2b99-4000-8016-5060f63af533",
+      "turn_id": "18902a52-c8de-4fb4-bd2d-abefb17b01b8",
+      "role": "user",
+      "content": "Can I stop halfway?",
+      "metadata": {},
+      "created_at": "2026-10-19T18:51:55.057340+00:00"
+    },
+    {
+      "id": "37f2efc6-ad89-4658-9718-72576ee5ad94",
+      "session_id": "414e856c-2b99-4000-8016-5060f63af533",
+      "turn_id": "18902a52-c8de-4fb4-bd2d-abefb17b01b8",
+      "role": "assistant",
+      "content": "You can choose Text only before or during the exercise. The inhale/exhale words and count still show the pace. Changing the cue does not restart pacing or save a remembered preference.",
+      "metadata": {
+        "source": "live",
+        "reply_id": "motion",
+        "evidence_ids": [
+          "catalog:motion"
+        ],
+        "model_id": "qwen2.5:1.5b",
+        "prompt_version": "catalog-selector-v3",
+        "catalog_version": "app-help-v1",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "e224ebd8-c09c-4bad-a0a7-7efdda6f7a2e"
+      },
+      "created_at": "2026-10-19T18:51:55.428915+00:00"
+    },
+    {
+      "id": "6bd36be9-cdeb-4fb2-8448-c14463f489b6",
+      "session_id": "59a3adf0-06c0-4c27-9b8b-2f410141e5e8",
+      "turn_id": "f5c5c008-d3c6-4d62-8af4-97de721baaf9",
+      "role": "user",
+      "content": "Do I have to watch a moving shape?",
+      "metadata": {},
+      "created_at": "2026-10-19T18:53:19.222033+00:00"
+    },
+    {
+      "id": "6d276140-4da6-49d6-9172-aad83af03b3f",
+      "session_id": "59a3adf0-06c0-4c27-9b8b-2f410141e5e8",
+      "turn_id": "f5c5c008-d3c6-4d62-8af4-97de721baaf9",
+      "role": "assistant",
+      "content": "You can choose Text only before or during the exercise. The inhale/exhale words and count still show the pace. Changing the cue does not restart pacing or save a remembered preference.",
+      "metadata": {
+        "source": "live",
+        "reply_id": "motion",
+        "evidence_ids": [
+          "catalog:motion"
+        ],
+        "model_id": "qwen2.5:1.5b",
+        "prompt_version": "catalog-selector-v4",
+        "catalog_version": "app-help-v1",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "7453dcd9-5741-4720-9894-50cd6ef50414"
+      },
+      "created_at": "2026-10-19T18:53:19.994038+00:00"
+    },
+    {
+      "id": "67f0bc79-e0f8-4bc0-9e3c-95cc7ed62dfb",
+      "session_id": "59a3adf0-06c0-4c27-9b8b-2f410141e5e8",
+      "turn_id": "dab583e2-913a-4c27-b49f-75def38d70f7",
+      "role": "user",
+      "content": "What stays after I close this?",
+      "metadata": {},
+      "created_at": "2026-10-19T18:53:19.996850+00:00"
+    },
+    {
+      "id": "20411e83-9cf1-47d0-b72b-9ce5351a8562",
+      "session_id": "59a3adf0-06c0-4c27-9b8b-2f410141e5e8",
+      "turn_id": "dab583e2-913a-4c27-b49f-75def38d70f7",
+      "role": "assistant",
+      "content": "The ready screen shows the 60-second exercise and your cue setting. Start is your choice. You do not need to answer questions first.",
+      "metadata": {
+        "source": "live",
+        "reply_id": "start",
+        "evidence_ids": [
+          "catalog:start"
+        ],
+        "model_id": "qwen2.5:1.5b",
+        "prompt_version": "catalog-selector-v4",
+        "catalog_version": "app-help-v1",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "c03978e0-1329-4a2d-b1b9-6725381ffcf5"
+      },
+      "created_at": "2026-10-19T18:53:20.339085+00:00"
+    },
+    {
+      "id": "72b42094-ca0b-4513-a00a-791bf244653f",
+      "session_id": "59a3adf0-06c0-4c27-9b8b-2f410141e5e8",
+      "turn_id": "7520fac8-8ece-47cc-9e7b-8ae806963165",
+      "role": "user",
+      "content": "Can I stop halfway?",
+      "metadata": {},
+      "created_at": "2026-10-19T18:53:20.341465+00:00"
+    },
+    {
+      "id": "6bcdeaee-0f3f-4193-b1ab-acdd484fa245",
+      "session_id": "59a3adf0-06c0-4c27-9b8b-2f410141e5e8",
+      "turn_id": "7520fac8-8ece-47cc-9e7b-8ae806963165",
+      "role": "assistant",
+      "content": "The ready screen shows the 60-second exercise and your cue setting. Start is your choice. You do not need to answer questions first.",
+      "metadata": {
+        "source": "live",
+        "reply_id": "start",
+        "evidence_ids": [
+          "catalog:start"
+        ],
+        "model_id": "qwen2.5:1.5b",
+        "prompt_version": "catalog-selector-v4",
+        "catalog_version": "app-help-v1",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "d669879d-3eb8-4b92-bf80-b7de8564722e"
+      },
+      "created_at": "2026-10-19T18:53:20.687054+00:00"
+    },
+    {
+      "id": "7c016859-531f-43e3-97f3-85b517bf1231",
+      "session_id": "83baa53b-ede0-43a6-bee5-9a373745fac1",
+      "turn_id": "b870f4d1-3f80-48de-8e6c-7ad8e9d77756",
+      "role": "user",
+      "content": "Do I have to watch a moving shape?",
+      "metadata": {},
+      "created_at": "2026-10-19T18:54:03.050694+00:00"
+    },
+    {
+      "id": "7e375a30-b5e3-435c-9e2a-3706e2b68565",
+      "session_id": "83baa53b-ede0-43a6-bee5-9a373745fac1",
+      "turn_id": "b870f4d1-3f80-48de-8e6c-7ad8e9d77756",
+      "role": "assistant",
+      "content": "You can choose Text only before or during the exercise. The inhale/exhale words and count still show the pace. Changing the cue does not restart pacing or save a remembered preference.",
+      "metadata": {
+        "source": "live",
+        "reply_id": "motion",
+        "evidence_ids": [
+          "catalog:motion"
+        ],
+        "model_id": "qwen2.5:1.5b",
+        "prompt_version": "catalog-selector-v5",
+        "catalog_version": "app-help-v1",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "9e07ec49-1adc-49b9-bf6f-c919e4a4c740"
+      },
+      "created_at": "2026-10-19T18:54:03.611049+00:00"
+    },
+    {
+      "id": "b252e8c4-3f67-469e-8e80-0ac6475651f9",
+      "session_id": "83baa53b-ede0-43a6-bee5-9a373745fac1",
+      "turn_id": "127e6db6-c395-489e-8edc-46e9ac7b2fd8",
+      "role": "user",
+      "content": "What stays after I close this?",
+      "metadata": {},
+      "created_at": "2026-10-19T18:54:03.613872+00:00"
+    },
+    {
+      "id": "0aaba90b-d83d-4c59-ab3d-6a8a0d963d13",
+      "session_id": "83baa53b-ede0-43a6-bee5-9a373745fac1",
+      "turn_id": "127e6db6-c395-489e-8edc-46e9ac7b2fd8",
+      "role": "assistant",
+      "content": "The app attempts to save fictional questions, displayed replies, and session records in local SQLite. Check the save status; a failed save is not a stored record. Delete sessions and their conversations in History. Live mode sends the current question and limited context to the local Ollama model.",
+      "metadata": {
+        "source": "live",
+        "reply_id": "storage",
+        "evidence_ids": [
+          "catalog:storage"
+        ],
+        "model_id": "qwen2.5:1.5b",
+        "prompt_version": "catalog-selector-v5",
+        "catalog_version": "app-help-v1",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "983b4164-98d7-4972-bfec-21a06e781de5"
+      },
+      "created_at": "2026-10-19T18:54:03.929994+00:00"
+    },
+    {
+      "id": "56bed3ad-3a18-4444-b18b-5be8d37d894e",
+      "session_id": "83baa53b-ede0-43a6-bee5-9a373745fac1",
+      "turn_id": "5fdb0280-ad23-4976-b117-f6d047b07be9",
+      "role": "user",
+      "content": "Can I stop halfway?",
+      "metadata": {},
+      "created_at": "2026-10-19T18:54:03.932443+00:00"
+    },
+    {
+      "id": "ce0fd749-8ab0-4361-ab6b-84146ec1ab7e",
+      "session_id": "83baa53b-ede0-43a6-bee5-9a373745fac1",
+      "turn_id": "5fdb0280-ad23-4976-b117-f6d047b07be9",
+      "role": "assistant",
+      "content": "You can choose Text only before or during the exercise. The inhale/exhale words and count still show the pace. Changing the cue does not restart pacing or save a remembered preference.",
+      "metadata": {
+        "source": "live",
+        "reply_id": "motion",
+        "evidence_ids": [
+          "catalog:motion"
+        ],
+        "model_id": "qwen2.5:1.5b",
+        "prompt_version": "catalog-selector-v5",
+        "catalog_version": "app-help-v1",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "7d8dce5c-722f-46ee-8071-b49446726576"
+      },
+      "created_at": "2026-10-19T18:54:04.229253+00:00"
+    },
+    {
+      "id": "51086f09-8260-46d7-88f7-a5a51ccd7502",
+      "session_id": "162ac069-333f-4719-958a-1935a705d693",
+      "turn_id": "fb8ba691-9d3d-402e-a788-dab61727a2e3",
+      "role": "user",
+      "content": "What does Pause do?",
+      "metadata": {},
+      "created_at": "2026-10-19T18:55:10.664477+00:00"
+    },
+    {
+      "id": "8033910f-107d-440d-97df-98923ab2d2fe",
+      "session_id": "162ac069-333f-4719-958a-1935a705d693",
+      "turn_id": "fb8ba691-9d3d-402e-a788-dab61727a2e3",
+      "role": "assistant",
+      "content": "The optional explanation is unavailable. You can still start the exercise or open Crisis support.",
+      "metadata": {
+        "source": "fixed",
+        "reply_id": null,
+        "evidence_ids": [],
+        "model_id": null,
+        "prompt_version": "catalog-selector-v5",
+        "catalog_version": "app-help-v1",
+        "rule_id": null,
+        "note": "Simulated request failure (review tool)",
+        "attempt_id": null
+      },
+      "created_at": "2026-10-19T18:55:10.665495+00:00"
+    },
+    {
+      "id": "e2e571e3-5760-4054-adcb-ada9424e4d45",
+      "session_id": "162ac069-333f-4719-958a-1935a705d693",
+      "turn_id": "e9d803a0-f05c-41d9-be7c-99d152108251",
+      "role": "user",
+      "content": "Fictional test quote: I want to die.",
+      "metadata": {},
+      "created_at": "2026-10-19T18:55:31.462850+00:00"
+    },
+    {
+      "id": "a7ad7cff-757f-46dd-a24c-3f66e0b50112",
+      "session_id": "162ac069-333f-4719-958a-1935a705d693",
+      "turn_id": "e9d803a0-f05c-41d9-be7c-99d152108251",
+      "role": "assistant",
+      "content": "This prototype cannot respond to a crisis or connect you to a person. Crisis-support information is available here. Nobody monitors this app.",
+      "metadata": {
+        "source": "fixed",
+        "reply_id": null,
+        "evidence_ids": [],
+        "model_id": null,
+        "prompt_version": "catalog-selector-v5",
+        "catalog_version": "app-help-v1",
+        "rule_id": "phrase-cue-v1",
+        "note": "Fallible phrase cue; open bundled support",
+        "attempt_id": null
+      },
+      "created_at": "2026-10-19T18:55:31.463960+00:00"
+    },
+    {
+      "id": "5fe73ba1-f94a-4eb7-879c-c063448c6e37",
+      "session_id": "162ac069-333f-4719-958a-1935a705d693",
+      "turn_id": "01e83007-c9d6-483c-a767-a2152edbc390",
+      "role": "user",
+      "content": "What stays after I close this?",
+      "metadata": {},
+      "created_at": "2026-10-19T18:56:12.948974+00:00"
+    },
+    {
+      "id": "775c0714-8fce-4969-9b08-f7b7fc430609",
+      "session_id": "162ac069-333f-4719-958a-1935a705d693",
+      "turn_id": "01e83007-c9d6-483c-a767-a2152edbc390",
+      "role": "assistant",
+      "content": "The app attempts to save fictional questions, displayed replies, and session records in local SQLite. Check the save status; a failed save is not a stored record. Delete sessions and their conversations in History. Live mode sends the current question and limited context to the local Ollama model.",
+      "metadata": {
+        "source": "live",
+        "reply_id": "storage",
+        "evidence_ids": [
+          "catalog:storage"
+        ],
+        "model_id": "qwen2.5:1.5b",
+        "prompt_version": "catalog-selector-v5",
+        "catalog_version": "app-help-v1",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "8cdcdc66-0a20-4103-9bef-5b0589136d18"
+      },
+      "created_at": "2026-10-19T18:56:13.275760+00:00"
+    }
+  ],
+  "attempts": [
+    {
+      "id": "5b0643f0-3412-41f5-9701-e7fe94438d2e",
+      "test_run_id": "part2-2026-10-19",
+      "session_id": "3a838e82-ffcb-4d55-b175-29982aa2724a",
+      "model_id": "qwen2.5:0.5b",
+      "started_at": "2026-10-19T18:42:10.504768+00:00",
+      "outcome": "failed-or-invalid"
+    },
+    {
+      "id": "dc9a48e0-2f95-40c0-9d65-ce45d0a81960",
+      "test_run_id": "part2-2026-10-19",
+      "session_id": null,
+      "model_id": "qwen2.5:0.5b",
+      "started_at": "2026-10-19T18:42:25.905964+00:00",
+      "outcome": "manual-debug-preload-complete"
+    },
+    {
+      "id": "6c8315da-0347-463d-8dfe-00d3aa4869ec",
+      "test_run_id": "part2-2026-10-19",
+      "session_id": null,
+      "model_id": "qwen2.5:0.5b",
+      "started_at": "2026-10-19T18:42:47.186564+00:00",
+      "outcome": "debug-valid"
+    },
+    {
+      "id": "71c7ac9d-da20-432f-aaee-2a13b264c191",
+      "test_run_id": "part2-2026-10-19",
+      "session_id": "c6b5e6f8-e89a-4ba2-ba37-640a4ca21565",
+      "model_id": "qwen2.5:1.5b",
+      "started_at": "2026-10-19T18:45:40.634441+00:00",
+      "outcome": "failed-or-invalid"
+    },
+    {
+      "id": "298b1d43-0afc-4116-b4e2-943f22044f32",
+      "test_run_id": "part2-2026-10-19",
+      "session_id": null,
+      "model_id": "qwen2.5:1.5b",
+      "started_at": "2026-10-19T18:45:58.470237+00:00",
+      "outcome": "debug-failed"
+    },
+    {
+      "id": "c386aa1a-1e17-43d7-8479-641a86767323",
+      "test_run_id": "part2-2026-10-19",
+      "session_id": null,
+      "model_id": "qwen2.5:1.5b",
+      "started_at": "2026-10-19T18:46:38.623723+00:00",
+      "outcome": "manual-debug-preload-complete"
+    },
+    {
+      "id": "02879b67-c8d2-4a0f-b2dc-b9f587080ede",
+      "test_run_id": "part2-2026-10-19",
+      "session_id": "9be887e1-bade-46ef-98d4-0a3b46593380",
+      "model_id": "qwen2.5:1.5b",
+      "started_at": "2026-10-19T18:47:09.321335+00:00",
+      "outcome": "failed-or-invalid"
+    },
+    {
+      "id": "982a35ad-c212-4143-b8ea-dbccc5c96380",
+      "test_run_id": "part2-2026-10-19",
+      "session_id": null,
+      "model_id": "qwen2.5:1.5b",
+      "started_at": "2026-10-19T18:47:35.222563+00:00",
+      "outcome": "debug-inspected"
+    },
+    {
+      "id": "d0bd66b8-9d51-4ec3-a945-3212bf2bebc2",
+      "test_run_id": "part2-2026-10-19",
+      "session_id": "827c217f-1005-4307-984b-9e2074d35a99",
+      "model_id": "qwen2.5:1.5b",
+      "started_at": "2026-10-19T18:48:15.206528+00:00",
+      "outcome": "validated-selection"
+    },
+    {
+      "id": "ad8874b5-92e0-481d-9a28-1e4c6ceb80bb",
+      "test_run_id": "part2-2026-10-19",
+      "session_id": "827c217f-1005-4307-984b-9e2074d35a99",
+      "model_id": "qwen2.5:1.5b",
+      "started_at": "2026-10-19T18:48:28.228845+00:00",
+      "outcome": "validated-selection"
+    },
+    {
+      "id": "efe2eafa-dba1-4bb3-994b-7d97c422fd42",
+      "test_run_id": "part2-2026-10-19",
+      "session_id": "827c217f-1005-4307-984b-9e2074d35a99",
+      "model_id": "qwen2.5:1.5b",
+      "started_at": "2026-10-19T18:49:18.278994+00:00",
+      "outcome": "validated-selection"
+    },
+    {
+      "id": "75a37b0a-be54-4f7e-8798-b165c53e122a",
+      "test_run_id": "part2-2026-10-19",
+      "session_id": "414e856c-2b99-4000-8016-5060f63af533",
+      "model_id": "qwen2.5:1.5b",
+      "started_at": "2026-10-19T18:51:53.874312+00:00",
+      "outcome": "validated-selection"
+    },
+    {
+      "id": "2d50ffad-76ca-4012-9561-cda1d6111284",
+      "test_run_id": "part2-2026-10-19",
+      "session_id": "414e856c-2b99-4000-8016-5060f63af533",
+      "model_id": "qwen2.5:1.5b",
+      "started_at": "2026-10-19T18:51:54.691520+00:00",
+      "outcome": "validated-selection"
+    },
+    {
+      "id": "e224ebd8-c09c-4bad-a0a7-7efdda6f7a2e",
+      "test_run_id": "part2-2026-10-19",
+      "session_id": "414e856c-2b99-4000-8016-5060f63af533",
+      "model_id": "qwen2.5:1.5b",
+      "started_at": "2026-10-19T18:51:55.057597+00:00",
+      "outcome": "validated-selection"
+    },
+    {
+      "id": "ccfd0357-285b-4256-8702-3f20426db994",
+      "test_run_id": "part2-2026-10-19",
+      "session_id": null,
+      "model_id": "qwen2.5:1.5b",
+      "started_at": "2026-10-19T18:52:37.074131+00:00",
+      "outcome": "diagnostic-complete"
+    },
+    {
+      "id": "7453dcd9-5741-4720-9894-50cd6ef50414",
+      "test_run_id": "part2-2026-10-19",
+      "session_id": "59a3adf0-06c0-4c27-9b8b-2f410141e5e8",
+      "model_id": "qwen2.5:1.5b",
+      "started_at": "2026-10-19T18:53:19.222397+00:00",
+      "outcome": "validated-selection"
+    },
+    {
+      "id": "c03978e0-1329-4a2d-b1b9-6725381ffcf5",
+      "test_run_id": "part2-2026-10-19",
+      "session_id": "59a3adf0-06c0-4c27-9b8b-2f410141e5e8",
+      "model_id": "qwen2.5:1.5b",
+      "started_at": "2026-10-19T18:53:19.997107+00:00",
+      "outcome": "validated-selection"
+    },
+    {
+      "id": "d669879d-3eb8-4b92-bf80-b7de8564722e",
+      "test_run_id": "part2-2026-10-19",
+      "session_id": "59a3adf0-06c0-4c27-9b8b-2f410141e5e8",
+      "model_id": "qwen2.5:1.5b",
+      "started_at": "2026-10-19T18:53:20.341705+00:00",
+      "outcome": "validated-selection"
+    },
+    {
+      "id": "9e07ec49-1adc-49b9-bf6f-c919e4a4c740",
+      "test_run_id": "part2-2026-10-19",
+      "session_id": "83baa53b-ede0-43a6-bee5-9a373745fac1",
+      "model_id": "qwen2.5:1.5b",
+      "started_at": "2026-10-19T18:54:03.051146+00:00",
+      "outcome": "validated-selection"
+    },
+    {
+      "id": "983b4164-98d7-4972-bfec-21a06e781de5",
+      "test_run_id": "part2-2026-10-19",
+      "session_id": "83baa53b-ede0-43a6-bee5-9a373745fac1",
+      "model_id": "qwen2.5:1.5b",
+      "started_at": "2026-10-19T18:54:03.614148+00:00",
+      "outcome": "validated-selection"
+    },
+    {
+      "id": "7d8dce5c-722f-46ee-8071-b49446726576",
+      "test_run_id": "part2-2026-10-19",
+      "session_id": "83baa53b-ede0-43a6-bee5-9a373745fac1",
+      "model_id": "qwen2.5:1.5b",
+      "started_at": "2026-10-19T18:54:03.932695+00:00",
+      "outcome": "validated-selection"
+    },
+    {
+      "id": "8cdcdc66-0a20-4103-9bef-5b0589136d18",
+      "test_run_id": "part2-2026-10-19",
+      "session_id": "162ac069-333f-4719-958a-1935a705d693",
+      "model_id": "qwen2.5:1.5b",
+      "started_at": "2026-10-19T18:56:12.949263+00:00",
+      "outcome": "validated-selection"
+    }
+  ]
+}
