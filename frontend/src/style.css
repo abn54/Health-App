@@ -6,3 +6,6 @@
 
 /* Support access stays visible when a narrow layout scrolls. */
 header{position:sticky;top:0;z-index:10;background:#f6f7f2f5;backdrop-filter:blur(8px)}
+
+.assistant-questions{margin-top:0}
+@media(max-width:760px){.sidebar{flex-wrap:wrap;gap:16px}.sidebar nav{width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}.sidebar nav button{justify-content:center;min-width:0;padding:10px 6px;font-size:.68rem}}

@@ -68,3 +68,11 @@ Injected-clock tests are not the real browser timing evidence. Mocked provider t
 ## Remaining work
 
 Part 3's larger scenario matrix, repeated relevant live cases, final demonstration, process screencast, and independent clean-checkout verification remain. Also untested: simultaneous-tab recovery, multiple browsers/assistive technologies, broad performance conditions, crash/power-loss durability, and clinical outcomes (which this project does not establish). The missing instructor R/D table remains a source limitation; unavailable labels are not invented. No user/peer feedback or recording is fabricated.
+
+## October 20 sidebar update
+
+Requested change: place AI assistant in the left navigation. A fresh production build succeeded after the UI change. Actual browser checks opened the assistant from Practice and History; the panel expanded automatically, selected its sidebar entry, focused the input, and answered the fictional questions “Can I turn off the moving circle?” and “What gets saved?” with correctly labeled **mock** catalog responses. No new live provider call was used for this change.
+
+Opening the assistant during a running exercise paused at cycle 1 / inhale count 1. Its input/Ask were disabled, while Return, End, and Crisis support remained available. Support opened from the assistant; returning to the exercise still showed Paused at the same count, and End produced a saved Stopped summary. The final build also opened the assistant from History. At a 390-pixel viewport, document content width and client width were both 390 pixels; the three navigation entries remained visible. The temporary viewport override was reset.
+
+[Desktop assistant screenshot](evidence/assistant-sidebar-desktop.jpg) · [390-pixel assistant screenshot](evidence/assistant-sidebar-mobile.jpg). These new observations supplement the October 19 evidence above; the old timing, database snapshot, unit-test outputs, and live-model results are not rewritten as newly performed checks. The model's documented relevance limitation is unchanged.

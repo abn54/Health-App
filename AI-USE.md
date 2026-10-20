@@ -39,3 +39,7 @@ The earlier disclosure describes Part 1 only. Part 2 was requested explicitly by
 | Hotline connector | `hotline_get_local_hotline`; version not exposed | Verified US resource links bundled in the shell; no call, text, or service chat initiated |
 
 No subagents were used for Part 2. The Part 1 subagent work remains disclosed above. All test inputs are fictional. No real person in distress, research participant data, paid API, uploaded therapy dataset, or model training was used. The Kaggle resource's actual limited-preview adaptation is documented separately. Mock tests and live-model evidence are distinguished. Generated code is explained in the Part 2 report; observed failures and revised approaches remain in the evidence log.
+
+## October 20, 2026 — sidebar navigation refinement
+
+The same Codex assistant added the requested left-sidebar AI assistant entry and shared question view, adjusted narrow navigation, updated documentation/report links, built Vue, and checked actual browser navigation with fictional mocked questions. `cua_repl` captured the desktop/mobile evidence. No additional live-model inference or clinical testing was used for this refinement; the existing model/catalog and known relevance limitation remain unchanged.
