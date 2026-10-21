@@ -6,7 +6,7 @@ Dataset and support references reviewed on October 8, 2026; the dataset preview 
 
 The student supplied the assignment text in this chat, including the four skill descriptions, study summary, timing rule, required stack, milestone instructions, and testing boundaries. Its course entry is [Module VI — Assignment 3](https://psu.instructure.com/courses/2484533/modules#context_module_6139769). The supplied text is the source used; authenticated Canvas content was not accessed.
 
-The referenced R1–R4 / D1–D6 table is absent from the supplied text. Only the narrative's explicit R1 attention finding and D1 limitation are attributed by label. The remaining research mapping must be completed from the actual table, not reconstructed from general mental health knowledge.
+The original October 8/13 text omitted the R1–R4 / D1–D6 table. The student supplied the complete table on October 21, 2026, in Section 3 of the overview. [Research findings and implemented mapping](research-findings.md) now records all ten labels, mention counts, decisions, compromises, and evidence. The source is the supplied course text; no authenticated Canvas retrieval or independent clinical research is claimed.
 
 The October 13 paste contains the same assignment body and still omits the table. Opening the supplied course link reached school device authentication; authenticated course content was not retrieved. No account identifier, authentication URL, token, or sign-in screenshot is included in the submitted evidence.
 
@@ -24,7 +24,7 @@ Only the greeting item was expanded and read. The other records, original proven
 
 Design takeaway: grouping varied inputs under an intent offers a concrete comparison for the prototype's approved-answer selection. The inspected greeting replies solicit personal context; this project keeps entry direct and its questions optional to limit effort. This is an interaction-design observation, not a clinical judgment about the dataset.
 
-The current design does not ingest these records or use their replies as approved application content. A possible later use is to inform independently authored fictional out-of-scope questions, with reuse terms checked before copying any records. The prescribed skill and application catalog remain grounded in the assignment and project design. The instructor's R/D research table is still a separate missing source.
+The current design does not ingest these records or use their replies as approved application content. A possible later use is to inform independently authored fictional out-of-scope questions, with reuse terms checked before copying any records. The prescribed skill and application catalog remain grounded in the assignment and project design. The instructor's R/D table is a separate source, now supplied and mapped as noted above.
 
 The [dataset design notes](dataset-design-notes.md) document the design adaptation: authored variations of application questions mapped to approved motion, storage, and control explanations. The file structure and first greeting entry were rechecked in the browser on October 13; this did not expand the review into a whole-file audit.
 

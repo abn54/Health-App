@@ -1,5 +1,9 @@
 # Part 3.2 — actual verification evidence
 
+Current update: **October 21, 2026**; see the final section for current v7/3b results, unsaved exit and the fresh timing/SQL evidence. The October 19/20 sections remain dated development evidence, not current-model reliability claims. The full research source is now available in [research-findings.md](research-findings.md).
+
+## Historical baseline — October 19
+
 Date: October 19, 2026. All inputs and demonstrations were fictional, performed by the coding assistant. No independent student/peer demonstration or clinical evaluation is claimed. Production Vue build served by FastAPI at `127.0.0.1:8000`; local SQLite; actual Ollama model calls distinguished below from mocks.
 
 ## Exercise timing observed in the browser
@@ -67,7 +71,7 @@ Injected-clock tests are not the real browser timing evidence. Mocked provider t
 
 ## Remaining work
 
-Part 3's larger scenario matrix, repeated relevant live cases, final demonstration, process screencast, and independent clean-checkout verification remain. Also untested: simultaneous-tab recovery, multiple browsers/assistive technologies, broad performance conditions, crash/power-loss durability, and clinical outcomes (which this project does not establish). The missing instructor R/D table remains a source limitation; unavailable labels are not invented. No user/peer feedback or recording is fabricated.
+Part 3's larger scenario matrix, repeated relevant live cases, final demonstration, process screencast, and independent clean-checkout verification remain. Also untested: simultaneous-tab recovery, multiple browsers/assistive technologies, broad performance conditions, crash/power-loss durability, and clinical outcomes (which this project does not establish). The earlier missing-table limitation was resolved by the complete October 21 overview; the actual mapping is documented separately. No user/peer feedback or recording is fabricated.
 
 ## October 20 sidebar update
 
@@ -76,3 +80,49 @@ Requested change: place AI assistant in the left navigation. A fresh production 
 Opening the assistant during a running exercise paused at cycle 1 / inhale count 1. Its input/Ask were disabled, while Return, End, and Crisis support remained available. Support opened from the assistant; returning to the exercise still showed Paused at the same count, and End produced a saved Stopped summary. The final build also opened the assistant from History. At a 390-pixel viewport, document content width and client width were both 390 pixels; the three navigation entries remained visible. The temporary viewport override was reset.
 
 [Desktop assistant screenshot](evidence/assistant-sidebar-desktop.jpg) · [390-pixel assistant screenshot](evidence/assistant-sidebar-mobile.jpg). These new observations supplement the October 19 evidence above; the old timing, database snapshot, unit-test outputs, and live-model results are not rewritten as newly performed checks. The model's documented relevance limitation is unchanged.
+
+
+## Current Part 3.2 verification — October 21, 2026
+
+Actual fictional checks used an isolated SQLite database and a loopback review server on port 8001, with the same production Vue build/API code as port 8000. No original user workspace records were newly exported. The exact [database inspection](evidence/database-inspection-oct21.json) and [model metadata](evidence/models-oct21.json) are retained; raw databases remain ignored. Tests and browser actions were performed by the coding assistant, not an independent peer or student demonstration.
+
+### Timing and working interface
+
+A fresh animated six-cycle browser run measured **60.013500 s exercise / 60.013500 s wall**, **0 s excluded**, and **0.255100 s entry/setup**. The very short setup reflects an automated direct Start workflow after reload, not a typical-user benchmark. No typing, response, save confirmation or model request is required during pacing. The unchanged monotonic/render-marker method and frame-level uncertainty are described above. Later save-error/copy changes did not modify the engine or timing path. The October 19 text/support run remains separate corroboration, not a newly repeated run.
+
+[Exact stored timing](evidence/browser-timing-oct21.json) · [completion screenshot](evidence/part32-completed-oct21.jpg). Reloaded History showed the same Completed session, animated cue, 60.01 s displayed exercise, 0.26 s displayed setup and two recorded events.
+
+| Fictional browser action / expected result | Actual observation |
+| --- | --- |
+| Simulate save failure, Start, End; exercise must stop honestly | Stopped summary with Not saved, Retry and Leave without saving; [screenshot](evidence/part32-unsaved-exit-oct21.jpg) |
+| Leave without saving; returning must not require a successful write | Ready / No session started immediately; abandoned unsaved record not represented as a successful save |
+| Disable simulation, Start and End again; old failure must not block new write | New stopped session saved locally; matching SQL record has 279.0 ms partial time, not a completion |
+| Live question “Can I stop halfway?” | Approved controls answer, Live label and v7 metadata; [screenshot](evidence/part32-live-controls-oct21.jpg) |
+| Stop FastAPI, ask “What gets saved?”, then open Crisis support | Optional request reported unavailable and not confirmed saved; bundled support still displayed; [real-outage screenshot](evidence/part32-api-offline-support-oct21.jpg) |
+| Restart API, reload History | Prior live controls reply persisted, failed offline question absent; [reloaded-history screenshot](evidence/part32-history-reloaded-oct21.jpg) |
+
+No external resource was contacted. The outage result establishes loaded-client independence from API/model/classifier, not first-load offline installation or external service availability. The failed save and failed request are distinct checks.
+
+### Current live selector and revised approaches
+
+Ollama **0.32.5**, `qwen2.5:3b` **Q4_K_M**, full digest `357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b`; prompt **`catalog-selector-v7`**, catalog **`app-help-v1`**. Context: final question, seven concise authored facts, topic definitions, and three balanced authored classification examples. Earlier conversation and selected cue are not sent. Only allowlisted reply IDs select approved text; no advice or application control is generated.
+
+| Current single-run regression question | Expected | Observed |
+| --- | --- | --- |
+| Do I have to watch a moving shape? | motion | motion |
+| What stays after I close this? | storage | storage |
+| Can I stop halfway? | controls | controls |
+
+[Exact v7 requests/results/elapsed times](evidence/live-selection-catalog-selector-v7.json). One further authored paraphrase, “Am I allowed to quit before the last cycle?”, selected controls ([actual result](evidence/live-novel-v7.json)). The browser stop question also selected controls and survived reload. These selected development observations are **not** a general accuracy estimate, independent held-out benchmark or repeated variation study. They demonstrate a useful bounded model contribution and the formerly failing topic in these cases. Schema validity cannot prove relevance, and broader semantic reliability remains unresolved.
+
+Earlier v6 runs with [1.5b](evidence/live-selection-catalog-selector-v6-1_5b.json) and [3b](evidence/live-selection-catalog-selector-v6-3b.json) each matched only two of three cases, including storage misses. Both failures are retained. v7 added balanced authored examples after prompt-only revision/model enlargement had not fixed every case. The old v5 failure is not rewritten as a pass. Mocked checks cannot establish this live relevance.
+
+The isolated October 21 host recorded **13 provider attempts** across development, including two counted preloads and unsuccessful selections, under host run `part2-2026-10-21`, limit 50. Counts include failures; there are no automatic inference retries. This ledger is distinct from the original host's preserved `part2-2026-10-19` ledger. Primary-app restart showed 23/50, default Mock, and the new 3b model. No paid provider was used. Peer defaults remain mocked.
+
+### Repeatable verification and SQLite
+
+Current outputs: [16 backend tests passed](evidence/backend-tests-oct21.txt), [6 client tests passed](evidence/client-tests-oct21.txt), and [production build succeeded](evidence/build-oct21.txt). The recorded TestClient/httpx deprecation warning remains. Provider tests use mocks; injected-clock tests are separate from rendered browser timing. These suites do not claim broad accessibility, multi-tab or clinical testing.
+
+The isolated read-only SQL inspection records migration 1, **7 sessions, 4 events, 22 messages, 1 preference row (no remembered cue), 13 provider attempts**. Integrity check returned `ok`; foreign-key check returned no rows. It contains both completed/stopped sessions and actual fictional live conversations, including failed semantic selections with their original metadata. This is a new separate snapshot, not an alteration of the October 19 evidence. Parameterized-query, deletion and accounting properties are covered by the temporary-database backend tests.
+
+The complete [research mapping](research-findings.md) now covers all R1–R4/D1–D6. Remaining Part 3 work: the full fifteen-scenario/three-behavior-check evaluation, repeated relevant live-model variation, independent clean-checkout verification, final demo, process screencast and student explanation. Untested limits include simultaneous tabs, broader browsers/assistive technology and crash durability. No clinical effectiveness is established.

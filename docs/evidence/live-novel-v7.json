@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-21T14:25:58.208462+00:00",
+  "question": "Am I allowed to quit before the last cycle?",
+  "expected_reply_id": "controls",
+  "observed": {
+    "text": "Pause holds the current phase and count. Resume continues them. End stops the exercise. Crisis support stays available, and opening it pauses an active exercise.",
+    "source": "live",
+    "reply_id": "controls",
+    "evidence_ids": [
+      "catalog:controls"
+    ],
+    "model_id": "qwen2.5:3b",
+    "prompt_version": "catalog-selector-v7",
+    "catalog_version": "app-help-v1",
+    "rule_id": null,
+    "note": null,
+    "attempt_id": "a3dc0570-8533-4f10-ae55-c970b3809911"
+  },
+  "elapsed_ms": 389.57,
+  "matched": true,
+  "session_id": "fe72658a-0df5-4bb5-9ac4-52120149f4d8",
+  "host": {
+    "status": "ok",
+    "live_enabled": true,
+    "review_tools": true,
+    "model": "qwen2.5:3b",
+    "prompt_version": "catalog-selector-v7",
+    "attempts": 12,
+    "limit": 50,
+    "test_run_id": "part2-2026-10-21"
+  },
+  "method": "One additional authored paraphrase absent from few-shot examples; not a repeated variation study"
+}

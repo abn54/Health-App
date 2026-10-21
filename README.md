@@ -31,11 +31,11 @@ OLLAMA_HOST=127.0.0.1:11434 OLLAMA_NO_CLOUD=1 ollama serve
 If an Ollama server already runs on that port, use it rather than starting a duplicate. Pull the tested model, then launch the app with explicit live permission:
 
 ```sh
-ollama pull qwen2.5:1.5b
-ALLOW_LIVE_MODEL=1 OLLAMA_MODEL=qwen2.5:1.5b MODEL_TEST_RUN_ID=peer-review-01 MODEL_ATTEMPT_LIMIT=50 sh scripts/run.sh
+ollama pull qwen2.5:3b
+ALLOW_LIVE_MODEL=1 OLLAMA_MODEL=qwen2.5:3b MODEL_TEST_RUN_ID=peer-review-01 MODEL_ATTEMPT_LIMIT=50 sh scripts/run.sh
 ```
 
-The startup script explicitly preloads the local model (up to 60 seconds, outside the exercise) and counts that provider attempt. Cold startup exceeded the eight-second question timeout during development. If preload fails, the app still starts. The UI still defaults to Mock. Choose **AI assistant** in the left sidebar (or expand **Questions about the prototype?** on Practice), then select **Live local model**, and ask a fictional app question such as “What stays after I close this?” FastAPI sends the catalog, selected cue, current question, and approved app facts (earlier messages are saved for review but not sent) to local Ollama. Only validated catalog text can appear. Missing Ollama, an eight-second timeout, malformed selection, or wrong evidence returns a fixed fallback; Start and Crisis support remain available.
+The startup script explicitly preloads the local model (up to 60 seconds, outside the exercise) and counts that provider attempt. Cold startup exceeded the eight-second question timeout during development. If preload fails, the app still starts. The UI still defaults to Mock. Choose **AI assistant** in the left sidebar (or expand **Questions about the prototype?** on Practice), then select **Live local model**, and ask a fictional app question such as “What stays after I close this?” FastAPI sends the current question and approved app facts with authored classification examples (earlier messages and the selected cue are not sent) to local Ollama. Only validated catalog text can appear. The tested model is listed on the [official model page](https://ollama.com/library/qwen2.5:3b), including its license; the model files are not redistributed in this repository. Missing Ollama, an eight-second timeout, malformed or disallowed selection returns a fixed fallback; Start and Crisis support remain available.
 
 `MODEL_TEST_RUN_ID` identifies the host's peer-test session. Reuse it across restarts of that session: attempted, failed, and retried provider calls count toward an aggregate SQLite budget capped at 50. History deletion does not reset accounting. At the limit replies use visibly labeled mocks. Start a new ID only for a genuinely new host-controlled test session. Do not run multiple differently configured hosts against the same database. Model files are not committed.
 
@@ -60,7 +60,7 @@ For deliberate fictional failures, launch with `REVIEW_TOOLS=1`. Expand **Course
 2. Start without questions. Pause preserves the phase/count fraction; Resume is explicit. End is immediate. Completion leaves the summary on screen.
 3. Open Crisis support during an exercise: it pauses. Return leaves it paused. History behaves the same way and retains Return and End controls.
 4. Review History: status, initial/final cue, timing, events, and conversation source labels. Draft questions are “Not started.” Reuse copies a recorded cue into Ready without starting or remembering it.
-5. Deleting a session removes its conversation/events. Delete all additionally resets the preference after confirmation. Provider-attempt accounting remains. Unsaved records stay only in page memory with Retry; closing may lose them.
+5. Deleting a session removes its conversation/events. Delete all additionally resets the preference after confirmation. Provider-attempt accounting remains. Unsaved records stay only in page memory with Retry; the summary also offers Leave without saving, so a failed write cannot trap someone after End. Unsaved changes may be lost; already saved records remain in History.
 
 One active page/tab is assumed. Hiding the page or a scheduling gap over two seconds interrupts; there is no automatic resume. Reload recovers persisted running/paused sessions as interrupted with unknown final timing, while drafts stay Not started. Multi-tab reconciliation, broader model evaluation, screen-reader certification, and Part 3 recordings remain outside this milestone.
 
@@ -72,9 +72,9 @@ One active page/tab is assumed. Hiding the page or a scheduling gap over two sec
 | `frontend/src/engine.js` | Deterministic state and monotonic pacing |
 | `backend/main.py` | Validated API, migration, SQLite, Ollama adapter, atomic budget |
 | `backend/catalog.py` | Authored approved responses, mocks, fallible phrase cues |
-| `docs/design.md`, `docs/architecture.md` | Original design and implementation notes |
+| `docs/design.md`, `docs/architecture.md`, `docs/research-findings.md` | Design, implementation revisions and full R/D mapping |
 | `docs/dataset-design-notes.md` | Actual use and inspection limits of supplied Kaggle resource |
 | `docs/part2-verification.md`, `docs/evidence/` | Actual observations and redacted evidence |
 | `AI-USE.md`, `docs/evidence-log.md` | AI disclosure, selected decisions and failures |
 
-The R1–R4 / D1–D6 table was absent from the supplied briefs. Only R1's attention finding and D1's stated limitation are mapped by label; other labels are not invented. The Kaggle source informed intent/pattern/catalog design; no training, clinical audit, or effectiveness claim is made. No earlier coursework source code was supplied or reused.
+The complete R1–R4 / D1–D6 table arrived in the student's October 21 overview. [Research mapping](docs/research-findings.md) connects all ten findings to implemented decisions, evidence, and explicit tradeoffs. Earlier missing-table notices describe the historical Part 1 source limitation. The Kaggle source informed intent/pattern/catalog design; no training, clinical audit, or effectiveness claim is made. No earlier coursework source code was supplied or reused.

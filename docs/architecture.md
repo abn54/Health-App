@@ -1,6 +1,6 @@
 # Proposed architecture and data
 
-This is a Part 3.1 implementation specification. No API, database, or model adapter exists yet.
+Historical Part 3.1 specification, followed by dated implementation revisions. Vue, FastAPI, SQLite and the model adapter now exist; the October 21 revision below describes the current contract. Original proposals are not evidence of implemented or tested behavior.
 
 ## Responsibilities
 
@@ -164,7 +164,7 @@ These are implementation facts where supported by [Part 2 verification](part2-ve
 
 A subsequent v2 browser question, “Can I stop halfway?”, selected `motion` after the motion/storage conversation. This was valid schema but irrelevant content. `catalog-selector-v3` therefore places the recent conversation in separate chat messages and the current question in the final user message, explicitly prioritizing that question and removing the motion-only example. This is a prompt/context revision, not a guarantee of semantic correctness. Both the failed v2 selection and v3 observed outcomes are retained in the evidence. The content catalog remains `app-help-v1`.
 
-### Final Part 2 model context (supersedes the above revisions)
+### October 19 model context (v5; superseded by the October 21 revision below)
 
 The v3 three-question live check matched only motion; storage and controls incorrectly reused motion. Removing history in v4 still produced two irrelevant `start` selections. Final **`catalog-selector-v5`** therefore uses a short factual index (`MODEL_CONTEXT` in `backend/catalog.py`) rather than repetitive full response paragraphs. It sends the current question (maximum 500 characters), the explicit cue, and all seven concise approved app facts. No prior conversation is sent; it is retained solely for review. `CATALOG` still supplies every displayed response, and the server derives its evidence ID. This trades conversational follow-up handling for less context and clearer task boundaries. An ambiguous follow-up may need rephrasing.
 
@@ -173,3 +173,14 @@ The final small live check correctly selected motion and storage, but still chos
 ## Sidebar assistant route — October 20, 2026
 
 `view = assistant` uses the same message array, question handler, and one rendered question panel as Practice; it adds no model/API/database contract. `openAssistant()` pauses a running exercise and focuses the question input (or the page heading when the exercise is still active). Return does not resume. New submissions require Ready state, preserving the original pre-exercise question boundary. An active History visit is closed in its journal when switching to the assistant. The timer engine, approved catalog, live adapter, and provider budget are unchanged.
+
+
+## Current implementation revision — October 21, 2026
+
+The full instructor research table is now available and mapped in [research-findings.md](research-findings.md). It supersedes missing-table notices in the original specification, without changing what sources were available in Part 1.
+
+**Current model:** local Ollama 0.32.5, `qwen2.5:3b` Q4_K_M, prompt `catalog-selector-v7`, display catalog `app-help-v1`. FastAPI supplies the current fictional question, seven concise authored app facts, topic definitions, and three authored user/assistant classification examples for controls, motion and storage. Explicit cue and saved conversation are omitted: they do not change the approved explanations, and earlier context biased topic selection. Ambiguous pronouns default to the app only within this bounded task. These examples are hand-written app questions, not Kaggle records or prior user messages. The complete prompt is in `backend/main.py`; exact model digest is in [model evidence](evidence/models-oct21.json).
+
+The provider can return only one allowlisted `reply_id`. The server validates the schema, derives its catalog reference, and displays authored text as text. Timing, navigation, preferences, storage and support remain application responsibilities. No arbitrary model prose or tool calls are executed. Schema acceptance still does not establish semantic relevance. The three development regression cases and one additional paraphrase matched in the recorded v7 run, following v5/v6 misses. These selected cases informed revision and are not an independent accuracy benchmark or repeated variation study.
+
+**Unsaved terminal exit:** a failed session save leaves Retry available, but the summary now also permits Leave without saving. This explicit choice clears the in-page current session, pending queue and old reply token, with a warning about possible loss. An already-issued write may still complete; the UI never promises it was canceled. Saved records are retained in History. The save loop checks session identity before changing save/error state, so a discarded older failure cannot mark a new session unsaved or prevent its queued write. The actual browser failure/exit/new-session check is in [verification](part2-verification.md). No durable save is invented after failure.

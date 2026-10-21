@@ -1,6 +1,6 @@
 # Pause: Part 3.1 design
 
-Status: proposed October 8, 2026; revised after a requirements audit October 13, 2026. No application behavior or clinical effect has been tested. The student should review these choices before submission.
+Historical baseline: proposed October 8 and revised October 13, 2026. Those design-stage plans were not test results. Part 3.2 implementation/evidence followed on October 19–21; the full supplied table is now mapped in [research-findings.md](research-findings.md). Dated implementation sections below supersede the original proposals. No clinical effect has been tested.
 
 ## Purpose and scope
 
@@ -183,7 +183,7 @@ If the API fails, the local support panel, pacing, and exit controls remain usab
 
 ## Research connections and tradeoffs
 
-The brief describes a study involving 15 patients, 13 clinicians, 15 prototype evaluations, and 150 coded participant–task combinations. These describe the evidence source, not an efficacy trial. The full R1–R4 / D1–D6 table was not included, and the supplied Kaggle link is a separate conversation resource.
+The brief describes a study involving 15 patients, 13 clinicians, 15 prototype evaluations, and 150 coded participant–task combinations. These describe the evidence source, not an efficacy trial. The full R1–R4 / D1–D6 table was not included in the original design-stage source. It arrived October 21 and is now mapped in [research-findings.md](research-findings.md); the original limited mapping below is retained as design history. The supplied Kaggle link is a separate conversation resource.
 
 | Available evidence | Design decision and reasoning | Alternative / tradeoff | Planned verification |
 | --- | --- | --- | --- |
@@ -193,11 +193,11 @@ The brief describes a study involving 15 patients, 13 clinicians, 15 prototype e
 | Brief narrative: model tone alone does not ensure sequence, exits, state, or crisis access | Put those responsibilities in client/server code and static content. | Chat-led pacing permits variable delays and uncontrolled wording. | Failure injection while checking pacing and global controls. |
 | Brief narrative: avoid unnecessary reading and typing | No required text entry or rating; optional questions remain off the exercise screen. | Less free-form dialogue and less subjective feedback. | Complete a fictional walkthrough without typing. |
 
-These narrative rows are not substitute definitions for R2–R4 or D2–D6. Completing that mapping requires the instructor's table.
+These original narrative rows were not substitute definitions for R2–R4 or D2–D6. The completed October 21 mapping now uses the actual instructor table.
 
 ## Decisions still to resolve
 
-1. Obtain the research table and check whether it changes the scope or preference design.
+1. Resolved October 21: table supplied and mapped; one-skill scope retained, D5/R4 personalization compromise documented, and R3 motivates an unsaved-exit option.
 2. Verify text-only and animated pacing, focus behavior, and phase announcements in the target browser; choose and record that browser/version.
 3. Select a live-model provider/model permitted by the course and verify the catalog-selection quality against mocks. Record the exact model identifier when used.
 4. Decide the maximum tolerated browser scheduling gap based on an actual timing experiment; until then, interrupted timing is a documented limitation.
@@ -217,3 +217,12 @@ Part 2 actual browser, model, database, and failure results are in [part2-verifi
 ## Sidebar assistant navigation — October 20, 2026
 
 At the student's request, AI assistant is now a dedicated left-sidebar entry alongside Practice and Session history. It opens the existing question panel directly, preserving its conversation, mock/live selector, source labels, and support access. The Practice disclosure remains a second entry point to the same panel. Opening this view while running pauses the exercise; Return leaves it paused, and End remains immediate. New questions are disabled while the exercise remains active. Saved terminal sessions are retained in History; an unsaved terminal record must be saved before starting new questions. On narrow screens, all three navigation entries wrap into a three-column row to avoid horizontal overflow.
+
+
+## Research and working-version revision — October 21, 2026
+
+The newly supplied instructor table now supports an explicit [all-ten-findings mapping](research-findings.md). D1 is interpreted as simplification when the user starts the exercise, not inferred distress. D5's reduced repeated configuration is balanced with R4 by one optional, visible Remember action and reversible history reuse. The shell retains navigation/exit/support while the active main view carries one instruction; this is the documented D2/R4 compromise.
+
+R3 exposed a usability problem in the prior implementation: End worked during save failure, but returning to Ready required a successful retry. The summary now offers Leave without saving, explains possible unsaved-data loss and retains any already saved History records. Actual browser checks returned to Ready without waiting, then saved a subsequent stopped session. The October 20 statement requiring save before a new conversation is superseded by this explicit discard option.
+
+The original proposed cue/history model context is also superseded. Current v7 sends the current question, concise authored facts and three balanced authored topic examples, with no cue or saved messages. Local `qwen2.5:3b` replaced 1.5b after smaller-model and prompt-only revisions still selected irrelevant approved topics. The observed small v7 regression run matched motion, storage and controls, including the formerly wrong stop question; broader reliability remains unestablished. This change concerns app-question interpretation only and does not add therapeutic conversation or change pacing.

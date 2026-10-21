@@ -33,5 +33,5 @@ The authorized milestone is Part 3.2: a working localhost prototype (requested O
 - Use mocks for repeatable tests. Label live-model evidence separately and record the model identifier, date, prompt version, and variability.
 - Record actual expected and observed results. Never fabricate timings, screenshots, model calls, test passes, recordings, commits, or user feedback.
 - Keep `docs/evidence-log.md`, `AI-USE.md`, and relevant documentation aligned with changes. Include revised or failed approaches with the evidence that led to the decision.
-- The R1–R4 / D1–D6 table is missing. Only R1's attention finding and D1's stated limitation can currently be mapped by label. Do not invent the other entries.
+- The full R1–R4 / D1–D6 table was supplied on October 21, 2026. Use `docs/research-findings.md` for its actual labels, observations and design tradeoffs. Keep earlier missing-table notices historical; do not infer clinical effectiveness from mention counts.
 - Read `docs/dataset-design-notes.md` for the actual use of the supplied Kaggle resource. Do not use it as a substitute for the instructor's research table or imply a whole-file/provenance/clinical audit from the limited preview inspection.

@@ -1,7 +1,7 @@
 # Assignment 3 requirements
 
-Source: the assignment brief supplied by the student on October 8 and October 13, 2026; their assignment bodies match.
-This document extracts requirements; it does not claim that implementation or testing is complete.
+Source: the assignment overviews supplied October 8/13 and the complete October 21, 2026 overview, which adds the full R/D table and explicit milestone headings.
+This document tracks the current Part 3.2 scope. Checked entries link to actual implementation/evidence; Part 3.3 work remains separate.
 
 See the [requirements audit](requirements-audit.md) for evidence links, remaining submission gaps, and explicit later-milestone status.
 
@@ -50,24 +50,26 @@ The model must not invent therapeutic advice or alter the prescribed sequence.
 - [x] Show the main experience with a sketch or flow diagram.
 - [x] Describe model responsibilities and application-controlled behavior.
 - [x] Describe proposed stored data, history, personalization, and user controls.
-- [ ] Explain important decisions, alternatives, and research connections. Decisions and available narrative references are documented; the full table mapping is pending.
+- [x] Explain current decisions, alternatives and research connections: [complete R/D mapping](research-findings.md), supplied October 21. The archived original report did not have this table.
 - [x] Record unresolved questions.
 - [x] Prepare useful README.md, AGENTS.md, and design notes.
-- [ ] Prepare this milestone's report.md with repository URL, submitted commit, and accessible design/evidence links. The report draft exists; repository, commit, and hosted-link details are pending.
+- [x] Retain the earlier milestone report in `submissions/part1/report.md`; the current root report is for Part 3.2. Its historical source limitations are not retroactively removed.
 
 A working application is not required at this milestone. Small experiments are optional.
 
 ## Part 3.2 — Working version
 
-- [ ] Complete at least one chosen skill through the running interface.
-- [ ] Demonstrate the model's contribution with relevant context.
-- [ ] Inspect SQLite evidence for persistent conversations and sessions.
-- [ ] Measure and report guided-exercise duration and entry/setup time.
-- [ ] Demonstrate the independent crisis-support route.
-- [ ] Demonstrate a failed request and leaving an exercise.
-- [ ] Collect browser and database evidence across the relevant application layers.
-- [ ] Clearly identify unfinished work.
-- [ ] Prepare this milestone's report.md with repository URL, submitted commit, and accessible evidence links.
+- [x] Complete at least one chosen skill through the running interface.
+- [x] Demonstrate the model's contribution with relevant context.
+- [x] Inspect SQLite evidence for persistent conversations and sessions.
+- [x] Measure and report guided-exercise duration and entry/setup time.
+- [x] Demonstrate the independent crisis-support route.
+- [x] Demonstrate a failed request and leaving an exercise.
+- [x] Collect browser and database evidence across the relevant application layers.
+- [x] Clearly identify unfinished work.
+- [x] Prepare this milestone's report.md with repository URL, submitted commit, and accessible evidence links.
+
+Evidence: [current audit](requirements-audit.md), [verification](part2-verification.md), [research mapping](research-findings.md), and [report](../report.md). Check marks cover the stated Part 3.2 deliverables, not every possible reliability/accessibility test.
 
 ## Part 3.3 — Completion and evaluation
 
@@ -86,15 +88,6 @@ A working application is not required at this milestone. Small experiments are o
 - [ ] Complete AI-USE.md and the redacted evidence log.
 - [ ] Prepare this milestone's report.md with repository URL, submitted commit, and accessible design, verification, and recording links.
 
-## Missing research source
+## Research source now available
 
-The pasted brief refers to a table defining R1–R4 and D1–D6, but the table itself is absent. Do not fabricate its entries or assign meanings to unavailable labels.
-
-The surrounding text explicitly establishes only these label-specific points:
-
-- R1 reports loss of attention beyond 90–100 seconds. The assignment separately requires a guided sequence of no more than 90 seconds at its intended pace.
-- D1 concerns a simpler interface but does not establish a reliable way to detect distress. The design must distinguish information the application actually has from assumptions and allow user correction.
-
-Other themes—effort, personalization, user control, deterministic skill steps, saved state, exits, and independent crisis access—are supported by the assignment narrative. A detailed mapping to the remaining R/D labels is pending the missing table.
-
-No external clinical dataset or independent clinical research is required. The linked conversational dataset and examination of existing interfaces are optional.
+The full R1–R4 / D1–D6 table was supplied October 21, 2026. [Research findings](research-findings.md) records the actual meanings, observations, implemented decisions and tradeoffs. Earlier missing-table notices are historical. Counts describe study mentions, not clinical effectiveness. No separate clinical dataset or independent clinical research is required; Kaggle and existing-interface exploration remain optional resources.

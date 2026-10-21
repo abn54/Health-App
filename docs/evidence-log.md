@@ -155,3 +155,26 @@ No recording, peer feedback, physical display measurement, clinical result, comp
 Student request: “it should be added in the dropdowns on the left side.” Added a selected AI assistant navigation entry and dedicated view that automatically expands/focuses the existing question panel. It shares the current conversation, reply selector, and persistence rather than creating a second chat implementation. Preserved Practice access and the paused-exercise Return/End/support controls; new questions still require Ready. Limited history_close events to actual History exits, including switching from History to the assistant. Adjusted narrow navigation to fit three entries.
 
 Verification: production build succeeded from `frontend`; actual browser opened the assistant from Practice and History, received correct labeled mock replies for authored motion/storage questions, paused an active exercise at inhale count 1, returned still paused, opened support, and ended the session. The 390-pixel layout reported scrollWidth = clientWidth = 390. Screenshots are linked in the verification document. No live model call, new full-duration timing run, or rerun of the historical backend/client suite is claimed for this navigation change. README, design/architecture, report, and AI disclosure were aligned.
+
+
+## October 21, 2026 — new research source, model revision and unsaved exit
+
+Student prompt: “develop 3.2,” with the complete overview. Unlike earlier copies, Section 3 now includes all ten R/D findings. Mapped the actual table in `research-findings.md`; the Kaggle preview remains a separate, limited structural inspiration. Research mention counts are not outcome measures. No private dashboard/account text is published.
+
+| Check or revision | Actual observation | Resulting decision |
+| --- | --- | --- |
+| Compare new overview with current documentation | Old design-only audit still said not implemented; table was finally present | Update current requirements/audit and add complete research mapping; preserve dated historical observations |
+| Inspect End after failed save against R3 | End stopped pacing, but the old summary required saving before Return | Add explicit Leave without saving and a clear data-loss notice; retain Retry and saved History |
+| Actual browser save failure / End / Leave | Not saved shown; Leave returned to Ready without a server save; new session saved after disabling simulation | Keep explicit discard, session-identity guard and queue isolation; no successful save invented for abandoned record |
+| v6 with 1.5b, then 3b | Each matched 2/3 regression questions; storage still received an irrelevant selection | Retain both failed result files; do not report either as semantic success |
+| v7 / 3b with balanced authored examples | Motion, storage and formerly wrong “Can I stop halfway?” all matched in one run | Use v7/3b for the bounded selector; examples and tested cases are development material, not independent validation |
+| Extra authored question “Am I allowed to quit before the last cycle?” | Correct controls reply, live source, 389.57 ms | Evidence of this one paraphrase only, not a variation or accuracy estimate |
+| Actual browser Live stop question | Correct controls reply persisted with v7 metadata and remained visible after reload | Link screenshot plus matching SQL messages; do not count UI and API regression observations as independent samples |
+| Fresh six-cycle browser run | 60,013.500 ms exercise, 255.100 ms automated setup, no excluded interval | Below 90 seconds for this run; no response needed during pacing; retain exact SQL timing and screenshot |
+| Stop isolated FastAPI, submit optional question, open support | Request reported unavailable/unconfirmed save; bundled support opened without API | Preserve independent shell route; no real service contacted; failed turn absent from saved History after reload |
+| Read-only isolated SQLite inspection | 7 sessions, 4 events, 22 messages, 13 attempts; integrity ok; no FK violations | Publish only fictional curated inspection, not raw SQLite or original workspace data |
+| Current repeatable checks | 16 backend tests and 6 client tests passed; production build succeeded | Preserve output, including the existing TestClient deprecation warning; separate from live relevance and real timing |
+
+The isolated host uses run ID `part2-2026-10-21` and its own ignored verification database. Its 13 attempts include failures and two preloads. The original port-8000 app was restarted with the new model/prompt while keeping its original database and host run ledger (23 attempts at restart); no budget was reset. Both hosts remain loopback and enforce their host-session cap of 50. The temporary verification host is stopped after checks.
+
+The prior section “Evidence still required in later milestones” describes the historical Part 1 state; working-interface, SQL and model evidence now exist. Part 3's complete 15-scenario evaluation, three cross-case checks, repeated live variation, independent clean-checkout verification, final demo, process screencast and student explanation remain outstanding. No recording, independent student feedback or clinical benefit is fabricated.

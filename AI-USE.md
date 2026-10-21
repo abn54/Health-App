@@ -43,3 +43,14 @@ No subagents were used for Part 2. The Part 1 subagent work remains disclosed ab
 ## October 20, 2026 — sidebar navigation refinement
 
 The same Codex assistant added the requested left-sidebar AI assistant entry and shared question view, adjusted narrow navigation, updated documentation/report links, built Vue, and checked actual browser navigation with fictional mocked questions. `cua_repl` captured the desktop/mobile evidence. No additional live-model inference or clinical testing was used for this refinement; the existing model/catalog and known relevance limitation remain unchanged.
+
+
+## October 21, 2026 — complete research source and Part 3.2 revision
+
+The student supplied the complete assignment overview and requested “develop 3.2.” That source includes the previously unavailable R1–R4 / D1–D6 table. Codex mapped all ten findings, explained the D1/D2 and D5/R4 compromises, refreshed the requirements audit, and retained the historical source limitation rather than backdating access. Dashboard/account material from the paste is excluded from published evidence.
+
+The same GPT-6-based Codex agent revised generated Vue save/exit handling and the local model prompt, ran the existing 16 backend and 6 client tests, built the UI, performed browser checks with `cua_repl`, inspected an isolated fictional SQLite database read-only, and drafted the current report. No subagents were used for this revision. Student understanding, independent review and a Canvas upload are not claimed.
+
+Actual new model: **Ollama 0.32.5 / `qwen2.5:3b` Q4_K_M**, digest `357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b`. Prompt `catalog-selector-v7`; catalog `app-help-v1`. The official [model page](https://ollama.com/library/qwen2.5:3b) was inspected; the model was obtained from Ollama's official registry, and weights are not redistributed. The model page identifies the Qwen research license for this 3b variant. Earlier actual 1.5b and 3b v6 failures are retained. Current v7 examples and test inputs are authored fictional app questions, not therapy transcripts or Kaggle training data.
+
+The isolated October 21 verification host recorded 13 provider attempts, including two counted preloads and unsuccessful development selections. The separate original host retains its prior attempt ledger; restarting it did not reset that ledger. No paid provider, real person in distress, clinical evaluation, external service contact, new dataset download, training, recording or independent clean-checkout check was used. Selected live observations are separate from mocked tests and from the Part 3 variation study still to do. [Current verification](docs/part2-verification.md) records exact results and limits.

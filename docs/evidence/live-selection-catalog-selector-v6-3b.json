@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-21T14:23:54.789341+00:00",
+  "method": "Actual local Ollama requests through running FastAPI; three sequential questions in one persisted session; provider context documented by prompt version; one run per case, not a variation study",
+  "before": {
+    "status": "ok",
+    "live_enabled": true,
+    "review_tools": true,
+    "model": "qwen2.5:3b",
+    "prompt_version": "catalog-selector-v6",
+    "attempts": 5,
+    "limit": 50,
+    "test_run_id": "part2-2026-10-21"
+  },
+  "after": {
+    "status": "ok",
+    "live_enabled": true,
+    "review_tools": true,
+    "model": "qwen2.5:3b",
+    "prompt_version": "catalog-selector-v6",
+    "attempts": 8,
+    "limit": 50,
+    "test_run_id": "part2-2026-10-21"
+  },
+  "session_id": "d99d8b60-229a-446f-b7a9-63e476bdf9c6",
+  "cases": [
+    {
+      "question": "Do I have to watch a moving shape?",
+      "expected_reply_id": "motion",
+      "observed": {
+        "text": "You can choose Text only before or during the exercise. The inhale/exhale words and count still show the pace. Changing the cue does not restart pacing or save a remembered preference.",
+        "source": "live",
+        "reply_id": "motion",
+        "evidence_ids": [
+          "catalog:motion"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v6",
+        "catalog_version": "app-help-v1",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "1b0fa296-f789-486f-8d1a-930f164225ca"
+      },
+      "elapsed_ms": 1046.1,
+      "matched": true
+    },
+    {
+      "question": "What stays after I close this?",
+      "expected_reply_id": "storage",
+      "observed": {
+        "text": "I can explain the pacing, controls, cue settings, and saved records. This prototype cannot advise on personal mental health concerns. Crisis-support information is available from the Crisis support control.",
+        "source": "live",
+        "reply_id": "unsupported",
+        "evidence_ids": [
+          "catalog:unsupported"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v6",
+        "catalog_version": "app-help-v1",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "d7289205-ea5d-4180-b141-99c12de30366"
+      },
+      "elapsed_ms": 335.87,
+      "matched": false
+    },
+    {
+      "question": "Can I stop halfway?",
+      "expected_reply_id": "controls",
+      "observed": {
+        "text": "Pause holds the current phase and count. Resume continues them. End stops the exercise. Crisis support stays available, and opening it pauses an active exercise.",
+        "source": "live",
+        "reply_id": "controls",
+        "evidence_ids": [
+          "catalog:controls"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v6",
+        "catalog_version": "app-help-v1",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "1f0e8457-7063-42cf-a911-8b1dc2b03834"
+      },
+      "elapsed_ms": 326.24,
+      "matched": true
+    }
+  ]
+}

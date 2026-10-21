@@ -2,6 +2,8 @@
 
 Part 3.1 status: **planned, not executed**. This plan does not claim the Part 3.2 or 3.3 requirements are already satisfied. All people, statements, and histories below are fictional.
 
+Current Part 3.2 observations are recorded separately in [part2-verification.md](part2-verification.md). This historical planning matrix has not been filled as if its entire Part 3.3 evaluation had run.
+
 ## Explicit behavior checks
 
 | ID | Property that should hold across relevant cases | Evidence to collect later |
