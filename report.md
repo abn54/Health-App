@@ -1,6 +1,21 @@
 # IST 402 — Assignment 3, Part 2 (3.2)
 
-## Submitted version
+## October 27 refinement — current implementation
+
+The student requested breathing-phase colors, an assistant popup, more visuals/FAQs and use of supplied reading/ideation references. These refinements remain within the localhost coursework scope. The original October 21 report is preserved in `submissions/part2/report.md`; its dated baseline/evidence is retained below, not rewritten as new observations.
+
+Current implementation/evidence commit: [`9548c9f5d87d3512fe91f96179f58e410f3b76c6`](https://github.com/abn54/Health-App/commit/9548c9f5d87d3512fe91f96179f58e410f3b76c6). [Run instructions](https://github.com/abn54/Health-App/blob/9548c9f5d87d3512fe91f96179f58e410f3b76c6/README.md), [full refinement/source/verification notes](https://github.com/abn54/Health-App/blob/9548c9f5d87d3512fe91f96179f58e410f3b76c6/docs/ui-refinement-oct27.md), [AI disclosure](https://github.com/abn54/Health-App/blob/9548c9f5d87d3512fe91f96179f58e410f3b76c6/AI-USE.md).
+
+The app now has muted green inhale/blue exhale with redundant words/counts, an original SVG rhythm guide, cycle markers, eleven categorized FAQs and six editable suggested questions. Start is above decorative content. The explicitly opened popup shares the sidebar conversation, pauses practice, disables new questions while active, and keeps Close/Crisis support visible while its content scrolls. Keyboard/focus, mobile width, actual API outage and saved-History checks are recorded in the linked notes. No automatic questionnaire or click-based stress inference was added, consistent with the supplied discussion's privacy/effort/control concerns (D3/D5/R4).
+
+The assistant is educational, not a therapist. A brief general stress definition links NIMH. The supplied AIS resource page, Grey House publisher listing and APA DSM overview are optional, source-labeled reading links; they are not full handbook files, diagnostic logic or clinical validation. Handbook attachments have not been supplied. The authenticated ideation page/original cited papers were not obtained; the student's pasted discussion is explicitly distinguished from independently verified research.
+
+Current local model: `qwen2.5:3b`, Ollama 0.32.5; prompt **catalog-selector-v8**, catalog **app-help-v2**. A single shared reviewed JSON source now supplies eleven topic facts/answers and citations to Python and Vue. Only allowlisted catalog text is displayed. Eight authored live development questions matched once each, separately from mocked tests; this is not an independent accuracy estimate or repeated variation study. [Three earlier topics](https://github.com/abn54/Health-App/blob/9548c9f5d87d3512fe91f96179f58e410f3b76c6/docs/evidence/live-selection-catalog-selector-v8.json), [five expanded topics](https://github.com/abn54/Health-App/blob/9548c9f5d87d3512fe91f96179f58e410f3b76c6/docs/evidence/live-expanded-help-v8-oct27.json).
+
+Current repeatable checks: **21 backend + 6 client tests passed**, production build succeeded. A fresh actual six-cycle run measured **60.016600 s exercise/wall**, **0 s excluded**, **18.153200 s setup**; subsequent CSS spacing changes did not change timing code. [Exact timing](https://github.com/abn54/Health-App/blob/9548c9f5d87d3512fe91f96179f58e410f3b76c6/docs/evidence/browser-timing-oct27.json). The [isolated SQL inspection](https://github.com/abn54/Health-App/blob/9548c9f5d87d3512fe91f96179f58e410f3b76c6/docs/evidence/database-inspection-oct27.json) has 6 sessions, 8 events, 22 messages and 9 attempts including one counted preload, integrity ok/no FK violations. No original workspace records or raw database are published. The full Part 3.3 evaluation, independent clean-checkout review and demonstration/process recordings remain outstanding.
+
+
+## October 21 baseline and submitted-version reference
 
 **Project:** Pause, a localhost coursework skills prototype. **Date:** October 21, 2026. **Milestone:** Working Application and Safety.
 
