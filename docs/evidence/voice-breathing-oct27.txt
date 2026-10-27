@@ -1,0 +1,53 @@
+Audio playback observations (browser events, not an audio recording)
+337 ms · Audio stopped.
+537 ms · Audio stopped.
+537 ms · Audio stopped.
+537 ms · Audio stopped.
+537 ms · Starting voice…
+546 ms · Speaking: Inhale.
+1326 ms · Waiting for the next phase.
+4544 ms · Audio stopped.
+4544 ms · Starting voice…
+4547 ms · Speaking: Exhale.
+5390 ms · Waiting for the next phase.
+10544 ms · Audio stopped.
+10545 ms · Starting voice…
+10546 ms · Speaking: Inhale.
+11333 ms · Waiting for the next phase.
+14545 ms · Audio stopped.
+14545 ms · Starting voice…
+14548 ms · Speaking: Exhale.
+15397 ms · Waiting for the next phase.
+20545 ms · Audio stopped.
+20545 ms · Starting voice…
+20548 ms · Speaking: Inhale.
+21338 ms · Waiting for the next phase.
+24545 ms · Audio stopped.
+24545 ms · Starting voice…
+24548 ms · Speaking: Exhale.
+25401 ms · Waiting for the next phase.
+30545 ms · Audio stopped.
+30545 ms · Starting voice…
+30546 ms · Speaking: Inhale.
+31334 ms · Waiting for the next phase.
+34545 ms · Audio stopped.
+34545 ms · Starting voice…
+34547 ms · Speaking: Exhale.
+35398 ms · Waiting for the next phase.
+40545 ms · Audio stopped.
+40545 ms · Starting voice…
+40548 ms · Speaking: Inhale.
+41337 ms · Waiting for the next phase.
+44545 ms · Audio stopped.
+44545 ms · Starting voice…
+44548 ms · Speaking: Exhale.
+45401 ms · Waiting for the next phase.
+50545 ms · Audio stopped.
+50545 ms · Starting voice…
+50547 ms · Speaking: Inhale.
+51333 ms · Waiting for the next phase.
+54545 ms · Audio stopped.
+54545 ms · Starting voice…
+54548 ms · Speaking: Exhale.
+55397 ms · Waiting for the next phase.
+60545 ms · Exercise ended. Audio stopped.

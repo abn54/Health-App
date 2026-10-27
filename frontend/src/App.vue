@@ -1,6 +1,8 @@
 <script setup>
-import { computed, nextTick, onMounted, onUnmounted, ref } from 'vue'
+import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import { Exercise, phraseCue } from './engine.js'
+import { AudioOutput, PhaseCues } from './audio.js'
+import VoiceSettings from './components/VoiceSettings.vue'
 import AssistantPanel from './components/AssistantPanel.vue'
 import HelpCenter from './components/HelpCenter.vue'
 import RhythmGuide from './components/RhythmGuide.vue'
@@ -20,6 +22,48 @@ const assistantPopup = ref(false)
 let popupReturnFocus
 const replySources = topic => (helpContent.topics[topic]?.sources || []).map(id=>helpContent.resources.find(r=>r.id===id)).filter(Boolean)
 const engine = new Exercise()
+const voices = ref([]), voiceURI = ref(''), breathingSound = ref('off'), autoRead = ref(false)
+const audioState = ref({ busy:false, message:'Audio is off.' }), audioObservations = ref([])
+const audio = new AudioOutput({ synth:window.speechSynthesis, Utterance:window.SpeechSynthesisUtterance, AudioContext:window.AudioContext || window.webkitAudioContext, changed:state => {
+  audioState.value = state
+  if (capabilities.value.review_tools) {
+    audioObservations.value.push({at:Math.round(performance.now()),message:state.message})
+    if (audioObservations.value.length > 80) audioObservations.value.shift()
+  }
+} })
+const phaseCues = new PhaseCues()
+function refreshVoices() {
+  voices.value = audio.refreshVoices()
+  if (!voices.value.some(v => v.voiceURI === voiceURI.value)) voiceURI.value = voices.value[0]?.voiceURI || ''
+  if (!voices.value.length && breathingSound.value === 'voice') { breathingSound.value = 'off'; stopAudio('Voice unavailable. Breathing sound turned off.') }
+}
+function stopAudio(message = 'Audio stopped.') { audio.stop(message) }
+function muteAudio() { breathingSound.value = 'off'; autoRead.value = false; stopAudio('Audio stopped. Breathing sound and automatic reading are off.') }
+function setSound(value) {
+  stopAudio(); breathingSound.value = value
+  if (active.value) phaseCues.skip(engine.read())
+  if (value === 'tone') void audio.unlock()
+}
+function setVoice(value) { stopAudio(); voiceURI.value = value }
+function setAutoRead(value) { autoRead.value = value; if (!value) stopAudio('Automatic reading turned off.') }
+function readReply(text) {
+  if (active.value || support.value || document.hidden) return
+  audio.speak(text, {voiceURI:voiceURI.value, valid:() => !active.value && !support.value && !document.hidden})
+}
+function previewVoice() {
+  if (active.value) return
+  audio.speak('Inhale. Exhale.', {preview:true,voiceURI:voiceURI.value, valid:() => !active.value && !support.value && !document.hidden})
+}
+function playPhase() {
+  if (!phaseCues.take(reading.value) || breathingSound.value === 'off') return
+  const {cycle,phase} = reading.value
+  if (breathingSound.value === 'tone') { audio.tone(phase); return }
+  audio.speak(phase, {voiceURI:voiceURI.value,phase:true,valid:() => {
+    const r = engine.read(), offset = r.elapsed % 10000 - (phase === 'Exhale' ? 4000 : 0)
+    return engine.state === 'running' && r.cycle === cycle && r.phase === phase && offset < 900 && !document.hidden
+  }})
+}
+watch(view, () => stopAudio(), {flush:'sync'})
 const active = computed(() => ['running', 'paused'].includes(status.value))
 const terminal = computed(() => ['completed', 'stopped', 'interrupted'].includes(status.value))
 const title = computed(() => ({completed:'Six cycles complete.',stopped:'Exercise ended.',interrupted:'Exercise interrupted.'}[status.value] || ''))
@@ -88,10 +132,12 @@ function retrySave() { appError.value = ''; saveRequested = true; void flushSave
 async function start() {
   if (active.value || finalizing) return
   if (!current.value || terminal.value) { newSession(); messages.value = [] }
+  stopAudio(); phaseCues.reset()
   cueTouched = true; token += 1; questionError.value = ''; retryTurn.value = null
   status.value = 'running'; view.value = 'exercise'
   engine.start()
   reading.value = engine.read()
+  playPhase()
   current.value.first_instruction_at = stamp()
   current.value.cue_initial = cue.value; current.value.cue_final = cue.value
   current.value.setup_ms = performance.now() - readyAt
@@ -99,11 +145,12 @@ async function start() {
   await nextTick()
   document.querySelector('#exercise-heading')?.focus()
 }
-function pause() { if (status.value !== 'running') return; engine.pause(); status.value = 'paused'; event('pause'); queueSave() }
+function pause() { if (status.value !== 'running') return; stopAudio('Paused. Audio stopped.'); engine.pause(); status.value = 'paused'; event('pause'); queueSave() }
 function resume() { if (status.value !== 'paused') return; engine.resume(); status.value = 'running'; event('resume'); queueSave() }
 async function finish(kind, reason = '') {
   if (!active.value || finalizing) return
   finalizing = true
+  stopAudio('Exercise ended. Audio stopped.')
   engine.finish(kind)
   status.value = kind; reading.value = engine.read(); view.value = 'exercise'
   event(kind, reason ? { reason } : {})
@@ -116,12 +163,13 @@ async function finish(kind, reason = '') {
 function loop() {
   if (active.value && !finalizing) {
     reading.value = engine.tick()
+    if (engine.state === 'running') playPhase()
     if (engine.state !== status.value) void finish(engine.state, engine.state === 'interrupted' ? 'Scheduling gap over 2 seconds' : '')
   }
   raf = requestAnimationFrame(loop)
 }
-function visibility() { if (document.hidden && active.value) void finish('interrupted', 'Page hidden or left') }
-function pagehide() { if (active.value) { engine.finish('interrupted'); status.value = 'interrupted' } /* Next page recovers last persisted state; unload writes are not promised. */ }
+function visibility() { if (document.hidden) { stopAudio('Page hidden. Audio stopped.'); if (active.value) void finish('interrupted', 'Page hidden or left') } }
+function pagehide() { stopAudio(); if (active.value) { engine.finish('interrupted'); status.value = 'interrupted' } /* Next page recovers last persisted state; unload writes are not promised. */ }
 function changeCue(value) {
   cueTouched = true
   if (value === cue.value) return
@@ -139,6 +187,7 @@ async function resetPreference() {
 }
 function motionChange(e) { if (e.matches) changeCue('text') }
 function openSupport() {
+  stopAudio('Crisis support opened. Audio stopped.')
   if (support.value) return
   if (status.value === 'running') pause()
   if (active.value) { event('support_open'); queueSave() }
@@ -158,6 +207,7 @@ function trapSupport(e) {
   else if (!e.shiftKey && document.activeElement === nodes.at(-1)) { e.preventDefault(); nodes[0]?.focus() }
 }
 async function openHistory() {
+  stopAudio()
   if (status.value === 'running') pause()
   if (active.value) { event('history_open'); queueSave() }
   view.value = 'history'; selected.value = null; historyError.value = ''
@@ -165,6 +215,7 @@ async function openHistory() {
 }
 function returnExercise() { if (view.value === 'history' && active.value) { event('history_close'); queueSave() }; view.value = 'exercise' }
 function openAssistant() {
+  stopAudio()
   if (status.value === 'running') pause()
   if (view.value === 'history' && active.value) { event('history_close'); queueSave() }
   if (terminal.value && !pendingSave.value && !asking.value && !finalizing) ready()
@@ -172,12 +223,14 @@ function openAssistant() {
   nextTick(() => document.querySelector(status.value === 'ready' ? '#app-question' : '#assistant-heading')?.focus())
 }
 function openAssistantPopup() {
+  stopAudio()
   popupReturnFocus = document.activeElement
   if (status.value === 'running') pause()
   assistantPopup.value = true; assistantOpen.value = true
   nextTick(() => document.querySelector('#assistant-popup-heading')?.focus())
 }
 function closeAssistantPopup() {
+  stopAudio('Assistant closed. Audio stopped.')
   assistantPopup.value = false
   nextTick(() => {
     if (popupReturnFocus?.isConnected) popupReturnFocus.focus()
@@ -200,6 +253,7 @@ function ready(discard = false) {
   const leaveUnsaved = discard === true
   if (active.value || finalizing || (!leaveUnsaved && (pendingSave.value || asking.value))) return
   if (leaveUnsaved) { token += 1; saveRequested = false; pendingSave.value = false; retryTurn.value = null; questionError.value = '' }
+  stopAudio()
   current.value = null; status.value = 'ready'; view.value = 'ready'; messages.value = []; selected.value = null; appError.value = ''; saved.value = 'No session started'; prefStatus.value = ''; readyAt = performance.now()
 }
 async function selectSession(id) {
@@ -234,13 +288,13 @@ async function ask(retry = false) {
   if (phraseCue(text)) openSupport()
   if (!current.value) { newSession(); queueSave() }
   const turn = retry ? retryTurn.value : {turn_id:crypto.randomUUID(),question:text,cue:cue.value,mode:mode.value,simulate_failure:simulateModel.value}
-  const thisToken = token
+  const thisToken = token, audioEpoch = audio.epoch
   if (!retry) messages.value.push({role:'user',text})
   questionText.value = ''; asking.value = true; questionError.value = ''; retryTurn.value = turn
   try {
     await waitForSave()
     const response = await api(`/sessions/${current.value.id}/messages`, {method:'POST',body:JSON.stringify(turn)})
-    if (thisToken === token && !active.value) { messages.value.push({role:'assistant',...response}); if (response.rule_id) openSupport() }
+    if (thisToken === token && !active.value) { messages.value.push({role:'assistant',...response}); if (response.rule_id) openSupport(); else if (autoRead.value && audioEpoch === audio.epoch) readReply(response.text) }
     retryTurn.value = null
     capabilities.value = await api('/health').catch(() => capabilities.value)
   } catch {
@@ -249,6 +303,7 @@ async function ask(retry = false) {
 }
 
 onMounted(async () => {
+  refreshVoices(); window.speechSynthesis?.addEventListener('voiceschanged', refreshVoices)
   raf = requestAnimationFrame(loop)
   document.addEventListener('visibilitychange', visibility); window.addEventListener('pagehide', pagehide); reduced.addEventListener('change', motionChange)
   try {
@@ -258,7 +313,7 @@ onMounted(async () => {
     if (prefs.cue && !cueTouched && status.value === 'ready') cue.value = prefs.cue
   } catch { appError.value = 'Local server unavailable. Exercise and Crisis support still work; saving needs the server.' }
 })
-onUnmounted(() => { cancelAnimationFrame(raf); document.removeEventListener('visibilitychange', visibility); window.removeEventListener('pagehide', pagehide); reduced.removeEventListener('change', motionChange) })
+onUnmounted(() => { audio.dispose(); window.speechSynthesis?.removeEventListener('voiceschanged', refreshVoices); cancelAnimationFrame(raf); document.removeEventListener('visibilitychange', visibility); window.removeEventListener('pagehide', pagehide); reduced.removeEventListener('change', motionChange) })
 </script>
 
 <template>
@@ -315,18 +370,18 @@ onUnmounted(() => { cancelAnimationFrame(raf); document.removeEventListener('vis
               <div class="preview-orbit"><div class="preview-circle"><span>4 <i>/</i> 6</span><small>INHALE / EXHALE</small></div><span class="orbit-label">SIX CYCLES · ONE SECOND PER COUNT</span></div>
               <RhythmGuide />
             </section>
-            <div class="side-stack"><section class="card settings-card"><div class="eyebrow">A LITTLE MORE YOU</div><h2>Your pace. Your cue.</h2><p>Same rhythm. A different way to follow it.</p><div class="cue-options" role="group" aria-label="Pacing cue"><button :aria-pressed="cue === 'animated'" @click="changeCue('animated')"><span>◯</span><strong>Animated circle</strong><small>Movement + words</small></button><button :aria-pressed="cue === 'text'" @click="changeCue('text')"><span>Aa</span><strong>Text only</strong><small>Words + count</small></button></div><p class="small-copy">{{ remembered ? `Remembered setting: ${remembered === 'text' ? 'Text only' : 'Animated circle'}.` : 'Nothing remembered. Your system motion setting is the default.' }} You can change the cue during the exercise.</p><div class="button-row"><button class="text-button" @click="remember">Remember this choice</button><button v-if="remembered" class="text-button" @click="resetPreference">Reset preference</button></div><p v-if="prefStatus" role="status" class="small-copy">{{ prefStatus }}</p></section>
+            <div class="side-stack"><section class="card settings-card"><div class="eyebrow">A LITTLE MORE YOU</div><h2>Your pace. Your cue.</h2><p>Same rhythm. A different way to follow it.</p><div class="cue-options" role="group" aria-label="Pacing cue"><button :aria-pressed="cue === 'animated'" @click="changeCue('animated')"><span>◯</span><strong>Animated circle</strong><small>Movement + words</small></button><button :aria-pressed="cue === 'text'" @click="changeCue('text')"><span>Aa</span><strong>Text only</strong><small>Words + count</small></button></div><p class="small-copy">{{ remembered ? `Remembered setting: ${remembered === 'text' ? 'Text only' : 'Animated circle'}.` : 'Nothing remembered. Your system motion setting is the default.' }} You can change the cue during the exercise.</p><div class="button-row"><button class="text-button" @click="remember">Remember this choice</button><button v-if="remembered" class="text-button" @click="resetPreference">Reset preference</button></div><p v-if="prefStatus" role="status" class="small-copy">{{ prefStatus }}</p><VoiceSettings id-prefix="ready" :breathing-sound="breathingSound" :voices="voices" :voice-u-r-i="voiceURI" :audio-state="audioState" :active="active" @sound="setSound" @voice="setVoice" @preview="previewVoice" @stop="muteAudio" /></section>
             <section class="about-card"><span class="tiny-spark" aria-hidden="true">☼</span><div><h3>A practice, without a score.</h3><p>There is no rating to enter and no outcome to prove. History records only what happened in this prototype.</p></div></section></div>
           </div>
         </template>
         <template v-else>
-          <section v-if="active" class="exercise-panel" :data-phase="status === 'paused' ? 'paused' : reading.phase.toLowerCase()" aria-label="Active exercise"><div class="exercise-top"><span class="eyebrow">{{ status === 'paused' ? 'PAUSED · YOUR CHOICE TO CONTINUE' : 'FOLLOW THE WORDS AND COUNT' }}</span><span class="pill">Cycle {{ reading.cycle }} of 6</span></div><div class="phase-key" aria-label="Phase colors"><span :class="{current:status === 'running' && reading.phase === 'Inhale'}"><i class="phase-dot inhale-dot"></i> Inhale · 4</span><span :class="{current:status === 'running' && reading.phase === 'Exhale'}"><i class="phase-dot exhale-dot"></i> Exhale · 6</span></div><span class="sr-only" role="status">{{ status === 'paused' ? 'Exercise paused' : reading.phase }}</span><div class="exercise-space"><div v-if="cue === 'animated'" class="breathing-orbit" :style="{'--breath-scale':reading.scale}" aria-hidden="true"><div></div></div><div class="instruction"><span class="phase-tag">{{ status === 'paused' ? 'Your place is held' : reading.phase === 'Inhale' ? 'Expand · green cue' : 'Release · blue cue' }}</span><h1 id="exercise-heading" tabindex="-1">{{ status === 'paused' ? 'Paused' : reading.phase }}</h1><div class="count">{{ reading.count }}<span> / {{ reading.phase === 'Inhale' ? 4 : 6 }}</span></div><p>{{ status === 'paused' ? `Holding ${reading.phase.toLowerCase()}, count ${reading.count}.` : reading.phase === 'Inhale' ? 'Four counts in.' : 'Six counts out.' }}</p></div></div><div class="cycle-dots" aria-label="Cycle position"><span v-for="n in 6" :key="n" :class="{passed:n < reading.cycle,current:n === reading.cycle}" :aria-label="`Cycle ${n}${n === reading.cycle ? ', current' : ''}`"></span></div><progress max="60000" :value="reading.elapsed" aria-label="Exercise progress"></progress><div class="exercise-controls"><button v-if="status === 'running'" class="primary" @click="pause">Ⅱ Pause</button><button v-else class="primary" @click="resume">Resume →</button><button class="secondary" @click="finish('stopped')">End exercise</button></div><div class="cue-inline"><label for="active-cue">Pacing cue</label><select id="active-cue" :value="cue" @change="changeCue($event.target.value)"><option value="animated">Animated circle</option><option value="text">Text only</option></select><small>Changing the cue keeps your place.</small></div></section>
+          <section v-if="active" class="exercise-panel" :data-phase="status === 'paused' ? 'paused' : reading.phase.toLowerCase()" aria-label="Active exercise"><div class="exercise-top"><span class="eyebrow">{{ status === 'paused' ? 'PAUSED · YOUR CHOICE TO CONTINUE' : 'FOLLOW THE WORDS AND COUNT' }}</span><span class="pill">Cycle {{ reading.cycle }} of 6</span></div><div class="phase-key" aria-label="Phase colors"><span :class="{current:status === 'running' && reading.phase === 'Inhale'}"><i class="phase-dot inhale-dot"></i> Inhale · 4</span><span :class="{current:status === 'running' && reading.phase === 'Exhale'}"><i class="phase-dot exhale-dot"></i> Exhale · 6</span></div><span class="sr-only" role="status">{{ status === 'paused' ? 'Exercise paused' : reading.phase }}</span><div class="exercise-space"><div v-if="cue === 'animated'" class="breathing-orbit" :style="{'--breath-scale':reading.scale}" aria-hidden="true"><div></div></div><div class="instruction"><span class="phase-tag">{{ status === 'paused' ? 'Your place is held' : reading.phase === 'Inhale' ? 'Expand · green cue' : 'Release · blue cue' }}</span><h1 id="exercise-heading" tabindex="-1">{{ status === 'paused' ? 'Paused' : reading.phase }}</h1><div class="count">{{ reading.count }}<span> / {{ reading.phase === 'Inhale' ? 4 : 6 }}</span></div><p>{{ status === 'paused' ? `Holding ${reading.phase.toLowerCase()}, count ${reading.count}.` : reading.phase === 'Inhale' ? 'Four counts in.' : 'Six counts out.' }}</p></div></div><div class="cycle-dots" aria-label="Cycle position"><span v-for="n in 6" :key="n" :class="{passed:n < reading.cycle,current:n === reading.cycle}" :aria-label="`Cycle ${n}${n === reading.cycle ? ', current' : ''}`"></span></div><progress max="60000" :value="reading.elapsed" aria-label="Exercise progress"></progress><div class="exercise-controls"><button v-if="status === 'running'" class="primary" @click="pause">Ⅱ Pause</button><button v-else class="primary" @click="resume">Resume →</button><button class="secondary" @click="finish('stopped')">End exercise</button></div><div class="cue-inline"><label for="active-cue">Pacing cue</label><select id="active-cue" :value="cue" @change="changeCue($event.target.value)"><option value="animated">Animated circle</option><option value="text">Text only</option></select><small>Changing the cue keeps your place.</small></div><VoiceSettings id-prefix="active" :breathing-sound="breathingSound" :voices="voices" :voice-u-r-i="voiceURI" :audio-state="audioState" :active="active" @sound="setSound" @voice="setVoice" @preview="previewVoice" @stop="muteAudio" /></section>
           <section v-else class="summary-panel"><span class="summary-icon">{{ status === 'completed' ? '✓' : '◌' }}</span><div class="eyebrow">{{ label(status) }} · PACED BREATHING</div><h1 id="summary-heading" tabindex="-1">{{ title }}</h1><p>{{ status === 'completed' ? 'The planned sequence has finished. Stay here as long as you like.' : status === 'interrupted' ? 'The page was hidden or scheduling stopped. Review your settings before starting a new exercise.' : 'This is a partial session. You can review it or return when you choose.' }}</p><div class="timing-grid"><div><strong>{{ seconds(current?.assignment_duration_ms) }}</strong><span>{{ status === 'completed' ? 'Measured exercise' : 'Partial exercise time' }}</span></div><div><strong>{{ seconds(current?.setup_ms) }}</strong><span>Entry and setup</span></div><div><strong>{{ seconds(current?.excluded_ms) }}</strong><span>User pause / support</span></div></div><p class="small-copy">Timing includes application and render delays. Explicit pause and support intervals are excluded once. Interrupted sessions do not establish completion.</p><div class="button-row"><button class="primary" :disabled="pendingSave || asking || finalizing" @click="ready">Return to ready →</button><button class="secondary" @click="openHistory">Review saved history</button></div><div v-if="pendingSave" class="unsaved-exit"><p class="small-copy">You can leave without waiting for a save. Unsaved changes may be lost; records already saved remain in History.</p><button class="secondary" @click="ready(true)">Leave without saving</button></div></section>
         </template>
-        <AssistantPanel v-if="!assistantPopup && (view === 'assistant' || (view === 'ready' && status === 'ready'))" v-model:mode="mode" v-model:question-text="questionText" v-model:expanded="assistantOpen" :messages="messages" :capabilities="capabilities" :asking="asking" :question-error="questionError" :retry-available="!!retryTurn" :ready="status === 'ready'" @ask="ask" />
+        <AssistantPanel v-if="!assistantPopup && (view === 'assistant' || (view === 'ready' && status === 'ready'))" v-model:mode="mode" v-model:question-text="questionText" v-model:expanded="assistantOpen" :messages="messages" :capabilities="capabilities" :asking="asking" :question-error="questionError" :retry-available="!!retryTurn" :ready="status === 'ready'" :voices="voices" :voice-u-r-i="voiceURI" :auto-read="autoRead" :audio-state="audioState" @voice="setVoice" @auto-read="setAutoRead" @read="readReply" @stop="muteAudio" @ask="ask" />
         <HelpCenter v-if="view === 'assistant' || (view === 'ready' && status === 'ready')" />
         <div class="save-bar" role="status"><span :class="['save-dot',{unsaved:pendingSave}]"></span>{{ saved }} <button v-if="pendingSave" @click="retrySave">Retry save</button></div><p v-if="appError" class="small-copy error">{{ appError }}</p>
-        <details v-if="capabilities.review_tools" class="review-tools"><summary>Coursework review tools</summary><p>Deliberate failure simulations for fictional verification. They never disable exercise or Crisis support.</p><label><input v-model="simulateModel" type="checkbox"> Simulate optional model failure</label><label><input v-model="simulateSave" type="checkbox"> Simulate session-save failure</label><small>Model: {{ capabilities.model }} · host run: {{ capabilities.test_run_id }} · attempts: {{ capabilities.attempts }}/{{ capabilities.limit }}. Mock remains the default.</small></details>
+        <details v-if="capabilities.review_tools" class="review-tools"><summary>Coursework review tools</summary><p>Deliberate failure simulations for fictional verification. They never disable exercise or Crisis support.</p><label><input v-model="simulateModel" type="checkbox"> Simulate optional model failure</label><label><input v-model="simulateSave" type="checkbox"> Simulate session-save failure</label><details class="audio-observations"><summary>Audio playback observations (browser events, not an audio recording)</summary><ol><li v-for="(entry,i) in audioObservations" :key="i">{{ entry.at }} ms · {{ entry.message }}</li></ol></details><small>Model: {{ capabilities.model }} · host run: {{ capabilities.test_run_id }} · attempts: {{ capabilities.attempts }}/{{ capabilities.limit }}. Mock remains the default.</small></details>
       </main><button id="assistant-launcher" class="assistant-launcher" aria-haspopup="dialog" :aria-expanded="assistantPopup" @click="openAssistantPopup"><span aria-hidden="true">✧</span><span>Ask the assistant<small>Optional app questions</small></span><span aria-hidden="true">↗</span></button><footer>PAUSE / A COURSEWORK SKILLS PROTOTYPE<span>YOUR CHOICE TO START. YOUR CHOICE TO STOP.</span></footer>
     </div>
   </div>
@@ -336,7 +391,7 @@ onUnmounted(() => { cancelAnimationFrame(raf); document.removeEventListener('vis
       <div class="assistant-popup-tools"><p id="assistant-popup-description">Fictional coursework · educational information</p><button id="popup-support-control" class="support-button" @click="openSupport">Crisis support</button></div>
       <div v-if="active" class="banner">Your exercise is paused at {{ reading.phase.toLowerCase() }} count {{ reading.count }}. Close this window to return; Resume remains your choice.<div><button @click="returnExercise(); closeAssistantPopup()">Return to exercise</button><button @click="finish('stopped'); closeAssistantPopup()">End exercise</button></div></div>
       <div v-else-if="terminal" class="banner">This session has ended.<div><button :disabled="pendingSave || asking || finalizing" @click="newPopupQuestions">Start new questions</button><button @click="closeAssistantPopup">Return to summary</button></div></div>
-      <AssistantPanel v-model:mode="mode" v-model:question-text="questionText" v-model:expanded="assistantOpen" :messages="messages" :capabilities="capabilities" :asking="asking" :question-error="questionError" :retry-available="!!retryTurn" :ready="status === 'ready'" popup @ask="ask" />
+      <AssistantPanel v-model:mode="mode" v-model:question-text="questionText" v-model:expanded="assistantOpen" :messages="messages" :capabilities="capabilities" :asking="asking" :question-error="questionError" :retry-available="!!retryTurn" :ready="status === 'ready'" :voices="voices" :voice-u-r-i="voiceURI" :auto-read="autoRead" :audio-state="audioState" @voice="setVoice" @auto-read="setAutoRead" @read="readReply" @stop="muteAudio" popup @ask="ask" />
       <div class="popup-save"><span role="status">{{ saved }}</span><button v-if="pendingSave" @click="retrySave">Retry save</button><button @click="closeAssistantPopup">Close assistant →</button></div>
     </section>
   </div>

@@ -191,3 +191,16 @@ footer { display: flex; justify-content: space-between; gap: 20px; max-width: 11
   .brand { gap: 8px; }.brand-copy { font-size: 1.8rem; }
   .sidebar > .support-button { font-size: .7rem; padding-inline: 12px; }
 }
+
+.voice-settings { border-top: 1px solid var(--line); margin-top: 20px; padding-top: 16px; text-align: left; }
+.voice-settings summary { cursor: pointer; font-size: .85rem; color: #694e5d; }
+.voice-settings summary small { display: inline-block; margin-left: 8px; font-size: .65rem; color: #78685d; }
+.voice-body, .assistant-audio { display: grid; gap: 9px; padding-top: 15px; }
+.voice-body label, .assistant-audio label { font-size: .78rem; color: #694e5d; }
+.voice-body select, .assistant-audio select { width: 100%; min-width: 0; max-width: 100%; }
+.voice-body p, .assistant-audio p { margin: 0; line-height: 1.65; }
+.assistant-audio { padding: 15px; border: 1px solid #dfd1e4; background: #f7f1f8; border-radius: 14px; margin: 16px 0; }
+.audio-check { display: flex; gap: 9px; align-items: center; }
+.audio-check input { width: 18px; height: 18px; flex-shrink: 0; }
+.assistant-audio > button { justify-self: start; }
+.read-reply { margin: 0 0 8px; }

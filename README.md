@@ -6,6 +6,8 @@ Vue, FastAPI, and SQLite application running on **localhost only**. Complete six
 
 Repository: [abn54/Health-App](https://github.com/abn54/Health-App). Submission: [report.md](report.md). The original design report is retained in [submissions/part1/report.md](submissions/part1/report.md). The October 21 Part 2 report is archived in [submissions/part2/report.md](submissions/part2/report.md).
 
+Optional audio: expand **Voice & sound** under cue settings and choose **Spoken inhale / exhale** or **Soft tones**. In the assistant, use **Read reply aloud** or enable **Read new replies aloud**. Select/preview an on-device English voice; **Stop audio** switches automatic output off. Audio defaults off, resets on reload, uses no microphone or remote TTS, and never controls pacing. Available voices depend on your browser/device. [Voice implementation and actual verification](docs/voice-output.md).
+
 Latest UI: warm ivory/terracotta/lavender, sticky top navigation, a new illustrated introduction and refreshed cards/dialogs. [Visual redesign and actual checks](docs/visual-redesign.md).
 
 Earlier functional refinements: color-coded inhale/exhale, an optional assistant popup, eleven FAQs, six editable suggested questions, an SVG rhythm guide and a source-labeled reading shelf. [October 27 changes and actual verification](docs/ui-refinement-oct27.md).
@@ -52,7 +54,7 @@ npm test
 npm run build
 ```
 
-Backend tests use temporary databases and mocked provider outputs. Client tests use an injected clock. Actual browser duration and live-model observations are separate in [Part 2 evidence](docs/part2-verification.md). A dependency deprecation warning from Starlette's current TestClient is recorded rather than hidden.
+Backend tests use temporary databases and mocked provider outputs. Client tests use injected exercise clocks and fake speech/audio APIs to check timing, cancellation, late playback and unavailable output. Actual browser duration and live-model observations are separate in [Part 2 evidence](docs/part2-verification.md). A dependency deprecation warning from Starlette's current TestClient is recorded rather than hidden.
 
 For development, run `.venv/bin/python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000`, and `npm run dev` inside `frontend` in a second terminal. Vite binds loopback and proxies `/api`. Production-build checks use port 8000. Rebuild and restart FastAPI when switching from an unbuilt frontend to the static build.
 
@@ -74,6 +76,7 @@ One active page/tab is assumed. Hiding the page or a scheduling gap over two sec
 | --- | --- |
 | `frontend/src/App.vue` | UI, explicit choices, persistence journal, bundled support |
 | `frontend/src/engine.js` | Deterministic state and monotonic pacing |
+| `frontend/src/audio.js` | Optional on-device speech, soft tones and phase deduplication |
 | `backend/main.py` | Validated API, migration, SQLite, Ollama adapter, atomic budget |
 | `backend/catalog.py`, `shared/help-content.json` | Shared reviewed FAQ/model copy, sources, mocks and fallible phrase cues |
 | `frontend/src/components/` | Shared assistant panel, FAQ/reading shelf and original SVG rhythm guide |

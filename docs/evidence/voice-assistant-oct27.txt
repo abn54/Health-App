@@ -1,0 +1,16 @@
+Audio playback observations (browser events, not an audio recording)
+513 ms · Audio stopped.
+513 ms · Starting voice…
+552 ms · Reading assistant reply aloud.
+3372 ms · Read aloud finished.
+8129 ms · Audio stopped.
+12496 ms · Audio stopped.
+12496 ms · Starting voice…
+12498 ms · Reading assistant reply aloud.
+21327 ms · Read aloud finished.
+24845 ms · Audio stopped. Breathing sound and automatic reading are off.
+25055 ms · Audio stopped.
+25055 ms · Starting voice…
+25062 ms · Reading assistant reply aloud.
+25412 ms · Crisis support opened. Audio stopped.
+33795 ms · Assistant closed. Audio stopped.

@@ -1,0 +1,12 @@
+{
+  "id": "87d43c72-ae87-4e8d-a406-6e7367802eda",
+  "status": "completed",
+  "created_at": "2026-10-27T18:11:36.741000Z",
+  "setup_ms": 500.5,
+  "wall_ms": 60016.20000000298,
+  "excluded_ms": 0.0,
+  "assignment_duration_ms": 60016.20000000298,
+  "first_instruction_at": "2026-10-27T18:11:36.742000Z",
+  "final_step_at": "2026-10-27T18:12:36.758000Z",
+  "evidence_note": "Single newly created fictional voice verification run; original workspace history not exported. Browser-reported speech starts in voice-breathing-oct27.txt. No audio recording or human listening assessment."
+}

@@ -1,0 +1,14 @@
+Selected browser events from the separate soft-tone / Pause / Resume / End run. Earlier completed voice-run events omitted. No audio recording.
+92162 ms · Audio stopped.
+92162 ms · Audio stopped.
+92476 ms · Audio stopped.
+92870 ms · Audio stopped.
+92870 ms · Audio stopped.
+92870 ms · Audio stopped.
+92875 ms · Inhale tone playing.
+93372 ms · Waiting for the next phase.
+96878 ms · Audio stopped.
+96878 ms · Exhale tone playing.
+97383 ms · Waiting for the next phase.
+98737 ms · Paused. Audio stopped.
+99279 ms · Exercise ended. Audio stopped.

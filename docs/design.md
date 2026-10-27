@@ -238,3 +238,9 @@ The assistant remains educational rather than a therapist. A short sourced NIMH 
 ## Later October 27 visual redesign
 
 The student's new UI/layout/color request replaces the sidebar with sticky top navigation and moves the independent support control into that persistent bar. A warm ivory, terracotta and lavender scheme, system serif headlines, original SVG wordmark/illustration and responsive practice/settings cards replace the earlier green dashboard. Pause remains the unrenamed working name. Active pacing stays simpler than Ready and retains the same state/clock/control contract. [Actual visual changes and verification limits](visual-redesign.md) supersede earlier appearance descriptions without rewriting their historical observations.
+
+## October 27 — optional voice and sound
+
+The requested output adds on-device English speech for confirmed assistant replies and optional spoken Inhale/Exhale cues. Soft rising/falling tones are an alternative phase cue. Both breathing sound and automatic reply reading default off and reset on reload. The user can preview/select a voice, read an individual approved reply, enable reading of new replies, or Stop audio (also switches both automatic outputs off). No microphone, recording, new questionnaire or skill is added. Sound never replaces visible words/counts or the reduced-motion option.
+
+Opening support, changing views, closing the popup, pausing, ending, hiding or leaving the page cancels output. Start cancels assistant speech. Resume keeps the held fraction and waits for the next phase rather than repeating an instruction late. Mid-phase sound changes also wait for the next boundary. Voice availability is browser/device dependent; missing/blocked/late playback shows a message and leaves the exercise available. Current observations and limits are recorded in [voice-output.md](voice-output.md).
