@@ -71,7 +71,7 @@ def migrate():
 
 
 migrate()
-app = FastAPI(title="Pause coursework prototype", version="0.2.0")
+app = FastAPI(title="mello coursework prototype", version="0.2.0")
 app.add_middleware(CORSMiddleware, allow_origins=["http://127.0.0.1:5173", "http://localhost:5173"], allow_methods=["GET", "PUT", "POST", "DELETE"], allow_headers=["Content-Type"])
 
 
@@ -226,7 +226,12 @@ def recover():
 @app.get("/api/sessions")
 def history():
     with db() as c:
-        return [{"id": r["id"], **json.loads(r["snapshot"])} for r in c.execute("SELECT * FROM sessions ORDER BY created_at DESC LIMIT 200")]
+        return [{"id": r["id"], **json.loads(r["snapshot"]), "last_chat_at": r["last_chat_at"]} for r in c.execute("""
+            SELECT s.*, chat.last_chat_at FROM sessions AS s
+            LEFT JOIN (SELECT session_id, MAX(created_at) AS last_chat_at FROM messages
+                       WHERE role='user' GROUP BY session_id) AS chat ON chat.session_id=s.id
+            ORDER BY julianday(COALESCE(chat.last_chat_at,s.created_at)) DESC, s.rowid DESC LIMIT 200
+        """)]
 
 
 @app.get("/api/sessions/{sid}")
@@ -234,7 +239,7 @@ def detail(sid: uuid.UUID):
     with db() as c:
         row = fetch(c, sid)
         messages = [{**dict(m), "metadata": json.loads(m["metadata"])} for m in c.execute("SELECT * FROM messages WHERE session_id=? ORDER BY created_at,rowid", (str(sid),))]
-        return {"id": str(sid), **json.loads(row["snapshot"]), "messages": messages}
+        return {"id": str(sid), **json.loads(row["snapshot"]), "messages": messages, "last_chat_at": max((m["created_at"] for m in messages if m["role"] == "user"), default=None)}
 
 
 @app.delete("/api/sessions/{sid}")

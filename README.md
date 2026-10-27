@@ -1,4 +1,4 @@
-# Pause — Part 3.2 coursework prototype
+# mello — Part 3.2 coursework prototype
 
 Vue, FastAPI, and SQLite application running on **localhost only**. Complete six cycles of four one-second counts in and six out. Review saved sessions and fictional conversations, choose a reversible pacing cue, and open bundled Crisis support from every view.
 
@@ -7,6 +7,8 @@ Vue, FastAPI, and SQLite application running on **localhost only**. Complete six
 Repository: [abn54/Health-App](https://github.com/abn54/Health-App). Submission: [report.md](report.md). The original design report is retained in [submissions/part1/report.md](submissions/part1/report.md). The October 21 Part 2 report is archived in [submissions/part2/report.md](submissions/part2/report.md).
 
 Optional audio: expand **Voice & sound** under cue settings and choose **Spoken inhale / exhale** or **Soft tones**. In the assistant, use **Read reply aloud** or enable **Read new replies aloud**. Select/preview an on-device English voice; **Stop audio** switches automatic output off. Audio defaults off, resets on reload, uses no microphone or remote TTS, and never controls pacing. Available voices depend on your browser/device. [Voice implementation and actual verification](docs/voice-output.md).
+
+Current name: **mello** (renamed from Pause on October 27). The compact circular **Ask the assistant** button replaces the larger launcher. History sorts conversations by their last saved question and labels sessions without chat explicitly. Existing storage filenames/environment variables retain their compatible names.
 
 Latest UI: warm ivory/terracotta/lavender, sticky top navigation, a new illustrated introduction and refreshed cards/dialogs. [Visual redesign and actual checks](docs/visual-redesign.md).
 
@@ -65,7 +67,7 @@ For deliberate fictional failures, launch with `REVIEW_TOOLS=1`. Expand **Course
 1. Choose Animated circle or Text only. Remember is explicit; Reset removes the saved preference. Changing the active cue never changes the remembered preference or pace.
 2. Start without questions. Pause preserves the phase/count fraction; Resume is explicit. End is immediate. Completion leaves the summary on screen.
 3. Opening the assistant popup during practice pauses it and disables new questions. Close returns to the paused exercise; Resume is explicit. Crisis support remains inside the popup header. Open Crisis support during an exercise: it pauses. Return leaves it paused. History behaves the same way and retains Return and End controls.
-4. Review History: status, initial/final cue, timing, events, and conversation source labels. Draft questions are “Not started.” Reuse copies a recorded cue into Ready without starting or remembering it.
+4. Review History: Started and Last chatted dates/times, per-message timestamps in the device’s time zone, status, initial/final cue, timing, events, and conversation source labels. Draft questions are “Not started.” Reuse copies a recorded cue into Ready without starting or remembering it.
 5. Deleting a session removes its conversation/events. Delete all additionally resets the preference after confirmation. Provider-attempt accounting remains. Unsaved records stay only in page memory with Retry; the summary also offers Leave without saving, so a failed write cannot trap someone after End. Unsaved changes may be lost; already saved records remain in History.
 
 One active page/tab is assumed. Hiding the page or a scheduling gap over two seconds interrupts; there is no automatic resume. Reload recovers persisted running/paused sessions as interrupted with unknown final timing, while drafts stay Not started. Multi-tab reconciliation, broader model evaluation, screen-reader certification, and Part 3 recordings remain outside this milestone.

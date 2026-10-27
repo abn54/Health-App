@@ -204,3 +204,31 @@ footer { display: flex; justify-content: space-between; gap: 20px; max-width: 11
 .audio-check input { width: 18px; height: 18px; flex-shrink: 0; }
 .assistant-audio > button { justify-self: start; }
 .read-reply { margin: 0 0 8px; }
+
+/* Keep the compact assistant in the sticky header, outside page text. */
+.assistant-launcher { width: 54px; height: 54px; min-height: 54px; padding: 0; border-radius: 50%; display: grid; place-items: center; }
+.assistant-launcher svg { width: 25px; height: 25px; }
+.history-row > span:first-child { min-width: 0; }
+.history-row > span:last-child { flex-shrink: 0; }
+.history-row small { line-height: 1.65; }
+.history-row .last-chat { color: #694e5d; }
+.message-time { display: block; margin-top: 6px; font-size: .65rem; line-height: 1.6; color: #78685d; }
+.session-dates { line-height: 1.9; }
+@media (max-width: 600px) {
+  .assistant-launcher { width: 48px; height: 48px; min-height: 48px; padding: 0; }
+  .assistant-launcher svg { width: 23px; height: 23px; }
+}
+
+.header-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.header-actions .assistant-launcher { position: static; width: 46px; height: 46px; min-height: 46px; flex-shrink: 0; box-shadow: none; }
+@media (min-width: 601px) and (max-width: 900px) {
+  .sidebar { gap: 8px; padding-inline: 16px; }
+  .sidebar nav button { padding-inline: 8px; font-size: .69rem; }
+  .header-actions { gap: 7px; }
+  .header-actions .support-button { font-size: .68rem; padding-inline: 9px; }
+}
+@media (max-width: 600px) {
+  .header-actions { grid-column: 2; grid-row: 1; gap: 9px; }
+  .header-actions .support-button { font-size: .68rem; min-height: 36px; padding: 8px 12px; }
+  .header-actions .assistant-launcher { width: 44px; height: 44px; min-height: 44px; }
+}

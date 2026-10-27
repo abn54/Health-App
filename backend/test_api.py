@@ -197,3 +197,28 @@ def test_expanded_help_is_catalog_text_without_preference_or_session_control(cli
     assert detail['messages'][-1]['content'] == result['text']
     assert client.get('/api/preferences').json() == {'cue': None}
     assert client.get('/api/health').json()['attempts'] == 0
+
+
+def test_history_last_chat_uses_saved_user_messages_and_reorders_old_conversations(client):
+    old, _ = create(client)
+    newer, _ = create(client)
+    empty, _ = create(client)
+    assert client.get('/api/sessions/' + empty).json()['last_chat_at'] is None
+    assert ask(client, old, 'How long is the exercise?').status_code == 200
+    assert ask(client, newer, 'What gets saved?').status_code == 200
+    with m.db() as c:
+        c.execute("UPDATE messages SET created_at=? WHERE session_id=? AND role='user'", ('2026-10-26T15:00:00+00:00', newer))
+        c.execute("UPDATE messages SET created_at=? WHERE session_id=? AND role='user'", ('2026-10-27T15:00:00+00:00', old))
+        # A later assistant response or exercise-save time is not a user chat date.
+        c.execute("UPDATE messages SET created_at=? WHERE role='assistant'", ('2026-10-28T15:00:00+00:00',))
+        c.execute("UPDATE sessions SET created_at=?", ('2026-10-20T15:00:00+00:00',))
+    rows = client.get('/api/sessions').json()
+    assert [r['id'] for r in rows] == [old, newer, empty]
+    assert rows[0]['last_chat_at'] == '2026-10-27T15:00:00+00:00'
+    assert rows[2]['last_chat_at'] is None
+    detail = client.get('/api/sessions/' + old).json()
+    assert detail['last_chat_at'] == rows[0]['last_chat_at']
+    assert all(m['created_at'] for m in detail['messages'])
+    assert ask(client, old, 'Can I stop halfway?').status_code == 200
+    assert client.delete('/api/sessions/' + old).status_code == 200
+    assert all(r['id'] != old for r in client.get('/api/sessions').json())

@@ -73,6 +73,7 @@ const frame = () => new Promise(resolve => requestAnimationFrame(resolve))
 const label = s => ({draft:'Not started',running:'In progress',paused:'Paused',completed:'Completed',stopped:'Stopped',interrupted:'Interrupted'}[s] || s)
 const seconds = ms => ms == null ? 'Not recorded' : `${(ms / 1000).toFixed(2)} s`
 const date = value => new Date(value).toLocaleString([], { dateStyle:'medium', timeStyle:'short' })
+const chatDate = value => new Date(value).toLocaleString([], {dateStyle:'medium',timeStyle:'long'})
 const sourceLabel = source => ({live:'Live local model',mock:'Mock response',fixed:'Fixed fallback'}[source] || source)
 
 async function api(path, options = {}) {
@@ -267,7 +268,7 @@ function reuse() {
 }
 function reopenDraft() {
   if (active.value || !selected.value || selected.value.status !== 'draft' || pendingSave.value) return
-  current.value = Object.fromEntries(Object.entries(selected.value).filter(([key]) => key !== 'messages'))
+  current.value = Object.fromEntries(Object.entries(selected.value).filter(([key]) => !['messages','last_chat_at'].includes(key)))
   messages.value = selected.value.messages.map(m => ({role:m.role,text:m.content,...m.metadata}))
   status.value = 'ready'; view.value = 'ready'; saved.value = 'Saved locally'; selected.value = null; readyAt = performance.now()
 }
@@ -319,36 +320,36 @@ onUnmounted(() => { audio.dispose(); window.speechSynthesis?.removeEventListener
 <template>
   <div class="app-shell" :inert="support || assistantPopup || undefined">
     <aside class="sidebar">
-      <a class="brand" href="#" @click.prevent="active ? returnExercise() : view = 'ready'" aria-label="Pause home"><svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 21c-18 0-17-17-8-17 7 0 8 8 8 17Zm0 0c0-18 17-17 17-8 0 7-8 8-17 8Zm0 0c18 0 17 17 8 17-7 0-8-8-8-17Zm0 0c0 18-17 17-17 8 0-7 8-8 17-8Z" fill="currentColor"/></svg><span class="brand-copy">pause<small>a little space to pause</small></span></a>
+      <a class="brand" href="#" @click.prevent="active ? returnExercise() : view = 'ready'" aria-label="mello home"><svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 21c-18 0-17-17-8-17 7 0 8 8 8 17Zm0 0c0-18 17-17 17-8 0 7-8 8-17 8Zm0 0c18 0 17 17 8 17-7 0-8-8-8-17Zm0 0c0 18-17 17-17 8 0-7 8-8 17-8Z" fill="currentColor"/></svg><span class="brand-copy">mello<small>a little space to pause</small></span></a>
       <nav aria-label="Main navigation">
         <button :class="{selected:view === 'ready' || view === 'exercise'}" @click="active ? returnExercise() : view = 'ready'"><span>◌</span> {{ active ? 'Your exercise' : 'Practice' }}<span class="nav-arrow">↗</span></button>
         <button :class="{selected:view === 'assistant'}" :aria-current="view === 'assistant' ? 'page' : undefined" @click="openAssistant"><span aria-hidden="true">✧</span> AI assistant<span class="nav-arrow" aria-hidden="true">↗</span></button>
         <button :class="{selected:view === 'history'}" @click="openHistory"><span>▤</span> Session history<span class="nav-arrow">↗</span></button>
       </nav>
-      <button id="support-control" class="support-button" @click="openSupport"><span aria-hidden="true">✚</span> Crisis support</button>
+      <div class="header-actions"><button id="support-control" class="support-button" @click="openSupport"><span aria-hidden="true">✚</span> Crisis support</button><button id="assistant-launcher" class="assistant-launcher" aria-label="Ask the assistant" title="Ask the assistant" aria-haspopup="dialog" :aria-expanded="assistantPopup" @click="openAssistantPopup"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-8 8H5l-3 2v-10a9 9 0 0 1 18 0Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m12 7 1.1 2.9L16 11l-2.9 1.1L12 15l-1.1-2.9L8 11l2.9-1.1L12 7Z" fill="currentColor"/></svg></button></div>
     </aside>
     <div class="main-shell">
       <header class="context-header"><span class="eyebrow">{{ view === 'history' ? 'YOUR SAVED RECORDS' : view === 'assistant' ? 'YOUR OPTIONAL APP ASSISTANT' : 'A LITTLE ROOM TO PRACTICE' }}</span><span class="local-label"><i></i> Local coursework prototype</span></header>
       <div class="coursework-notice"><span class="notice-dot"></span> Coursework prototype · fictional use only. No therapy, diagnosis, or human monitoring.</div>
       <main>
         <template v-if="view === 'history'">
-          <div class="page-heading"><div><div class="eyebrow">A RECORD, WITHOUT A SCORE</div><h1>Session history<span>.</span></h1><p>Review the exercise, settings, and fictional conversation saved on this computer.</p></div><button class="secondary" @click="active ? returnExercise() : view = 'ready'">{{ active ? 'Return to paused exercise' : 'Back to practice' }} →</button></div>
+          <div class="page-heading"><div><div class="eyebrow">A RECORD, WITHOUT A SCORE</div><h1>Session history<span>.</span></h1><p>Review saved sessions and when you last chatted. Dates and times use this device’s time zone.</p></div><button class="secondary" @click="active ? returnExercise() : view = 'ready'">{{ active ? 'Return to paused exercise' : 'Back to practice' }} →</button></div>
           <div v-if="active" class="banner">Your exercise is paused. Returning does not resume it.<div><button @click="returnExercise">Return to exercise</button><button @click="finish('stopped')">End exercise</button></div></div>
           <div v-if="historyError" class="error" role="alert">{{ historyError }} <button @click="openHistory">Retry history</button></div>
           <div class="history-layout">
             <section class="card history-list" aria-label="Saved sessions">
               <h2>On this computer <span class="pill">{{ history.length }}</span></h2>
               <p v-if="!history.length">No saved sessions yet.</p>
-              <button v-for="item in history" :key="item.id" class="history-row" :class="{chosen:selected?.id === item.id}" @click="selectSession(item.id)"><span><strong>{{ label(item.status) }}</strong><small>{{ date(item.created_at) }}</small></span><span>{{ seconds(item.assignment_duration_ms) }} ↗</span></button>
+              <button v-for="item in history" :key="item.id" class="history-row" :class="{chosen:selected?.id === item.id}" @click="selectSession(item.id)"><span><strong>{{ label(item.status) }}</strong><small>Started <time :datetime="item.created_at">{{ date(item.created_at) }}</time></small><small v-if="item.last_chat_at" class="last-chat">Last chatted <time :datetime="item.last_chat_at">{{ chatDate(item.last_chat_at) }}</time></small><small v-else>No chat in this session</small></span><span>{{ seconds(item.assignment_duration_ms) }} ↗</span></button>
             </section>
             <section v-if="selected" class="card history-detail" aria-label="Session detail">
               <div class="eyebrow">PACED BREATHING · {{ selected.content_version }}</div><h2>{{ label(selected.status) }}</h2>
-              <p>{{ date(selected.created_at) }}</p><code class="record-id">{{ selected.id }}</code>
+              <p class="session-dates">Started <time :datetime="selected.created_at">{{ date(selected.created_at) }}</time><br><template v-if="selected.last_chat_at">Last chatted <time :datetime="selected.last_chat_at">{{ chatDate(selected.last_chat_at) }}</time></template><template v-else>No chat in this session</template></p><code class="record-id">{{ selected.id }}</code>
               <dl><div><dt>Initial cue</dt><dd>{{ selected.cue_initial || 'Not started' }}</dd></div><div><dt>{{ selected.status === 'interrupted' ? 'Last recorded cue' : 'Final cue' }}</dt><dd>{{ selected.cue_final || 'Not started' }}</dd></div><div><dt>Exercise duration</dt><dd>{{ seconds(selected.assignment_duration_ms) }}</dd></div><div><dt>Wall time / excluded pauses</dt><dd>{{ seconds(selected.wall_ms) }} / {{ seconds(selected.excluded_ms) }}</dd></div><div><dt>Entry and setup</dt><dd>{{ seconds(selected.setup_ms) }}</dd></div></dl>
               <p v-if="selected.status === 'interrupted'">Partial record. A missing final time is unknown, not a completed exercise.</p>
               <div class="button-row"><button v-if="selected.cue_final" class="secondary" :disabled="active || pendingSave || asking" @click="reuse">Use this cue next time</button><button v-if="selected.status === 'draft'" class="secondary" :disabled="active || pendingSave || asking" @click="reopenDraft">Continue these questions</button><button class="text-button danger" :disabled="active || pendingSave || asking" @click="deleteSession(selected.id)">Delete this session</button></div>
-              <h3>Saved conversation</h3><p v-if="!selected.messages.length">No questions were submitted.</p>
-              <div v-for="m in selected.messages" :key="m.id" class="message" :class="m.role"><small>{{ m.role === 'user' ? 'Fictional question' : sourceLabel(m.metadata.source) }}</small><p>{{ m.content }}</p><small v-if="m.metadata.reply_id">{{ m.metadata.reply_id }} · {{ m.metadata.prompt_version }}</small><small v-if="m.metadata.note">{{ m.metadata.note }}</small><div class="answer-sources"><a v-for="r in replySources(m.metadata.reply_id)" :key="r.id" :href="r.url" target="_blank" rel="noopener noreferrer">{{ r.label }} ↗</a></div></div>
+              <h3>Saved conversation</h3><p v-if="selected.messages.length" class="small-copy">Message times are shown in this device’s time zone.</p><p v-if="!selected.messages.length">No questions were submitted.</p>
+              <div v-for="m in selected.messages" :key="m.id" class="message" :class="m.role"><small>{{ m.role === 'user' ? 'Fictional question' : sourceLabel(m.metadata.source) }}</small><time class="message-time" :datetime="m.created_at">{{ chatDate(m.created_at) }}</time><p>{{ m.content }}</p><small v-if="m.metadata.reply_id">{{ m.metadata.reply_id }} · {{ m.metadata.prompt_version }}</small><small v-if="m.metadata.note">{{ m.metadata.note }}</small><div class="answer-sources"><a v-for="r in replySources(m.metadata.reply_id)" :key="r.id" :href="r.url" target="_blank" rel="noopener noreferrer">{{ r.label }} ↗</a></div></div>
               <details><summary>Recorded events ({{ selected.events.length }})</summary><ol><li v-for="e in selected.events" :key="e.id">{{ e.type }} · {{ seconds(e.elapsed_ms) }} <span v-if="Object.keys(e.details).length">{{ e.details }}</span></li></ol></details>
             </section>
             <div v-else class="history-empty"><span>↖</span><h2>Choose a saved session.</h2><p>Its timing, settings, and conversation appear here.</p></div>
@@ -382,7 +383,7 @@ onUnmounted(() => { audio.dispose(); window.speechSynthesis?.removeEventListener
         <HelpCenter v-if="view === 'assistant' || (view === 'ready' && status === 'ready')" />
         <div class="save-bar" role="status"><span :class="['save-dot',{unsaved:pendingSave}]"></span>{{ saved }} <button v-if="pendingSave" @click="retrySave">Retry save</button></div><p v-if="appError" class="small-copy error">{{ appError }}</p>
         <details v-if="capabilities.review_tools" class="review-tools"><summary>Coursework review tools</summary><p>Deliberate failure simulations for fictional verification. They never disable exercise or Crisis support.</p><label><input v-model="simulateModel" type="checkbox"> Simulate optional model failure</label><label><input v-model="simulateSave" type="checkbox"> Simulate session-save failure</label><details class="audio-observations"><summary>Audio playback observations (browser events, not an audio recording)</summary><ol><li v-for="(entry,i) in audioObservations" :key="i">{{ entry.at }} ms · {{ entry.message }}</li></ol></details><small>Model: {{ capabilities.model }} · host run: {{ capabilities.test_run_id }} · attempts: {{ capabilities.attempts }}/{{ capabilities.limit }}. Mock remains the default.</small></details>
-      </main><button id="assistant-launcher" class="assistant-launcher" aria-haspopup="dialog" :aria-expanded="assistantPopup" @click="openAssistantPopup"><span aria-hidden="true">✧</span><span>Ask the assistant<small>Optional app questions</small></span><span aria-hidden="true">↗</span></button><footer>PAUSE / A COURSEWORK SKILLS PROTOTYPE<span>YOUR CHOICE TO START. YOUR CHOICE TO STOP.</span></footer>
+      </main><footer>MELLO / A COURSEWORK SKILLS PROTOTYPE<span>YOUR CHOICE TO START. YOUR CHOICE TO STOP.</span></footer>
     </div>
   </div>
   <div v-if="assistantPopup" class="assistant-scrim" :inert="support || undefined" @keydown="trapPopup">
