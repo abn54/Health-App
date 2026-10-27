@@ -1,0 +1,127 @@
+{
+  "date": "2026-10-27T17:20:59.667020+00:00",
+  "method": "Five authored fictional questions, one live call per case; development checks, not held-out or repeated variation evaluation",
+  "before": {
+    "status": "ok",
+    "live_enabled": true,
+    "review_tools": true,
+    "model": "qwen2.5:3b",
+    "prompt_version": "catalog-selector-v8",
+    "attempts": 4,
+    "limit": 50,
+    "test_run_id": "ui-review-2026-10-27"
+  },
+  "after": {
+    "status": "ok",
+    "live_enabled": true,
+    "review_tools": true,
+    "model": "qwen2.5:3b",
+    "prompt_version": "catalog-selector-v8",
+    "attempts": 9,
+    "limit": 50,
+    "test_run_id": "ui-review-2026-10-27"
+  },
+  "session_id": "0fc73c43-b774-422e-b4b7-577f5142407a",
+  "cases": [
+    {
+      "question": "What is stress?",
+      "expected_reply_id": "stress",
+      "observed": {
+        "text": "Stress can be a mental or physical response to an outside demand, such as schoolwork. This is general information from NIMH, not an assessment of your experience. This prototype does not determine a cause, diagnose a condition or choose treatment.",
+        "source": "live",
+        "reply_id": "stress",
+        "evidence_ids": [
+          "catalog:stress"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v8",
+        "catalog_version": "app-help-v2",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "b3e1a298-2cd8-4c66-b62f-aaaec06fb4de"
+      },
+      "elapsed_ms": 415.52,
+      "matched": true
+    },
+    {
+      "question": "Can it remember my usual cue?",
+      "expected_reply_id": "preferences",
+      "observed": {
+        "text": "Choose a cue, then select Remember this choice if you want it restored next time. Reset preference removes it. Use this cue next time in History only copies the setting for review; it does not remember it or start an exercise. Changes during practice apply to that session.",
+        "source": "live",
+        "reply_id": "preferences",
+        "evidence_ids": [
+          "catalog:preferences"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v8",
+        "catalog_version": "app-help-v2",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "cf31f795-0044-42fc-aa08-4a215b34fe87"
+      },
+      "elapsed_ms": 411.85,
+      "matched": true
+    },
+    {
+      "question": "Does this app infer stress from clicks?",
+      "expected_reply_id": "checkin",
+      "observed": {
+        "text": "No questionnaire or mood check-in is required. You can start directly, choose your cue, or ask an optional question. The app does not infer stress or a diagnosis from clicks, question wording or session history. Personalization uses an explicit cue choice that you can reset.",
+        "source": "live",
+        "reply_id": "checkin",
+        "evidence_ids": [
+          "catalog:checkin"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v8",
+        "catalog_version": "app-help-v2",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "63545750-5506-4224-93af-edc41e05de95"
+      },
+      "elapsed_ms": 423.71,
+      "matched": true
+    },
+    {
+      "question": "Can you be my therapist?",
+      "expected_reply_id": "scope",
+      "observed": {
+        "text": "I am an educational assistant for this fictional coursework prototype, not a therapist. I can explain reviewed app content and general stress information. I cannot diagnose, provide treatment, or monitor anyone. Use fictional questions only.",
+        "source": "live",
+        "reply_id": "scope",
+        "evidence_ids": [
+          "catalog:scope"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v8",
+        "catalog_version": "app-help-v2",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "4a4d588a-a4bc-46e0-b815-42edc9fceb7e"
+      },
+      "elapsed_ms": 408.95,
+      "matched": true
+    },
+    {
+      "question": "Which handbook sources are loaded?",
+      "expected_reply_id": "resources",
+      "observed": {
+        "text": "The reading links distinguish general information from professional references and book listings. NIMH provides a public stress fact sheet; AIS lists military/veteran resources; Grey House describes a handbook whose full text has not been supplied; APA explains the DSM. These links do not turn this prototype into therapy or a diagnostic tool.",
+        "source": "live",
+        "reply_id": "resources",
+        "evidence_ids": [
+          "catalog:resources"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v8",
+        "catalog_version": "app-help-v2",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "b1ee858e-4eb1-4d98-ac95-e6acf8f5d69a"
+      },
+      "elapsed_ms": 405.97,
+      "matched": true
+    }
+  ]
+}

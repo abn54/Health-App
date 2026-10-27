@@ -1,6 +1,10 @@
 <script setup>
 import { computed, nextTick, onMounted, onUnmounted, ref } from 'vue'
 import { Exercise, phraseCue } from './engine.js'
+import AssistantPanel from './components/AssistantPanel.vue'
+import HelpCenter from './components/HelpCenter.vue'
+import RhythmGuide from './components/RhythmGuide.vue'
+import helpContent from '../../shared/help-content.json'
 
 const reduced = matchMedia('(prefers-reduced-motion: reduce)')
 const cue = ref(reduced.matches ? 'text' : 'animated')
@@ -11,6 +15,9 @@ const history = ref([]), selected = ref(null), historyError = ref(''), deleteCon
 const questionText = ref(''), messages = ref([]), asking = ref(false), questionError = ref(''), mode = ref('mock')
 const capabilities = ref({ live_enabled: false, review_tools: false, attempts: 0, limit: 50 })
 const simulateModel = ref(false), simulateSave = ref(false), retryTurn = ref(null), assistantOpen = ref(false)
+const assistantPopup = ref(false)
+let popupReturnFocus
+const replySources = topic => (helpContent.topics[topic]?.sources || []).map(id=>helpContent.resources.find(r=>r.id===id)).filter(Boolean)
 const engine = new Exercise()
 const active = computed(() => ['running', 'paused'].includes(status.value))
 const terminal = computed(() => ['completed', 'stopped', 'interrupted'].includes(status.value))
@@ -140,7 +147,7 @@ function openSupport() {
 function closeSupport() {
   support.value = false
   if (active.value) { event('support_close'); queueSave() }
-  nextTick(() => document.querySelector('#support-control')?.focus())
+  nextTick(() => document.querySelector(assistantPopup.value ? '#popup-support-control' : '#support-control')?.focus())
 }
 function trapSupport(e) {
   if (e.key === 'Escape') { closeSupport(); return }
@@ -162,6 +169,31 @@ function openAssistant() {
   if (terminal.value && !pendingSave.value && !asking.value && !finalizing) ready()
   view.value = 'assistant'; assistantOpen.value = true
   nextTick(() => document.querySelector(status.value === 'ready' ? '#app-question' : '#assistant-heading')?.focus())
+}
+function openAssistantPopup() {
+  popupReturnFocus = document.activeElement
+  if (status.value === 'running') pause()
+  assistantPopup.value = true; assistantOpen.value = true
+  nextTick(() => document.querySelector('#assistant-popup-heading')?.focus())
+}
+function closeAssistantPopup() {
+  assistantPopup.value = false
+  nextTick(() => {
+    if (popupReturnFocus?.isConnected) popupReturnFocus.focus()
+    else document.querySelector('#assistant-launcher')?.focus()
+  })
+}
+function newPopupQuestions() {
+  ready(); assistantOpen.value = true
+  nextTick(() => document.querySelector('#app-question')?.focus())
+}
+function trapPopup(e) {
+  if (support.value) return
+  if (e.key === 'Escape') { e.preventDefault(); closeAssistantPopup(); return }
+  if (e.key !== 'Tab') return
+  const nodes = [...e.currentTarget.querySelectorAll('button,a[href],input,select,summary')].filter(n => !n.disabled && n.getClientRects().length)
+  if (e.shiftKey && (document.activeElement === nodes[0] || document.activeElement.id === 'assistant-popup-heading')) { e.preventDefault(); nodes.at(-1)?.focus() }
+  else if (!e.shiftKey && document.activeElement === nodes.at(-1)) { e.preventDefault(); nodes[0]?.focus() }
 }
 function ready(discard = false) {
   const leaveUnsaved = discard === true
@@ -229,7 +261,7 @@ onUnmounted(() => { cancelAnimationFrame(raf); document.removeEventListener('vis
 </script>
 
 <template>
-  <div class="app-shell" :inert="support || undefined">
+  <div class="app-shell" :inert="support || assistantPopup || undefined">
     <aside class="sidebar">
       <a class="brand" href="#" @click.prevent="active ? returnExercise() : view = 'ready'"><span class="brand-mark">p.</span> pause<span class="brand-dot">®</span></a>
       <div class="workspace-label">A LITTLE ROOM TO PRACTICE</div>
@@ -262,7 +294,7 @@ onUnmounted(() => { cancelAnimationFrame(raf); document.removeEventListener('vis
               <p v-if="selected.status === 'interrupted'">Partial record. A missing final time is unknown, not a completed exercise.</p>
               <div class="button-row"><button v-if="selected.cue_final" class="secondary" :disabled="active || pendingSave || asking" @click="reuse">Use this cue next time</button><button v-if="selected.status === 'draft'" class="secondary" :disabled="active || pendingSave || asking" @click="reopenDraft">Continue these questions</button><button class="text-button danger" :disabled="active || pendingSave || asking" @click="deleteSession(selected.id)">Delete this session</button></div>
               <h3>Saved conversation</h3><p v-if="!selected.messages.length">No questions were submitted.</p>
-              <div v-for="m in selected.messages" :key="m.id" class="message" :class="m.role"><small>{{ m.role === 'user' ? 'Fictional question' : sourceLabel(m.metadata.source) }}</small><p>{{ m.content }}</p><small v-if="m.metadata.reply_id">{{ m.metadata.reply_id }} · {{ m.metadata.prompt_version }}</small><small v-if="m.metadata.note">{{ m.metadata.note }}</small></div>
+              <div v-for="m in selected.messages" :key="m.id" class="message" :class="m.role"><small>{{ m.role === 'user' ? 'Fictional question' : sourceLabel(m.metadata.source) }}</small><p>{{ m.content }}</p><small v-if="m.metadata.reply_id">{{ m.metadata.reply_id }} · {{ m.metadata.prompt_version }}</small><small v-if="m.metadata.note">{{ m.metadata.note }}</small><div class="answer-sources"><a v-for="r in replySources(m.metadata.reply_id)" :key="r.id" :href="r.url" target="_blank" rel="noopener noreferrer">{{ r.label }} ↗</a></div></div>
               <details><summary>Recorded events ({{ selected.events.length }})</summary><ol><li v-for="e in selected.events" :key="e.id">{{ e.type }} · {{ seconds(e.elapsed_ms) }} <span v-if="Object.keys(e.details).length">{{ e.details }}</span></li></ol></details>
             </section>
             <div v-else class="history-empty"><span>↖</span><h2>Choose a saved session.</h2><p>Its timing, settings, and conversation appear here.</p></div>
@@ -277,20 +309,37 @@ onUnmounted(() => { cancelAnimationFrame(raf); document.removeEventListener('vis
         <template v-else-if="status === 'ready'">
           <div class="page-heading"><div><div class="eyebrow">A SMALL, GUIDED PRACTICE</div><h1>Make room for<br>one minute<span>.</span></h1><p>Follow a steady rhythm. No writing required.<br>You can pause or end whenever you choose.</p></div><div class="edition">01 / 01<br><span>THE BREATHING PRACTICE</span></div></div>
           <div class="practice-grid">
-            <section class="practice-card"><div class="card-top"><span class="pill">PACED BREATHING</span><span class="duration">↗ 60 seconds</span></div><div class="preview-orbit"><div class="preview-circle"><span>4 <i>/</i> 6</span><small>INHALE / EXHALE</small></div><span class="orbit-label">SIX CYCLES · ONE SECOND PER COUNT</span></div><div class="practice-description"><h2>A rhythm you can follow.</h2><p>Inhale for 4 counts. Exhale for 6.<br>The words and count carry the pace.</p></div><button class="primary start-button" @click="start">Start 60-second exercise <span>→</span></button><small class="card-footnote">No question or model response needed to start.</small></section>
+            <section class="practice-card">
+              <div class="card-top"><span class="pill">PACED BREATHING</span><span class="duration">↗ 60 seconds</span></div>
+              <div class="practice-description"><h2>A rhythm you can follow.</h2><p>Inhale for 4 counts. Exhale for 6.<br>The words and count carry the pace.</p></div>
+              <button class="primary start-button" @click="start">Start 60-second exercise <span>→</span></button><small class="card-footnote">No question or model response needed to start.</small>
+              <div class="preview-orbit"><div class="preview-circle"><span>4 <i>/</i> 6</span><small>INHALE / EXHALE</small></div><span class="orbit-label">SIX CYCLES · ONE SECOND PER COUNT</span></div>
+              <RhythmGuide />
+            </section>
             <div class="side-stack"><section class="card settings-card"><div class="eyebrow">MAKE IT YOURS</div><h2>Choose your cue.</h2><p>Same rhythm. A different way to follow it.</p><div class="cue-options" role="group" aria-label="Pacing cue"><button :aria-pressed="cue === 'animated'" @click="changeCue('animated')"><span>◯</span><strong>Animated circle</strong><small>Movement + words</small></button><button :aria-pressed="cue === 'text'" @click="changeCue('text')"><span>Aa</span><strong>Text only</strong><small>Words + count</small></button></div><p class="small-copy">{{ remembered ? `Remembered setting: ${remembered === 'text' ? 'Text only' : 'Animated circle'}.` : 'Nothing remembered. Your system motion setting is the default.' }} You can change the cue during the exercise.</p><div class="button-row"><button class="text-button" @click="remember">Remember this choice</button><button v-if="remembered" class="text-button" @click="resetPreference">Reset preference</button></div><p v-if="prefStatus" role="status" class="small-copy">{{ prefStatus }}</p></section>
             <section class="about-card"><span class="tiny-spark">✳</span><div><h3>A practice, without a score.</h3><p>There is no rating to enter and no outcome to prove. History records only what happened in this prototype.</p></div></section></div>
           </div>
         </template>
         <template v-else>
-          <section v-if="active" class="exercise-panel" aria-label="Active exercise"><div class="exercise-top"><span class="eyebrow">{{ status === 'paused' ? 'PAUSED · YOUR CHOICE TO CONTINUE' : 'FOLLOW THE WORDS AND COUNT' }}</span><span class="pill">Cycle {{ reading.cycle }} of 6</span></div><div class="exercise-space"><div v-if="cue === 'animated'" class="breathing-orbit" :style="{'--breath-scale':reading.scale}" aria-hidden="true"><div></div></div><div class="instruction"><h1 id="exercise-heading" tabindex="-1">{{ status === 'paused' ? 'Paused' : reading.phase }}</h1><div class="count">{{ reading.count }}<span> / {{ reading.phase === 'Inhale' ? 4 : 6 }}</span></div><p>{{ status === 'paused' ? `Holding ${reading.phase.toLowerCase()}, count ${reading.count}.` : reading.phase === 'Inhale' ? 'Four counts in.' : 'Six counts out.' }}</p></div></div><progress max="60000" :value="reading.elapsed" aria-label="Exercise progress"></progress><div class="exercise-controls"><button v-if="status === 'running'" class="primary" @click="pause">Ⅱ Pause</button><button v-else class="primary" @click="resume">Resume →</button><button class="secondary" @click="finish('stopped')">End exercise</button></div><div class="cue-inline"><label for="active-cue">Pacing cue</label><select id="active-cue" :value="cue" @change="changeCue($event.target.value)"><option value="animated">Animated circle</option><option value="text">Text only</option></select><small>Changing the cue keeps your place.</small></div></section>
+          <section v-if="active" class="exercise-panel" :data-phase="status === 'paused' ? 'paused' : reading.phase.toLowerCase()" aria-label="Active exercise"><div class="exercise-top"><span class="eyebrow">{{ status === 'paused' ? 'PAUSED · YOUR CHOICE TO CONTINUE' : 'FOLLOW THE WORDS AND COUNT' }}</span><span class="pill">Cycle {{ reading.cycle }} of 6</span></div><div class="phase-key" aria-label="Phase colors"><span :class="{current:status === 'running' && reading.phase === 'Inhale'}"><i class="phase-dot inhale-dot"></i> Inhale · 4</span><span :class="{current:status === 'running' && reading.phase === 'Exhale'}"><i class="phase-dot exhale-dot"></i> Exhale · 6</span></div><span class="sr-only" role="status">{{ status === 'paused' ? 'Exercise paused' : reading.phase }}</span><div class="exercise-space"><div v-if="cue === 'animated'" class="breathing-orbit" :style="{'--breath-scale':reading.scale}" aria-hidden="true"><div></div></div><div class="instruction"><span class="phase-tag">{{ status === 'paused' ? 'Your place is held' : reading.phase === 'Inhale' ? 'Expand · green cue' : 'Release · blue cue' }}</span><h1 id="exercise-heading" tabindex="-1">{{ status === 'paused' ? 'Paused' : reading.phase }}</h1><div class="count">{{ reading.count }}<span> / {{ reading.phase === 'Inhale' ? 4 : 6 }}</span></div><p>{{ status === 'paused' ? `Holding ${reading.phase.toLowerCase()}, count ${reading.count}.` : reading.phase === 'Inhale' ? 'Four counts in.' : 'Six counts out.' }}</p></div></div><div class="cycle-dots" aria-label="Cycle position"><span v-for="n in 6" :key="n" :class="{passed:n < reading.cycle,current:n === reading.cycle}" :aria-label="`Cycle ${n}${n === reading.cycle ? ', current' : ''}`"></span></div><progress max="60000" :value="reading.elapsed" aria-label="Exercise progress"></progress><div class="exercise-controls"><button v-if="status === 'running'" class="primary" @click="pause">Ⅱ Pause</button><button v-else class="primary" @click="resume">Resume →</button><button class="secondary" @click="finish('stopped')">End exercise</button></div><div class="cue-inline"><label for="active-cue">Pacing cue</label><select id="active-cue" :value="cue" @change="changeCue($event.target.value)"><option value="animated">Animated circle</option><option value="text">Text only</option></select><small>Changing the cue keeps your place.</small></div></section>
           <section v-else class="summary-panel"><span class="summary-icon">{{ status === 'completed' ? '✓' : '◌' }}</span><div class="eyebrow">{{ label(status) }} · PACED BREATHING</div><h1 id="summary-heading" tabindex="-1">{{ title }}</h1><p>{{ status === 'completed' ? 'The planned sequence has finished. Stay here as long as you like.' : status === 'interrupted' ? 'The page was hidden or scheduling stopped. Review your settings before starting a new exercise.' : 'This is a partial session. You can review it or return when you choose.' }}</p><div class="timing-grid"><div><strong>{{ seconds(current?.assignment_duration_ms) }}</strong><span>{{ status === 'completed' ? 'Measured exercise' : 'Partial exercise time' }}</span></div><div><strong>{{ seconds(current?.setup_ms) }}</strong><span>Entry and setup</span></div><div><strong>{{ seconds(current?.excluded_ms) }}</strong><span>User pause / support</span></div></div><p class="small-copy">Timing includes application and render delays. Explicit pause and support intervals are excluded once. Interrupted sessions do not establish completion.</p><div class="button-row"><button class="primary" :disabled="pendingSave || asking || finalizing" @click="ready">Return to ready →</button><button class="secondary" @click="openHistory">Review saved history</button></div><div v-if="pendingSave" class="unsaved-exit"><p class="small-copy">You can leave without waiting for a save. Unsaved changes may be lost; records already saved remain in History.</p><button class="secondary" @click="ready(true)">Leave without saving</button></div></section>
         </template>
-        <section v-if="view === 'assistant' || (view === 'ready' && status === 'ready')" class="card questions-card" :class="{'assistant-questions':view === 'assistant'}"><details :open="assistantOpen" @toggle="assistantOpen = $event.target.open"><summary><span><strong>Questions about the prototype?</strong><small>Optional · pacing, controls, settings, and saved records</small></span><span aria-hidden="true">＋</span></summary><div class="question-body"><p>Use a fictional app question. Replies come from an approved catalog; this is not a support conversation.</p><div class="mode-row"><label>Reply mode <select v-model="mode"><option value="mock">Mock (default)</option><option value="live" :disabled="!capabilities.live_enabled">Live local model</option></select></label><small v-if="mode === 'live'">Local Ollama · sends this question and approved app facts. Earlier messages stay in History. {{ capabilities.attempts }}/{{ capabilities.limit }} host attempts used.</small></div><div class="conversation" aria-live="polite"><div v-for="(m,i) in messages" :key="i" class="message" :class="m.role"><small>{{ m.role === 'user' ? 'Fictional question' : sourceLabel(m.source) }}</small><p>{{ m.text }}</p><small v-if="m.note">{{ m.note }}</small></div><p v-if="asking" role="status">Getting an optional explanation… Start remains available.</p><p v-if="questionError" class="error" role="alert">{{ questionError }}</p><button v-if="retryTurn && !asking && questionError && status === 'ready'" @click="ask(true)">Retry this question</button></div><form @submit.prevent="ask(false)"><label for="app-question">Your app question</label><div class="input-row"><input id="app-question" v-model="questionText" maxlength="500" placeholder="Can I turn off the moving circle?" :disabled="asking || status !== 'ready'"><button class="primary" :disabled="asking || status !== 'ready' || !questionText.trim()" type="submit">Ask →</button></div><small>{{ questionText.length }}/500 characters</small></form></div></details></section>
+        <AssistantPanel v-if="!assistantPopup && (view === 'assistant' || (view === 'ready' && status === 'ready'))" v-model:mode="mode" v-model:question-text="questionText" v-model:expanded="assistantOpen" :messages="messages" :capabilities="capabilities" :asking="asking" :question-error="questionError" :retry-available="!!retryTurn" :ready="status === 'ready'" @ask="ask" />
+        <HelpCenter v-if="view === 'assistant' || (view === 'ready' && status === 'ready')" />
         <div class="save-bar" role="status"><span :class="['save-dot',{unsaved:pendingSave}]"></span>{{ saved }} <button v-if="pendingSave" @click="retrySave">Retry save</button></div><p v-if="appError" class="small-copy error">{{ appError }}</p>
         <details v-if="capabilities.review_tools" class="review-tools"><summary>Coursework review tools</summary><p>Deliberate failure simulations for fictional verification. They never disable exercise or Crisis support.</p><label><input v-model="simulateModel" type="checkbox"> Simulate optional model failure</label><label><input v-model="simulateSave" type="checkbox"> Simulate session-save failure</label><small>Model: {{ capabilities.model }} · host run: {{ capabilities.test_run_id }} · attempts: {{ capabilities.attempts }}/{{ capabilities.limit }}. Mock remains the default.</small></details>
-      </main><footer>PAUSE / A COURSEWORK SKILLS PROTOTYPE<span>YOUR CHOICE TO START. YOUR CHOICE TO STOP.</span></footer>
+      </main><button id="assistant-launcher" class="assistant-launcher" aria-haspopup="dialog" :aria-expanded="assistantPopup" @click="openAssistantPopup"><span aria-hidden="true">✧</span><span>Ask the assistant<small>Optional app questions</small></span><span aria-hidden="true">↗</span></button><footer>PAUSE / A COURSEWORK SKILLS PROTOTYPE<span>YOUR CHOICE TO START. YOUR CHOICE TO STOP.</span></footer>
     </div>
+  </div>
+  <div v-if="assistantPopup" class="assistant-scrim" :inert="support || undefined" @keydown="trapPopup">
+    <section class="assistant-popup" role="dialog" aria-modal="true" aria-labelledby="assistant-popup-heading" aria-describedby="assistant-popup-description">
+      <div class="assistant-popup-top"><div><span class="eyebrow">A LITTLE CLARITY, WHEN YOU WANT IT</span><h2 id="assistant-popup-heading" tabindex="-1"><span aria-hidden="true">✧</span> AI assistant</h2></div><button class="popup-close" aria-label="Close assistant" @click="closeAssistantPopup">×</button></div>
+      <div class="assistant-popup-tools"><p id="assistant-popup-description">Fictional coursework · educational information</p><button id="popup-support-control" class="support-button" @click="openSupport">Crisis support</button></div>
+      <div v-if="active" class="banner">Your exercise is paused at {{ reading.phase.toLowerCase() }} count {{ reading.count }}. Close this window to return; Resume remains your choice.<div><button @click="returnExercise(); closeAssistantPopup()">Return to exercise</button><button @click="finish('stopped'); closeAssistantPopup()">End exercise</button></div></div>
+      <div v-else-if="terminal" class="banner">This session has ended.<div><button :disabled="pendingSave || asking || finalizing" @click="newPopupQuestions">Start new questions</button><button @click="closeAssistantPopup">Return to summary</button></div></div>
+      <AssistantPanel v-model:mode="mode" v-model:question-text="questionText" v-model:expanded="assistantOpen" :messages="messages" :capabilities="capabilities" :asking="asking" :question-error="questionError" :retry-available="!!retryTurn" :ready="status === 'ready'" popup @ask="ask" />
+      <div class="popup-save"><span role="status">{{ saved }}</span><button v-if="pendingSave" @click="retrySave">Retry save</button><button @click="closeAssistantPopup">Close assistant →</button></div>
+    </section>
   </div>
   <div v-if="support" class="modal-scrim" @keydown="trapSupport"><section class="support-panel" role="dialog" aria-modal="true" aria-labelledby="support-heading"><div class="eyebrow">AVAILABLE INDEPENDENTLY OF THE APP SERVER</div><h1 id="support-heading" tabindex="-1">Crisis support</h1><p>This coursework prototype cannot respond to a crisis or connect you to a person. Nobody monitors this app.</p><div class="resource-card"><span class="pill">UNITED STATES</span><h2>988 Suicide &amp; Crisis Lifeline</h2><p><a href="tel:988?oai_link_source=model_response_hotline">Call 988</a><a href="sms:988?oai_link_source=model_response_hotline">Text 988</a></p><a href="https://988lifeline.org/chat/?oai_link_source=model_response_hotline" target="_blank" rel="noopener noreferrer">Open Lifeline chat ↗</a><p class="small-copy">Outside the United States, use the crisis or emergency resources for your location. This app does not determine your location.</p></div><p v-if="active">Your exercise is paused. Return leaves it paused; use Resume when you choose.</p><p v-if="status === 'interrupted'">Your exercise was interrupted while this panel was open.</p><div class="button-row"><button class="primary" @click="closeSupport">Return to prototype</button><button v-if="active" class="secondary" @click="finish('stopped'); closeSupport()">End exercise</button></div></section></div>
 </template>

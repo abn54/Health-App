@@ -177,3 +177,23 @@ def test_host_preload_uses_same_budget_and_skips_at_cap(client,monkeypatch):
     assert client.get('/api/health').json()['attempts']==1
     with m.db() as c:
         assert c.execute('SELECT outcome FROM model_attempts').fetchone()[0]=='preload-complete'
+
+
+@pytest.mark.parametrize('question,topic', [
+    ('Can you be my therapist?', 'scope'),
+    ('What is stress?', 'stress'),
+    ('Does this app infer stress from clicks?', 'checkin'),
+    ('Can it remember my usual cue?', 'preferences'),
+    ('Which handbook sources are loaded?', 'resources'),
+])
+def test_expanded_help_is_catalog_text_without_preference_or_session_control(client, question, topic):
+    sid, _ = create(client)
+    result = ask(client, sid, question).json()
+    assert result['source'] == 'mock' and result['reply_id'] == topic
+    assert result['text'] == m.CATALOG[topic]
+    assert result['catalog_version'] == 'app-help-v2'
+    detail = client.get('/api/sessions/' + sid).json()
+    assert detail['status'] == 'draft' and detail['events'] == []
+    assert detail['messages'][-1]['content'] == result['text']
+    assert client.get('/api/preferences').json() == {'cue': None}
+    assert client.get('/api/health').json()['attempts'] == 0

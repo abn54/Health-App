@@ -4,7 +4,9 @@ Vue, FastAPI, and SQLite application running on **localhost only**. Complete six
 
 **Fictional coursework use only.** This is not therapy, diagnosis, or a monitored service. Do not deploy or recommend it as mental health support.
 
-Repository: [abn54/Health-App](https://github.com/abn54/Health-App). Submission: [report.md](report.md). The original design report is retained in [submissions/part1/report.md](submissions/part1/report.md).
+Repository: [abn54/Health-App](https://github.com/abn54/Health-App). Submission: [report.md](report.md). The original design report is retained in [submissions/part1/report.md](submissions/part1/report.md). The October 21 Part 2 report is archived in [submissions/part2/report.md](submissions/part2/report.md).
+
+Current refinements: color-coded inhale/exhale, an optional assistant popup, eleven FAQs, six editable suggested questions, an SVG rhythm guide and a source-labeled reading shelf. [October 27 changes and actual verification](docs/ui-refinement-oct27.md).
 
 ## Run a clean checkout
 
@@ -35,7 +37,7 @@ ollama pull qwen2.5:3b
 ALLOW_LIVE_MODEL=1 OLLAMA_MODEL=qwen2.5:3b MODEL_TEST_RUN_ID=peer-review-01 MODEL_ATTEMPT_LIMIT=50 sh scripts/run.sh
 ```
 
-The startup script explicitly preloads the local model (up to 60 seconds, outside the exercise) and counts that provider attempt. Cold startup exceeded the eight-second question timeout during development. If preload fails, the app still starts. The UI still defaults to Mock. Choose **AI assistant** in the left sidebar (or expand **Questions about the prototype?** on Practice), then select **Live local model**, and ask a fictional app question such as “What stays after I close this?” FastAPI sends the current question and approved app facts with authored classification examples (earlier messages and the selected cue are not sent) to local Ollama. Only validated catalog text can appear. The tested model is listed on the [official model page](https://ollama.com/library/qwen2.5:3b), including its license; the model files are not redistributed in this repository. Missing Ollama, an eight-second timeout, malformed or disallowed selection returns a fixed fallback; Start and Crisis support remain available.
+The startup script explicitly preloads the local model (up to 60 seconds, outside the exercise) and counts that provider attempt. Cold startup exceeded the eight-second question timeout during development. If preload fails, the app still starts. The UI still defaults to Mock. Choose **Ask the assistant** for the popup, **AI assistant** in the sidebar, or expand **Questions, without the pressure.** on Practice, then select **Live local model**, and ask a fictional app question such as “What stays after I close this?” FastAPI sends the current question and approved app facts with authored classification examples (earlier messages and the selected cue are not sent) to local Ollama. Only reviewed catalog text can appear after validation. The assistant is educational, not a therapist; it cannot diagnose or provide treatment. General stress answers link their NIMH source; handbook listings are not treated as full-text evidence. The tested model is listed on the [official model page](https://ollama.com/library/qwen2.5:3b), including its license; the model files are not redistributed in this repository. Missing Ollama, an eight-second timeout, malformed or disallowed selection returns a fixed fallback; Start and Crisis support remain available.
 
 `MODEL_TEST_RUN_ID` identifies the host's peer-test session. Reuse it across restarts of that session: attempted, failed, and retried provider calls count toward an aggregate SQLite budget capped at 50. History deletion does not reset accounting. At the limit replies use visibly labeled mocks. Start a new ID only for a genuinely new host-controlled test session. Do not run multiple differently configured hosts against the same database. Model files are not committed.
 
@@ -58,7 +60,7 @@ For deliberate fictional failures, launch with `REVIEW_TOOLS=1`. Expand **Course
 
 1. Choose Animated circle or Text only. Remember is explicit; Reset removes the saved preference. Changing the active cue never changes the remembered preference or pace.
 2. Start without questions. Pause preserves the phase/count fraction; Resume is explicit. End is immediate. Completion leaves the summary on screen.
-3. Open Crisis support during an exercise: it pauses. Return leaves it paused. History behaves the same way and retains Return and End controls.
+3. Opening the assistant popup during practice pauses it and disables new questions. Close returns to the paused exercise; Resume is explicit. Crisis support remains inside the popup header. Open Crisis support during an exercise: it pauses. Return leaves it paused. History behaves the same way and retains Return and End controls.
 4. Review History: status, initial/final cue, timing, events, and conversation source labels. Draft questions are “Not started.” Reuse copies a recorded cue into Ready without starting or remembering it.
 5. Deleting a session removes its conversation/events. Delete all additionally resets the preference after confirmation. Provider-attempt accounting remains. Unsaved records stay only in page memory with Retry; the summary also offers Leave without saving, so a failed write cannot trap someone after End. Unsaved changes may be lost; already saved records remain in History.
 
@@ -71,7 +73,8 @@ One active page/tab is assumed. Hiding the page or a scheduling gap over two sec
 | `frontend/src/App.vue` | UI, explicit choices, persistence journal, bundled support |
 | `frontend/src/engine.js` | Deterministic state and monotonic pacing |
 | `backend/main.py` | Validated API, migration, SQLite, Ollama adapter, atomic budget |
-| `backend/catalog.py` | Authored approved responses, mocks, fallible phrase cues |
+| `backend/catalog.py`, `shared/help-content.json` | Shared reviewed FAQ/model copy, sources, mocks and fallible phrase cues |
+| `frontend/src/components/` | Shared assistant panel, FAQ/reading shelf and original SVG rhythm guide |
 | `docs/design.md`, `docs/architecture.md`, `docs/research-findings.md` | Design, implementation revisions and full R/D mapping |
 | `docs/dataset-design-notes.md` | Actual use and inspection limits of supplied Kaggle resource |
 | `docs/part2-verification.md`, `docs/evidence/` | Actual observations and redacted evidence |

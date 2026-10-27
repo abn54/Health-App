@@ -1,0 +1,577 @@
+{
+  "date": "2026-10-27T17:33:24.054497+00:00",
+  "method": "Read-only inspection of the isolated October 27 fictional verification database. Original user workspace records are not exported.",
+  "sqlite_version": "3.50.4",
+  "integrity_check": "ok",
+  "foreign_key_check": [],
+  "tables": {
+    "migrations": 1,
+    "sessions": 6,
+    "events": 8,
+    "messages": 22,
+    "preferences": 1,
+    "model_attempts": 9
+  },
+  "sessions": [
+    {
+      "id": "f630742f-433f-458d-9d6a-dcd9ec3f8704",
+      "assignment_duration_ms": null,
+      "content_version": "breathing-4-6-v1",
+      "created_at": "2026-10-27T17:17:56.774000Z",
+      "cue_final": null,
+      "cue_initial": null,
+      "events": [],
+      "excluded_ms": 0.0,
+      "final_step_at": null,
+      "first_instruction_at": null,
+      "revision": 2,
+      "setup_ms": null,
+      "status": "draft",
+      "wall_ms": null
+    },
+    {
+      "id": "f7a2f911-4bc2-41bf-a4b0-d598dd6de467",
+      "assignment_duration_ms": null,
+      "content_version": "breathing-4-6-v1",
+      "created_at": "2026-10-27T17:20:18.124702Z",
+      "cue_final": null,
+      "cue_initial": null,
+      "events": [],
+      "excluded_ms": 0.0,
+      "final_step_at": null,
+      "first_instruction_at": null,
+      "revision": 1,
+      "setup_ms": null,
+      "status": "draft",
+      "wall_ms": null
+    },
+    {
+      "id": "b1ecfb1d-0b0d-4095-b8fa-cfc847ac2fb7",
+      "assignment_duration_ms": 60016.59999999404,
+      "content_version": "breathing-4-6-v1",
+      "created_at": "2026-10-27T17:20:43.039000Z",
+      "cue_final": "animated",
+      "cue_initial": "animated",
+      "events": [
+        {
+          "details": {},
+          "elapsed_ms": 0.09999999403953552,
+          "id": "2749e41f-3800-4f1f-ab7e-66cfeb8d8410",
+          "sequence": 1,
+          "type": "start"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 60000.0,
+          "id": "e2855198-4ee3-47a1-8456-9259220e6ca9",
+          "sequence": 2,
+          "type": "completed"
+        }
+      ],
+      "excluded_ms": 0.0,
+      "final_step_at": "2026-10-27T17:21:43.055000Z",
+      "first_instruction_at": "2026-10-27T17:20:43.039000Z",
+      "revision": 3,
+      "setup_ms": 18153.20000000298,
+      "status": "completed",
+      "wall_ms": 60016.59999999404
+    },
+    {
+      "id": "0fc73c43-b774-422e-b4b7-577f5142407a",
+      "assignment_duration_ms": null,
+      "content_version": "breathing-4-6-v1",
+      "created_at": "2026-10-27T17:20:57.597765Z",
+      "cue_final": null,
+      "cue_initial": null,
+      "events": [],
+      "excluded_ms": 0.0,
+      "final_step_at": null,
+      "first_instruction_at": null,
+      "revision": 1,
+      "setup_ms": null,
+      "status": "draft",
+      "wall_ms": null
+    },
+    {
+      "id": "dc1242db-28b9-47c9-86cc-448b9b4cff81",
+      "assignment_duration_ms": 757.6999999880791,
+      "content_version": "breathing-4-6-v1",
+      "created_at": "2026-10-27T17:22:55.247000Z",
+      "cue_final": "animated",
+      "cue_initial": "animated",
+      "events": [
+        {
+          "details": {},
+          "elapsed_ms": 0.0,
+          "id": "2aeed9fe-6498-46ae-b44b-8bd90e001186",
+          "sequence": 1,
+          "type": "start"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 487.59999999403954,
+          "id": "3049244a-b8f3-4fb8-94c8-bbb971a6cebf",
+          "sequence": 2,
+          "type": "pause"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 487.59999999403954,
+          "id": "22b9b335-a6d1-4e85-a14a-208f817b661f",
+          "sequence": 3,
+          "type": "support_open"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 487.59999999403954,
+          "id": "ada46f72-7d1f-4c32-94ee-c806fc77d797",
+          "sequence": 4,
+          "type": "support_close"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 487.59999999403954,
+          "id": "1cd658b6-70cc-4f75-9753-1ca655b723b5",
+          "sequence": 5,
+          "type": "resume"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 753.5999999940395,
+          "id": "da1c5826-397b-4891-b19a-a02d7132242d",
+          "sequence": 6,
+          "type": "stopped"
+        }
+      ],
+      "excluded_ms": 11251.0,
+      "final_step_at": null,
+      "first_instruction_at": "2026-10-27T17:22:55.247000Z",
+      "revision": 7,
+      "setup_ms": 26003.60000000894,
+      "status": "stopped",
+      "wall_ms": 12008.699999988079
+    },
+    {
+      "id": "cfd14fd4-6aed-44c5-8b44-7f123bab8348",
+      "assignment_duration_ms": null,
+      "content_version": "breathing-4-6-v1",
+      "created_at": "2026-10-27T17:32:03.981000Z",
+      "cue_final": null,
+      "cue_initial": null,
+      "events": [],
+      "excluded_ms": 0.0,
+      "final_step_at": null,
+      "first_instruction_at": null,
+      "revision": 2,
+      "setup_ms": null,
+      "status": "draft",
+      "wall_ms": null
+    }
+  ],
+  "messages": [
+    {
+      "id": "cffb1970-1171-4d5d-b82d-4fa34dd64a84",
+      "session_id": "f630742f-433f-458d-9d6a-dcd9ec3f8704",
+      "turn_id": "4a342a6b-f159-4b8b-8a81-b462ffa16aef",
+      "role": "user",
+      "content": "What is stress?",
+      "metadata": {},
+      "created_at": "2026-10-27T17:17:56.806416+00:00"
+    },
+    {
+      "id": "3655f044-db88-4359-9f76-dd89b874f1fd",
+      "session_id": "f630742f-433f-458d-9d6a-dcd9ec3f8704",
+      "turn_id": "4a342a6b-f159-4b8b-8a81-b462ffa16aef",
+      "role": "assistant",
+      "content": "Stress can be a mental or physical response to an outside demand, such as schoolwork. This is general information from NIMH, not an assessment of your experience. This prototype does not determine a cause, diagnose a condition or choose treatment.",
+      "metadata": {
+        "source": "mock",
+        "reply_id": "stress",
+        "evidence_ids": [
+          "catalog:stress"
+        ],
+        "model_id": null,
+        "prompt_version": "catalog-selector-v8",
+        "catalog_version": "app-help-v2",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": null
+      },
+      "created_at": "2026-10-27T17:17:56.807793+00:00"
+    },
+    {
+      "id": "c8f0e29c-990d-4fc1-b802-59b6ecdff880",
+      "session_id": "f630742f-433f-458d-9d6a-dcd9ec3f8704",
+      "turn_id": "3dd2e417-8aeb-4f27-b92d-41ca74914717",
+      "role": "user",
+      "content": "Can you be my therapist?",
+      "metadata": {},
+      "created_at": "2026-10-27T17:18:34.304025+00:00"
+    },
+    {
+      "id": "c7ff1361-6fc5-40f1-b2d0-f657506e20f2",
+      "session_id": "f630742f-433f-458d-9d6a-dcd9ec3f8704",
+      "turn_id": "3dd2e417-8aeb-4f27-b92d-41ca74914717",
+      "role": "assistant",
+      "content": "I am an educational assistant for this fictional coursework prototype, not a therapist. I can explain reviewed app content and general stress information. I cannot diagnose, provide treatment, or monitor anyone. Use fictional questions only.",
+      "metadata": {
+        "source": "mock",
+        "reply_id": "scope",
+        "evidence_ids": [
+          "catalog:scope"
+        ],
+        "model_id": null,
+        "prompt_version": "catalog-selector-v8",
+        "catalog_version": "app-help-v2",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": null
+      },
+      "created_at": "2026-10-27T17:18:34.304977+00:00"
+    },
+    {
+      "id": "4ae1e8ee-5fa5-4023-9269-29c1de9e1bf3",
+      "session_id": "f7a2f911-4bc2-41bf-a4b0-d598dd6de467",
+      "turn_id": "2fce2e09-8672-4a9c-a867-fb1cd1fb3849",
+      "role": "user",
+      "content": "Do I have to watch a moving shape?",
+      "metadata": {},
+      "created_at": "2026-10-27T17:20:18.128978+00:00"
+    },
+    {
+      "id": "37de94fa-941c-456f-8771-feee88bc6736",
+      "session_id": "f7a2f911-4bc2-41bf-a4b0-d598dd6de467",
+      "turn_id": "2fce2e09-8672-4a9c-a867-fb1cd1fb3849",
+      "role": "assistant",
+      "content": "Inhale uses a muted green circle; exhale uses muted blue. The phase word and count carry the same information, so color is never required. Choose Text only before or during the exercise to remove the moving shape. Changing the cue preserves your place and does not save a preference.",
+      "metadata": {
+        "source": "live",
+        "reply_id": "motion",
+        "evidence_ids": [
+          "catalog:motion"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v8",
+        "catalog_version": "app-help-v2",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "ee48fc34-acca-42b2-80de-0d28ef05a209"
+      },
+      "created_at": "2026-10-27T17:20:19.925392+00:00"
+    },
+    {
+      "id": "cf05f393-74b7-46d5-b137-272c6b877a9a",
+      "session_id": "f7a2f911-4bc2-41bf-a4b0-d598dd6de467",
+      "turn_id": "935dc31f-fafd-45d5-9e45-d96236ebb4a2",
+      "role": "user",
+      "content": "What stays after I close this?",
+      "metadata": {},
+      "created_at": "2026-10-27T17:20:19.927968+00:00"
+    },
+    {
+      "id": "7a5c1437-8616-4be1-98ae-019a1116f8a5",
+      "session_id": "f7a2f911-4bc2-41bf-a4b0-d598dd6de467",
+      "turn_id": "935dc31f-fafd-45d5-9e45-d96236ebb4a2",
+      "role": "assistant",
+      "content": "The app attempts to save fictional questions, displayed replies and session records in local SQLite. Check the save status: a failed write is not a saved record. Retry or use Leave without saving after ending; unsaved changes may be lost. Review or delete saved records in History. Live mode sends the current question and approved context to local Ollama.",
+      "metadata": {
+        "source": "live",
+        "reply_id": "storage",
+        "evidence_ids": [
+          "catalog:storage"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v8",
+        "catalog_version": "app-help-v2",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "2d158b28-c686-4c58-bda0-80bf2c7d5d85"
+      },
+      "created_at": "2026-10-27T17:20:20.307685+00:00"
+    },
+    {
+      "id": "3119510a-5d0b-4a88-a1ed-4bb5f96e6d33",
+      "session_id": "f7a2f911-4bc2-41bf-a4b0-d598dd6de467",
+      "turn_id": "a906daa1-85dc-4557-9128-17267dd9a925",
+      "role": "user",
+      "content": "Can I stop halfway?",
+      "metadata": {},
+      "created_at": "2026-10-27T17:20:20.310257+00:00"
+    },
+    {
+      "id": "78979bc6-6182-4d46-b074-376bd6f114f4",
+      "session_id": "f7a2f911-4bc2-41bf-a4b0-d598dd6de467",
+      "turn_id": "a906daa1-85dc-4557-9128-17267dd9a925",
+      "role": "assistant",
+      "content": "Pause holds the current phase and count. Resume continues them. End stops the exercise. Crisis support stays available, and opening it pauses an active exercise.",
+      "metadata": {
+        "source": "live",
+        "reply_id": "controls",
+        "evidence_ids": [
+          "catalog:controls"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v8",
+        "catalog_version": "app-help-v2",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "3c111af7-053e-472e-a536-162654fe4472"
+      },
+      "created_at": "2026-10-27T17:20:20.696655+00:00"
+    },
+    {
+      "id": "4f067e39-8a5e-4ffa-9690-01bc076e6065",
+      "session_id": "0fc73c43-b774-422e-b4b7-577f5142407a",
+      "turn_id": "ea792805-ed01-440e-8537-15db70da546c",
+      "role": "user",
+      "content": "What is stress?",
+      "metadata": {},
+      "created_at": "2026-10-27T17:20:57.602077+00:00"
+    },
+    {
+      "id": "01e2f6bb-5dd9-4a53-b3a0-4da8451d3d5e",
+      "session_id": "0fc73c43-b774-422e-b4b7-577f5142407a",
+      "turn_id": "ea792805-ed01-440e-8537-15db70da546c",
+      "role": "assistant",
+      "content": "Stress can be a mental or physical response to an outside demand, such as schoolwork. This is general information from NIMH, not an assessment of your experience. This prototype does not determine a cause, diagnose a condition or choose treatment.",
+      "metadata": {
+        "source": "live",
+        "reply_id": "stress",
+        "evidence_ids": [
+          "catalog:stress"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v8",
+        "catalog_version": "app-help-v2",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "b3e1a298-2cd8-4c66-b62f-aaaec06fb4de"
+      },
+      "created_at": "2026-10-27T17:20:58.014876+00:00"
+    },
+    {
+      "id": "274aa809-b904-42de-80af-394db43c1a6e",
+      "session_id": "0fc73c43-b774-422e-b4b7-577f5142407a",
+      "turn_id": "e1d57c1c-a4a5-4fc6-a652-33c54e4e9b7f",
+      "role": "user",
+      "content": "Can it remember my usual cue?",
+      "metadata": {},
+      "created_at": "2026-10-27T17:20:58.017828+00:00"
+    },
+    {
+      "id": "28791ab6-e20f-4f56-943c-418128c9e933",
+      "session_id": "0fc73c43-b774-422e-b4b7-577f5142407a",
+      "turn_id": "e1d57c1c-a4a5-4fc6-a652-33c54e4e9b7f",
+      "role": "assistant",
+      "content": "Choose a cue, then select Remember this choice if you want it restored next time. Reset preference removes it. Use this cue next time in History only copies the setting for review; it does not remember it or start an exercise. Changes during practice apply to that session.",
+      "metadata": {
+        "source": "live",
+        "reply_id": "preferences",
+        "evidence_ids": [
+          "catalog:preferences"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v8",
+        "catalog_version": "app-help-v2",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "cf31f795-0044-42fc-aa08-4a215b34fe87"
+      },
+      "created_at": "2026-10-27T17:20:58.427186+00:00"
+    },
+    {
+      "id": "d2a89bae-1abf-450c-9230-c4cff5a9d324",
+      "session_id": "0fc73c43-b774-422e-b4b7-577f5142407a",
+      "turn_id": "f8beda0e-4084-446c-892a-fcfb48de05c9",
+      "role": "user",
+      "content": "Does this app infer stress from clicks?",
+      "metadata": {},
+      "created_at": "2026-10-27T17:20:58.429541+00:00"
+    },
+    {
+      "id": "d3a41f53-ecd7-439d-b77d-a94aff09bcc8",
+      "session_id": "0fc73c43-b774-422e-b4b7-577f5142407a",
+      "turn_id": "f8beda0e-4084-446c-892a-fcfb48de05c9",
+      "role": "assistant",
+      "content": "No questionnaire or mood check-in is required. You can start directly, choose your cue, or ask an optional question. The app does not infer stress or a diagnosis from clicks, question wording or session history. Personalization uses an explicit cue choice that you can reset.",
+      "metadata": {
+        "source": "live",
+        "reply_id": "checkin",
+        "evidence_ids": [
+          "catalog:checkin"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v8",
+        "catalog_version": "app-help-v2",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "63545750-5506-4224-93af-edc41e05de95"
+      },
+      "created_at": "2026-10-27T17:20:58.850963+00:00"
+    },
+    {
+      "id": "c7b098bb-44db-4a06-a888-c3f2b2ffaae7",
+      "session_id": "0fc73c43-b774-422e-b4b7-577f5142407a",
+      "turn_id": "b7909ab1-4d10-4afd-b047-90ebea0c426c",
+      "role": "user",
+      "content": "Can you be my therapist?",
+      "metadata": {},
+      "created_at": "2026-10-27T17:20:58.853265+00:00"
+    },
+    {
+      "id": "9d81d1e5-f600-4b16-81c9-8a18a5e9c708",
+      "session_id": "0fc73c43-b774-422e-b4b7-577f5142407a",
+      "turn_id": "b7909ab1-4d10-4afd-b047-90ebea0c426c",
+      "role": "assistant",
+      "content": "I am an educational assistant for this fictional coursework prototype, not a therapist. I can explain reviewed app content and general stress information. I cannot diagnose, provide treatment, or monitor anyone. Use fictional questions only.",
+      "metadata": {
+        "source": "live",
+        "reply_id": "scope",
+        "evidence_ids": [
+          "catalog:scope"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v8",
+        "catalog_version": "app-help-v2",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "4a4d588a-a4bc-46e0-b815-42edc9fceb7e"
+      },
+      "created_at": "2026-10-27T17:20:59.259331+00:00"
+    },
+    {
+      "id": "645de8b8-6e44-4a22-aa59-7e39e7bf16ae",
+      "session_id": "0fc73c43-b774-422e-b4b7-577f5142407a",
+      "turn_id": "fb43f3cf-fd27-4b1f-b7eb-2b907e34928b",
+      "role": "user",
+      "content": "Which handbook sources are loaded?",
+      "metadata": {},
+      "created_at": "2026-10-27T17:20:59.262333+00:00"
+    },
+    {
+      "id": "ca1edfad-096f-465f-8df2-c9ceec3f5668",
+      "session_id": "0fc73c43-b774-422e-b4b7-577f5142407a",
+      "turn_id": "fb43f3cf-fd27-4b1f-b7eb-2b907e34928b",
+      "role": "assistant",
+      "content": "The reading links distinguish general information from professional references and book listings. NIMH provides a public stress fact sheet; AIS lists military/veteran resources; Grey House describes a handbook whose full text has not been supplied; APA explains the DSM. These links do not turn this prototype into therapy or a diagnostic tool.",
+      "metadata": {
+        "source": "live",
+        "reply_id": "resources",
+        "evidence_ids": [
+          "catalog:resources"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v8",
+        "catalog_version": "app-help-v2",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "b1ee858e-4eb1-4d98-ac95-e6acf8f5d69a"
+      },
+      "created_at": "2026-10-27T17:20:59.665478+00:00"
+    },
+    {
+      "id": "4b1627f2-9196-4e59-b4d8-fe4a29c75db4",
+      "session_id": "cfd14fd4-6aed-44c5-8b44-7f123bab8348",
+      "turn_id": "1ea35858-7812-4c79-8de5-b3252e4434af",
+      "role": "user",
+      "content": "Does this app infer stress from clicks?",
+      "metadata": {},
+      "created_at": "2026-10-27T17:32:04.020387+00:00"
+    },
+    {
+      "id": "4fe918fc-7549-40a8-90d3-421a818ed754",
+      "session_id": "cfd14fd4-6aed-44c5-8b44-7f123bab8348",
+      "turn_id": "1ea35858-7812-4c79-8de5-b3252e4434af",
+      "role": "assistant",
+      "content": "No questionnaire or mood check-in is required. You can start directly, choose your cue, or ask an optional question. The app does not infer stress or a diagnosis from clicks, question wording or session history. Personalization uses an explicit cue choice that you can reset.",
+      "metadata": {
+        "source": "mock",
+        "reply_id": "checkin",
+        "evidence_ids": [
+          "catalog:checkin"
+        ],
+        "model_id": null,
+        "prompt_version": "catalog-selector-v8",
+        "catalog_version": "app-help-v2",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": null
+      },
+      "created_at": "2026-10-27T17:32:04.022099+00:00"
+    }
+  ],
+  "model_attempts": [
+    {
+      "id": "4009db54-b3eb-439d-ac42-88c5ccd274b4",
+      "test_run_id": "ui-review-2026-10-27",
+      "session_id": null,
+      "model_id": "qwen2.5:3b",
+      "started_at": "2026-10-27T17:18:08.723804+00:00",
+      "outcome": "preload-complete"
+    },
+    {
+      "id": "ee48fc34-acca-42b2-80de-0d28ef05a209",
+      "test_run_id": "ui-review-2026-10-27",
+      "session_id": "f7a2f911-4bc2-41bf-a4b0-d598dd6de467",
+      "model_id": "qwen2.5:3b",
+      "started_at": "2026-10-27T17:20:18.129286+00:00",
+      "outcome": "validated-selection"
+    },
+    {
+      "id": "2d158b28-c686-4c58-bda0-80bf2c7d5d85",
+      "test_run_id": "ui-review-2026-10-27",
+      "session_id": "f7a2f911-4bc2-41bf-a4b0-d598dd6de467",
+      "model_id": "qwen2.5:3b",
+      "started_at": "2026-10-27T17:20:19.928265+00:00",
+      "outcome": "validated-selection"
+    },
+    {
+      "id": "3c111af7-053e-472e-a536-162654fe4472",
+      "test_run_id": "ui-review-2026-10-27",
+      "session_id": "f7a2f911-4bc2-41bf-a4b0-d598dd6de467",
+      "model_id": "qwen2.5:3b",
+      "started_at": "2026-10-27T17:20:20.310539+00:00",
+      "outcome": "validated-selection"
+    },
+    {
+      "id": "b3e1a298-2cd8-4c66-b62f-aaaec06fb4de",
+      "test_run_id": "ui-review-2026-10-27",
+      "session_id": "0fc73c43-b774-422e-b4b7-577f5142407a",
+      "model_id": "qwen2.5:3b",
+      "started_at": "2026-10-27T17:20:57.602381+00:00",
+      "outcome": "validated-selection"
+    },
+    {
+      "id": "cf31f795-0044-42fc-aa08-4a215b34fe87",
+      "test_run_id": "ui-review-2026-10-27",
+      "session_id": "0fc73c43-b774-422e-b4b7-577f5142407a",
+      "model_id": "qwen2.5:3b",
+      "started_at": "2026-10-27T17:20:58.018173+00:00",
+      "outcome": "validated-selection"
+    },
+    {
+      "id": "63545750-5506-4224-93af-edc41e05de95",
+      "test_run_id": "ui-review-2026-10-27",
+      "session_id": "0fc73c43-b774-422e-b4b7-577f5142407a",
+      "model_id": "qwen2.5:3b",
+      "started_at": "2026-10-27T17:20:58.429784+00:00",
+      "outcome": "validated-selection"
+    },
+    {
+      "id": "4a4d588a-a4bc-46e0-b815-42edc9fceb7e",
+      "test_run_id": "ui-review-2026-10-27",
+      "session_id": "0fc73c43-b774-422e-b4b7-577f5142407a",
+      "model_id": "qwen2.5:3b",
+      "started_at": "2026-10-27T17:20:58.853534+00:00",
+      "outcome": "validated-selection"
+    },
+    {
+      "id": "b1ee858e-4eb1-4d98-ac95-e6acf8f5d69a",
+      "test_run_id": "ui-review-2026-10-27",
+      "session_id": "0fc73c43-b774-422e-b4b7-577f5142407a",
+      "model_id": "qwen2.5:3b",
+      "started_at": "2026-10-27T17:20:59.262652+00:00",
+      "outcome": "validated-selection"
+    }
+  ]
+}

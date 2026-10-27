@@ -1,0 +1,18 @@
+Executed 2026-10-27T17:40:43.889892+00:00
+Command: npm run build (frontend)
+Exit: 0
+
+
+> pause-coursework@0.2.0 build
+> vite build
+
+vite v8.3.4 building client environment for production...
+transforming...
+✓ 17 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.41 kB │ gzip:  0.29 kB
+dist/assets/index-DSd1RgUE.css   26.53 kB │ gzip:  6.51 kB
+dist/assets/index-zCDeQsmL.js   111.74 kB │ gzip: 40.50 kB
+
+✓ built in 133ms

@@ -126,3 +126,8 @@ Current outputs: [16 backend tests passed](evidence/backend-tests-oct21.txt), [6
 The isolated read-only SQL inspection records migration 1, **7 sessions, 4 events, 22 messages, 1 preference row (no remembered cue), 13 provider attempts**. Integrity check returned `ok`; foreign-key check returned no rows. It contains both completed/stopped sessions and actual fictional live conversations, including failed semantic selections with their original metadata. This is a new separate snapshot, not an alteration of the October 19 evidence. Parameterized-query, deletion and accounting properties are covered by the temporary-database backend tests.
 
 The complete [research mapping](research-findings.md) now covers all R1–R4/D1–D6. Remaining Part 3 work: the full fifteen-scenario/three-behavior-check evaluation, repeated relevant live-model variation, independent clean-checkout verification, final demo, process screencast and student explanation. Untested limits include simultaneous tabs, broader browsers/assistive technology and crash durability. No clinical effectiveness is established.
+
+
+## October 27 refinement
+
+The [dated UI/content verification](ui-refinement-oct27.md) records phase colors, SVG visuals, popup/modal focus and support, eleven FAQ topics, actual API-outage/reload checks and a fresh **60.016600-second** run. Current prompt/catalog: v8 / app-help-v2. **21 backend + 6 client tests** passed. Eight selected live questions matched once each; one preload plus eight questions counted as nine attempts. These replace no historical result and are not the full Part 3.3 evaluation. [Current SQLite snapshot](evidence/database-inspection-oct27.json).

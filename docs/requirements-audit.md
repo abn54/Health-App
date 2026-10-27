@@ -1,5 +1,7 @@
 # Current requirements audit — Part 3.2
 
+October 27 refinement: [phase colors, assistant popup, shared FAQs/resources and actual verification](ui-refinement-oct27.md). The original requirements and Part 3.3 boundary below remain unchanged.
+
 Updated October 21, 2026 against the complete overview supplied that day, including its research table. The earlier October 13 design-only audit is preserved in Git history, including [the original snapshot](https://github.com/abn54/Health-App/blob/c89cef1c918eda2e570e7f800d1d8a6c641c4bd9/docs/requirements-audit.md). Its missing-source and not-implemented statuses no longer describe this checkout.
 
 | Part 3.2 / shared requirement | Current implementation and evidence |

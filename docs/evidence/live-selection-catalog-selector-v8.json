@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-27T17:20:20.697818+00:00",
+  "method": "Actual local Ollama requests through running FastAPI; three sequential questions in one persisted session; provider context documented by prompt version; one run per case, not a variation study",
+  "before": {
+    "status": "ok",
+    "live_enabled": true,
+    "review_tools": true,
+    "model": "qwen2.5:3b",
+    "prompt_version": "catalog-selector-v8",
+    "attempts": 1,
+    "limit": 50,
+    "test_run_id": "ui-review-2026-10-27"
+  },
+  "after": {
+    "status": "ok",
+    "live_enabled": true,
+    "review_tools": true,
+    "model": "qwen2.5:3b",
+    "prompt_version": "catalog-selector-v8",
+    "attempts": 4,
+    "limit": 50,
+    "test_run_id": "ui-review-2026-10-27"
+  },
+  "session_id": "f7a2f911-4bc2-41bf-a4b0-d598dd6de467",
+  "cases": [
+    {
+      "question": "Do I have to watch a moving shape?",
+      "expected_reply_id": "motion",
+      "observed": {
+        "text": "Inhale uses a muted green circle; exhale uses muted blue. The phase word and count carry the same information, so color is never required. Choose Text only before or during the exercise to remove the moving shape. Changing the cue preserves your place and does not save a preference.",
+        "source": "live",
+        "reply_id": "motion",
+        "evidence_ids": [
+          "catalog:motion"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v8",
+        "catalog_version": "app-help-v2",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "ee48fc34-acca-42b2-80de-0d28ef05a209"
+      },
+      "elapsed_ms": 1798.77,
+      "matched": true
+    },
+    {
+      "question": "What stays after I close this?",
+      "expected_reply_id": "storage",
+      "observed": {
+        "text": "The app attempts to save fictional questions, displayed replies and session records in local SQLite. Check the save status: a failed write is not a saved record. Retry or use Leave without saving after ending; unsaved changes may be lost. Review or delete saved records in History. Live mode sends the current question and approved context to local Ollama.",
+        "source": "live",
+        "reply_id": "storage",
+        "evidence_ids": [
+          "catalog:storage"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v8",
+        "catalog_version": "app-help-v2",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "2d158b28-c686-4c58-bda0-80bf2c7d5d85"
+      },
+      "elapsed_ms": 382.26,
+      "matched": true
+    },
+    {
+      "question": "Can I stop halfway?",
+      "expected_reply_id": "controls",
+      "observed": {
+        "text": "Pause holds the current phase and count. Resume continues them. End stops the exercise. Crisis support stays available, and opening it pauses an active exercise.",
+        "source": "live",
+        "reply_id": "controls",
+        "evidence_ids": [
+          "catalog:controls"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v8",
+        "catalog_version": "app-help-v2",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "3c111af7-053e-472e-a536-162654fe4472"
+      },
+      "elapsed_ms": 388.85,
+      "matched": true
+    }
+  ]
+}

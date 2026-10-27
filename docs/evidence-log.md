@@ -178,3 +178,23 @@ Student prompt: “develop 3.2,” with the complete overview. Unlike earlier co
 The isolated host uses run ID `part2-2026-10-21` and its own ignored verification database. Its 13 attempts include failures and two preloads. The original port-8000 app was restarted with the new model/prompt while keeping its original database and host run ledger (23 attempts at restart); no budget was reset. Both hosts remain loopback and enforce their host-session cap of 50. The temporary verification host is stopped after checks.
 
 The prior section “Evidence still required in later milestones” describes the historical Part 1 state; working-interface, SQL and model evidence now exist. Part 3's complete 15-scenario evaluation, three cross-case checks, repeated live variation, independent clean-checkout verification, final demo, process screencast and student explanation remain outstanding. No recording, independent student feedback or clinical benefit is fabricated.
+
+
+## October 27, 2026 — requested colors, assistant popup and FAQs
+
+User request: phase color coding, an assistant popup, more visuals/questions/FAQs, handbook references, and connection to the pasted ideation discussion. The assignment and project prohibit therapy/diagnosis claims, so the assistant role remains educational; the linked pages' access and evidence limits are explicit. No book file has been supplied.
+
+| Evidence | Decision/result |
+| --- | --- |
+| Public-page review found a resource page, a publisher listing and a diagnostic-reference overview | Add source-typed optional reading cards; do not treat these as therapy handbooks or import diagnostic criteria. Add a short sourced NIMH general definition only. |
+| Student discussion notes concern privacy/questionnaire effort/click inference | Preserve direct entry, reversible cue preferences, no click-based stress inference; explain these choices in FAQs. Original cited papers remain unverified. |
+| First visual version added vertical content before Start | Move Start above decorative preview; observed visible at desktop 1280×720. |
+| First colored exercise put End below the desktop viewport | Reduce decorative circle/space size; final End bounds y=615.5–659.5 within 720px. Engine unchanged. |
+| Initial popup scrolled its whole surface | Keep header/Close/support fixed; scroll the question area separately, collapse suggestions after a message. Mobile document width matched 390px; support/Close stayed in bounds. |
+| Actual popup/support/keyboard workflow | Opening during practice paused at inhale count 1; questions disabled; support returned to popup; close stayed paused; explicit Resume and End saved partial session. Shift+Tab wrapped; Escape restored launcher focus. |
+| Actual API shutdown while popup loaded | Question error reported unconfirmed save; bundled support opened; saved earlier reply remained after restart/reload and failed turn was absent. |
+| Fresh browser six-cycle run | 60,016.600 ms exercise/wall, 0 excluded, setup 18,153.200 ms; exact SQL and screenshots retained. Later CSS spacing changes do not alter timing code. |
+| v8 actual local-model checks | Original motion/storage/controls plus five new topic questions matched once each; eight questions and one preload counted in isolated host ledger. Not a repeated variation or held-out accuracy study. |
+| Current verification | 21 backend and 6 client tests passed; build succeeded; separate fictional SQL integrity ok/no FK violations. |
+
+[Detailed expected/observed results and links](ui-refinement-oct27.md). No real distressed person, crisis service contact, clinical benefit, handbook audit, independent student test or Part 3.3 recording is claimed. Earlier failed/revised approaches remain in their dated sections.

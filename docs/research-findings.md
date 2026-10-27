@@ -26,3 +26,8 @@ The supplied Kaggle conversational resource informed the intent/pattern/response
 ## Evidence and limits
 
 [Part 2 verification](part2-verification.md) separates actual browser/database/live-model observations from mocked/injected-clock tests. Research mapping explains decisions and compromises; it does not convert planned checks into observed results. Part 3's larger evaluation, repeated live variation, independent clean-checkout verification, final demonstration and process screencast remain outside this milestone.
+
+
+## October 27 refinement
+
+[The dated refinement](ui-refinement-oct27.md) adds low-stimulus phase colors with redundant text (D6), optional FAQs/resources outside pacing (D1–D3), an explicitly opened popup with immediate exit/support (R2/R3/D4), and no click-derived mood inference. Explicit preference reuse remains the D5/R4 compromise. New source links provide limited general education, not replacement research findings or clinical validation.

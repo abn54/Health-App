@@ -1,0 +1,185 @@
+{
+  "version": "app-help-v2",
+  "reviewed_on": "2026-10-27",
+  "topics": {
+    "pacing": {
+      "context": "Six cycles: inhale four one-second counts, exhale six. Total planned duration 60 seconds.",
+      "answer": "The exercise has six cycles. Each cycle uses four one-second counts for inhale and six for exhale, for 60 seconds of planned pacing.",
+      "sources": []
+    },
+    "motion": {
+      "context": "Animated circle is optional. Text only shows words and counts. Cue changes preserve pace.",
+      "answer": "Inhale uses a muted green circle; exhale uses muted blue. The phase word and count carry the same information, so color is never required. Choose Text only before or during the exercise to remove the moving shape. Changing the cue preserves your place and does not save a preference.",
+      "sources": []
+    },
+    "storage": {
+      "context": "SQLite saves questions, replies and session history locally. Check save status. Saved history is reviewable and deletable.",
+      "answer": "The app attempts to save fictional questions, displayed replies and session records in local SQLite. Check the save status: a failed write is not a saved record. Retry or use Leave without saving after ending; unsaved changes may be lost. Review or delete saved records in History. Live mode sends the current question and approved context to local Ollama.",
+      "sources": []
+    },
+    "controls": {
+      "context": "Pause holds your place. Resume continues. End stops halfway immediately. Opening support pauses.",
+      "answer": "Pause holds the current phase and count. Resume continues them. End stops the exercise. Crisis support stays available, and opening it pauses an active exercise.",
+      "sources": []
+    },
+    "scope": {
+      "context": "Fictional coursework prototype only. No therapy, diagnosis or human monitoring.",
+      "answer": "I am an educational assistant for this fictional coursework prototype, not a therapist. I can explain reviewed app content and general stress information. I cannot diagnose, provide treatment, or monitor anyone. Use fictional questions only.",
+      "sources": []
+    },
+    "start": {
+      "context": "Start begins the exercise from Ready. Answering a question first is optional.",
+      "answer": "The ready screen shows the 60-second exercise and your cue setting. Start is your choice. You do not need to answer questions first.",
+      "sources": []
+    },
+    "unsupported": {
+      "context": "Personal mental-health advice or unrelated requests are outside the app-help scope.",
+      "answer": "I can explain the exercise, its controls, saved records and reviewed general information. Personal assessments, diagnoses and treatment advice are outside this coursework prototype. The Crisis support control is always available.",
+      "sources": []
+    },
+    "preferences": {
+      "context": "Remember this choice explicitly stores the cue. Reset removes it. History reuse copies a cue for review, without saving it or starting. No favorites or inferred mood.",
+      "answer": "Choose a cue, then select Remember this choice if you want it restored next time. Reset preference removes it. Use this cue next time in History only copies the setting for review; it does not remember it or start an exercise. Changes during practice apply to that session.",
+      "sources": []
+    },
+    "checkin": {
+      "context": "No required questionnaire, mood check-in or emotional-state inference. App does not infer stress from clicking. Only explicit cue preferences personalize the interface.",
+      "answer": "No questionnaire or mood check-in is required. You can start directly, choose your cue, or ask an optional question. The app does not infer stress or a diagnosis from clicks, question wording or session history. Personalization uses an explicit cue choice that you can reset.",
+      "sources": []
+    },
+    "stress": {
+      "context": "NIMH describes stress as a physical or mental response to an external demand, such as schoolwork. General educational definition only; no personal assessment or advice.",
+      "answer": "Stress can be a mental or physical response to an outside demand, such as schoolwork. This is general information from NIMH, not an assessment of your experience. This prototype does not determine a cause, diagnose a condition or choose treatment.",
+      "sources": [
+        "nimh-stress"
+      ]
+    },
+    "resources": {
+      "context": "Reviewed links: NIMH stress fact sheet; AIS military/veteran resource page; Grey House handbook publisher listing only; APA DSM overview. No handbook full text, clinical audit or diagnostic use.",
+      "answer": "The reading links distinguish general information from professional references and book listings. NIMH provides a public stress fact sheet; AIS lists military/veteran resources; Grey House describes a handbook whose full text has not been supplied; APA explains the DSM. These links do not turn this prototype into therapy or a diagnostic tool.",
+      "sources": [
+        "nimh-stress",
+        "ais-veterans",
+        "greyhouse",
+        "apa-dsm"
+      ]
+    }
+  },
+  "resources": [
+    {
+      "id": "nimh-stress",
+      "label": "NIMH",
+      "title": "Understanding stress",
+      "url": "https://www.nimh.nih.gov/health/publications/so-stressed-out-fact-sheet",
+      "kind": "Public fact sheet",
+      "description": "General education about stress and anxiety. A starting point for reading, not an assessment of you.",
+      "icon": "leaf"
+    },
+    {
+      "id": "ais-veterans",
+      "label": "American Institute of Stress",
+      "title": "Military & veteran resources",
+      "url": "https://www.stress.org/who-gets-stressed/military-and-veterans/",
+      "kind": "Population-specific resource page",
+      "description": "Information for military communities and families. Its audience differs from this fictional college-student prototype.",
+      "icon": "compass"
+    },
+    {
+      "id": "greyhouse",
+      "label": "Grey House Publishing",
+      "title": "Adolescent mental health handbook",
+      "url": "https://greyhouse.com/adolescent-mental-health",
+      "kind": "Publisher listing · full text not supplied",
+      "description": "A description of a reference book. Linking the listing does not mean its handbook text has been reviewed or imported.",
+      "icon": "book"
+    },
+    {
+      "id": "apa-dsm",
+      "label": "American Psychiatric Association",
+      "title": "About the DSM",
+      "url": "https://www.psychiatry.org/psychiatrists/practice/dsm/",
+      "kind": "Professional reference overview",
+      "description": "An overview of a diagnostic classification reference. This prototype does not apply diagnostic criteria.",
+      "icon": "book"
+    }
+  ],
+  "faq_groups": [
+    {
+      "id": "practice",
+      "label": "The practice"
+    },
+    {
+      "id": "choices",
+      "label": "Choices & privacy"
+    },
+    {
+      "id": "learn",
+      "label": "Learn & limits"
+    }
+  ],
+  "faqs": [
+    {
+      "group": "practice",
+      "question": "How long is the breathing exercise?",
+      "topic": "pacing"
+    },
+    {
+      "group": "practice",
+      "question": "What do the circle colors mean?",
+      "topic": "motion"
+    },
+    {
+      "group": "practice",
+      "question": "Can I stop before all six cycles?",
+      "topic": "controls"
+    },
+    {
+      "group": "practice",
+      "question": "Do I need to answer a question first?",
+      "topic": "start"
+    },
+    {
+      "group": "choices",
+      "question": "Can it remember my usual cue?",
+      "topic": "preferences"
+    },
+    {
+      "group": "choices",
+      "question": "What gets saved, and what if a save fails?",
+      "topic": "storage"
+    },
+    {
+      "group": "choices",
+      "question": "Does the app judge my mood or track clicks for stress?",
+      "topic": "checkin"
+    },
+    {
+      "group": "learn",
+      "question": "What is stress?",
+      "topic": "stress"
+    },
+    {
+      "group": "learn",
+      "question": "Is the assistant a therapist?",
+      "topic": "scope"
+    },
+    {
+      "group": "learn",
+      "question": "What do the reading links actually contain?",
+      "topic": "resources"
+    },
+    {
+      "group": "learn",
+      "question": "Can I ask for a diagnosis or personal advice?",
+      "topic": "unsupported"
+    }
+  ],
+  "suggestions": [
+    "How long is the exercise?",
+    "Can I turn off the moving circle?",
+    "Can it remember my usual cue?",
+    "Does this app infer stress from clicks?",
+    "What is stress?",
+    "Can you be my therapist?"
+  ]
+}

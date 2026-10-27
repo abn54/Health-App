@@ -44,3 +44,8 @@ Proposed short panel content:
 Bundle the short text and destination links with the client. Phone and text links should retain readable numbers so the information is usable when a desktop cannot open them. Opening an external destination requires a user's action. Verify link destinations before later demonstrations without placing calls, sending messages, or entering a crisis-service queue.
 
 These references support contact-information design only; they are not evidence for the effectiveness of the exercise or this prototype. No clinical research review or existing-app comparison was performed for this milestone.
+
+
+## October 27 educational resources and ideation notes
+
+[UI refinement source review](ui-refinement-oct27.md#sources-actually-reviewed) records the public NIMH stress fact sheet, supplied AIS military/veteran page, Grey House handbook listing and APA DSM overview actually opened. Only a brief general definition is adapted; no full handbook, diagnosis criteria or therapy advice is imported. Clean URLs/source types are visible in the optional reading shelf. The student's pasted activity/discussion notes were reviewed, but the authenticated ideation page and original cited papers were not obtained. The notes' study claims are attributed to that supplied summary, not independently verified or evidence of this app's effectiveness.
