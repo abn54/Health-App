@@ -1,5 +1,10 @@
 # IST 402 — Assignment 3, Part 2 (3.2)
 
+## Later October 27 visual redesign
+
+The subsequent UI/layout/color request is implemented at [`478f7c0c8c1d861ec61445638073aa296a329063`](https://github.com/abn54/Health-App/commit/478f7c0c8c1d861ec61445638073aa296a329063). [Current appearance and actual verification](https://github.com/abn54/Health-App/blob/478f7c0c8c1d861ec61445638073aa296a329063/docs/visual-redesign.md). Sticky top navigation, ivory/terracotta/lavender, system serif headings and original SVG artwork replace the prior dashboard appearance. The skill, controller, API and model boundaries are unchanged. Six client tests/build passed; phone exercise/popup/support/End behavior was checked. An interrupted attempted timing run is recorded honestly; no new full-duration completion is claimed. Earlier milestone and refinement snapshots below remain dated evidence.
+
+
 ## October 27 refinement — current implementation
 
 The student requested breathing-phase colors, an assistant popup, more visuals/FAQs and use of supplied reading/ideation references. These refinements remain within the localhost coursework scope. The original October 21 report is preserved in `submissions/part2/report.md`; its dated baseline/evidence is retained below, not rewritten as new observations.
