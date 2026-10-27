@@ -4,6 +4,7 @@ import { Exercise, phraseCue } from './engine.js'
 import AssistantPanel from './components/AssistantPanel.vue'
 import HelpCenter from './components/HelpCenter.vue'
 import RhythmGuide from './components/RhythmGuide.vue'
+import PauseIllustration from './components/PauseIllustration.vue'
 import helpContent from '../../shared/help-content.json'
 
 const reduced = matchMedia('(prefers-reduced-motion: reduce)')
@@ -263,18 +264,16 @@ onUnmounted(() => { cancelAnimationFrame(raf); document.removeEventListener('vis
 <template>
   <div class="app-shell" :inert="support || assistantPopup || undefined">
     <aside class="sidebar">
-      <a class="brand" href="#" @click.prevent="active ? returnExercise() : view = 'ready'"><span class="brand-mark">p.</span> pause<span class="brand-dot">®</span></a>
-      <div class="workspace-label">A LITTLE ROOM TO PRACTICE</div>
+      <a class="brand" href="#" @click.prevent="active ? returnExercise() : view = 'ready'" aria-label="Pause home"><svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 21c-18 0-17-17-8-17 7 0 8 8 8 17Zm0 0c0-18 17-17 17-8 0 7-8 8-17 8Zm0 0c18 0 17 17 8 17-7 0-8-8-8-17Zm0 0c0 18-17 17-17 8 0-7 8-8 17-8Z" fill="currentColor"/></svg><span class="brand-copy">pause<small>a little space to pause</small></span></a>
       <nav aria-label="Main navigation">
         <button :class="{selected:view === 'ready' || view === 'exercise'}" @click="active ? returnExercise() : view = 'ready'"><span>◌</span> {{ active ? 'Your exercise' : 'Practice' }}<span class="nav-arrow">↗</span></button>
         <button :class="{selected:view === 'assistant'}" :aria-current="view === 'assistant' ? 'page' : undefined" @click="openAssistant"><span aria-hidden="true">✧</span> AI assistant<span class="nav-arrow" aria-hidden="true">↗</span></button>
         <button :class="{selected:view === 'history'}" @click="openHistory"><span>▤</span> Session history<span class="nav-arrow">↗</span></button>
       </nav>
-      <div class="sidebar-note"><span class="tiny-spark">✳</span><p>One skill.<br>At your pace.<br>Your choice to stop.</p><small>4 counts in · 6 counts out</small></div>
-      <div class="sidebar-foot">IST 402 · ASSIGNMENT 3<br>LOCAL COURSEWORK PROTOTYPE</div>
+      <button id="support-control" class="support-button" @click="openSupport"><span aria-hidden="true">✚</span> Crisis support</button>
     </aside>
     <div class="main-shell">
-      <header><span class="eyebrow">{{ view === 'history' ? 'YOUR SAVED RECORDS' : view === 'assistant' ? 'AI ASSISTANT / APP QUESTIONS' : 'PACED BREATHING / 01' }}</span><button id="support-control" class="support-button" @click="openSupport"><span aria-hidden="true">✚</span> Crisis support</button></header>
+      <header class="context-header"><span class="eyebrow">{{ view === 'history' ? 'YOUR SAVED RECORDS' : view === 'assistant' ? 'YOUR OPTIONAL APP ASSISTANT' : 'A LITTLE ROOM TO PRACTICE' }}</span><span class="local-label"><i></i> Local coursework prototype</span></header>
       <div class="coursework-notice"><span class="notice-dot"></span> Coursework prototype · fictional use only. No therapy, diagnosis, or human monitoring.</div>
       <main>
         <template v-if="view === 'history'">
@@ -307,17 +306,17 @@ onUnmounted(() => { cancelAnimationFrame(raf); document.removeEventListener('vis
           <div v-else-if="terminal" class="banner">{{ pendingSave ? 'Finish saving this session before starting new questions.' : 'This session has ended. You can start new questions or return to its summary.' }}<div><button @click="returnExercise">Return to summary</button><button :disabled="pendingSave || asking || finalizing" @click="openAssistant">Start new questions</button></div></div>
         </template>
         <template v-else-if="status === 'ready'">
-          <div class="page-heading"><div><div class="eyebrow">A SMALL, GUIDED PRACTICE</div><h1>Make room for<br>one minute<span>.</span></h1><p>Follow a steady rhythm. No writing required.<br>You can pause or end whenever you choose.</p></div><div class="edition">01 / 01<br><span>THE BREATHING PRACTICE</span></div></div>
+          <div class="page-heading ready-heading"><div class="hero-copy"><span class="welcome-pill"><span aria-hidden="true">✳</span> A small pause starts here</span><h1>Take a little<br><em>breathing room.</em></h1><p>One simple practice. A minute at your pace.<br>No writing, no score, and your choice to stop.</p></div><PauseIllustration /></div>
           <div class="practice-grid">
             <section class="practice-card">
-              <div class="card-top"><span class="pill">PACED BREATHING</span><span class="duration">↗ 60 seconds</span></div>
-              <div class="practice-description"><h2>A rhythm you can follow.</h2><p>Inhale for 4 counts. Exhale for 6.<br>The words and count carry the pace.</p></div>
+              <div class="card-top"><span class="pill"><span aria-hidden="true">◌</span> THE BREATHING PRACTICE</span><span class="duration">60 seconds</span></div>
+              <div class="practice-description"><h2>In, out.<br>One count at a time.</h2><p>Four counts in. Six counts out.<br>Follow the words, with or without motion.</p></div>
               <button class="primary start-button" @click="start">Start 60-second exercise <span>→</span></button><small class="card-footnote">No question or model response needed to start.</small>
               <div class="preview-orbit"><div class="preview-circle"><span>4 <i>/</i> 6</span><small>INHALE / EXHALE</small></div><span class="orbit-label">SIX CYCLES · ONE SECOND PER COUNT</span></div>
               <RhythmGuide />
             </section>
-            <div class="side-stack"><section class="card settings-card"><div class="eyebrow">MAKE IT YOURS</div><h2>Choose your cue.</h2><p>Same rhythm. A different way to follow it.</p><div class="cue-options" role="group" aria-label="Pacing cue"><button :aria-pressed="cue === 'animated'" @click="changeCue('animated')"><span>◯</span><strong>Animated circle</strong><small>Movement + words</small></button><button :aria-pressed="cue === 'text'" @click="changeCue('text')"><span>Aa</span><strong>Text only</strong><small>Words + count</small></button></div><p class="small-copy">{{ remembered ? `Remembered setting: ${remembered === 'text' ? 'Text only' : 'Animated circle'}.` : 'Nothing remembered. Your system motion setting is the default.' }} You can change the cue during the exercise.</p><div class="button-row"><button class="text-button" @click="remember">Remember this choice</button><button v-if="remembered" class="text-button" @click="resetPreference">Reset preference</button></div><p v-if="prefStatus" role="status" class="small-copy">{{ prefStatus }}</p></section>
-            <section class="about-card"><span class="tiny-spark">✳</span><div><h3>A practice, without a score.</h3><p>There is no rating to enter and no outcome to prove. History records only what happened in this prototype.</p></div></section></div>
+            <div class="side-stack"><section class="card settings-card"><div class="eyebrow">A LITTLE MORE YOU</div><h2>Your pace. Your cue.</h2><p>Same rhythm. A different way to follow it.</p><div class="cue-options" role="group" aria-label="Pacing cue"><button :aria-pressed="cue === 'animated'" @click="changeCue('animated')"><span>◯</span><strong>Animated circle</strong><small>Movement + words</small></button><button :aria-pressed="cue === 'text'" @click="changeCue('text')"><span>Aa</span><strong>Text only</strong><small>Words + count</small></button></div><p class="small-copy">{{ remembered ? `Remembered setting: ${remembered === 'text' ? 'Text only' : 'Animated circle'}.` : 'Nothing remembered. Your system motion setting is the default.' }} You can change the cue during the exercise.</p><div class="button-row"><button class="text-button" @click="remember">Remember this choice</button><button v-if="remembered" class="text-button" @click="resetPreference">Reset preference</button></div><p v-if="prefStatus" role="status" class="small-copy">{{ prefStatus }}</p></section>
+            <section class="about-card"><span class="tiny-spark" aria-hidden="true">☼</span><div><h3>A practice, without a score.</h3><p>There is no rating to enter and no outcome to prove. History records only what happened in this prototype.</p></div></section></div>
           </div>
         </template>
         <template v-else>

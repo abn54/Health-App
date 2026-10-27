@@ -198,3 +198,10 @@ User request: phase color coding, an assistant popup, more visuals/questions/FAQ
 | Current verification | 21 backend and 6 client tests passed; build succeeded; separate fictional SQL integrity ok/no FK violations. |
 
 [Detailed expected/observed results and links](ui-refinement-oct27.md). No real distressed person, crisis service contact, clinical benefit, handbook audit, independent student test or Part 3.3 recording is claimed. Earlier failed/revised approaches remain in their dated sections.
+
+
+## October 27 — new UI, layout and colors
+
+User requested a visual redesign after discussing possible names. Kept Pause as the unconfirmed working name. Replaced the dark sidebar with sticky top navigation, moved existing independent support into it, used ivory/terracotta/lavender, changed system typography, and authored static SVG flower/landscape artwork. Active pacing/controller/model/storage behavior remains unchanged.
+
+First browser review found excessive empty space from narrow side-by-side cards and a small navigation overflow in the intermediate pane. Stacked the medium-width layout and reduced top-nav spacing. Actual phone width was 390/390; tested active End/support positions and popup pause/support/return/End with saved Stopped status. Existing six client tests/build passed. An attempted isolated full-duration run lost its browser tab; retained the Running/no-final-time observation and recovery to Interrupted as a failure to obtain completion evidence. Earlier timed results are not relabeled as new. No model call, clinical evaluation or recording occurred. [Detailed observations and screenshots](visual-redesign.md).
