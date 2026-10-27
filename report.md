@@ -1,6 +1,12 @@
 # IST 402 — Assignment 3, Part 2 (3.2)
 
-## October 27 voice and sound addition — latest implementation
+## October 27 mello rename and history update — latest implementation
+
+The app is now **mello**, implementing the student's selected name. Implementation/evidence snapshot: [`1f956defc7bbe9bc5d3948f247d7251346bb861c`](https://github.com/abn54/Health-App/commit/1f956defc7bbe9bc5d3948f247d7251346bb861c). [Changes and actual verification](https://github.com/abn54/Health-App/blob/1f956defc7bbe9bc5d3948f247d7251346bb861c/docs/mello-history-update.md). Historical snapshots below retain the earlier name.
+
+History now separates **Started** from **Last chatted**, timestamps each saved message in the device's time zone, and sorts using the latest saved user-question date (creation date for sessions without chat). Continuing a draft preserves Started and updates Last chatted. A compact **46 px circle, 44 px on phone width**, opens the assistant from the sticky header beside Crisis support, outside page content. The initial smaller floating circle still overlapped a phone value; the final header placement resolved that observed issue. Actual fictional saved-draft continuation, 390/667 px layouts and keyboard open/Escape/focus return were checked. **22 backend + 17 client tests and production build passed.** No new live-model inference, full-duration timing run or recording is claimed for this update.
+
+## October 27 voice and sound addition
 
 The requested voice output is implemented at [`3f01492fae283a40e19aac8c6c8dc487069ec8dc`](https://github.com/abn54/Health-App/commit/3f01492fae283a40e19aac8c6c8dc487069ec8dc). [Controls, implementation, actual results and limits](https://github.com/abn54/Health-App/blob/3f01492fae283a40e19aac8c6c8dc487069ec8dc/docs/voice-output.md). Expand **Voice & sound** for spoken Inhale/Exhale or soft tones. The assistant has a shared local voice selector, explicit **Read reply aloud**, optional **Read new replies aloud**, and **Stop audio**. Both automatic outputs default off and reset on reload. No microphone, audio recording, remote TTS service or new skill was added. Browser/device voice availability varies.
 
