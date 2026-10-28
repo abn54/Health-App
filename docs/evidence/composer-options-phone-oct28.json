@@ -1,0 +1,19 @@
+{
+  "version": "4.14.0",
+  "date": "2026-10-28T19:40:36.520Z",
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "targets": [
+        [
+          "#assistant-popup-heading > span[aria-hidden=\"true\"]"
+        ],
+        [
+          "#assistant-popup-description"
+        ]
+      ]
+    }
+  ],
+  "passedRules": 37
+}

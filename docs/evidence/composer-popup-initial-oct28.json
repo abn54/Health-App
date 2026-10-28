@@ -1,0 +1,34 @@
+{
+  "version": "4.14.0",
+  "date": "2026-10-28T19:39:25.319Z",
+  "violations": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "nodes": [
+        {
+          "target": [
+            "#question-help"
+          ],
+          "html": "<small id=\"question-help\">0/500 · fictional inputs only · Enter to send, Shift+Enter for a new line.</small>",
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.61 (foreground color: #908277, background color: #fffbf6, font size: 7.7pt (10.24px), font weight: normal). Expected contrast ratio of 4.5:1"
+        }
+      ]
+    }
+  ],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "targets": [
+        [
+          "#assistant-popup-heading > span[aria-hidden=\"true\"]"
+        ],
+        [
+          ".assistant-glyph"
+        ]
+      ]
+    }
+  ],
+  "passedRules": 35
+}

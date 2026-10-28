@@ -95,3 +95,8 @@ It consulted the W3C WCAG/APG, MDN localService and official axe-core documentat
 ## October 28 — local server recovery
 
 Codex diagnosed an actual connection refusal and absent localhost listeners after the student reported a broken frontend. It restarted the existing built app and optional local Ollama service without model inference/preload or changing application code. It verified HTTP 200 for the page/assets/health, rendered UI and an accessibility disclosure, saved a page screenshot and added restart guidance. Processes were detached from the tool session; no OS autostart service was installed and no reboot-persistence guarantee is claimed. Existing local data and host budget were preserved. No additional unit-test pass, recording or clinical result is claimed.
+
+
+## Later October 28 — bottom-right assistant composer
+
+Codex used the Sites skill local-only workflow to implement the requested bottom-right launcher and screenshot-inspired rounded composer. It reused the existing approved response/voice paths, authored SVG send/waveform controls, kept explicit labels and optional reply playback, and made no microphone/voice-recognition/provider addition. It corrected a hidden-composer wrapper, CSS path mistake and detected contrast issue using actual browser evidence. Mocked fictional review used a separate SQLite database. 17 client tests/build passed; no new live inference, acoustic judgment, full timing, recording, clinical result or real assistive-technology test was made. [Exact observations and limitations](docs/composer-update-oct28.md).

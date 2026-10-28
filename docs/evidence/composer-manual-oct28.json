@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-28",
+  "environment": "Isolated fictional SQLite database; mock mode, no provider attempt",
+  "checks": {
+    "enter": "Submitted How long is the exercise? and returned reviewed Mock response",
+    "shiftEnter": "Draft contained How long is the exercise? followed by newline before Enter sent it",
+    "sendButton": "Production build submitted the same fictional question successfully",
+    "voice": "Read replies toggle on; browser status Reading assistant reply aloud; log aria-live off; Stop turned toggle off",
+    "scroll": {
+      "scrollTop": 209.5,
+      "scrollHeight": 459,
+      "clientHeight": 249
+    },
+    "keyboard": {
+      "tabFromFooter": "Close assistant header button",
+      "shiftTabFromHeader": "Close assistant footer button",
+      "escapeFocus": "assistant-launcher"
+    },
+    "launcherAt667x798": {
+      "left": 591,
+      "top": 734.5,
+      "width": 52,
+      "height": 52
+    },
+    "largeTextAt390": {
+      "width": 390,
+      "scrollWidth": 390,
+      "rootFontSize": "20px",
+      "composerLeft": 24,
+      "composerRight": 366,
+      "composerBottom": 681
+    },
+    "activeExercise": "Popup paused at inhale count 1; question/voice/send disabled; support opened and returned; End recorded Stopped, not Completed",
+    "productionConsoleErrors": []
+  },
+  "limits": [
+    "No real screen-reader or blind-user test, acoustic assessment, virtual-keyboard test, recording, full timing run or new live-model evaluation.",
+    "A later production screenshot resize returned scaled desktop content rather than phone reflow; that image was discarded. Earlier phone DOM/reflow observations above were directly measured.",
+    "Browser runtime needed a reconnect/reset during final cleanup; no test result was inferred from that interruption."
+  ]
+}

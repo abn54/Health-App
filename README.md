@@ -12,7 +12,7 @@ Accessibility: **Accessibility options** offers Higher contrast, Larger text and
 
 Optional **Chatbot voice** exists only in the assistant: blue **Preview voice / Read reply aloud**, red **Stop voice**, a speed selector and an opt-in automatic-reading checkbox. Enhanced voice-name options rank first when installed; known novelty voices are hidden. Available quality depends on the device, and no acoustic-quality guarantee is made. Voice choices reset on reload, with no microphone, recording or remote TTS. Keep auto-read off if a screen reader is already reading replies.
 
-Current name: **mello** (renamed from Pause on October 27). The compact circular **Ask the assistant** button replaces the larger launcher. History sorts conversations by their last saved question and labels sessions without chat explicitly. Existing storage filenames/environment variables retain their compatible names.
+Current name: **mello** (renamed from Pause on October 27). The 52 px circular **Ask the assistant** button sits at the bottom right in a reserved bottom rail. Its popup keeps a rounded message composer visible while the conversation scrolls. Enter sends; Shift+Enter adds a line. **Read replies** enables optional spoken replies; **Reply & voice options** expands the voice/speed and mock/live controls. History sorts conversations by their last saved question and labels sessions without chat explicitly. Existing storage filenames/environment variables retain their compatible names.
 
 Latest UI: warm ivory/terracotta/lavender, sticky top navigation, a new illustrated introduction and refreshed cards/dialogs. [Visual redesign and actual checks](docs/visual-redesign.md).
 

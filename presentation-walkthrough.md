@@ -72,3 +72,6 @@ This is app-authored copy, not a quotation from research. The exact context sent
 Make sure the audience has actually seen preference restore **and override**, one complete skill, separate stop/support behavior, saved history influencing a visible UI choice, a profile/history-tailored reply, reset/opt-out behavior and the honest assistant boundary. An explanation alone does not replace the running demonstration. No grade is predicted here.
 
 This file is presentation preparation. It does not claim that the presentation, screen recording, process screencast, independent checkout or complete Part 3.3 evaluation has been performed. Consult the separate submission instructions for recording/upload requirements; this four-point rubric alone does not specify them.
+
+
+Current October 28 popup layout: open the bottom-right circle. The rounded composer stays visible below the scrollable conversation; Send or Enter submits, Shift+Enter adds a line. Toggle Read replies for optional spoken output, with Stop while playing. Expand Reply & voice options for the existing voice/speed and mock/live controls. This is reply playback, not microphone dictation or a live voice conversation.
