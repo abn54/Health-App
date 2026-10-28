@@ -1,0 +1,25 @@
+{
+  "version": "4.14.0",
+  "date": "2026-10-28T16:42:53.753Z",
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "targets": [
+        [
+          "nav > button:nth-child(1) > span[aria-hidden=\"true\"]"
+        ],
+        [
+          "button:nth-child(2) > span[aria-hidden=\"true\"]:nth-child(1)"
+        ],
+        [
+          ".selected > span[aria-hidden=\"true\"]"
+        ],
+        [
+          "#support-control > span[aria-hidden=\"true\"]"
+        ]
+      ]
+    }
+  ],
+  "passedRules": 39
+}

@@ -37,3 +37,8 @@ The student supplied the four 25-point criteria on October 28 and authorized bot
 | Chatbot tone and limits | Actual profile/history-tailored approved answer, explicit source/context label, reset comparison, honest mello/therapist boundary; optional model selects topic, local reviewed renderer applies profile/history. No claim that raw history is sent to the model. |
 
 [Presentation walkthrough](../presentation-walkthrough.md) and [dated expected/observed evidence](presentation-readiness-oct28.md). Full Part 3.3 evaluation, student delivery and recording/upload remain separate; this rubric does not supply recording submission instructions.
+
+
+## Later October 28 accessibility revision
+
+The student's new request removes app-generated breathing speech/tones and keeps optional voice only in the chatbot. Added stronger color redundancy/contrast, keyboard/landmark/focus improvements, configurable assistive text updates and visit-only larger text/higher contrast. The presentation walkthrough now describes these current choices. [Actual scans, manual findings and limits](accessibility-update-oct28.md) records zero detected violations in selected final states, not full conformance or a blind-user test. Historical voice/timing snapshots remain dated separately.

@@ -1,0 +1,115 @@
+{
+  "version": "4.14.0",
+  "date": "2026-10-28T16:28:05.089Z",
+  "violations": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "nodes": [
+        {
+          "target": [
+            ".brand-copy > small"
+          ],
+          "html": "<small>a little space to pause</small>",
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.97 (foreground color: #8c7770, background color: #fcf8f2, font size: 7.1pt (9.44px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            ".practice-description > p"
+          ],
+          "html": "<p>Four counts in. Six counts out.<br>Follow the words, with or without motion.</p>",
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.27 (foreground color: #776681, background color: #ede5f4, font size: 9.6pt (12.8px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            ".faq-count"
+          ],
+          "html": "<span class=\"faq-count\">11 quick answers</span>",
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.14 (foreground color: #987e70, background color: #f1e9dd, font size: 8.2pt (10.88px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            ".reading-disclosure > summary > span:nth-child(1) > small"
+          ],
+          "html": "<small>Source types and limits, shown upfront</small>",
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.46 (foreground color: #958276, background color: #fcf8f2, font size: 7.8pt (10.4px), font weight: normal). Expected contrast ratio of 4.5:1"
+        }
+      ]
+    },
+    {
+      "id": "landmark-no-duplicate-banner",
+      "impact": "moderate",
+      "help": "Document should not have more than one banner landmark",
+      "nodes": [
+        {
+          "target": [
+            ".sidebar"
+          ],
+          "html": "<header class=\"sidebar\">",
+          "summary": "Fix any of the following:\n  Document has more than one banner landmark"
+        }
+      ]
+    },
+    {
+      "id": "landmark-unique",
+      "impact": "moderate",
+      "help": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+      "nodes": [
+        {
+          "target": [
+            ".sidebar"
+          ],
+          "html": "<header class=\"sidebar\">",
+          "summary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+        }
+      ]
+    },
+    {
+      "id": "region",
+      "impact": "moderate",
+      "help": "All page content should be contained by landmarks",
+      "nodes": [
+        {
+          "target": [
+            ".coursework-notice"
+          ],
+          "html": "<div class=\"coursework-notice\"><span class=\"notice-dot\"></span> Coursework prototype · fictional use only. No therapy, diagnosis, or human monitoring.</div>",
+          "summary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        }
+      ]
+    }
+  ],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "targets": [
+        [
+          ".selected > span[aria-hidden=\"true\"]"
+        ],
+        [
+          "nav > button:nth-child(2) > span[aria-hidden=\"true\"]:nth-child(1)"
+        ],
+        [
+          "nav > button:nth-child(3) > span[aria-hidden=\"true\"]"
+        ],
+        [
+          "#support-control > span[aria-hidden=\"true\"]"
+        ],
+        [
+          ".pill > span[aria-hidden=\"true\"]"
+        ],
+        [
+          ".start-button > span"
+        ],
+        [
+          ".cue-options > button:nth-child(1) > span"
+        ],
+        [
+          ".tiny-spark"
+        ]
+      ]
+    }
+  ],
+  "passedRules": 38
+}

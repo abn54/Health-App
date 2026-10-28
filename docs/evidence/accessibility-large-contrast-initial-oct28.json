@@ -1,0 +1,43 @@
+{
+  "version": "4.14.0",
+  "date": "2026-10-28T16:39:59.025Z",
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "targets": [
+        [
+          ".selected > span[aria-hidden=\"true\"]"
+        ],
+        [
+          "nav > button:nth-child(2) > span[aria-hidden=\"true\"]:nth-child(1)"
+        ],
+        [
+          "nav > button:nth-child(3)"
+        ],
+        [
+          "nav > button:nth-child(3) > span[aria-hidden=\"true\"]"
+        ],
+        [
+          "#support-control > span[aria-hidden=\"true\"]"
+        ],
+        [
+          ".pill > span[aria-hidden=\"true\"]"
+        ],
+        [
+          ".start-button > span[aria-hidden=\"true\"]"
+        ],
+        [
+          ".cue-options > button:nth-child(1) > span"
+        ],
+        [
+          ".tiny-spark"
+        ],
+        [
+          ".voice-stop > span[aria-hidden=\"true\"]"
+        ]
+      ]
+    }
+  ],
+  "passedRules": 43
+}

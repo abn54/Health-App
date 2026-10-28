@@ -1,0 +1,19 @@
+{
+  "version": "4.14.0",
+  "date": "2026-10-28T16:39:15.400Z",
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "targets": [
+        [
+          ".support-panel > p"
+        ],
+        [
+          ".resource-card > .small-copy"
+        ]
+      ]
+    }
+  ],
+  "passedRules": 30
+}

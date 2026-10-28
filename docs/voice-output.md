@@ -1,5 +1,7 @@
 # Optional voice and sound — October 27, 2026
 
+**Historical feature snapshot.** The October 28 user request removes all app-generated breathing speech/tones and keeps voice in the chatbot only. [Current accessibility/voice update](accessibility-update-oct28.md) supersedes the breathing-audio controls described below; this dated evidence is preserved.
+
 The requested addition is implemented within the Part 3.2 localhost prototype. It does not add a skill, therapy, microphone input, an audio recording or a hosted service.
 
 ## Controls and behavior

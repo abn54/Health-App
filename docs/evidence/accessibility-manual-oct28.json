@@ -1,0 +1,108 @@
+{
+  "date": "2026-10-28",
+  "keyboard": {
+    "skipTarget": "main-content",
+    "popupTabFromLast": "Close assistant",
+    "popupShiftTabFromFirst": "Close assistant \u2192",
+    "escapeReturnsTo": "assistant-launcher",
+    "historyRouteFocus": "H1: Session history."
+  },
+  "narrowViewport": {
+    "fontSize": "20px",
+    "headerOffset": "244.5px",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  "voices": [
+    {
+      "name": "Samantha \u00b7 en-US",
+      "value": "Samantha"
+    },
+    {
+      "name": "Daniel \u00b7 en-GB",
+      "value": "Daniel"
+    },
+    {
+      "name": "Karen \u00b7 en-AU",
+      "value": "Karen"
+    },
+    {
+      "name": "Moira \u00b7 en-IE",
+      "value": "Moira"
+    },
+    {
+      "name": "Tessa \u00b7 en-ZA",
+      "value": "Tessa"
+    },
+    {
+      "name": "Rishi \u00b7 en-IN",
+      "value": "Rishi"
+    },
+    {
+      "name": "Eddy (English (United Kingdom)) \u00b7 en-GB",
+      "value": "Eddy (English (United Kingdom))"
+    },
+    {
+      "name": "Eddy (English (United States)) \u00b7 en-US",
+      "value": "Eddy (English (United States))"
+    },
+    {
+      "name": "Flo (English (United Kingdom)) \u00b7 en-GB",
+      "value": "Flo (English (United Kingdom))"
+    },
+    {
+      "name": "Flo (English (United States)) \u00b7 en-US",
+      "value": "Flo (English (United States))"
+    },
+    {
+      "name": "Reed (English (United Kingdom)) \u00b7 en-GB",
+      "value": "Reed (English (United Kingdom))"
+    },
+    {
+      "name": "Reed (English (United States)) \u00b7 en-US",
+      "value": "Reed (English (United States))"
+    },
+    {
+      "name": "Rocko (English (United Kingdom)) \u00b7 en-GB",
+      "value": "Rocko (English (United Kingdom))"
+    },
+    {
+      "name": "Rocko (English (United States)) \u00b7 en-US",
+      "value": "Rocko (English (United States))"
+    },
+    {
+      "name": "Sandy (English (United Kingdom)) \u00b7 en-GB",
+      "value": "Sandy (English (United Kingdom))"
+    },
+    {
+      "name": "Sandy (English (United States)) \u00b7 en-US",
+      "value": "Sandy (English (United States))"
+    },
+    {
+      "name": "Shelley (English (United Kingdom)) \u00b7 en-GB",
+      "value": "Shelley (English (United Kingdom))"
+    },
+    {
+      "name": "Shelley (English (United States)) \u00b7 en-US",
+      "value": "Shelley (English (United States))"
+    }
+  ],
+  "notes": [
+    "Observed keyboard results are from actual actions in the isolated review tab.",
+    "Moira preview and manual reply reported browser speech starts; this is not an acoustic-quality or human listening test.",
+    "No VoiceOver/NVDA/blind-user test was performed.",
+    "A 320 px larger-text layout initially overlapped navigation labels despite a zero-violation scan; stacking fixed that manual finding.",
+    "App breathing speech, tones and synthesis paths were removed; screen-reader text is available independently."
+  ],
+  "conversationAnnouncements": {
+    "autoReadChecked": {
+      "ariaLive": "off",
+      "status": "Reading assistant reply aloud."
+    },
+    "afterStop": {
+      "ariaLive": "polite",
+      "status": "Chatbot voice stopped. Automatic reading is off."
+    },
+    "method": "Read actual rendered DOM after UI actions in isolated production review tab; no assistive-technology listening test."
+  }
+}

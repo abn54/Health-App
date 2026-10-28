@@ -1,0 +1,14 @@
+{
+  "id": "d44031fe-69c6-419c-9408-788786e08818",
+  "status": "completed",
+  "created_at": "2026-10-28T16:44:30.276000Z",
+  "first_instruction_at": "2026-10-28T16:44:30.277000Z",
+  "final_step_at": "2026-10-28T16:45:30.292000Z",
+  "cue_initial": "text",
+  "cue_final": "text",
+  "setup_ms": 340.30000001192093,
+  "wall_ms": 60015.40000000596,
+  "excluded_ms": 0.0,
+  "assignment_duration_ms": 60015.40000000596,
+  "note": "Actual new fictional production-build run after breathing-audio removal. No sound or speech synthesis is invoked by exercise; screen-reader text updates are separate. Event log contains only chatbot cancellation messages. No audio recording or human listening assessment."
+}

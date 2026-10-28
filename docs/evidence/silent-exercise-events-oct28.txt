@@ -1,0 +1,4 @@
+Audio playback observations (browser events, not an audio recording)
+372 ms · Chatbot voice stopped.
+372 ms · Chatbot voice stopped.
+60380 ms · Chatbot voice stopped.

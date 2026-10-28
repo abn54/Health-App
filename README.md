@@ -8,7 +8,9 @@ Repository: [abn54/Health-App](https://github.com/abn54/Health-App). Submission:
 
 Presentation preparation: [rubric-aligned walkthrough and speaking notes](presentation-walkthrough.md), [profile changes and actual checks](docs/presentation-readiness-oct28.md). Expand **Your local profile** on Practice for **Standard explanations / Brief reminders** and an opt-in switch to use cue/saved practice context in replies. **Save profile** persists these choices; **Reset profile** restores standard replies and context off while keeping cue/history. One profile is shared by anyone using this localhost server; no account, name, diagnosis or mood rating is needed.
 
-Optional audio: expand **Voice & sound** under cue settings and choose **Spoken inhale / exhale** or **Soft tones**. In the assistant, use **Read reply aloud** or enable **Read new replies aloud**. Select/preview an on-device English voice; **Stop audio** switches automatic output off. Audio defaults off, resets on reload, uses no microphone or remote TTS, and never controls pacing. Available voices depend on your browser/device. [Voice implementation and actual verification](docs/voice-output.md).
+Accessibility: **Accessibility options** offers Higher contrast, Larger text and configurable screen-reader breathing updates. Skip to main content, named controls, keyboard focus, phase/count text, and independent support remain available. These options apply to the current visit. Breathing has **no app-generated speech or tones**; a user's screen reader may read accessible instructions in its own voice. [Actual accessibility checks and limits](docs/accessibility-update-oct28.md).
+
+Optional **Chatbot voice** exists only in the assistant: blue **Preview voice / Read reply aloud**, red **Stop voice**, a speed selector and an opt-in automatic-reading checkbox. Enhanced voice-name options rank first when installed; known novelty voices are hidden. Available quality depends on the device, and no acoustic-quality guarantee is made. Voice choices reset on reload, with no microphone, recording or remote TTS. Keep auto-read off if a screen reader is already reading replies.
 
 Current name: **mello** (renamed from Pause on October 27). The compact circular **Ask the assistant** button replaces the larger launcher. History sorts conversations by their last saved question and labels sessions without chat explicitly. Existing storage filenames/environment variables retain their compatible names.
 
@@ -58,7 +60,7 @@ npm test
 npm run build
 ```
 
-Backend tests use temporary databases and mocked provider outputs. Client tests use injected exercise clocks and fake speech/audio APIs to check timing, cancellation, late playback and unavailable output. Actual browser duration and live-model observations are separate in [Part 2 evidence](docs/part2-verification.md). A dependency deprecation warning from Starlette's current TestClient is recorded rather than hidden.
+Backend tests use temporary databases and mocked provider outputs. Client tests use injected exercise clocks and fake speech APIs and announcement-text cases to check cancellation, late playback, voice ordering, unavailable output and assistive text. The exercise-clock cases remain separate. Actual browser duration and live-model observations are separate in [Part 2 evidence](docs/part2-verification.md). A dependency deprecation warning from Starlette's current TestClient is recorded rather than hidden.
 
 For development, run `.venv/bin/python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000`, and `npm run dev` inside `frontend` in a second terminal. Vite binds loopback and proxies `/api`. Production-build checks use port 8000. Rebuild and restart FastAPI when switching from an unbuilt frontend to the static build.
 
@@ -82,7 +84,8 @@ One active page/tab is assumed. Hiding the page or a scheduling gap over two sec
 | --- | --- |
 | `frontend/src/App.vue` | UI, explicit choices, persistence journal, bundled support |
 | `frontend/src/engine.js` | Deterministic state and monotonic pacing |
-| `frontend/src/audio.js` | Optional on-device speech, soft tones and phase deduplication |
+| `frontend/src/audio.js` | Chatbot-only on-device speech, curated voice ordering and cancellation |
+| `frontend/src/accessibility.js` | Screen-reader announcement text; no speech synthesis |
 | `backend/main.py` | Validated API, migration, SQLite, Ollama adapter, atomic budget |
 | `backend/catalog.py`, `shared/help-content.json` | Shared reviewed FAQ/model copy, sources, mocks and fallible phrase cues |
 | `frontend/src/components/` | Shared assistant panel, FAQ/reading shelf and original SVG rhythm guide |
@@ -92,3 +95,6 @@ One active page/tab is assumed. Hiding the page or a scheduling gap over two sec
 | `AI-USE.md`, `docs/evidence-log.md` | AI disclosure, selected decisions and failures |
 
 The complete R1–R4 / D1–D6 table arrived in the student's October 21 overview. [Research mapping](docs/research-findings.md) connects all ten findings to implemented decisions, evidence, and explicit tradeoffs. Earlier missing-table notices describe the historical Part 1 source limitation. The Kaggle source informed intent/pattern/catalog design; no training, clinical audit, or effectiveness claim is made. No earlier coursework source code was supplied or reused.
+
+
+For development accessibility scans, run the normal backend (or a separate fictional database), then `MELLO_REVIEW_API=http://127.0.0.1:8001 npm run dev -- --port 5173` in `frontend` if using a separate API on 8001. Without that optional variable Vite proxies the normal 8000 API. Open `http://127.0.0.1:5173/?a11y-review` and use **Run accessibility audit** after manually reaching each state. The dev-only harness uses pinned `axe-core` 4.14.0; it is absent from the production build. Automated scans report only detectable issues and include items needing manual review; they are not WCAG certification or a substitute for blind-user/screen-reader testing.

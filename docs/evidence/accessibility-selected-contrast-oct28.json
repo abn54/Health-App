@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-28",
+  "method": "WCAG relative-luminance calculation of selected current CSS color pairs. Support colors also observed from browser computed styles. Not an exhaustive visual/AT evaluation.",
+  "pairs": [
+    {
+      "element": "Chatbot Play",
+      "foreground": "#ffffff",
+      "background": "#245a91",
+      "ratio": 7.127
+    },
+    {
+      "element": "Chatbot Stop",
+      "foreground": "#842824",
+      "background": "#fff1f0",
+      "ratio": 8.265
+    },
+    {
+      "element": "Voice help",
+      "foreground": "#43566b",
+      "background": "#edf4fc",
+      "ratio": 6.81
+    },
+    {
+      "element": "Inhale text over circle",
+      "foreground": "#2e5438",
+      "background": "#d5e5cb",
+      "ratio": 6.512
+    },
+    {
+      "element": "Exhale text over circle",
+      "foreground": "#2e4c70",
+      "background": "#d8e2f1",
+      "ratio": 6.74
+    },
+    {
+      "element": "Paused text over circle",
+      "foreground": "#655020",
+      "background": "#e9dfc7",
+      "ratio": 5.822
+    },
+    {
+      "element": "Support paragraph",
+      "foreground": "#74676a",
+      "background": "#fffbf5",
+      "ratio": 5.235
+    },
+    {
+      "element": "Support resource note",
+      "foreground": "#74676a",
+      "background": "#f5e9dc",
+      "ratio": 4.516
+    }
+  ]
+}

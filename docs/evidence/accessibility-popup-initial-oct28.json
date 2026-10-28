@@ -1,0 +1,31 @@
+{
+  "version": "4.14.0",
+  "date": "2026-10-28T16:29:39.410Z",
+  "violations": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "nodes": [
+        {
+          "target": [
+            ".assistant-popup-top > div > .eyebrow"
+          ],
+          "html": "<span class=\"eyebrow\">A LITTLE CLARITY, WHEN YOU WANT IT</span>",
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.31 (foreground color: #a08392, background color: #fffbf6, font size: 6.5pt (8.64px), font weight: normal). Expected contrast ratio of 4.5:1"
+        }
+      ]
+    }
+  ],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "targets": [
+        [
+          "#assistant-popup-heading > span[aria-hidden=\"true\"]"
+        ]
+      ]
+    }
+  ],
+  "passedRules": 36
+}
