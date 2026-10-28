@@ -31,3 +31,8 @@ The supplied Kaggle conversational resource informed the intent/pattern/response
 ## October 27 refinement
 
 [The dated refinement](ui-refinement-oct27.md) adds low-stimulus phase colors with redundant text (D6), optional FAQs/resources outside pacing (D1–D3), an explicitly opened popup with immediate exit/support (R2/R3/D4), and no click-derived mood inference. Explicit preference reuse remains the D5/R4 compromise. New source links provide limited general education, not replacement research findings or clinical validation.
+
+
+## October 28 presentation revision
+
+The new explicit local profile adds a reversible standard/brief reply choice and opt-in factual practice context. The latest saved terminal practice can supply a cue for explicit reuse; relevant assistant replies can refer to that record using reviewed local copy. This strengthens the D5 prior-activity example while preserving R4 correction/reset and D3's avoidance of required personal disclosure. No clinical/emotional persona is inferred. The single-skill, D1/D2 simplification and R2/D4 independent-support decisions remain. These are design choices, not new research findings or clinical evidence. [Actual checks and limits](presentation-readiness-oct28.md).

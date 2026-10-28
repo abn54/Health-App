@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-28",
+  "catalog_version": "app-help-v3",
+  "observations": [
+    {
+      "text": "I can explain reviewed app information. Personal assessments, diagnoses and treatment advice are outside this coursework prototype. Crisis support is always available.",
+      "metadata": {
+        "source": "live",
+        "reply_id": "unsupported",
+        "evidence_ids": [
+          "catalog:unsupported"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v10",
+        "catalog_version": "app-help-v3",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "b3a0a58f-3082-4e51-8c77-1d677f4ea0a8",
+        "reply_detail": "brief",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "brief",
+          "history_used": false
+        }
+      }
+    }
+  ],
+  "health": {
+    "status": "ok",
+    "live_enabled": true,
+    "review_tools": true,
+    "model": "qwen2.5:3b",
+    "prompt_version": "catalog-selector-v10",
+    "attempts": 5,
+    "limit": 50,
+    "test_run_id": "presentation-2026-10-28"
+  },
+  "note": "Explicit scope few-shot example did not change the therapist request selection: unsupported, not expected scope. Retained as a relevance limitation; next catalog revision makes both boundary answers explicitly state not a therapist."
+}

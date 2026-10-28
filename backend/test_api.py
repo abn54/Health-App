@@ -191,7 +191,7 @@ def test_expanded_help_is_catalog_text_without_preference_or_session_control(cli
     result = ask(client, sid, question).json()
     assert result['source'] == 'mock' and result['reply_id'] == topic
     assert result['text'] == m.CATALOG[topic]
-    assert result['catalog_version'] == 'app-help-v2'
+    assert result['catalog_version'] == 'app-help-v4'
     detail = client.get('/api/sessions/' + sid).json()
     assert detail['status'] == 'draft' and detail['events'] == []
     assert detail['messages'][-1]['content'] == result['text']
@@ -222,3 +222,148 @@ def test_history_last_chat_uses_saved_user_messages_and_reorders_old_conversatio
     assert ask(client, old, 'Can I stop halfway?').status_code == 200
     assert client.delete('/api/sessions/' + old).status_code == 200
     assert all(r['id'] != old for r in client.get('/api/sessions').json())
+
+
+def stopped_practice(client, cue='text'):
+    sid, data = create(client)
+    data = started(data)
+    data.update(cue_initial=cue, cue_final=cue)
+    assert client.put('/api/sessions/' + sid, json=data).status_code == 200
+    data.update(revision=3, status='stopped', wall_ms=1500, assignment_duration_ms=1500)
+    data['events'].append({'id':str(uuid.uuid4()),'sequence':2,'type':'stopped','elapsed_ms':1500,'details':{}})
+    assert client.put('/api/sessions/' + sid, json=data).status_code == 200
+    return sid
+
+
+def test_profile_migration_persistence_validation_and_independent_cue(client):
+    original = client.get('/api/profile').json()
+    assert original['reply_detail'] == 'standard' and original['use_history'] is False
+    assert original['latest_practice'] is None and original['updated_at'] is None
+    client.put('/api/preferences', json={'cue':'text'})
+    saved = client.put('/api/profile', json={'reply_detail':'brief','use_history':True}).json()
+    assert saved['updated_at'] and saved['remembered_cue'] == 'text'
+    m.migrate()  # Existing profile/cue survive idempotent migration/restart.
+    assert client.get('/api/profile').json() == saved
+    assert client.put('/api/profile',json={'reply_detail':'clinical','use_history':True}).status_code == 422
+    assert client.put('/api/profile',json={'reply_detail':'brief','use_history':True,'diagnosis':'invented'}).status_code == 422
+    reset = client.put('/api/profile',json={'reply_detail':'standard','use_history':False}).json()
+    assert reset['use_history'] is False and reset['remembered_cue'] == 'text'
+    with m.db() as c:
+        assert {r[0] for r in c.execute('SELECT version FROM migrations')} == {1,2}
+
+
+def test_reply_length_uses_reviewed_variants_without_inferred_persona(client):
+    sid, _ = create(client)
+    regular = ask(client,sid,'How long is the exercise?').json()
+    assert regular['text'] == m.CATALOG['pacing']
+    client.put('/api/profile',json={'reply_detail':'brief','use_history':False})
+    brief = ask(client,sid,'How long is the exercise?').json()
+    assert brief['text'] == m.compose_reply('pacing',{'reply_detail':'brief','use_history':False},'text')[0]
+    assert len(brief['text']) < len(regular['text'])
+    assert brief['personalization_context'] == {'reply_detail':'brief','history_used':False}
+    assert client.get('/api/sessions/' + sid).json()['events'] == []
+    assert client.get('/api/preferences').json()['cue'] is None
+
+
+def test_opt_in_tailors_from_real_saved_history_and_opt_out_removes_context(client):
+    practice = stopped_practice(client, 'animated')
+    sid, _ = create(client)
+    assert client.get('/api/profile').json()['latest_practice'] is None
+    before = ask(client,sid,'Can I stop halfway?').json()
+    assert 'latest saved practice' not in before['text']
+    client.put('/api/preferences',json={'cue':'animated'})
+    client.put('/api/profile',json={'reply_detail':'brief','use_history':True})
+    after = ask(client,sid,'Can I stop halfway?').json()
+    assert 'current cue is Text only' in after['text']
+    assert 'remembered cue is Animated circle' in after['text']
+    assert 'latest saved practice was stopped' in after['text']
+    assert 'finishing is not required' in after['text']
+    assert 'last recorded Animated circle' in after['text']
+    context = after['personalization_context']
+    assert context['history_used'] and context['latest_practice']['status'] == 'stopped'
+    assert client.get('/api/sessions/' + sid).json()['messages'][-1]['metadata']['personalization_context'] == context
+    client.put('/api/profile',json={'reply_detail':'brief','use_history':False})
+    assert ask(client,sid,'Can I stop halfway?').json()['personalization_context']['history_used'] is False
+    client.put('/api/profile',json={'reply_detail':'brief','use_history':True})
+    client.delete('/api/sessions/' + practice)
+    empty = ask(client,sid,'How long is the exercise?').json()
+    assert 'no saved finished' in empty['text'] and 'latest saved practice was stopped' not in empty['text']
+
+
+def test_live_selector_receives_no_profile_or_raw_history_but_display_is_tailored(client,monkeypatch):
+    stopped_practice(client)
+    sid, _ = create(client)
+    client.put('/api/profile',json={'reply_detail':'brief','use_history':True})
+    monkeypatch.setattr(m,'LIVE',True)
+    calls=[]
+    async def provider(question,cue):
+        calls.append((question,cue))
+        return '{"reply_id":"motion"}'
+    monkeypatch.setattr(m,'provider',provider)
+    result = ask(client,sid,'Can I turn off the moving circle?',mode='live').json()
+    assert calls == [('Can I turn off the moving circle?','text')]
+    assert result['source'] == 'live' and result['personalization_context']['history_used'] is True
+    assert 'latest saved practice was stopped' in result['text']
+    assert client.get('/api/health').json()['attempts'] == 1
+    assert client.get('/api/profile').json()['reply_detail'] == 'brief'
+
+
+def test_profile_does_not_tailor_boundary_or_unrelated_topics_and_delete_all_resets(client):
+    stopped_practice(client)
+    sid, _ = create(client)
+    client.put('/api/profile',json={'reply_detail':'brief','use_history':True})
+    boundary = ask(client,sid,'I want to die').json()
+    assert boundary['text'] == m.BOUNDARY and 'personalization_context' not in boundary
+    scope = ask(client,sid,'Can you be my therapist?').json()
+    assert scope['personalization_context']['history_used'] is False
+    assert 'not a therapist' in scope['text'] and 'latest saved practice' not in scope['text']
+    failure = ask(client,sid,'How long is the exercise?',simulate_failure=True).json()
+    assert failure['text'] == m.FALLBACK and 'personalization_context' not in failure
+    client.delete('/api/local-data')
+    reset = client.get('/api/profile').json()
+    assert reset['reply_detail']=='standard' and reset['use_history'] is False and reset['latest_practice'] is None
+    assert reset['remembered_cue'] is None and reset['updated_at'] is None
+
+
+def test_all_topics_have_plain_reviewed_brief_variants(client):
+    from backend.catalog import CONTENT
+    client.put('/api/profile',json={'reply_detail':'brief','use_history':False})
+    for topic in CONTENT['topics']:
+        answer, context = m.compose_reply(topic,{'reply_detail':'brief','use_history':False},'text')
+        assert answer == CONTENT['topics'][topic]['brief'] and context['history_used'] is False
+        assert '<script' not in answer
+
+
+def test_replayed_turn_keeps_original_profile_snapshot_after_reset(client):
+    stopped_practice(client)
+    sid, _ = create(client)
+    client.put('/api/profile',json={'reply_detail':'brief','use_history':True})
+    turn={'turn_id':str(uuid.uuid4()),'question':'Can I stop halfway?','cue':'text','mode':'mock'}
+    original=client.post(f'/api/sessions/{sid}/messages',json=turn).json()
+    client.put('/api/profile',json={'reply_detail':'standard','use_history':False})
+    replay=client.post(f'/api/sessions/{sid}/messages',json=turn).json()
+    assert replay==original
+    next_reply=ask(client,sid,'Can I stop halfway?').json()
+    assert next_reply['reply_detail']=='standard' and next_reply['personalization_context']['history_used'] is False
+
+
+def test_latest_practice_uses_exercise_start_not_old_draft_creation(client):
+    older=stopped_practice(client,'animated')
+    latest=stopped_practice(client,'text')
+    with m.db() as c:
+        # The newer practice began from a much older draft conversation.
+        row=c.execute('SELECT snapshot FROM sessions WHERE id=?',(latest,)).fetchone()
+        snapshot=json.loads(row['snapshot'])
+        snapshot.update(created_at='2026-01-01T00:00:00+00:00',first_instruction_at='2026-10-29T00:00:00+00:00')
+        c.execute('UPDATE sessions SET created_at=?,snapshot=? WHERE id=?',(snapshot['created_at'],json.dumps(snapshot),latest))
+    client.put('/api/profile',json={'reply_detail':'standard','use_history':True})
+    summary=client.get('/api/profile').json()['latest_practice']
+    assert summary['cue']=='text' and summary['started_at']=='2026-10-29T00:00:00+00:00'
+
+
+@pytest.mark.parametrize('text',['what is mello',"what's mello",'tell me about mello'])
+def test_app_name_question_has_honest_scope_reply(client,text):
+    sid,_=create(client)
+    result=ask(client,sid,text).json()
+    assert result['reply_id']=='scope' and 'mello is a localhost coursework' in result['text']
+    assert 'not a therapist' in result['text']

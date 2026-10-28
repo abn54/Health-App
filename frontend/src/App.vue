@@ -4,6 +4,7 @@ import { Exercise, phraseCue } from './engine.js'
 import { AudioOutput, PhaseCues } from './audio.js'
 import VoiceSettings from './components/VoiceSettings.vue'
 import AssistantPanel from './components/AssistantPanel.vue'
+import LocalProfile from './components/LocalProfile.vue'
 import HelpCenter from './components/HelpCenter.vue'
 import RhythmGuide from './components/RhythmGuide.vue'
 import PauseIllustration from './components/PauseIllustration.vue'
@@ -19,6 +20,8 @@ const questionText = ref(''), messages = ref([]), asking = ref(false), questionE
 const capabilities = ref({ live_enabled: false, review_tools: false, attempts: 0, limit: 50 })
 const simulateModel = ref(false), simulateSave = ref(false), retryTurn = ref(null), assistantOpen = ref(false)
 const assistantPopup = ref(false)
+const profileSaved = ref(null), profileDraft = ref({reply_detail:'standard',use_history:false}), profileBusy = ref(false), profileStatus = ref(''), profileError = ref('')
+let profileRequest = 0, profileTouched = false
 let popupReturnFocus
 const replySources = topic => (helpContent.topics[topic]?.sources || []).map(id=>helpContent.resources.find(r=>r.id===id)).filter(Boolean)
 const engine = new Exercise()
@@ -85,6 +88,39 @@ async function api(path, options = {}) {
     return await response.json()
   } finally { clearTimeout(timeout) }
 }
+async function refreshProfile(syncDraft = false) {
+  if (profileBusy.value) return
+  const request = ++profileRequest
+  try {
+    const loaded = await api('/profile')
+    if (request !== profileRequest) return
+    profileSaved.value = loaded
+    if (syncDraft && !profileTouched) { profileDraft.value = {reply_detail:loaded.reply_detail,use_history:loaded.use_history}; profileStatus.value = 'Profile loaded from local storage.' }
+    profileError.value = ''
+  } catch { if (request !== profileRequest) return; profileError.value = 'Profile could not refresh. The last loaded choices may be out of date; practice and support remain available.' }
+}
+function editProfileDetail(value) { profileTouched = true; profileDraft.value.reply_detail = value }
+function editProfileHistory(value) { profileTouched = true; profileDraft.value.use_history = value }
+function reloadProfile() { profileTouched = false; void refreshProfile(true) }
+async function saveProfile(reset = false) {
+  if (profileBusy.value || asking.value) return
+  profileRequest += 1
+  profileBusy.value = true; profileStatus.value = 'Saving profile…'
+  const desired = reset === true ? {reply_detail:'standard',use_history:false} : {...profileDraft.value}
+  try {
+    const loaded = await api('/profile',{method:'PUT',body:JSON.stringify(desired)})
+    profileTouched = false
+    profileSaved.value = loaded; profileDraft.value = {reply_detail:loaded.reply_detail,use_history:loaded.use_history}
+    profileStatus.value = reset === true ? 'Profile reset locally. Standard replies; saved context off.' : 'Profile saved locally. New replies use these choices.'
+    profileError.value = ''
+  } catch { profileStatus.value = 'Profile not confirmed saved. Reload before relying on a change.'; profileError.value = 'The profile save could not be confirmed.' }
+  finally { profileBusy.value = false }
+}
+function reuseLastPracticeCue() {
+  if (active.value || profileError.value || !profileSaved.value?.latest_practice?.cue) return
+  changeCue(profileSaved.value.latest_practice.cue)
+  profileStatus.value = 'Last practice cue copied for this visit; not remembered. Start remains your choice.'
+}
 function newSession() {
   current.value = { id:crypto.randomUUID(), revision:1, status:'draft', content_version:'breathing-4-6-v1', created_at:stamp(), cue_initial:null, cue_final:null, first_instruction_at:null, final_step_at:null, setup_ms:null, wall_ms:null, excluded_ms:0, assignment_duration_ms:null, events:[] }
   saved.value = 'Not saved yet'
@@ -122,6 +158,7 @@ async function flushSave() {
     }
   }
   saving = false
+  if (!pendingSave.value && terminal.value) void refreshProfile()
 }
 async function waitForSave() {
   await flushSave()
@@ -220,11 +257,13 @@ function openAssistant() {
   if (status.value === 'running') pause()
   if (view.value === 'history' && active.value) { event('history_close'); queueSave() }
   if (terminal.value && !pendingSave.value && !asking.value && !finalizing) ready()
+  void refreshProfile()
   view.value = 'assistant'; assistantOpen.value = true
   nextTick(() => document.querySelector(status.value === 'ready' ? '#app-question' : '#assistant-heading')?.focus())
 }
 function openAssistantPopup() {
   stopAudio()
+  void refreshProfile()
   popupReturnFocus = document.activeElement
   if (status.value === 'running') pause()
   assistantPopup.value = true; assistantOpen.value = true
@@ -254,7 +293,7 @@ function ready(discard = false) {
   const leaveUnsaved = discard === true
   if (active.value || finalizing || (!leaveUnsaved && (pendingSave.value || asking.value))) return
   if (leaveUnsaved) { token += 1; saveRequested = false; pendingSave.value = false; retryTurn.value = null; questionError.value = '' }
-  stopAudio()
+  stopAudio(); void refreshProfile()
   current.value = null; status.value = 'ready'; view.value = 'ready'; messages.value = []; selected.value = null; appError.value = ''; saved.value = 'No session started'; prefStatus.value = ''; readyAt = performance.now()
 }
 async function selectSession(id) {
@@ -274,16 +313,16 @@ function reopenDraft() {
 }
 async function deleteSession(id) {
   if (active.value || asking.value || pendingSave.value) return
-  try { await api(`/sessions/${id}`, {method:'DELETE'}); if (current.value?.id === id) { current.value = null; status.value = 'ready'; messages.value = [] }; selected.value = null; await openHistory() }
+  try { await api(`/sessions/${id}`, {method:'DELETE'}); if (current.value?.id === id) { current.value = null; status.value = 'ready'; messages.value = [] }; selected.value = null; await openHistory(); await refreshProfile() }
   catch { historyError.value = 'Deletion failed; the saved record may still exist.' }
 }
 async function deleteAll() {
   if (active.value || pendingSave.value || asking.value) return
-  try { await api('/local-data',{method:'DELETE'}); deleteConfirm.value = false; history.value = []; selected.value = null; current.value = null; status.value = 'ready'; messages.value = []; remembered.value = null; cue.value = reduced.matches ? 'text' : 'animated'; saved.value = 'No session started' }
+  try { await api('/local-data',{method:'DELETE'}); deleteConfirm.value = false; history.value = []; selected.value = null; current.value = null; status.value = 'ready'; messages.value = []; remembered.value = null; cue.value = reduced.matches ? 'text' : 'animated'; saved.value = 'No session started'; profileTouched = false; await refreshProfile(true) }
   catch { historyError.value = 'Deletion failed; local data may still exist.' }
 }
 async function ask(retry = false) {
-  if (asking.value || status.value !== 'ready') return
+  if (asking.value || profileBusy.value || status.value !== 'ready') return
   const text = retry ? retryTurn.value?.question : questionText.value.trim()
   if (!text) return
   if (phraseCue(text)) openSupport()
@@ -305,6 +344,7 @@ async function ask(retry = false) {
 
 onMounted(async () => {
   refreshVoices(); window.speechSynthesis?.addEventListener('voiceschanged', refreshVoices)
+  void refreshProfile(true)
   raf = requestAnimationFrame(loop)
   document.addEventListener('visibilitychange', visibility); window.addEventListener('pagehide', pagehide); reduced.addEventListener('change', motionChange)
   try {
@@ -349,12 +389,12 @@ onUnmounted(() => { audio.dispose(); window.speechSynthesis?.removeEventListener
               <p v-if="selected.status === 'interrupted'">Partial record. A missing final time is unknown, not a completed exercise.</p>
               <div class="button-row"><button v-if="selected.cue_final" class="secondary" :disabled="active || pendingSave || asking" @click="reuse">Use this cue next time</button><button v-if="selected.status === 'draft'" class="secondary" :disabled="active || pendingSave || asking" @click="reopenDraft">Continue these questions</button><button class="text-button danger" :disabled="active || pendingSave || asking" @click="deleteSession(selected.id)">Delete this session</button></div>
               <h3>Saved conversation</h3><p v-if="selected.messages.length" class="small-copy">Message times are shown in this device’s time zone.</p><p v-if="!selected.messages.length">No questions were submitted.</p>
-              <div v-for="m in selected.messages" :key="m.id" class="message" :class="m.role"><small>{{ m.role === 'user' ? 'Fictional question' : sourceLabel(m.metadata.source) }}</small><time class="message-time" :datetime="m.created_at">{{ chatDate(m.created_at) }}</time><p>{{ m.content }}</p><small v-if="m.metadata.reply_id">{{ m.metadata.reply_id }} · {{ m.metadata.prompt_version }}</small><small v-if="m.metadata.note">{{ m.metadata.note }}</small><div class="answer-sources"><a v-for="r in replySources(m.metadata.reply_id)" :key="r.id" :href="r.url" target="_blank" rel="noopener noreferrer">{{ r.label }} ↗</a></div></div>
+              <div v-for="m in selected.messages" :key="m.id" class="message" :class="m.role"><small>{{ m.role === 'user' ? 'Fictional question' : sourceLabel(m.metadata.source) }}</small><time class="message-time" :datetime="m.created_at">{{ chatDate(m.created_at) }}</time><p>{{ m.content }}</p><small v-if="m.metadata.reply_id">{{ m.metadata.reply_id }} · {{ m.metadata.prompt_version }}</small><small v-if="m.metadata.reply_detail">{{ m.metadata.reply_detail === 'brief' ? 'Brief reply' : 'Standard reply' }} · {{ m.metadata.personalization_context?.history_used ? 'Explicit profile + saved practice context' : 'Saved reply-length choice; practice context not used' }}</small><small v-if="m.metadata.note">{{ m.metadata.note }}</small><div class="answer-sources"><a v-for="r in replySources(m.metadata.reply_id)" :key="r.id" :href="r.url" target="_blank" rel="noopener noreferrer">{{ r.label }} ↗</a></div></div>
               <details><summary>Recorded events ({{ selected.events.length }})</summary><ol><li v-for="e in selected.events" :key="e.id">{{ e.type }} · {{ seconds(e.elapsed_ms) }} <span v-if="Object.keys(e.details).length">{{ e.details }}</span></li></ol></details>
             </section>
             <div v-else class="history-empty"><span>↖</span><h2>Choose a saved session.</h2><p>Its timing, settings, and conversation appear here.</p></div>
           </div>
-          <div class="delete-all"><button class="text-button danger" :disabled="active || pendingSave || asking" @click="deleteConfirm = !deleteConfirm">Delete all local history and preferences</button><div v-if="deleteConfirm" class="banner">This removes local records and preferences. Model-attempt accounting is retained.<div><button @click="deleteConfirm = false">Cancel</button><button @click="deleteAll">Confirm delete all</button></div></div></div>
+          <div class="delete-all"><button class="text-button danger" :disabled="active || pendingSave || asking" @click="deleteConfirm = !deleteConfirm">Delete all local history and preferences</button><div v-if="deleteConfirm" class="banner">This removes local records, cue and profile choices. Model-attempt accounting is retained.<div><button @click="deleteConfirm = false">Cancel</button><button @click="deleteAll">Confirm delete all</button></div></div></div>
         </template>
         <template v-else-if="view === 'assistant'">
           <div class="page-heading"><div><div class="eyebrow">OPTIONAL QUESTIONS, AT YOUR PACE</div><h1 id="assistant-heading" tabindex="-1">AI assistant<span>.</span></h1><p>Ask about pacing, controls, settings, and saved history.</p></div><button class="secondary" @click="active ? returnExercise() : view = 'ready'">{{ active ? 'Return to paused exercise' : 'Back to practice' }} →</button></div>
@@ -379,7 +419,8 @@ onUnmounted(() => { audio.dispose(); window.speechSynthesis?.removeEventListener
           <section v-if="active" class="exercise-panel" :data-phase="status === 'paused' ? 'paused' : reading.phase.toLowerCase()" aria-label="Active exercise"><div class="exercise-top"><span class="eyebrow">{{ status === 'paused' ? 'PAUSED · YOUR CHOICE TO CONTINUE' : 'FOLLOW THE WORDS AND COUNT' }}</span><span class="pill">Cycle {{ reading.cycle }} of 6</span></div><div class="phase-key" aria-label="Phase colors"><span :class="{current:status === 'running' && reading.phase === 'Inhale'}"><i class="phase-dot inhale-dot"></i> Inhale · 4</span><span :class="{current:status === 'running' && reading.phase === 'Exhale'}"><i class="phase-dot exhale-dot"></i> Exhale · 6</span></div><span class="sr-only" role="status">{{ status === 'paused' ? 'Exercise paused' : reading.phase }}</span><div class="exercise-space"><div v-if="cue === 'animated'" class="breathing-orbit" :style="{'--breath-scale':reading.scale}" aria-hidden="true"><div></div></div><div class="instruction"><span class="phase-tag">{{ status === 'paused' ? 'Your place is held' : reading.phase === 'Inhale' ? 'Expand · green cue' : 'Release · blue cue' }}</span><h1 id="exercise-heading" tabindex="-1">{{ status === 'paused' ? 'Paused' : reading.phase }}</h1><div class="count">{{ reading.count }}<span> / {{ reading.phase === 'Inhale' ? 4 : 6 }}</span></div><p>{{ status === 'paused' ? `Holding ${reading.phase.toLowerCase()}, count ${reading.count}.` : reading.phase === 'Inhale' ? 'Four counts in.' : 'Six counts out.' }}</p></div></div><div class="cycle-dots" aria-label="Cycle position"><span v-for="n in 6" :key="n" :class="{passed:n < reading.cycle,current:n === reading.cycle}" :aria-label="`Cycle ${n}${n === reading.cycle ? ', current' : ''}`"></span></div><progress max="60000" :value="reading.elapsed" aria-label="Exercise progress"></progress><div class="exercise-controls"><button v-if="status === 'running'" class="primary" @click="pause">Ⅱ Pause</button><button v-else class="primary" @click="resume">Resume →</button><button class="secondary" @click="finish('stopped')">End exercise</button></div><div class="cue-inline"><label for="active-cue">Pacing cue</label><select id="active-cue" :value="cue" @change="changeCue($event.target.value)"><option value="animated">Animated circle</option><option value="text">Text only</option></select><small>Changing the cue keeps your place.</small></div><VoiceSettings id-prefix="active" :breathing-sound="breathingSound" :voices="voices" :voice-u-r-i="voiceURI" :audio-state="audioState" :active="active" @sound="setSound" @voice="setVoice" @preview="previewVoice" @stop="muteAudio" /></section>
           <section v-else class="summary-panel"><span class="summary-icon">{{ status === 'completed' ? '✓' : '◌' }}</span><div class="eyebrow">{{ label(status) }} · PACED BREATHING</div><h1 id="summary-heading" tabindex="-1">{{ title }}</h1><p>{{ status === 'completed' ? 'The planned sequence has finished. Stay here as long as you like.' : status === 'interrupted' ? 'The page was hidden or scheduling stopped. Review your settings before starting a new exercise.' : 'This is a partial session. You can review it or return when you choose.' }}</p><div class="timing-grid"><div><strong>{{ seconds(current?.assignment_duration_ms) }}</strong><span>{{ status === 'completed' ? 'Measured exercise' : 'Partial exercise time' }}</span></div><div><strong>{{ seconds(current?.setup_ms) }}</strong><span>Entry and setup</span></div><div><strong>{{ seconds(current?.excluded_ms) }}</strong><span>User pause / support</span></div></div><p class="small-copy">Timing includes application and render delays. Explicit pause and support intervals are excluded once. Interrupted sessions do not establish completion.</p><div class="button-row"><button class="primary" :disabled="pendingSave || asking || finalizing" @click="ready">Return to ready →</button><button class="secondary" @click="openHistory">Review saved history</button></div><div v-if="pendingSave" class="unsaved-exit"><p class="small-copy">You can leave without waiting for a save. Unsaved changes may be lost; records already saved remain in History.</p><button class="secondary" @click="ready(true)">Leave without saving</button></div></section>
         </template>
-        <AssistantPanel v-if="!assistantPopup && (view === 'assistant' || (view === 'ready' && status === 'ready'))" v-model:mode="mode" v-model:question-text="questionText" v-model:expanded="assistantOpen" :messages="messages" :capabilities="capabilities" :asking="asking" :question-error="questionError" :retry-available="!!retryTurn" :ready="status === 'ready'" :voices="voices" :voice-u-r-i="voiceURI" :auto-read="autoRead" :audio-state="audioState" @voice="setVoice" @auto-read="setAutoRead" @read="readReply" @stop="muteAudio" @ask="ask" />
+        <LocalProfile v-if="status === 'ready' && (view === 'ready' || view === 'assistant')" :saved="profileSaved" :draft="profileDraft" :remembered="remembered" :busy="profileBusy || asking" :status="profileStatus" :error="profileError" @detail="editProfileDetail" @history="editProfileHistory" @save="saveProfile()" @reset="saveProfile(true)" @retry="reloadProfile" @reuse="reuseLastPracticeCue" />
+        <AssistantPanel v-if="!assistantPopup && (view === 'assistant' || (view === 'ready' && status === 'ready'))" v-model:mode="mode" v-model:question-text="questionText" v-model:expanded="assistantOpen" :messages="messages" :capabilities="capabilities" :profile="profileSaved" :profile-error="profileError" :profile-busy="profileBusy" :asking="asking" :question-error="questionError" :retry-available="!!retryTurn" :ready="status === 'ready'" :voices="voices" :voice-u-r-i="voiceURI" :auto-read="autoRead" :audio-state="audioState" @voice="setVoice" @auto-read="setAutoRead" @read="readReply" @stop="muteAudio" @ask="ask" />
         <HelpCenter v-if="view === 'assistant' || (view === 'ready' && status === 'ready')" />
         <div class="save-bar" role="status"><span :class="['save-dot',{unsaved:pendingSave}]"></span>{{ saved }} <button v-if="pendingSave" @click="retrySave">Retry save</button></div><p v-if="appError" class="small-copy error">{{ appError }}</p>
         <details v-if="capabilities.review_tools" class="review-tools"><summary>Coursework review tools</summary><p>Deliberate failure simulations for fictional verification. They never disable exercise or Crisis support.</p><label><input v-model="simulateModel" type="checkbox"> Simulate optional model failure</label><label><input v-model="simulateSave" type="checkbox"> Simulate session-save failure</label><details class="audio-observations"><summary>Audio playback observations (browser events, not an audio recording)</summary><ol><li v-for="(entry,i) in audioObservations" :key="i">{{ entry.at }} ms · {{ entry.message }}</li></ol></details><small>Model: {{ capabilities.model }} · host run: {{ capabilities.test_run_id }} · attempts: {{ capabilities.attempts }}/{{ capabilities.limit }}. Mock remains the default.</small></details>
@@ -392,7 +433,7 @@ onUnmounted(() => { audio.dispose(); window.speechSynthesis?.removeEventListener
       <div class="assistant-popup-tools"><p id="assistant-popup-description">Fictional coursework · educational information</p><button id="popup-support-control" class="support-button" @click="openSupport">Crisis support</button></div>
       <div v-if="active" class="banner">Your exercise is paused at {{ reading.phase.toLowerCase() }} count {{ reading.count }}. Close this window to return; Resume remains your choice.<div><button @click="returnExercise(); closeAssistantPopup()">Return to exercise</button><button @click="finish('stopped'); closeAssistantPopup()">End exercise</button></div></div>
       <div v-else-if="terminal" class="banner">This session has ended.<div><button :disabled="pendingSave || asking || finalizing" @click="newPopupQuestions">Start new questions</button><button @click="closeAssistantPopup">Return to summary</button></div></div>
-      <AssistantPanel v-model:mode="mode" v-model:question-text="questionText" v-model:expanded="assistantOpen" :messages="messages" :capabilities="capabilities" :asking="asking" :question-error="questionError" :retry-available="!!retryTurn" :ready="status === 'ready'" :voices="voices" :voice-u-r-i="voiceURI" :auto-read="autoRead" :audio-state="audioState" @voice="setVoice" @auto-read="setAutoRead" @read="readReply" @stop="muteAudio" popup @ask="ask" />
+      <AssistantPanel v-model:mode="mode" v-model:question-text="questionText" v-model:expanded="assistantOpen" :messages="messages" :capabilities="capabilities" :profile="profileSaved" :profile-error="profileError" :profile-busy="profileBusy" :asking="asking" :question-error="questionError" :retry-available="!!retryTurn" :ready="status === 'ready'" :voices="voices" :voice-u-r-i="voiceURI" :auto-read="autoRead" :audio-state="audioState" @voice="setVoice" @auto-read="setAutoRead" @read="readReply" @stop="muteAudio" popup @ask="ask" />
       <div class="popup-save"><span role="status">{{ saved }}</span><button v-if="pendingSave" @click="retrySave">Retry save</button><button @click="closeAssistantPopup">Close assistant →</button></div>
     </section>
   </div>

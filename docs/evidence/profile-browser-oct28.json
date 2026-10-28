@@ -1,0 +1,128 @@
+{
+  "date": "2026-10-28",
+  "mode": "mock; isolated fictional browser demonstration",
+  "profile": {
+    "reply_detail": "brief",
+    "use_history": true,
+    "updated_at": "2026-10-28T15:05:18.402283+00:00",
+    "remembered_cue": "text",
+    "latest_practice": {
+      "status": "completed",
+      "cue": "text",
+      "created_at": "2026-10-28T15:04:33.164000Z"
+    }
+  },
+  "sessions": [
+    {
+      "id": "83492eff-8338-4cae-82b7-4ea0d584d28d",
+      "status": "completed",
+      "created_at": "2026-10-28T15:04:33.164000Z",
+      "first_instruction_at": "2026-10-28T15:05:27.605000Z",
+      "final_step_at": "2026-10-28T15:06:27.614000Z",
+      "cue_initial": "text",
+      "cue_final": "text",
+      "setup_ms": 62499.69999998808,
+      "wall_ms": 60008.59999999404,
+      "excluded_ms": 0.0,
+      "assignment_duration_ms": 60008.59999999404
+    },
+    {
+      "id": "dd2d3715-64ce-4713-afa7-b9c5b6d9a02c",
+      "status": "stopped",
+      "created_at": "2026-10-28T15:04:14.227000Z",
+      "first_instruction_at": "2026-10-28T15:04:14.229000Z",
+      "final_step_at": null,
+      "cue_initial": "text",
+      "cue_final": "animated",
+      "setup_ms": 450.0,
+      "wall_ms": 10612.5,
+      "excluded_ms": 658.5999999940395,
+      "assignment_duration_ms": 9953.90000000596
+    }
+  ],
+  "assistant_replies": [
+    {
+      "text": "Pause holds your place; Resume continues it. End stops immediately. Crisis support remains available and pauses practice when opened. Your current cue is Animated circle. Your remembered cue is Text only; you can override it without changing the saved choice. Your latest saved practice was stopped. A fresh start is optional; finishing is not required. That practice last recorded Animated circle.",
+      "metadata": {
+        "source": "mock",
+        "reply_id": "controls",
+        "evidence_ids": [
+          "catalog:controls"
+        ],
+        "model_id": null,
+        "prompt_version": "catalog-selector-v8",
+        "catalog_version": "app-help-v3",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": null,
+        "reply_detail": "brief",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "brief",
+          "history_used": true,
+          "current_cue": "animated",
+          "remembered_cue": "text",
+          "latest_practice": {
+            "status": "stopped",
+            "cue": "animated",
+            "created_at": "2026-10-28T15:04:14.227000Z"
+          }
+        }
+      }
+    },
+    {
+      "text": "Pause holds the current phase and count. Resume continues them. End stops the exercise. Crisis support stays available, and opening it pauses an active exercise.",
+      "metadata": {
+        "source": "mock",
+        "reply_id": "controls",
+        "evidence_ids": [
+          "catalog:controls"
+        ],
+        "model_id": null,
+        "prompt_version": "catalog-selector-v8",
+        "catalog_version": "app-help-v3",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": null,
+        "reply_detail": "standard",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "standard",
+          "history_used": false
+        }
+      }
+    },
+    {
+      "text": "I am an educational assistant for this fictional coursework prototype, not a therapist. I can explain reviewed app content and general stress information. I cannot diagnose, provide treatment, or monitor anyone. Use fictional questions only.",
+      "metadata": {
+        "source": "mock",
+        "reply_id": "scope",
+        "evidence_ids": [
+          "catalog:scope"
+        ],
+        "model_id": null,
+        "prompt_version": "catalog-selector-v8",
+        "catalog_version": "app-help-v3",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": null,
+        "reply_detail": "standard",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "standard",
+          "history_used": false
+        }
+      }
+    }
+  ],
+  "health": {
+    "status": "ok",
+    "live_enabled": false,
+    "review_tools": true,
+    "model": "qwen2.5:3b",
+    "prompt_version": "catalog-selector-v8",
+    "attempts": 0,
+    "limit": 50,
+    "test_run_id": "part2-local"
+  }
+}

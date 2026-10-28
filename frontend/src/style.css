@@ -232,3 +232,17 @@ footer { display: flex; justify-content: space-between; gap: 20px; max-width: 11
   .header-actions .support-button { font-size: .68rem; min-height: 36px; padding: 8px 12px; }
   .header-actions .assistant-launcher { width: 44px; height: 44px; min-height: 44px; }
 }
+
+.local-profile { margin: 24px 0; padding: 0; overflow: hidden; }
+.local-profile summary { cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 15px; padding: 21px 25px; color: #694e5d; }
+.local-profile summary strong, .local-profile summary small { display: block; }
+.local-profile summary strong { font-size: .9rem; font-weight: 500; }
+.local-profile summary small { margin-top: 5px; font-size: .7rem; color: #78685d; }
+.profile-body { padding: 0 25px 23px; display: grid; gap: 12px; }
+.profile-body > p { font-size: .8rem; margin: 0; }
+.profile-body > label { font-size: .8rem; }
+.profile-body select { width: 100%; min-width: 0; }
+.profile-history { border: 1px solid #ddd0e5; background: #f4eef7; border-radius: 14px; padding: 17px; font-size: .8rem; }
+.profile-history p { margin: 8px 0; }
+.profile-history small { display: block; margin-top: 7px; color: #78685d; }
+.assistant-context { border-left: 2px solid #c6accf; padding-left: 12px; }

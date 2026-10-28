@@ -1,58 +1,68 @@
 {
-  "version": "app-help-v2",
-  "reviewed_on": "2026-10-27",
+  "version": "app-help-v4",
+  "reviewed_on": "2026-10-28",
   "topics": {
     "pacing": {
       "context": "Six cycles: inhale four one-second counts, exhale six. Total planned duration 60 seconds.",
       "answer": "The exercise has six cycles. Each cycle uses four one-second counts for inhale and six for exhale, for 60 seconds of planned pacing.",
-      "sources": []
+      "sources": [],
+      "brief": "Inhale for four one-second counts, then exhale for six. Repeat six times: 60 seconds. You can stop whenever you choose."
     },
     "motion": {
       "context": "Animated circle is optional. Text only shows words and counts. Cue changes preserve pace.",
       "answer": "Inhale uses a muted green circle; exhale uses muted blue. The phase word and count carry the same information, so color is never required. Choose Text only before or during the exercise to remove the moving shape. Changing the cue preserves your place and does not save a preference.",
-      "sources": []
+      "sources": [],
+      "brief": "Text only removes the moving circle while keeping the phase and count. You can change cues without losing your place."
     },
     "storage": {
-      "context": "SQLite saves questions, replies and session history locally. Check save status. Saved history is reviewable and deletable.",
-      "answer": "The app attempts to save fictional questions, displayed replies and session records in local SQLite. Check the save status: a failed write is not a saved record. Retry or use Leave without saving after ending; unsaved changes may be lost. Review or delete saved records in History. Live mode sends the current question and approved context to local Ollama.",
-      "sources": []
+      "context": "Local SQLite stores fictional questions, replies, session history and explicit cue/profile choices. Check save status. History and profile are reviewable, resettable and deletable.",
+      "answer": "The app attempts to save fictional questions, displayed replies, session records and explicit cue/profile choices in local SQLite. Check each save status: a failed write is not a saved record. Retry or use Leave without saving after ending; unsaved changes may be lost. Review or delete saved records in History. Live mode sends the current question and approved facts to local Ollama; profile and usage-history tailoring uses reviewed local rules, not raw conversations sent to the model.",
+      "sources": [],
+      "brief": "Check the save status before leaving. Saved fictional questions, replies, sessions and explicit preferences stay in local SQLite and can be reviewed or deleted in History."
     },
     "controls": {
       "context": "Pause holds your place. Resume continues. End stops halfway immediately. Opening support pauses.",
       "answer": "Pause holds the current phase and count. Resume continues them. End stops the exercise. Crisis support stays available, and opening it pauses an active exercise.",
-      "sources": []
+      "sources": [],
+      "brief": "Pause holds your place; Resume continues it. End stops immediately. Crisis support remains available and pauses practice when opened."
     },
     "scope": {
-      "context": "Fictional coursework prototype only. No therapy, diagnosis or human monitoring.",
-      "answer": "I am an educational assistant for this fictional coursework prototype, not a therapist. I can explain reviewed app content and general stress information. I cannot diagnose, provide treatment, or monitor anyone. Use fictional questions only.",
-      "sources": []
+      "context": "mello is a localhost coursework skills prototype with one 60-second paced-breathing exercise. Its educational assistant explains reviewed app information. No therapy, diagnosis or human monitoring.",
+      "answer": "mello is a localhost coursework skills prototype with a 60-second paced-breathing exercise. I am its educational assistant, not a therapist. I can explain reviewed app content and general stress information. I cannot diagnose, provide treatment or monitor anyone. Use fictional questions only.",
+      "sources": [],
+      "brief": "mello is a coursework paced-breathing prototype. I am its app assistant, not a therapist. I cannot diagnose, provide treatment or monitor anyone. Use fictional questions only."
     },
     "start": {
       "context": "Start begins the exercise from Ready. Answering a question first is optional.",
       "answer": "The ready screen shows the 60-second exercise and your cue setting. Start is your choice. You do not need to answer questions first.",
-      "sources": []
+      "sources": [],
+      "brief": "Start the 60-second practice when you choose. No question or check-in is required."
     },
     "unsupported": {
       "context": "Personal mental-health advice or unrelated requests are outside the app-help scope.",
-      "answer": "I can explain the exercise, its controls, saved records and reviewed general information. Personal assessments, diagnoses and treatment advice are outside this coursework prototype. The Crisis support control is always available.",
-      "sources": []
+      "answer": "I am a coursework app assistant, not a therapist, and nobody monitors this prototype. I can explain the exercise, controls, saved records and reviewed general information. Personal assessments, diagnoses and treatment advice are outside this prototype. The Crisis support control is always available.",
+      "sources": [],
+      "brief": "I am a coursework app assistant, not a therapist, and nobody monitors this prototype. I can explain reviewed app information, but cannot diagnose or provide treatment. Crisis support is always available."
     },
     "preferences": {
-      "context": "Remember this choice explicitly stores the cue. Reset removes it. History reuse copies a cue for review, without saving it or starting. No favorites or inferred mood.",
-      "answer": "Choose a cue, then select Remember this choice if you want it restored next time. Reset preference removes it. Use this cue next time in History only copies the setting for review; it does not remember it or start an exercise. Changes during practice apply to that session.",
-      "sources": []
+      "context": "Remember explicitly saves the cue. Local profile explicitly saves standard/brief reply detail and optional saved-practice context, off by default. Reset and override remain available. No inferred mood.",
+      "answer": "Choose a cue, then select Remember this choice to restore it next time. Reset preference removes it. Your local profile can save reply length and, only if you choose, use your cue and saved practice history in assistant replies. Save profile makes those choices persistent; Reset profile returns to standard replies with history context off. History reuse only copies a cue for review; it does not remember it or start an exercise.",
+      "sources": [],
+      "brief": "Remember saves your cue. Reset removes it. Your local profile also saves reply length and an optional choice to use saved practice context; you can change or reset them."
     },
     "checkin": {
-      "context": "No required questionnaire, mood check-in or emotional-state inference. App does not infer stress from clicking. Only explicit cue preferences personalize the interface.",
-      "answer": "No questionnaire or mood check-in is required. You can start directly, choose your cue, or ask an optional question. The app does not infer stress or a diagnosis from clicks, question wording or session history. Personalization uses an explicit cue choice that you can reset.",
-      "sources": []
+      "context": "No required questionnaire or emotional-state inference. Explicit cue and reply-detail preferences personalize the UI; saved practice context in replies is optional and reversible.",
+      "answer": "No questionnaire or mood check-in is required. You can start directly, choose your cue, or ask an optional question. The app does not infer stress or a diagnosis from clicks, wording or history. Personalization uses your explicit cue and reply-detail choices. You can opt in to factual saved-practice context in replies and switch it off again.",
+      "sources": [],
+      "brief": "No check-in is required. The app uses explicit choices, not inferred stress, diagnoses or emotions. Optional saved practice context can be switched off."
     },
     "stress": {
       "context": "NIMH describes stress as a physical or mental response to an external demand, such as schoolwork. General educational definition only; no personal assessment or advice.",
       "answer": "Stress can be a mental or physical response to an outside demand, such as schoolwork. This is general information from NIMH, not an assessment of your experience. This prototype does not determine a cause, diagnose a condition or choose treatment.",
       "sources": [
         "nimh-stress"
-      ]
+      ],
+      "brief": "Stress can be a mental or physical response to an outside demand, such as schoolwork. This NIMH definition is general information, not an assessment of you."
     },
     "resources": {
       "context": "Reviewed links: NIMH stress fact sheet; AIS military/veteran resource page; Grey House handbook publisher listing only; APA DSM overview. No handbook full text, clinical audit or diagnostic use.",
@@ -62,7 +72,8 @@
         "ais-veterans",
         "greyhouse",
         "apa-dsm"
-      ]
+      ],
+      "brief": "The reading shelf labels public information, professional overviews and publisher listings. No full handbook was imported, and these links do not make the app a diagnostic tool."
     }
   },
   "resources": [
@@ -181,5 +192,25 @@
     "Does this app infer stress from clicks?",
     "What is stress?",
     "Can you be my therapist?"
-  ]
+  ],
+  "personalization": {
+    "current": {
+      "text": "Your current cue is Text only.",
+      "animated": "Your current cue is Animated circle."
+    },
+    "remembered": {
+      "text": "Your remembered cue is Text only; you can override it without changing the saved choice.",
+      "animated": "Your remembered cue is Animated circle; you can override it without changing the saved choice."
+    },
+    "last_status": {
+      "stopped": "Your latest saved practice was stopped. A fresh start is optional; finishing is not required.",
+      "interrupted": "Your latest saved practice was interrupted. A new exercise starts from Ready rather than resuming that record.",
+      "completed": "Your latest saved practice completed its planned sequence. Starting again is optional."
+    },
+    "last_cue": {
+      "text": "That practice last recorded Text only.",
+      "animated": "That practice last recorded Animated circle."
+    },
+    "none": "There is no saved finished, stopped or interrupted practice to refer to yet."
+  }
 }

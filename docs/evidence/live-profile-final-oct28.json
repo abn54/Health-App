@@ -1,0 +1,123 @@
+{
+  "date": "2026-10-28",
+  "prompt_version": "catalog-selector-v10",
+  "catalog_version": "app-help-v4",
+  "personalization_version": "profile-copy-v1",
+  "ollama": {
+    "version": "0.32.5"
+  },
+  "model": {
+    "name": "qwen2.5:3b",
+    "model": "qwen2.5:3b",
+    "modified_at": "2026-10-21T10:21:12.290743706-04:00",
+    "size": 1929912432,
+    "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "qwen2",
+      "families": [
+        "qwen2"
+      ],
+      "parameter_size": "3.1B",
+      "quantization_level": "Q4_K_M",
+      "context_length": 32768,
+      "embedding_length": 2048
+    },
+    "capabilities": [
+      "completion",
+      "tools"
+    ]
+  },
+  "actual_final_replies": [
+    {
+      "text": "I am a coursework app assistant, not a therapist, and nobody monitors this prototype. I can explain reviewed app information, but cannot diagnose or provide treatment. Crisis support is always available.",
+      "metadata": {
+        "source": "live",
+        "reply_id": "unsupported",
+        "evidence_ids": [
+          "catalog:unsupported"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v10",
+        "catalog_version": "app-help-v4",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "1377e6b3-17b4-4e1b-b4b4-489bf89e1114",
+        "reply_detail": "brief",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "brief",
+          "history_used": false
+        }
+      }
+    },
+    {
+      "text": "Pause holds your place; Resume continues it. End stops immediately. Crisis support remains available and pauses practice when opened. Your current cue is Text only. Your latest saved practice completed its planned sequence. Starting again is optional. That practice last recorded Text only.",
+      "metadata": {
+        "source": "live",
+        "reply_id": "controls",
+        "evidence_ids": [
+          "catalog:controls"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v10",
+        "catalog_version": "app-help-v4",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "cb783e5a-35a6-45b0-a437-c2c85916bfa6",
+        "reply_detail": "brief",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "brief",
+          "history_used": true,
+          "current_cue": "text",
+          "remembered_cue": "text",
+          "latest_practice": {
+            "status": "completed",
+            "cue": "text",
+            "created_at": "2026-10-28T15:04:33.164000Z",
+            "started_at": "2026-10-28T15:05:27.605000Z"
+          }
+        }
+      }
+    }
+  ],
+  "profile": {
+    "reply_detail": "brief",
+    "use_history": true,
+    "updated_at": "2026-10-28T15:05:18.402283+00:00",
+    "remembered_cue": "text",
+    "latest_practice": {
+      "status": "completed",
+      "cue": "text",
+      "created_at": "2026-10-28T15:04:33.164000Z",
+      "started_at": "2026-10-28T15:05:27.605000Z"
+    }
+  },
+  "health": {
+    "status": "ok",
+    "live_enabled": true,
+    "review_tools": true,
+    "model": "qwen2.5:3b",
+    "prompt_version": "catalog-selector-v10",
+    "attempts": 7,
+    "limit": 50,
+    "test_run_id": "presentation-2026-10-28"
+  },
+  "attempt_ledger": [
+    {
+      "run_id": "presentation-2026-10-28",
+      "outcome": "preload-complete",
+      "count": 1
+    },
+    {
+      "run_id": "presentation-2026-10-28",
+      "outcome": "validated-selection",
+      "count": 6
+    }
+  ],
+  "sqlite_integrity": "ok",
+  "foreign_key_violations": [],
+  "note": "Two final live questions, single authored examples, not an accuracy/clinical evaluation. Therapist selected unsupported instead of expected scope; final approved unsupported copy now explicitly says not a therapist and no monitoring. Controls selected controls. Profile/history is applied by local reviewed rules; not sent to model. Earlier development versions are retained separately."
+}

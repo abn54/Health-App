@@ -23,3 +23,17 @@ The implementation is a coherent Part 3.2 prototype, not a claim of clinical eff
 ## Part 3.3 work remains
 
 The complete fifteen-scenario evaluation and three cross-case behavior checks, repeated relevant live cases, independent clean-checkout review, final demonstration, process screencast and student explanation belong to Part 3.3. Earlier Part 3.1 plans are not passed tests. Broader browsers/assistive technologies, multi-tab reconciliation and crash durability remain untested limits. More skills, speech, a paid provider, clinical research and Character.AI registration are not required for Part 3.2.
+
+
+## October 28 presentation rubric audit
+
+The student supplied the four 25-point criteria on October 28 and authorized both app updates and a presentation walkthrough. This is a readiness mapping, not a grade or claim the student has presented.
+
+| Presentation criterion | Concrete demonstration now supported |
+| --- | --- |
+| User state and interface adaptation | Explicit cue/reduced-motion default, remembered choice and override; standard/brief answer preference; chosen activity simplifies the main view. No distress sensor/inference. |
+| Skill walkthrough and research grounding | Actual full 4/6 × 6 run, separate stopped/support behavior, and complete supplied R/D mapping/tradeoffs. Walkthrough tells the presenter what to show and say. |
+| Persona, interaction choices and accessibility | One persistent minimal local profile and optional factual latest-practice summary; actual reload, reset and cue reuse, history dates/messages, keyboard/phone and optional audio. Fictional Alex is a design persona, not an authenticated account/clinical profile. |
+| Chatbot tone and limits | Actual profile/history-tailored approved answer, explicit source/context label, reset comparison, honest mello/therapist boundary; optional model selects topic, local reviewed renderer applies profile/history. No claim that raw history is sent to the model. |
+
+[Presentation walkthrough](../presentation-walkthrough.md) and [dated expected/observed evidence](presentation-readiness-oct28.md). Full Part 3.3 evaluation, student delivery and recording/upload remain separate; this rubric does not supply recording submission instructions.
