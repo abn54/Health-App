@@ -30,6 +30,8 @@ sh scripts/run.sh
 
 Open **http://127.0.0.1:8000**. The script creates a project virtual environment, installs pinned dependencies, performs `npm ci`, builds Vue, and serves the build and API from FastAPI on loopback. Stop with Ctrl+C. Internet is needed for dependency installation; the built app uses no external fonts or assets. Exercise and support have no API prerequisite after the page loads. Initially loading the page still requires the server.
 
+If the browser reports **connection refused**, check that the localhost server is still running. After dependencies and the build already exist, restart it from the repository directory with `.venv/bin/python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000` and keep that terminal open. This serves both the built Vue frontend and API; a separate Vite server is unnecessary for port 8000. Use the explicit live-mode configuration above/below only when intended. The server does not automatically start after reboot.
+
 Replies are **mocked by default**. Ollama and API keys are unnecessary for exercise, history, preferences, support, or routine tests. SQLite is created automatically at `data/pause.sqlite3` and ignored by Git. It is local unencrypted storage: enter fictional inputs only.
 
 ## Optional real local model
