@@ -1,6 +1,16 @@
 # IST 402 — Assignment 3, Part 2 (3.2)
 
-## October 27 mello rename and history update — latest implementation
+## October 28 presentation-readiness revision — latest implementation
+
+The student supplied four equally weighted presentation criteria and requested app updates plus a walkthrough. Implementation/evidence commit: [`ebc3a05d833b80c82cef4fa339dad3603e7940c4`](https://github.com/abn54/Health-App/commit/ebc3a05d833b80c82cef4fa339dad3603e7940c4). [Presentation walkthrough and speaking notes](https://github.com/abn54/Health-App/blob/ebc3a05d833b80c82cef4fa339dad3603e7940c4/presentation-walkthrough.md), [actual checks and limitations](https://github.com/abn54/Health-App/blob/ebc3a05d833b80c82cef4fa339dad3603e7940c4/docs/presentation-readiness-oct28.md), [updated architecture](https://github.com/abn54/Health-App/blob/ebc3a05d833b80c82cef4fa339dad3603e7940c4/docs/architecture.md).
+
+The key gap was real chatbot personalization: earlier saved cues/history changed the UI, but did not tailor replies. **Your local profile** now explicitly saves standard/brief answer detail and an opt-in permission for factual saved-practice context (off by default). A latest-practice summary can copy its cue for review without starting, remembering or resuming; reset/override remain available. Relevant assistant replies use reviewed variants and finite sentences for current/remembered cue and latest recorded status/cue. The local model selects a topic; reviewed local rules apply profile/history without sending raw profile/conversations to the model. No emotional/clinical persona is inferred. This is one shared local-host profile, not authenticated individual accounts.
+
+Actual fictional browser checks covered save/reload, override, support/partial stop, tailored reply/reset comparison, phone controls, history cue reuse and profile-save outage. A completed run measured **60.008600 s**, **0 s excluded**, **62.499700 s setup**; later copy/load-guard refinements left the exercise engine unchanged. **33 backend + 17 client tests/build passed**. Final model/prompt/catalog/copy: `qwen2.5:3b` / `catalog-selector-v10` / `app-help-v4` / `profile-copy-v1`. Seven isolated host attempts included a counted preload. Therapist requests still selected the general limits topic rather than expected scope despite a prompt example; both approved boundary answers now explicitly say not a therapist and no diagnosis/treatment/monitoring. This documented relevance limitation is not claimed fixed. [Exact final live evidence](https://github.com/abn54/Health-App/blob/ebc3a05d833b80c82cef4fa339dad3603e7940c4/docs/evidence/live-profile-final-oct28.json).
+
+The walkthrough maps the four presentation criteria to running controls, the supplied R/D table, a fictional persona, persistence/accessibility and honest model limits. It is preparation, not a completed presentation/recording, a predicted grade, or the full Part 3.3 evaluation. Earlier pinned milestones below remain historical evidence.
+
+## October 27 mello rename and history update
 
 The app is now **mello**, implementing the student's selected name. Implementation/evidence snapshot: [`1f956defc7bbe9bc5d3948f247d7251346bb861c`](https://github.com/abn54/Health-App/commit/1f956defc7bbe9bc5d3948f247d7251346bb861c). [Changes and actual verification](https://github.com/abn54/Health-App/blob/1f956defc7bbe9bc5d3948f247d7251346bb861c/docs/mello-history-update.md). Historical snapshots below retain the earlier name.
 
