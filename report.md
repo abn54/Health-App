@@ -1,6 +1,12 @@
 # IST 402 — Assignment 3, Part 2 (3.2)
 
-## Later October 28 accessibility revision — latest implementation
+## Later October 28 bottom-right composer — latest implementation
+
+Implementation/evidence commit: [`9e2d08297d8da5b37737f142dd688c26e898cb83`](https://github.com/abn54/Health-App/commit/9e2d08297d8da5b37737f142dd688c26e898cb83). The requested assistant circle now sits in a reserved bottom-right rail. Its right-aligned popup has a rounded, always-visible multiline composer with Send and optional Read replies, plus scrollable conversation and expandable Reply & voice options. Enter sends; Shift+Enter adds a line. Voice means optional spoken replies; no microphone dictation or live voice conversation was added. Breathing stays silent. Support/Close, explicit pause/End, keyboard focus and reviewed model boundaries remain.
+
+Actual isolated fictional checks covered Enter/Shift+Enter/Send, mock reply, reply voice/Stop, conversation scroll, focus wrapping/Escape, phone larger-text/higher-contrast bounds, support and a stopped partial practice. **17 client tests and production build passed**; four selected final axe scans detected zero violations, with incomplete checks retained. No full screen-reader certification, new completed timing run, provider attempt or recording is claimed. [Exact evidence and revisions](https://github.com/abn54/Health-App/blob/9e2d08297d8da5b37737f142dd688c26e898cb83/docs/composer-update-oct28.md), [production screenshot](https://github.com/abn54/Health-App/blob/9e2d08297d8da5b37737f142dd688c26e898cb83/docs/evidence/composer-popup-final-oct28.jpg), [updated walkthrough](https://github.com/abn54/Health-App/blob/9e2d08297d8da5b37737f142dd688c26e898cb83/presentation-walkthrough.md). Earlier snapshots remain historical.
+
+## Later October 28 accessibility revision
 
 Implementation/evidence commit: [`569960e9d2f2d7023c61d784f2bc0528e85226ac`](https://github.com/abn54/Health-App/commit/569960e9d2f2d7023c61d784f2bc0528e85226ac). [Current behavior, actual checks and limitations](https://github.com/abn54/Health-App/blob/569960e9d2f2d7023c61d784f2bc0528e85226ac/docs/accessibility-update-oct28.md), [updated walkthrough](https://github.com/abn54/Health-App/blob/569960e9d2f2d7023c61d784f2bc0528e85226ac/presentation-walkthrough.md), [run instructions](https://github.com/abn54/Health-App/blob/569960e9d2f2d7023c61d784f2bc0528e85226ac/README.md).
 
