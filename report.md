@@ -1,6 +1,12 @@
 # IST 402 — Assignment 3, Part 2 (3.2)
 
-## Later October 28 bottom-right composer — latest implementation
+## Late October 28 chat wording — latest implementation
+
+Implementation/evidence commit: [`8d397841059bc508d6cdb90db9b12d05666dbac9`](https://github.com/abn54/Health-App/commit/8d397841059bc508d6cdb90db9b12d05666dbac9). Replaced repeated fictional-question labels with Your question / You, moved new-chat personalization metadata behind Reply details, and changed the mock display label to Prepared reply with an explicit reviewed-text explanation. The coursework/demo notice, accurate provenance and direct therapist/diagnosis limits remain. A new approved about topic explains purpose/features without repeating role warnings. Existing saved replies keep their original text/metadata.
+
+Current catalog/prompt: **app-help-v5 / catalog-selector-v11**; model/profile renderer remain qwen2.5:3b / profile-copy-v1. **39 backend + 17 client tests passed; production build succeeded.** An initial date-dependent fixture failure was corrected using fixed timestamps for both test records, with no change to application ordering logic. Isolated browser purpose and therapist questions returned their reviewed about/scope answers with zero provider attempts. [Exact expected/observed checks and limits](https://github.com/abn54/Health-App/blob/8d397841059bc508d6cdb90db9b12d05666dbac9/docs/chat-copy-oct28.md), [selected records](https://github.com/abn54/Health-App/blob/8d397841059bc508d6cdb90db9b12d05666dbac9/docs/evidence/chat-copy-checks-oct28.json). Live selection for the new prompt has not been evaluated; prior live relevance failures are not claimed fixed. No real clinical data, therapist credential, new timing run, recording or accessibility certification is claimed. Historical snapshots follow.
+
+## Later October 28 bottom-right composer
 
 Implementation/evidence commit: [`9e2d08297d8da5b37737f142dd688c26e898cb83`](https://github.com/abn54/Health-App/commit/9e2d08297d8da5b37737f142dd688c26e898cb83). The requested assistant circle now sits in a reserved bottom-right rail. Its right-aligned popup has a rounded, always-visible multiline composer with Send and optional Read replies, plus scrollable conversation and expandable Reply & voice options. Enter sends; Shift+Enter adds a line. Voice means optional spoken replies; no microphone dictation or live voice conversation was added. Breathing stays silent. Support/Close, explicit pause/End, keyboard focus and reviewed model boundaries remain.
 
