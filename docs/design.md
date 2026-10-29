@@ -271,3 +271,8 @@ Accessibility options add visit-only Higher contrast, Larger text and screen-rea
 ## Later October 28 — bottom-right assistant composer
 
 The student requested a bottom-right launcher and a chat-style popup using a supplied composer screenshot as visual direction. A reserved 76 px bottom rail contains the 52 px circle; it is removed from the header. The right-aligned modal has a pinned multiline composer and scrollable content. Optional Read replies, Send, explicit labels, expand-to-edit settings and existing support/Close reduce first-view clutter. This is reply playback; microphone dictation/live voice was not added. The existing exercise remains silent and model authority is unchanged.
+
+
+## Late October 28 — simpler, accurate chat wording
+
+Reduced repeated demo/role language while retaining accurate coursework and response provenance. Purpose/features now use a separate about topic, while direct role/clinical-scope questions keep honest limits. Technical personalization metadata is available under Reply details. This is a presentation change to a bounded coursework prototype, not a clinical service. [Observed checks](chat-copy-oct28.md).

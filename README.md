@@ -76,7 +76,7 @@ For deliberate fictional failures, launch with `REVIEW_TOOLS=1`. Expand **Course
 4. Review History: Started and Last chatted dates/times, per-message timestamps in the device’s time zone, status, initial/final cue, timing, events, and conversation source labels. Draft questions are “Not started.” Reuse copies a recorded cue into Ready without starting or remembering it.
 5. Deleting a session removes its conversation/events. Delete all additionally resets cue and profile choices after confirmation. Provider-attempt accounting remains. Unsaved records stay only in page memory with Retry; the summary also offers Leave without saving, so a failed write cannot trap someone after End. Unsaved changes may be lost; already saved records remain in History.
 
-The current catalog is `app-help-v4`, prompt template `catalog-selector-v10`, and personalization copy `profile-copy-v1`. The model remains `qwen2.5:3b`.
+The current catalog is `app-help-v5`, prompt template `catalog-selector-v11`, and personalization copy `profile-copy-v1`. The model remains `qwen2.5:3b`.
 
 One active page/tab is assumed. Hiding the page or a scheduling gap over two seconds interrupts; there is no automatic resume. Reload recovers persisted running/paused sessions as interrupted with unknown final timing, while drafts stay Not started. Multi-tab reconciliation, broader model evaluation, screen-reader certification, and Part 3 recordings remain outside this milestone.
 
@@ -100,3 +100,6 @@ The complete R1–R4 / D1–D6 table arrived in the student's October 21 overvie
 
 
 For development accessibility scans, run the normal backend (or a separate fictional database), then `MELLO_REVIEW_API=http://127.0.0.1:8001 npm run dev -- --port 5173` in `frontend` if using a separate API on 8001. Without that optional variable Vite proxies the normal 8000 API. Open `http://127.0.0.1:5173/?a11y-review` and use **Run accessibility audit** after manually reaching each state. The dev-only harness uses pinned `axe-core` 4.14.0; it is absent from the production build. Automated scans report only detectable issues and include items needing manual review; they are not WCAG certification or a substitute for blind-user/screen-reader testing.
+
+
+Current chat wording: **Your question / You** replaces repeated fictional-question labels. **Prepared reply** is the display name for the mock path, with its reviewed-text meaning explained in Reply & voice options. Live mode still only selects reviewed text. Ordinary purpose questions explain the app features; direct therapist/diagnosis questions retain explicit limits. One short visible coursework/demo notice remains. Saved earlier messages keep their original text and metadata. [Actual checks](docs/chat-copy-oct28.md).

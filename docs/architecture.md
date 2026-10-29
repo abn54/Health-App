@@ -235,3 +235,8 @@ A dev-only `?a11y-review` harness dynamically loads pinned axe-core 4.14.0. Vite
 ## Later October 28 — bottom-right assistant composer
 
 App moves the same launcher ID/handler to an accessible bottom rail inside the inert shell. AssistantPanel uses a div container for the popup and a details disclosure for the in-page panel, avoiding a generated Details summary. Popup content scrolls independently of the composer. A messages-length watcher scrolls new popup turns without moving keyboard focus. The textarea emits the existing ask event on Enter (composition guarded) or submit; Shift+Enter remains a newline. The waveform toggle controls the existing autoRead flag; the same cancellation, allowlisted text, rate and voice handlers apply. No backend/schema/provider/timing changes. [Actual checks](composer-update-oct28.md).
+
+
+## Late October 28 — simpler, accurate chat wording
+
+Catalog app-help-v5 adds about; Selection and MODEL_CONTEXT accept the new allowlisted ID. Prompt catalog-selector-v11 separates purpose/features from therapist/diagnosis/monitoring scope, with a revised authored app-name example. Mock scope matching precedes about, so explicit role requests are not disguised as generic purpose answers. The existing reviewed renderer/storage/source contract remains. Frontend displays source mock as Prepared reply and explains its meaning; persisted metadata stays unchanged. No schema migration, provider attempt, timing or voice change. [Evidence and live-selection limitation](chat-copy-oct28.md).

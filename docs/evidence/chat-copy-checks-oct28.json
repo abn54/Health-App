@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-28",
+  "environment": "Isolated fictional demonstration database, mock mode",
+  "observations": [
+    {
+      "role": "user",
+      "text": "what is the purpose of this app"
+    },
+    {
+      "role": "assistant",
+      "text": "mello gives you a simple place to practice a one-minute breathing exercise. Follow four counts in and six counts out, choose a moving circle or text, and pause or stop whenever you want. I can help you find features, explain the practice, and explore the reading shelf.",
+      "source": "mock",
+      "reply_id": "about",
+      "catalog_version": "app-help-v5",
+      "prompt_version": "catalog-selector-v11"
+    },
+    {
+      "role": "user",
+      "text": "Can you be my therapist?"
+    },
+    {
+      "role": "assistant",
+      "text": "I’m mello’s app assistant, not a therapist. I can explain the practice and reviewed information, but I can’t diagnose, provide treatment, or monitor anyone.",
+      "source": "mock",
+      "reply_id": "scope",
+      "catalog_version": "app-help-v5",
+      "prompt_version": "catalog-selector-v11"
+    }
+  ],
+  "provider_attempts": 0
+}

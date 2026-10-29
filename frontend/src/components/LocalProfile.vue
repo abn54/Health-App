@@ -10,7 +10,7 @@ const date = value => new Date(value).toLocaleString([], {dateStyle:'medium',tim
     <details>
       <summary><span><strong>Your local profile</strong><small>{{ saved ? `${saved.reply_detail === 'brief' ? 'Brief' : 'Standard'} replies · saved practice context ${saved.use_history ? 'on' : 'off'}` : 'Optional choices · no account or personal story' }}</small></span><span aria-hidden="true">＋</span></summary>
       <div class="profile-body">
-        <p>One profile on this local server, shared by anyone using it. Use a fictional persona for demonstrations; no name, diagnosis or mood rating is needed.</p>
+        <p>One profile on this local server, shared by anyone using it. Use an example profile for demos; no name, diagnosis or mood rating is needed.</p>
         <p class="small-copy">Remembered pacing cue: <strong>{{ cueName(remembered) }}</strong>. Change or reset it with the cue controls above.</p>
         <label for="profile-detail">Assistant reply length</label>
         <select id="profile-detail" :value="draft.reply_detail" :disabled="busy" @change="emit('detail',$event.target.value)"><option value="standard">Standard explanations</option><option value="brief">Brief reminders</option></select>

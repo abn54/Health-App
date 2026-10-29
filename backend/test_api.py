@@ -191,7 +191,7 @@ def test_expanded_help_is_catalog_text_without_preference_or_session_control(cli
     result = ask(client, sid, question).json()
     assert result['source'] == 'mock' and result['reply_id'] == topic
     assert result['text'] == m.CATALOG[topic]
-    assert result['catalog_version'] == 'app-help-v4'
+    assert result['catalog_version'] == 'app-help-v5'
     detail = client.get('/api/sessions/' + sid).json()
     assert detail['status'] == 'draft' and detail['events'] == []
     assert detail['messages'][-1]['content'] == result['text']
@@ -351,19 +351,35 @@ def test_latest_practice_uses_exercise_start_not_old_draft_creation(client):
     older=stopped_practice(client,'animated')
     latest=stopped_practice(client,'text')
     with m.db() as c:
+        # Fix both timestamps: this must remain independent of the machine's date.
         # The newer practice began from a much older draft conversation.
-        row=c.execute('SELECT snapshot FROM sessions WHERE id=?',(latest,)).fetchone()
-        snapshot=json.loads(row['snapshot'])
-        snapshot.update(created_at='2026-01-01T00:00:00+00:00',first_instruction_at='2026-10-29T00:00:00+00:00')
-        c.execute('UPDATE sessions SET created_at=?,snapshot=? WHERE id=?',(snapshot['created_at'],json.dumps(snapshot),latest))
+        for sid, created, exercise_start in [
+            (older, '2020-01-01T00:00:00+00:00', '2020-02-01T00:00:00+00:00'),
+            (latest, '2019-01-01T00:00:00+00:00', '2021-01-01T00:00:00+00:00'),
+        ]:
+            row=c.execute('SELECT snapshot FROM sessions WHERE id=?',(sid,)).fetchone()
+            snapshot=json.loads(row['snapshot'])
+            snapshot.update(created_at=created,first_instruction_at=exercise_start)
+            c.execute('UPDATE sessions SET created_at=?,snapshot=? WHERE id=?',(created,json.dumps(snapshot),sid))
     client.put('/api/profile',json={'reply_detail':'standard','use_history':True})
     summary=client.get('/api/profile').json()['latest_practice']
-    assert summary['cue']=='text' and summary['started_at']=='2026-10-29T00:00:00+00:00'
+    assert summary['cue']=='text' and summary['started_at']=='2021-01-01T00:00:00+00:00'
 
 
-@pytest.mark.parametrize('text',['what is mello',"what's mello",'tell me about mello'])
-def test_app_name_question_has_honest_scope_reply(client,text):
+@pytest.mark.parametrize('text',['what is mello',"what's mello",'tell me about mello','what is the purpose of this app','what is this app for','What can mello help me with?'])
+def test_app_purpose_explains_features_without_repeated_role_warning(client,text):
     sid,_=create(client)
     result=ask(client,sid,text).json()
-    assert result['reply_id']=='scope' and 'mello is a localhost coursework' in result['text']
+    assert result['reply_id']=='about' and 'mello' in result['text']
+    assert result['text']==m.CATALOG['about']
+    assert 'not a therapist' not in result['text']
+    assert 'fictional' not in result['text']
+
+
+@pytest.mark.parametrize('text',['Can you be my therapist?','Can you diagnose me?','Is this app for therapy?'])
+def test_role_questions_still_receive_explicit_honest_limits(client,text):
+    sid,_=create(client)
+    result=ask(client,sid,text).json()
+    assert result['reply_id']=='scope'
     assert 'not a therapist' in result['text']
+    assert result['source']=='mock'

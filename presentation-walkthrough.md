@@ -75,3 +75,6 @@ This file is presentation preparation. It does not claim that the presentation, 
 
 
 Current October 28 popup layout: open the bottom-right circle. The rounded composer stays visible below the scrollable conversation; Send or Enter submits, Shift+Enter adds a line. Toggle Read replies for optional spoken output, with Stop while playing. Expand Reply & voice options for the existing voice/speed and mock/live controls. This is reply playback, not microphone dictation or a live voice conversation.
+
+
+Late October 28 wording: purpose questions now use the reviewed about answer; direct therapist/diagnosis questions keep explicit scope limits. Prepared reply is the friendly display label for the mock path, not real clinical or live-generated data. Expand Reply & voice options for the source explanation and Reply details for personalization metadata. Current catalog/prompt: app-help-v5 / catalog-selector-v11. Live relevance for the revised prompt has not been evaluated. Older saved replies keep their original text.

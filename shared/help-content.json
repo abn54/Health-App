@@ -1,5 +1,5 @@
 {
-  "version": "app-help-v4",
+  "version": "app-help-v5",
   "reviewed_on": "2026-10-28",
   "topics": {
     "pacing": {
@@ -15,10 +15,10 @@
       "brief": "Text only removes the moving circle while keeping the phase and count. You can change cues without losing your place."
     },
     "storage": {
-      "context": "Local SQLite stores fictional questions, replies, session history and explicit cue/profile choices. Check save status. History and profile are reviewable, resettable and deletable.",
-      "answer": "The app attempts to save fictional questions, displayed replies, session records and explicit cue/profile choices in local SQLite. Check each save status: a failed write is not a saved record. Retry or use Leave without saving after ending; unsaved changes may be lost. Review or delete saved records in History. Live mode sends the current question and approved facts to local Ollama; profile and usage-history tailoring uses reviewed local rules, not raw conversations sent to the model.",
+      "context": "Local SQLite stores questions, replies, session history and explicit cue/profile choices. Check save status. History and profile are reviewable, resettable and deletable.",
+      "answer": "The app attempts to save questions, displayed replies, session records and explicit cue/profile choices in local SQLite. Check each save status: a failed write is not a saved record. Retry or use Leave without saving after ending; unsaved changes may be lost. Review or delete saved records in History. Live mode sends the current question and approved facts to local Ollama; profile and usage-history tailoring uses reviewed local rules, not raw conversations sent to the model.",
       "sources": [],
-      "brief": "Check the save status before leaving. Saved fictional questions, replies, sessions and explicit preferences stay in local SQLite and can be reviewed or deleted in History."
+      "brief": "Check the save status before leaving. Saved questions, replies, sessions and explicit preferences stay in local SQLite and can be reviewed or deleted in History."
     },
     "controls": {
       "context": "Pause holds your place. Resume continues. End stops halfway immediately. Opening support pauses.",
@@ -28,9 +28,9 @@
     },
     "scope": {
       "context": "mello is a localhost coursework skills prototype with one 60-second paced-breathing exercise. Its educational assistant explains reviewed app information. No therapy, diagnosis or human monitoring.",
-      "answer": "mello is a localhost coursework skills prototype with a 60-second paced-breathing exercise. I am its educational assistant, not a therapist. I can explain reviewed app content and general stress information. I cannot diagnose, provide treatment or monitor anyone. Use fictional questions only.",
+      "answer": "I’m mello’s app assistant, not a therapist. I can explain the practice and reviewed information, but I can’t diagnose, provide treatment, or monitor anyone.",
       "sources": [],
-      "brief": "mello is a coursework paced-breathing prototype. I am its app assistant, not a therapist. I cannot diagnose, provide treatment or monitor anyone. Use fictional questions only."
+      "brief": "I’m an app assistant, not a therapist. I can explain the practice, but can’t diagnose, provide treatment, or monitor anyone."
     },
     "start": {
       "context": "Start begins the exercise from Ready. Answering a question first is optional.",
@@ -74,6 +74,12 @@
         "apa-dsm"
       ],
       "brief": "The reading shelf labels public information, professional overviews and publisher listings. No full handbook was imported, and these links do not make the app a diagnostic tool."
+    },
+    "about": {
+      "context": "Purpose and features: one 60-second 4/6 breathing practice, optional circle/text cues, app questions, explicit preferences and dated local history. Coursework prototype. Route therapist, diagnosis or monitoring questions to scope instead.",
+      "answer": "mello gives you a simple place to practice a one-minute breathing exercise. Follow four counts in and six counts out, choose a moving circle or text, and pause or stop whenever you want. I can help you find features, explain the practice, and explore the reading shelf.",
+      "brief": "mello brings a one-minute breathing practice, optional app help, and your saved settings and history together. You choose when to start, pause, or stop.",
+      "sources": []
     }
   },
   "resources": [
@@ -191,7 +197,7 @@
     "Can it remember my usual cue?",
     "Does this app infer stress from clicks?",
     "What is stress?",
-    "Can you be my therapist?"
+    "What can mello help me with?"
   ],
   "personalization": {
     "current": {

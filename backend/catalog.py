@@ -23,7 +23,8 @@ def cue_match(text):
 def mock_reply(text):
     text = text.lower()
     groups = {
-        "scope": ("therapist", "therapy", "diagnos", "monitor", "purpose", "what is mello", "what\'s mello", "about mello"),
+        "scope": ("therapist", "therapy", "diagnos", "monitor"),
+        "about": ("purpose", "what is mello", "what\'s mello", "about mello", "app for", "mello help", "app help", "what is this app"),
         "checkin": ("check-in", "check in", "questionnaire", "click", "mood"),
         "preferences": ("remember", "usual", "preference", "favorite", "favourite"),
         "resources": ("resource", "handbook", "dsm", "reference", "reading", "source"),

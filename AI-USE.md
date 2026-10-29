@@ -100,3 +100,8 @@ Codex diagnosed an actual connection refusal and absent localhost listeners afte
 ## Later October 28 — bottom-right assistant composer
 
 Codex used the Sites skill local-only workflow to implement the requested bottom-right launcher and screenshot-inspired rounded composer. It reused the existing approved response/voice paths, authored SVG send/waveform controls, kept explicit labels and optional reply playback, and made no microphone/voice-recognition/provider addition. It corrected a hidden-composer wrapper, CSS path mistake and detected contrast issue using actual browser evidence. Mocked fictional review used a separate SQLite database. 17 client tests/build passed; no new live inference, acoustic judgment, full timing, recording, clinical result or real assistive-technology test was made. [Exact observations and limitations](docs/composer-update-oct28.md).
+
+
+## Late October 28 — simpler, accurate chat wording
+
+Codex revised the chat labels and reviewed catalog to reduce repetitive fictional/role warnings, while preserving accurate prototype/source disclosures and explicit clinical-role limits. It did not represent mocks as real clinical data or claim therapist credentials. It added and mocked the about topic, revised the selector prompt/version, and kept saved history unchanged. Actual isolated purpose and therapist turns were checked; 39 backend/17 client tests and build passed after correcting an existing machine-date-dependent test fixture. No new live call, training, provider preload, full-duration run, recording or accessibility certification was performed. [Exact evidence](docs/chat-copy-oct28.md).
