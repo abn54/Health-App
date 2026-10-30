@@ -9,4 +9,4 @@ fi
 if [ "${ALLOW_LIVE_MODEL:-0}" = "1" ]; then
   .venv/bin/python -m backend.warm_model
 fi
-exec .venv/bin/python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000
+exec .venv/bin/python -m uvicorn backend.main:app --host 127.0.0.1 --port "${MELLO_PORT:-8000}"

@@ -2,7 +2,7 @@
 
 ## Current scope
 
-The authorized milestone is Part 3.2: a working localhost prototype (requested October 19, 2026). Read `README.md`, `docs/design.md`, and `docs/architecture.md` before changing the design. Do not treat planned behavior or planned tests as implemented results.
+The authorized milestone is Part 3.3: final refinement, evaluation, clean-checkout verification, and demonstration/process evidence (requested October 30, 2026). The prior Part 3.2 implementation is the baseline. Read `README.md`, `docs/design.md`, and `docs/architecture.md` before changing the design. Do not treat planned behavior or planned tests as implemented results.
 
 ## Domain boundaries
 

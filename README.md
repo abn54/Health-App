@@ -1,4 +1,4 @@
-# mello — Part 3.2 coursework prototype
+# mello — Part 3.3 coursework prototype
 
 Vue, FastAPI, and SQLite application running on **localhost only**. Complete six cycles of four one-second counts in and six out. Review saved sessions and fictional conversations, choose a reversible pacing cue, and open bundled Crisis support from every view.
 
@@ -77,6 +77,8 @@ For deliberate fictional failures, launch with `REVIEW_TOOLS=1`. Expand **Course
 5. Deleting a session removes its conversation/events. Delete all additionally resets cue and profile choices after confirmation. Provider-attempt accounting remains. Unsaved records stay only in page memory with Retry; the summary also offers Leave without saving, so a failed write cannot trap someone after End. Unsaved changes may be lost; already saved records remain in History.
 
 The current catalog is `app-help-v5`, prompt template `catalog-selector-v11`, and personalization copy `profile-copy-v1`. The model remains `qwen2.5:3b`.
+
+To use a different loopback port for an isolated review, set `MELLO_PORT=8002 sh scripts/run.sh`; the default remains 8000.
 
 One active page/tab is assumed. Hiding the page or a scheduling gap over two seconds interrupts; there is no automatic resume. Reload recovers persisted running/paused sessions as interrupted with unknown final timing, while drafts stay Not started. Multi-tab reconciliation, broader model evaluation, screen-reader certification, and Part 3 recordings remain outside this milestone.
 
