@@ -4,7 +4,9 @@ Vue, FastAPI, and SQLite application running on **localhost only**. Complete six
 
 **Fictional coursework use only.** This is not therapy, diagnosis, or a monitored service. Do not deploy or recommend it as mental health support.
 
-Repository: [abn54/Health-App](https://github.com/abn54/Health-App). Submission: [report.md](report.md). The original design report is retained in [submissions/part1/report.md](submissions/part1/report.md). The October 21 Part 2 report is archived in [submissions/part2/report.md](submissions/part2/report.md).
+Repository: [abn54/Health-App](https://github.com/abn54/Health-App). Submission: [report.md](report.md). The original design report is retained in [submissions/part1/report.md](submissions/part1/report.md). Earlier Part 2 reports remain in [submissions/part2/](submissions/part2/), including the last submitted [Part 2 report](submissions/part2/latest-report.md).
+
+Part 3.3: [evaluation and actual results](docs/part3-evaluation.md), [design revisions](docs/part3-revisions.md), [finished-app and process recordings with transcripts](docs/recordings/README.md), and [final clean-checkout evidence](docs/evidence/part3-final-clean-checkout-oct30.json). The final implementation is `83ddf65c92e62f3207c8113eb1d77e87942b58b8`; later documentation/report commits do not change its application code.
 
 Presentation preparation: [rubric-aligned walkthrough and speaking notes](presentation-walkthrough.md), [profile changes and actual checks](docs/presentation-readiness-oct28.md). Expand **Your local profile** on Practice for **Standard explanations / Brief reminders** and an opt-in switch to use cue/saved practice context in replies. **Save profile** persists these choices; **Reset profile** restores standard replies and context off while keeping cue/history. One profile is shared by anyone using this localhost server; no account, name, diagnosis or mood rating is needed.
 
@@ -80,7 +82,7 @@ The current catalog is `app-help-v5`, prompt template `catalog-selector-v11`, an
 
 To use a different loopback port for an isolated review, set `MELLO_PORT=8002 sh scripts/run.sh`; the default remains 8000.
 
-One active page/tab is assumed. Hiding the page or a scheduling gap over two seconds interrupts; there is no automatic resume. Reload recovers persisted running/paused sessions as interrupted with unknown final timing, while drafts stay Not started. Multi-tab reconciliation, broader model evaluation, screen-reader certification, and Part 3 recordings remain outside this milestone.
+One active page/tab is assumed. Hiding the page or a scheduling gap over two seconds interrupts; there is no automatic resume. Reload recovers persisted running/paused sessions as interrupted with unknown final timing, while drafts stay Not started. Multi-tab reconciliation, broad model evaluation and real screen-reader/blind-user validation remain unresolved. Part 3.3 includes a small repeated live selection and actual demonstration/process recordings; these do not establish clinical effectiveness.
 
 ## Project map
 
@@ -105,3 +107,12 @@ For development accessibility scans, run the normal backend (or a separate ficti
 
 
 Current chat wording: **Your question / You** replaces repeated fictional-question labels. **Prepared reply** is the display name for the mock path, with its reviewed-text meaning explained in Reply & voice options. Live mode still only selects reviewed text. Ordinary purpose questions explain the app features; direct therapist/diagnosis questions retain explicit limits. One short visible coursework/demo notice remains. Saved earlier messages keep their original text and metadata. [Actual checks](docs/chat-copy-oct28.md).
+
+
+## Part 3.3 repeatable evaluation
+
+After the normal setup, run `.venv/bin/python scripts/evaluate_part3.py --output /tmp/mello-mocked.json` for 22 fictional in-process HTTP scenarios. It uses disposable SQLite/stubbed providers, not real model calls. The existing test commands above remain. The October 30 final clean checkout ran 39 backend tests, 17 client tests and these 22 scenarios successfully; page/assets returned 200 with live mode and review tools off. A Starlette TestClient deprecation warning remains.
+
+`scripts/evaluate_part3_live.py --live --base http://127.0.0.1:8001 --output /tmp/mello-live.json` is only for an explicitly configured isolated live review host with its own `PAUSE_DB`, stable `MODEL_TEST_RUN_ID`, `ALLOW_LIVE_MODEL=1` and cap at most 50. It makes 15 real selections; do not use for routine tests. The actual October 30 run plus preload and one recorded demonstration used 17/50 attempts. Repeated role-question misclassification remains documented.
+
+Final keyboard refinement restores popup focus after a speech control disappears and captures Escape while a dialog is open. History navigation waits for the active save journal before fetching the list so the saved row reflects Paused. The [failure, evidence and retests](docs/part3-evaluation.md) explain these changes.

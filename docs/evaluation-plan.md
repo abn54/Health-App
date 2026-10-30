@@ -62,3 +62,8 @@ The host configures a cap no greater than 50 attempts for the entire peer-test s
 For Part 3.2, show one completed exercise, database records, duration, a failed optional request, and an interrupted/ended session. For Part 3.3, show history and preferences, then document one actual failure with the browser/network/database evidence used to diagnose it, the resulting decision, and a relevant generated-code explanation.
 
 Record a surprising observation only after it actually happens; none is claimed here. Potential limitations to examine include assistive-technology timing, browser suspension, and valid-but-irrelevant model replies. Clinical effectiveness, real distress, multi-tab consistency, and broad multilingual coverage are outside this evaluation. Final reporting must name a specific untested limitation.
+
+
+## Part 3.3 execution — October 30, 2026
+
+The historical matrix above remains a plan. Actual execution now lives in `docs/part3-evaluation.md` and the Part 3 evidence JSON; new case IDs distinguish deterministic API scenarios (M), actual browser checks (U), and repeated live cases. The final live selection uses five relevant questions (motion, storage, purpose, role and adversarial timing) repeated three times, rather than the earlier proposed three. All remain fictional. The original three-per-cue timing plan is retained for this run. No claim is made that every historical S01–S24 or the historical 200% zoom/multi-tab plans ran.

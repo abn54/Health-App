@@ -105,3 +105,16 @@ Codex used the Sites skill local-only workflow to implement the requested bottom
 ## Late October 28 — simpler, accurate chat wording
 
 Codex revised the chat labels and reviewed catalog to reduce repetitive fictional/role warnings, while preserving accurate prototype/source disclosures and explicit clinical-role limits. It did not represent mocks as real clinical data or claim therapist credentials. It added and mocked the about topic, revised the selector prompt/version, and kept saved history unchanged. Actual isolated purpose and therapist turns were checked; 39 backend/17 client tests and build passed after correcting an existing machine-date-dependent test fixture. No new live call, training, provider preload, full-duration run, recording or accessibility certification was performed. [Exact evidence](docs/chat-copy-oct28.md).
+
+
+## October 30, 2026 — Part 3.3
+
+The student requested “3.3 now.” The same GPT-6-based Codex desktop assistant (exact serving build not exposed) read the supplied overview and project instructions, refined generated Vue focus/history code, authored two evaluation runners, ran tests, operated fictional browser scenarios, inspected a separate local database read-only, and drafted final documentation/report. No subagents were used in this milestone. The Sites local-only workflow was reused; no hosting/deployment or remote source synchronization occurred. No previous travel/hotel source was supplied or copied.
+
+Actual stack identifiers remain Vue3.5.44/Vite8.3.4, Python3.14.7/FastAPI0.149.0, Node26.7.0/npm11.19.0. SQLite version is recorded in prior database evidence. Browser tool: cua_repl/in-app browser (build not exposed). Shell/Python/Git performed tests and curated export. No new clinical sources, dataset downloads, training, paid API, credentials, real personal story or handbook ingestion were used. The Kaggle preview adaptation and research table remain separately attributed.
+
+Actual local model: Ollama0.32.5, qwen2.5:3b Q4_K_M, digest357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b; catalog-selector-v11/app-help-v5/profile-copy-v1. Fifteen repeated selections plus one preload and one recorded demo selection used17/50 host attempts. The repeated role-topic error remains visible. Mock/stub checks are separate from this model evidence. No prompt/model/catalog change was made in Part3.3.
+
+Recording capture used actual Cua task-tab screenshots, not generated UI images; optional imageio-ffmpeg0.6.0 / FFmpeg7.1 encoded silent H.264 with captions/transcripts and disclosed idle edits. A native recording attempt did not produce verified output and is not claimed as submitted evidence. These are AI-operated demos, not student narration, a personal presentation, peer feedback or proof of student understanding. Media tools are not needed for the application.
+
+Observed failures, generated-code explanation, expected/observed cases and limits are in [Part3 evaluation](docs/part3-evaluation.md), [revisions](docs/part3-revisions.md), [recordings](docs/recordings/README.md) and [evidence log](docs/evidence-log.md). Final GitHub clean-checkout verification was on the same Mac with a fresh environment, not an independent reviewer. Student review and final Canvas submission have not been performed by the assistant.

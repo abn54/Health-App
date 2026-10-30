@@ -1,0 +1,105 @@
+{
+  "capture_method": "Actual Cua browser-tab screenshots sampled approximately every 500 ms within capture blocks; silent. No UI reconstruction or synthetic app frames. H.264 repeats held frames at 10 fps; original motion sampling is ~2 fps.",
+  "editing": "Outside the uninterrupted exercise, gaps over 3 seconds are shortened to 3 seconds. Within the exercise all timestamp gaps are retained, holding the last captured frame. Last frame held 2.5 seconds. Enable English subtitles; full transcript accompanies video.",
+  "source_capture_duration_seconds": 173.449,
+  "video_duration_seconds_planned": 126.16600000000024,
+  "captured_frame_count": 193,
+  "largest_source_gap_seconds": 16.679,
+  "idle_edits": [
+    {
+      "after_frame": 8,
+      "original_gap_seconds": 11.887,
+      "retained_seconds": 3.0
+    },
+    {
+      "after_frame": 142,
+      "original_gap_seconds": 10.063,
+      "retained_seconds": 3.0
+    },
+    {
+      "after_frame": 147,
+      "original_gap_seconds": 6.155,
+      "retained_seconds": 3.0
+    },
+    {
+      "after_frame": 156,
+      "original_gap_seconds": 6.322,
+      "retained_seconds": 3.0
+    },
+    {
+      "after_frame": 161,
+      "original_gap_seconds": 13.885,
+      "retained_seconds": 3.0
+    },
+    {
+      "after_frame": 173,
+      "original_gap_seconds": 5.792,
+      "retained_seconds": 3.0
+    },
+    {
+      "after_frame": 182,
+      "original_gap_seconds": 16.679,
+      "retained_seconds": 3.0
+    }
+  ],
+  "chapters": [
+    {
+      "at": 1793380163491,
+      "text": "mello: localhost coursework skills prototype. Fictional demonstration; no therapy, diagnosis, or human monitoring. Start needs no questionnaire or model response.",
+      "video_seconds": 0.0
+    },
+    {
+      "at": 1793380179696,
+      "text": "Explicit profile: Brief reminders and saved practice context on. Save confirms persistence. Context is factual cue/status, never an inferred diagnosis; raw history is not sent to the model.",
+      "video_seconds": 7.3180000000000005
+    },
+    {
+      "at": 1793380183087,
+      "text": "Override remembered Text only with Animated circle for this practice. This changes the cue, not the remembered choice or fixed rhythm.",
+      "video_seconds": 10.709000000000001
+    },
+    {
+      "at": 1793380185068,
+      "text": "Guided skill: four one-second inhale counts, six exhale counts, six cycles. Text and color carry phase; breathing has no app audio. Pause, End and independent Crisis support remain available.",
+      "video_seconds": 12.690000000000001
+    },
+    {
+      "at": 1793380250556,
+      "text": "Completed: actual browser sequence and truthful local save status. This is a behavior/timing check, not evidence of clinical improvement.",
+      "video_seconds": 78.17800000000003
+    },
+    {
+      "at": 1793380253487,
+      "text": "History retains local dates, status, timing, initial/final cue and saved conversations. Completed, Stopped, Interrupted and Not started remain different.",
+      "video_seconds": 81.10900000000005
+    },
+    {
+      "at": 1793380274217,
+      "text": "Prepared reply uses saved Brief reminders plus opted-in current/remembered cue and factual completed practice. The local renderer tailors approved text; the model never receives raw saved history.",
+      "video_seconds": 91.6210000000001
+    },
+    {
+      "at": 1793380300441,
+      "text": "Live local model selects an allowlisted topic only. The displayed answer remains reviewed catalog text. Optional voice has readable text, explicit Play/Stop, and no microphone; this video is silent.",
+      "video_seconds": 103.63800000000013
+    },
+    {
+      "at": 1793380311743,
+      "text": "Independent bundled Crisis support opens outside model decisions. Earlier tests physically stopped the API and confirmed this route still opened in the loaded app. No support service is contacted in this fictional demo.",
+      "video_seconds": 112.14800000000017
+    },
+    {
+      "at": 1793380332430,
+      "text": "Accessibility: higher contrast, larger text, words beside colors, keyboard controls, reduced motion and configurable screen-reader updates. Blind-user and full assistive-technology testing remain untested; no conformance claim.",
+      "video_seconds": 119.1560000000002
+    }
+  ],
+  "checks": [],
+  "video_sha256": "74e853827e667245f434550155bf7c117ff13cf26ac02f21e87a7a56542f4082",
+  "ffmpeg_version": "7.1",
+  "decode_verification": {
+    "exit_code": 0,
+    "method": "FFmpeg decoded complete file to null with no decoding error; sample frame at 12s inspected separately.",
+    "output_tail": "ng:\n  Stream #0:0 -> #0:0 (h264 (native) -> wrapped_avframe (native))\nPress [q] to stop, [?] for help\nOutput #0, null, to 'pipe:':\n  Metadata:\n    major_brand     : isom\n    minor_version   : 512\n    compatible_brands: isomiso2avc1mp41\n    encoder         : Lavf61.7.100\n  Stream #0:0(und): Video: wrapped_avframe, yuvj420p(pc, bt470bg/unknown/unknown, progressive), 1280x720 [SAR 1:1 DAR 16:9], q=2-31, 200 kb/s, 10 fps, 10 tbn (default)\n      Metadata:\n        handler_name    : VideoHandler\n        vendor_id       : [0][0][0][0]\n        encoder         : Lavc61.19.100 wrapped_avframe\n[out#0/null @ 0x141e152a0] video:544KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown\nframe= 1266 fps=0.0 q=-0.0 Lsize=N/A time=00:02:06.60 bitrate=N/A speed= 601x    \n"
+  }
+}

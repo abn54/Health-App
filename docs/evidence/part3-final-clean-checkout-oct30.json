@@ -1,0 +1,108 @@
+{
+  "recorded_at": "2026-10-30T17:14:51.987575+00:00",
+  "method": "Agent cloned final implementation from GitHub into a new temporary folder, fresh venv/npm install/build and new SQLite via README; same Mac, not an independent human or cross-OS check.",
+  "repository": "https://github.com/abn54/Health-App.git",
+  "branch": "codex/part2-prototype",
+  "commit": "83ddf65c92e62f3207c8113eb1d77e87942b58b8",
+  "startup_command": "MELLO_PORT=8004 ALLOW_LIVE_MODEL=0 REVIEW_TOOLS=0 sh scripts/run.sh",
+  "python": "Python 3.14.7",
+  "node": "v26.7.0",
+  "npm": "11.19.0",
+  "page_http_status": 200,
+  "assets": [
+    {
+      "path": "/assets/index-CGC4iEuQ.js",
+      "status": 200,
+      "sha256": "ac41725062272bffcbbd4d14808c4265511bb10d02bbaea6c9728dc0e1b11db6"
+    },
+    {
+      "path": "/assets/index-DNgaNft8.css",
+      "status": 200,
+      "sha256": "c896012b38c1cc30e5b614c1eb9bfd51fb9051e7e3d1e4ecfca486b95741c7bd"
+    }
+  ],
+  "health": {
+    "status": "ok",
+    "live_enabled": false,
+    "review_tools": false,
+    "model": "qwen2.5:3b",
+    "prompt_version": "catalog-selector-v11",
+    "attempts": 0,
+    "limit": 50,
+    "test_run_id": "part2-local"
+  },
+  "checks": [
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "pytest",
+        "backend/test_api.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "output": ".......................................                                  [100%]\n=============================== warnings summary ===============================\n.venv/lib/python3.14/site-packages/fastapi/testclient.py:1\n  /private<clean-checkout>/.venv/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n    from starlette.testclient import TestClient as TestClient  # noqa\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n39 passed, 1 warning in 1.08s\n"
+    },
+    {
+      "command": [
+        "npm",
+        "test",
+        "--prefix",
+        "frontend"
+      ],
+      "exit_code": 0,
+      "output": "\n> mello-coursework@0.2.0 test\n> node --test tests/*.test.js\n\n\u2714 phase announcements contain cycle, direction and prescribed duration, without every-frame chatter (0.632041ms)\n\u2714 optional count announcements are concise and respect different phase lengths (0.090375ms)\n\u2714 paused state offers explicit resume/end; announcements can be switched off (0.208875ms)\n\u2714 reply choices exclude remote/non-English/novelty voices and rank enhanced options first (1.937958ms)\n\u2714 no suitable voice has a truthful text fallback without a speech attempt (0.523083ms)\n\u2714 speech lifecycle and Stop invalidate stale callbacks (0.234459ms)\n\u2714 speech awaiting startup is cancelled if practice/navigation makes it invalid (0.131334ms)\n\u2714 blocked speech times out and stale timer cannot cancel later output (0.14275ms)\n\u2714 browser speech and rejected voice errors are contained (0.152916ms)\n\u2714 selected on-device voice, controlled speed and preview labels reach browser speech (0.13725ms)\n\u2714 voice discovery failure remains explicit (0.34625ms)\n\u2714 all six cycles retain exact 4/6 boundaries without accumulated interval drift (0.845875ms)\n\u2714 pause preserves the fraction of a count; overlapping support is excluded once (0.787334ms)\n\u2714 scheduling interruption includes app delay, without false completion or exclusion (0.105875ms)\n\u2714 End is immediate, and a terminal exercise does not resume (0.092791ms)\n\u2714 a new session resets elapsed time and pause accounting (0.096542ms)\n\u2714 phrase cue is bounded and normalized; negations still match (documented limitation) (0.2845ms)\n\u2139 tests 17\n\u2139 suites 0\n\u2139 pass 17\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 103.139791\n"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "scripts/evaluate_part3.py",
+        "--output",
+        "<clean-checkout-parent>/mocked-final.json"
+      ],
+      "exit_code": 0,
+      "output": "{\"passed\": 22, \"total\": 22, \"integrity\": \"ok\", \"real_provider_calls\": 0}\n/private<clean-checkout>/.venv/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient as TestClient  # noqa\n"
+    }
+  ],
+  "review_harness_revision": "The first final-checkout evaluation invocation omitted the required --output flag; it exited 2 before scenarios. Corrected invocation below ran all 22. Startup and unit tests had already succeeded; no application defect was indicated.",
+  "git_status_after": "",
+  "source_hash_comparison": {
+    "frontend/src/App.vue": {
+      "identical": true,
+      "sha256": "de4bf62f260470b77becf7a4b2f9266ffd76cff6a1a1ada94ef1d7e27c5109a1"
+    },
+    "frontend/src/engine.js": {
+      "identical": true,
+      "sha256": "dc0f9046f5ae590aad2f1bf8dccdadb3dc0061be3d9a7acc84b8724c2afe0788"
+    },
+    "backend/main.py": {
+      "identical": true,
+      "sha256": "1253caee6917fae9e4313da262b0d474a673a6aed6f15b358919422e786d9a6c"
+    },
+    "shared/help-content.json": {
+      "identical": true,
+      "sha256": "87524481d8700125c3a5fc0a593418e3f83ce88887eafc470bedbad9bd70d0a4"
+    },
+    "scripts/run.sh": {
+      "identical": true,
+      "sha256": "175b7be0573694076108f440336f6e051ef61eca4cd09ab4b1d642a3f838492e"
+    }
+  },
+  "startup_tail": "ata (2.8 kB)\nCollecting opentelemetry-api==1.45.1 (from -r requirements.txt (line 12))\n  Using cached opentelemetry_api-1.45.1-py3-none-any.whl.metadata (1.4 kB)\nCollecting packaging==26.3 (from -r requirements.txt (line 13))\n  Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)\nCollecting pluggy==1.7.0 (from -r requirements.txt (line 14))\n  Using cached pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)\nCollecting pydantic==2.14.1 (from -r requirements.txt (line 15))\n  Using cached pydantic-2.14.1-py3-none-any.whl.metadata (133 kB)\nCollecting pydantic_core==2.50.1 (from -r requirements.txt (line 16))\n  Using cached pydantic_core-2.50.1-cp314-cp314-macosx_11_0_arm64.whl.metadata (6.5 kB)\nCollecting Pygments==2.21.0 (from -r requirements.txt (line 17))\n  Using cached pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)\nCollecting pytest==9.1.1 (from -r requirements.txt (line 18))\n  Using cached pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)\nCollecting starlette==1.9.0 (from -r requirements.txt (line 19))\n  Using cached starlette-1.9.0-py3-none-any.whl.metadata (6.6 kB)\nCollecting typing-inspection==0.4.4 (from -r requirements.txt (line 20))\n  Using cached typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)\nCollecting typing_extensions==4.16.0 (from -r requirements.txt (line 21))\n  Using cached typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)\nCollecting uvicorn==0.54.0 (from -r requirements.txt (line 22))\n  Using cached uvicorn-0.54.0-py3-none-any.whl.metadata (6.6 kB)\nUsing cached annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)\nUsing cached annotated_types-0.8.0-py3-none-any.whl (13 kB)\nUsing cached anyio-4.15.1-py3-none-any.whl (132 kB)\nUsing cached certifi-2026.10.18-py3-none-any.whl (134 kB)\nUsing cached click-8.5.0-py3-none-any.whl (125 kB)\nUsing cached fastapi-0.149.0-py3-none-any.whl (145 kB)\nUsing cached h11-0.16.0-py3-none-any.whl (37 kB)\nUsing cached httpcore-1.0.9-py3-none-any.whl (78 kB)\nUsing cached httpx-0.28.1-py3-none-any.whl (73 kB)\nUsing cached idna-3.20-py3-none-any.whl (69 kB)\nUsing cached iniconfig-2.3.1-py3-none-any.whl (7.6 kB)\nUsing cached opentelemetry_api-1.45.1-py3-none-any.whl (60 kB)\nUsing cached packaging-26.3-py3-none-any.whl (129 kB)\nUsing cached pluggy-1.7.0-py3-none-any.whl (27 kB)\nUsing cached pydantic-2.14.1-py3-none-any.whl (488 kB)\nUsing cached pydantic_core-2.50.1-cp314-cp314-macosx_11_0_arm64.whl (2.0 MB)\nUsing cached pygments-2.21.0-py3-none-any.whl (1.3 MB)\nUsing cached pytest-9.1.1-py3-none-any.whl (386 kB)\nUsing cached starlette-1.9.0-py3-none-any.whl (80 kB)\nUsing cached typing_inspection-0.4.4-py3-none-any.whl (14 kB)\nUsing cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)\nUsing cached uvicorn-0.54.0-py3-none-any.whl (87 kB)\nInstalling collected packages: typing_extensions, Pygments, pluggy, packaging, iniconfig, idna, h11, click, certifi, annotated-types, annotated-doc, uvicorn, typing-inspection, pytest, pydantic_core, opentelemetry-api, httpcore, anyio, starlette, pydantic, httpx, fastapi\n\nSuccessfully installed Pygments-2.21.0 annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.15.1 certifi-2026.10.18 click-8.5.0 fastapi-0.149.0 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.20 iniconfig-2.3.1 opentelemetry-api-1.45.1 packaging-26.3 pluggy-1.7.0 pydantic-2.14.1 pydantic_core-2.50.1 pytest-9.1.1 starlette-1.9.0 typing-inspection-0.4.4 typing_extensions-4.16.0 uvicorn-0.54.0\n\n[notice] A new release of pip is available: 26.2.1 -> 26.2.2\n[notice] To update, run: /private<clean-checkout>/.venv/bin/python -m pip install --upgrade pip\n\nadded 37 packages, and audited 38 packages in 685ms\n\n9 packages are looking for funding\n  run `npm fund` for details\n\nfound 0 vulnerabilities\nnpm warn install-scripts 1 package has install scripts not yet covered by allowScripts:\nnpm warn install-scripts   fsevents@2.3.3 (install: (install scripts present))\nnpm warn install-scripts\nnpm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.\n\n> mello-coursework@0.2.0 build\n> vite build\n\nvite v8.3.4 building client environment for production...\ntransforming...\n\u2713 22 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                   0.41 kB \u2502 gzip:  0.29 kB\ndist/assets/index-DNgaNft8.css   42.49 kB \u2502 gzip:  9.73 kB\ndist/assets/index-CGC4iEuQ.js   140.75 kB \u2502 gzip: 49.92 kB\n\n\u2713 built in 272ms\nINFO:     Started server process [54807]\nINFO:     Waiting for application startup.\nINFO:     Application startup complete.\nINFO:     Uvicorn running on http://127.0.0.1:8004 (Press CTRL+C to quit)\nINFO:     127.0.0.1:49593 - \"GET /api/health HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:49604 - \"GET /api/health HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:49605 - \"GET / HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:49606 - \"GET /assets/index-CGC4iEuQ.js HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:49607 - \"GET /assets/index-DNgaNft8.css HTTP/1.1\" 200 OK\n",
+  "limits": [
+    "Same installed system Python/Node and Mac; no independent student review.",
+    "No real participant or clinical test.",
+    "Optional live setup tested separately."
+  ],
+  "browser_ui_check": {
+    "expected": "Fresh final-clone frontend shows direct Start, support, launcher and default profile without model.",
+    "observed": {
+      "title": "mello \u00b7 Coursework prototype",
+      "start": "Start 60-second exercise \u2192",
+      "support": "\u271a Crisis support",
+      "launcher": "Ask the assistant",
+      "profile": "Standard replies \u00b7 saved practice context off"
+    },
+    "screenshot": "part3-final-clean-ui-oct30.png"
+  }
+}

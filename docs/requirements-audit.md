@@ -1,4 +1,21 @@
-# Current requirements audit — Part 3.2
+# Requirements audit — Part 3.3
+
+October 30 final status: the earlier Part 3.2/presentation audit below is retained as dated history. [Final evaluation](part3-evaluation.md), [revisions](part3-revisions.md), [recordings](recordings/README.md) and the final root report supersede its earlier future-work statements.
+
+| Part 3.3 requirement | Actual evidence |
+| --- | --- |
+| Completed application, history and personalization | Fixed 4/6 skill, explicit persistent profile, cue override/reset, dated records and local context; recorded final app. |
+| Revisit design choices | [Part 3.1 → 3.3 reasoning and tradeoffs](part3-revisions.md), all ten R/D codes in research mapping. |
+| Fresh checkout from README | [Final clone 83ddf65](evidence/part3-final-clean-checkout-oct30.json), fresh environment/build/start/tests/assets; same Mac, not independent human review. |
+| ≥15 fictional scenarios, expected/observed | [22 deterministic scenarios](evidence/part3-mocked-oct30.json), [24 browser checks plus failed/retested cases](evidence/part3-browser-checks-oct30.json). |
+| Three explicit behavior checks | B1 independent support, B2 fixed skill/control, B3 explicit personalization/truthful persistence in final evaluation. |
+| Mocks and repeated live selection | Zero-call 22-case runner; five live questions × three repeats; prompt/model/settings/hash and 17/50 final ledger disclosed. |
+| Surprising finding and untested limit | Consistent wrong role-topic selection; real blind-user/screen-reader validation untested. |
+| Finished app and process screencast | Two actual browser videos, captions/transcripts, reproduced failure, evidence, decision and generated-code explanation. Silent agent-operated recording method and idle edits disclosed. |
+| AI disclosure and curated failures | Updated AI-USE and evidence log; no private third-party browser content/raw database included. |
+| One submission file | Root report.md links repository, implementation commit, docs, evidence and recordings; student review and Canvas upload not performed. |
+
+## Historical Part 3.2 audit
 
 October 27 refinement: [phase colors, assistant popup, shared FAQs/resources and actual verification](ui-refinement-oct27.md). The original requirements and Part 3.3 boundary below remain unchanged.
 
@@ -20,7 +37,7 @@ Updated October 21, 2026 against the complete overview supplied that day, includ
 
 The implementation is a coherent Part 3.2 prototype, not a claim of clinical effectiveness or flawless model interpretation. Actual expected/observed outcomes and remaining limitations are retained in [verification](part2-verification.md). The final report's pinned commit identifies the submitted implementation/evidence snapshot; later report-only metadata commits do not change that code.
 
-## Part 3.3 work remains
+## Historical Part 3.3 boundary (superseded October 30)
 
 The complete fifteen-scenario evaluation and three cross-case behavior checks, repeated relevant live cases, independent clean-checkout review, final demonstration, process screencast and student explanation belong to Part 3.3. Earlier Part 3.1 plans are not passed tests. Broader browsers/assistive technologies, multi-tab reconciliation and crash durability remain untested limits. More skills, speech, a paid provider, clinical research and Character.AI registration are not required for Part 3.2.
 

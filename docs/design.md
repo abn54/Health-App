@@ -276,3 +276,8 @@ The student requested a bottom-right launcher and a chat-style popup using a sup
 ## Late October 28 — simpler, accurate chat wording
 
 Reduced repeated demo/role language while retaining accurate coursework and response provenance. Purpose/features now use a separate about topic, while direct role/clinical-scope questions keep honest limits. Technical personalization metadata is available under Reply details. This is a presentation change to a bounded coursework prototype, not a clinical service. [Observed checks](chat-copy-oct28.md).
+
+
+## October 30 — Part 3.3 final decisions
+
+The core skill and flow remain. [Final revisions](part3-revisions.md) explains the Part 3.1 decisions revisited after implementation, including explicit profile/history tailoring, silent breathing, optional chatbot speech, top navigation and lower-right popup. Actual Stop/Escape focus loss and a pause/history save race led to two small refinements; the [evaluation](part3-evaluation.md) preserves initial failures and retests. No clinical adaptation or broader skill library was added. Final recordings and clean-checkout evidence are linked there.

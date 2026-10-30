@@ -1,4 +1,4 @@
-# Research findings and implemented design — Part 3.2
+# Research findings and implemented design
 
 Source: the full Assignment 3 overview pasted by the student on **October 21, 2026**, Section 3, “Study findings and supporting evidence.” Earlier October 8/13/19 copies omitted this table. The mapping below is newly completed; it is not presented as a source available during the original Part 1 work. No Canvas dashboard/account content is copied into this repository.
 
@@ -25,7 +25,7 @@ The supplied Kaggle conversational resource informed the intent/pattern/response
 
 ## Evidence and limits
 
-[Part 2 verification](part2-verification.md) separates actual browser/database/live-model observations from mocked/injected-clock tests. Research mapping explains decisions and compromises; it does not convert planned checks into observed results. Part 3's larger evaluation, repeated live variation, independent clean-checkout verification, final demonstration and process screencast remain outside this milestone.
+[Part 2 verification](part2-verification.md) separates actual browser/database/live-model observations from mocked/injected-clock tests. Research mapping explains decisions and compromises; it does not convert planned checks into observed results. Those were outside the dated Part 3.2 milestone. The October 30 Part 3.3 work now supplies the [evaluation](part3-evaluation.md), same-Mac clean-checkout verification, and [recordings](recordings/README.md); an independent human review is not claimed.
 
 
 ## October 27 refinement
@@ -36,3 +36,8 @@ The supplied Kaggle conversational resource informed the intent/pattern/response
 ## October 28 presentation revision
 
 The new explicit local profile adds a reversible standard/brief reply choice and opt-in factual practice context. The latest saved terminal practice can supply a cue for explicit reuse; relevant assistant replies can refer to that record using reviewed local copy. This strengthens the D5 prior-activity example while preserving R4 correction/reset and D3's avoidance of required personal disclosure. No clinical/emotional persona is inferred. The single-skill, D1/D2 simplification and R2/D4 independent-support decisions remain. These are design choices, not new research findings or clinical evidence. [Actual checks and limits](presentation-readiness-oct28.md).
+
+
+## October 30 final revision
+
+[Final revisions](part3-revisions.md) revisit the one-skill/D2 scope, R1 timing, activity-based D1 simplification, D3 effort, D5/R4 explicit profile/history compromise, R2/D4 independent support and D6 silent/color/text choices. Actual keyboard and history races led to focus/escape and save-ordering changes. [Final evaluation](part3-evaluation.md) records six timing runs, 22 deterministic cases, repeated live limits and three explicit cross-case checks. Mention counts remain source observations, never clinical-effect measures.

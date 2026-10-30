@@ -1,0 +1,239 @@
+{
+  "date": "2026-10-30",
+  "method": "Read-only selected snapshots from isolated fictional review database after actual visible browser runs. First six were the planned 3 per cue; seventh is the recorded final app demonstration. Not synthetic clock results.",
+  "clock": "One client performance.now monotonic source. Start sampled before first Vue instruction commit; final duration sampled after final nextTick and animation frame. Includes application/render scheduling delays; physical screen paint is not instrumented. Setup separate; explicit user pause/support union excluded once. Automatic interruptions are not completed timing runs.",
+  "assumptions": "No required user response, typing, API/model wait during six 4/6 cycles. Loaded desktop browser, one active page; no deliberate pause or support in these seven runs.",
+  "engine_sha256": "dc0f9046f5ae590aad2f1bf8dccdadb3dc0061be3d9a7acc84b8724c2afe0788",
+  "runs": [
+    {
+      "case": "U01",
+      "session_id": "d004ca7e-6a36-4314-ad6f-1a079382d66d",
+      "assignment_duration_ms": 60016.40000000596,
+      "content_version": "breathing-4-6-v1",
+      "created_at": "2026-10-30T16:28:55.420000Z",
+      "cue_final": "animated",
+      "cue_initial": "animated",
+      "events": [
+        {
+          "details": {},
+          "elapsed_ms": 0.0,
+          "id": "75adea63-adf5-41d5-9710-de8129beaba0",
+          "sequence": 1,
+          "type": "start"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 60000.0,
+          "id": "39da054a-9f41-456c-b55e-8a1c4517e41f",
+          "sequence": 2,
+          "type": "completed"
+        }
+      ],
+      "excluded_ms": 0.0,
+      "final_step_at": "2026-10-30T16:29:55.437000Z",
+      "first_instruction_at": "2026-10-30T16:28:55.421000Z",
+      "revision": 3,
+      "setup_ms": 6881.5,
+      "status": "completed",
+      "wall_ms": 60016.40000000596
+    },
+    {
+      "case": "U02",
+      "session_id": "9f2d9280-187f-46d1-b8cf-16b838a16b72",
+      "assignment_duration_ms": 60014.90000000596,
+      "content_version": "breathing-4-6-v1",
+      "created_at": "2026-10-30T16:30:09.289000Z",
+      "cue_final": "animated",
+      "cue_initial": "animated",
+      "events": [
+        {
+          "details": {},
+          "elapsed_ms": 0.19999998807907104,
+          "id": "f56ab3ac-37db-4a48-b675-9aabe526607e",
+          "sequence": 1,
+          "type": "start"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 60000.0,
+          "id": "6b8b0969-6852-4c80-b336-ab0984b74d14",
+          "sequence": 2,
+          "type": "completed"
+        }
+      ],
+      "excluded_ms": 0.0,
+      "final_step_at": "2026-10-30T16:31:09.304000Z",
+      "first_instruction_at": "2026-10-30T16:30:09.289000Z",
+      "revision": 3,
+      "setup_ms": 278.19999998807907,
+      "status": "completed",
+      "wall_ms": 60014.90000000596
+    },
+    {
+      "case": "U03",
+      "session_id": "b0f3f686-522b-4b96-9686-4f7c8ae6edfb",
+      "assignment_duration_ms": 60008.19999998808,
+      "content_version": "breathing-4-6-v1",
+      "created_at": "2026-10-30T16:31:21.238000Z",
+      "cue_final": "animated",
+      "cue_initial": "animated",
+      "events": [
+        {
+          "details": {},
+          "elapsed_ms": 0.0,
+          "id": "bb798604-4f72-4bfd-bfff-d74487e3efe0",
+          "sequence": 1,
+          "type": "start"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 60000.0,
+          "id": "f62f0de0-1e7d-48be-b4a1-3a9dcccb5789",
+          "sequence": 2,
+          "type": "completed"
+        }
+      ],
+      "excluded_ms": 0.0,
+      "final_step_at": "2026-10-30T16:32:21.246000Z",
+      "first_instruction_at": "2026-10-30T16:31:21.238000Z",
+      "revision": 3,
+      "setup_ms": 269.09999999403954,
+      "status": "completed",
+      "wall_ms": 60008.19999998808
+    },
+    {
+      "case": "U04",
+      "session_id": "33734445-2486-45bf-9377-46391d2227dd",
+      "assignment_duration_ms": 60025.40000000596,
+      "content_version": "breathing-4-6-v1",
+      "created_at": "2026-10-30T16:32:21.866000Z",
+      "cue_final": "text",
+      "cue_initial": "text",
+      "events": [
+        {
+          "details": {},
+          "elapsed_ms": 0.10000002384185791,
+          "id": "7ff94027-dd56-45cb-87e5-89c1df7d4098",
+          "sequence": 1,
+          "type": "start"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 60000.0,
+          "id": "e9c195ba-583d-43ee-b4b0-1df3b73e794c",
+          "sequence": 2,
+          "type": "completed"
+        }
+      ],
+      "excluded_ms": 0.0,
+      "final_step_at": "2026-10-30T16:33:21.892000Z",
+      "first_instruction_at": "2026-10-30T16:32:21.867000Z",
+      "revision": 3,
+      "setup_ms": 556.1000000238419,
+      "status": "completed",
+      "wall_ms": 60025.40000000596
+    },
+    {
+      "case": "U05",
+      "session_id": "8c6fe6f6-1880-4aa0-80e2-750de76f5290",
+      "assignment_duration_ms": 60008.59999999404,
+      "content_version": "breathing-4-6-v1",
+      "created_at": "2026-10-30T16:33:39.858000Z",
+      "cue_final": "text",
+      "cue_initial": "text",
+      "events": [
+        {
+          "details": {},
+          "elapsed_ms": 0.0,
+          "id": "0f43a159-822f-4385-9665-ea0d26d2a800",
+          "sequence": 1,
+          "type": "start"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 60000.0,
+          "id": "51a3e193-b2d9-4d2c-acaa-2181e569b5a8",
+          "sequence": 2,
+          "type": "completed"
+        }
+      ],
+      "excluded_ms": 0.0,
+      "final_step_at": "2026-10-30T16:34:39.867000Z",
+      "first_instruction_at": "2026-10-30T16:33:39.858000Z",
+      "revision": 3,
+      "setup_ms": 268.40000000596046,
+      "status": "completed",
+      "wall_ms": 60008.59999999404
+    },
+    {
+      "case": "U06",
+      "session_id": "a75a31ea-d0c4-4c51-b591-0846e54924fa",
+      "assignment_duration_ms": 60015.59999999404,
+      "content_version": "breathing-4-6-v1",
+      "created_at": "2026-10-30T16:35:02.321000Z",
+      "cue_final": "text",
+      "cue_initial": "text",
+      "events": [
+        {
+          "details": {},
+          "elapsed_ms": 0.0,
+          "id": "ba71c1b5-2022-4c3a-91eb-b07c0862d720",
+          "sequence": 1,
+          "type": "start"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 60000.0,
+          "id": "9bc5dc6d-ae2f-478d-aa1b-0edb0677cd50",
+          "sequence": 2,
+          "type": "completed"
+        }
+      ],
+      "excluded_ms": 0.0,
+      "final_step_at": "2026-10-30T16:36:02.337000Z",
+      "first_instruction_at": "2026-10-30T16:35:02.321000Z",
+      "revision": 3,
+      "setup_ms": 219.2000000178814,
+      "status": "completed",
+      "wall_ms": 60015.59999999404
+    },
+    {
+      "case": "demo-after-refinement",
+      "session_id": "7868cbbd-e43a-47a7-b7d2-dd63acd1e898",
+      "assignment_duration_ms": 60013.60000002384,
+      "content_version": "breathing-4-6-v1",
+      "created_at": "2026-10-30T17:09:44.634000Z",
+      "cue_final": "animated",
+      "cue_initial": "animated",
+      "events": [
+        {
+          "details": {},
+          "elapsed_ms": 0.10000002384185791,
+          "id": "0e879cc3-d645-490c-8ba1-dd3baeb1bee5",
+          "sequence": 1,
+          "type": "start"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 60000.0,
+          "id": "2ad83785-7c11-4fce-8869-8483703b29bd",
+          "sequence": 2,
+          "type": "completed"
+        }
+      ],
+      "excluded_ms": 0.0,
+      "final_step_at": "2026-10-30T17:10:44.650000Z",
+      "first_instruction_at": "2026-10-30T17:09:44.636000Z",
+      "revision": 3,
+      "setup_ms": 28794.20000001788,
+      "status": "completed",
+      "wall_ms": 60013.60000002384
+    }
+  ],
+  "planned_six_summary": {
+    "completed": 6,
+    "minimum_ms": 60008.19999998808,
+    "maximum_ms": 60025.40000000596,
+    "all_under_90_seconds": true
+  }
+}

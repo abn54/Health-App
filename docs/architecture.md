@@ -240,3 +240,10 @@ App moves the same launcher ID/handler to an accessible bottom rail inside the i
 ## Late October 28 — simpler, accurate chat wording
 
 Catalog app-help-v5 adds about; Selection and MODEL_CONTEXT accept the new allowlisted ID. Prompt catalog-selector-v11 separates purpose/features from therapist/diagnosis/monitoring scope, with a revised authored app-name example. Mock scope matching precedes about, so explicit role requests are not disguised as generic purpose answers. The existing reviewed renderer/storage/source contract remains. Frontend displays source mock as Prepared reply and explains its meaning; persisted metadata stays unchanged. No schema migration, provider attempt, timing or voice change. [Evidence and live-selection limitation](chat-copy-oct28.md).
+
+
+## October 30 — focus and history ordering refinements
+
+App.vue observes chatbot speech busy→idle. After nextTick, when the assistant is open and support is not, it restores focus to its enabled Read replies control or Close only if focus escaped the popup; hidden pages do not steal focus. A document capture keydown listener handles Escape for an open support/assistant dialog, support first, using existing close/focus-return functions; it is installed on mount and removed on unmount. This covers BODY focus left by a disabled/removed button.
+
+History switches views immediately and journals/pause the active exercise, then awaits that journal before GET /sessions. A rejected save is caught so older records can still load and the independent support route remains usable. These changes do not alter engine timing, database schema, catalog, prompt or model permissions. [Actual failure/retest evidence](part3-evaluation.md). The final application source is 83ddf65; later metadata/evidence commits retain that code.

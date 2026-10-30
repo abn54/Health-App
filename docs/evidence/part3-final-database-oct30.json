@@ -1,0 +1,129 @@
+{
+  "recorded_at": "2026-10-30T17:14:36.766205+00:00",
+  "method": "Read-only selected fields from separate fictional review DB; no original workspace DB or full raw logs exported.",
+  "integrity_check": "ok",
+  "foreign_key_violations": [],
+  "status_counts": [
+    {
+      "status": "completed",
+      "count": 7
+    },
+    {
+      "status": "draft",
+      "count": 4
+    },
+    {
+      "status": "interrupted",
+      "count": 1
+    },
+    {
+      "status": "stopped",
+      "count": 3
+    }
+  ],
+  "profile": [
+    {
+      "id": 1,
+      "reply_detail": "brief",
+      "use_history": 1,
+      "updated_at": "2026-10-30T17:09:39.435936+00:00"
+    }
+  ],
+  "preferences": [
+    {
+      "id": 1,
+      "cue": "text"
+    }
+  ],
+  "provider_ledger": [
+    {
+      "outcome": "preload-complete",
+      "count": 1
+    },
+    {
+      "outcome": "validated-selection",
+      "count": 16
+    }
+  ],
+  "health": {
+    "status": "ok",
+    "live_enabled": true,
+    "review_tools": true,
+    "model": "qwen2.5:3b",
+    "prompt_version": "catalog-selector-v11",
+    "attempts": 17,
+    "limit": 50,
+    "test_run_id": "part3-evaluation-2026-10-30"
+  },
+  "live_selection_accounting": "15 repeated evaluation selections + 1 recorded purpose demonstration + 1 host-counted preload = 17/50. Main user host retained separately; no reset.",
+  "latest_demo_conversation": [
+    {
+      "role": "assistant",
+      "content": "mello brings a one-minute breathing practice, optional app help, and your saved settings and history together. You choose when to start, pause, or stop.",
+      "metadata": {
+        "source": "live",
+        "reply_id": "about",
+        "evidence_ids": [
+          "catalog:about"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v11",
+        "catalog_version": "app-help-v5",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "5dd4e4a6-f792-40f4-a327-042e40ec89aa",
+        "reply_detail": "brief",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "brief",
+          "history_used": false
+        }
+      },
+      "created_at": "2026-10-30T17:11:44.548959+00:00"
+    },
+    {
+      "role": "user",
+      "content": "What is the purpose of mello?",
+      "metadata": {},
+      "created_at": "2026-10-30T17:11:40.051950+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "Pause holds your place; Resume continues it. End stops immediately. Crisis support remains available and pauses practice when opened. Your current cue is Animated circle. Your remembered cue is Text only; you can override it without changing the saved choice. Your latest saved practice completed its planned sequence. Starting again is optional. That practice last recorded Animated circle.",
+      "metadata": {
+        "source": "mock",
+        "reply_id": "controls",
+        "evidence_ids": [
+          "catalog:controls"
+        ],
+        "model_id": null,
+        "prompt_version": "catalog-selector-v11",
+        "catalog_version": "app-help-v5",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": null,
+        "reply_detail": "brief",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "brief",
+          "history_used": true,
+          "current_cue": "animated",
+          "remembered_cue": "text",
+          "latest_practice": {
+            "status": "completed",
+            "cue": "animated",
+            "created_at": "2026-10-30T17:09:44.634000Z",
+            "started_at": "2026-10-30T17:09:44.636000Z"
+          }
+        }
+      },
+      "created_at": "2026-10-30T17:11:13.980251+00:00"
+    },
+    {
+      "role": "user",
+      "content": "How do I pause or stop?",
+      "metadata": {},
+      "created_at": "2026-10-30T17:11:13.978059+00:00"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:08.892
+Baseline before fix: clean checkout 49ea522 on port 8002. Fictional app question; prepared reply.
+
+00:00:08.892 --> 00:00:12.496
+Failure reproduced: Stop removed its focused button; Escape left the popup open. Inspect focus and event scope.
+
+00:00:12.496 --> 00:00:16.955
+Revised application: restore focus after speech stops and capture Escape while a dialog is open.
+
+00:00:16.955 --> 00:00:19.544
+Retest passes: focus stayed on Read replies; Escape closed the popup and returned to the launcher.
+
+00:00:19.544 --> 00:00:24.573
+Evidence and diagnosis: BODY focus bypassed the local popup keydown handler. A profile reset behind the still-inert popup had not reached the database.
+
+00:00:24.573 --> 00:00:33.594
+Generated code: the watcher waits for Vue DOM updates before restoring lost focus. A document capture listener receives Escape and calls the existing close function. Timing and model control are unchanged.

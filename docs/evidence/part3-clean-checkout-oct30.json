@@ -1,0 +1,118 @@
+{
+  "recorded_at": "2026-10-30T16:30:45.290976+00:00",
+  "method": "Agent cloned from GitHub into a new temporary directory, created a fresh virtual environment via the README script, installed pinned Python and npm dependencies, built and ran a new local database. Same Mac; not an independent human or cross-OS review.",
+  "repository": "https://github.com/abn54/Health-App.git",
+  "branch": "codex/part2-prototype",
+  "commit": "49ea52274b5cc4a83cbc865182dec945b0ec631c",
+  "startup_command": "MELLO_PORT=8002 ALLOW_LIVE_MODEL=0 REVIEW_TOOLS=0 sh scripts/run.sh",
+  "python": "Python 3.14.7",
+  "node": "v26.7.0",
+  "npm": "11.19.0",
+  "platform": "Darwin 27.0.0",
+  "git_status_after": "",
+  "page_http_status": 200,
+  "assets": [
+    {
+      "path": "/assets/index-BJQMy9JF.js",
+      "status": 200,
+      "sha256": "bd29f851633c65e885ab23e278cbd1f5040cb6208dc224fc2845c6bb3caf717c"
+    },
+    {
+      "path": "/assets/index-DNgaNft8.css",
+      "status": 200,
+      "sha256": "c896012b38c1cc30e5b614c1eb9bfd51fb9051e7e3d1e4ecfca486b95741c7bd"
+    }
+  ],
+  "health": {
+    "status": "ok",
+    "live_enabled": false,
+    "review_tools": false,
+    "model": "qwen2.5:3b",
+    "prompt_version": "catalog-selector-v11",
+    "attempts": 0,
+    "limit": 50,
+    "test_run_id": "part2-local"
+  },
+  "checks": [
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "pytest",
+        "backend/test_api.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "output": ".......................................                                  [100%]\n=============================== warnings summary ===============================\n.venv/lib/python3.14/site-packages/fastapi/testclient.py:1\n  /private<clean-checkout>/.venv/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n    from starlette.testclient import TestClient as TestClient  # noqa\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n39 passed, 1 warning in 1.18s\n"
+    },
+    {
+      "command": [
+        "npm",
+        "test"
+      ],
+      "exit_code": 0,
+      "output": "\n> mello-coursework@0.2.0 test\n> node --test tests/*.test.js\n\n\u2714 phase announcements contain cycle, direction and prescribed duration, without every-frame chatter (0.583417ms)\n\u2714 optional count announcements are concise and respect different phase lengths (0.093208ms)\n\u2714 paused state offers explicit resume/end; announcements can be switched off (0.209583ms)\n\u2714 reply choices exclude remote/non-English/novelty voices and rank enhanced options first (1.51625ms)\n\u2714 no suitable voice has a truthful text fallback without a speech attempt (0.430958ms)\n\u2714 speech lifecycle and Stop invalidate stale callbacks (0.205125ms)\n\u2714 speech awaiting startup is cancelled if practice/navigation makes it invalid (0.121417ms)\n\u2714 blocked speech times out and stale timer cannot cancel later output (0.13925ms)\n\u2714 browser speech and rejected voice errors are contained (0.162583ms)\n\u2714 selected on-device voice, controlled speed and preview labels reach browser speech (0.133583ms)\n\u2714 voice discovery failure remains explicit (0.104334ms)\n\u2714 all six cycles retain exact 4/6 boundaries without accumulated interval drift (0.841792ms)\n\u2714 pause preserves the fraction of a count; overlapping support is excluded once (0.545792ms)\n\u2714 scheduling interruption includes app delay, without false completion or exclusion (0.08775ms)\n\u2714 End is immediate, and a terminal exercise does not resume (0.093708ms)\n\u2714 a new session resets elapsed time and pause accounting (0.089958ms)\n\u2714 phrase cue is bounded and normalized; negations still match (documented limitation) (0.253708ms)\n\u2139 tests 17\n\u2139 suites 0\n\u2139 pass 17\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 86.176459\n"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "scripts/evaluate_part3.py",
+        "--output",
+        "/var/folders/6p/wkvhpwmd5jd9zqcwhjxy7ngc0000gp/T/mello-clean-checkout-iwsdhta9/mock-check.json"
+      ],
+      "exit_code": 0,
+      "output": "{\"passed\": 22, \"total\": 22, \"integrity\": \"ok\", \"real_provider_calls\": 0}\n/private<clean-checkout>/.venv/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient as TestClient  # noqa\n"
+    }
+  ],
+  "limits": [
+    "No independent human peer, second OS, offline dependency install or API key needed/tested.",
+    "Readme port override used to keep the original server on 8000 available."
+  ],
+  "source_hash_comparison": {
+    "backend/main.py": {
+      "original": "1253caee6917fae9e4313da262b0d474a673a6aed6f15b358919422e786d9a6c",
+      "clean": "1253caee6917fae9e4313da262b0d474a673a6aed6f15b358919422e786d9a6c",
+      "identical": true
+    },
+    "backend/catalog.py": {
+      "original": "58a15572b55f1f983ba12e42ed92c1552517cac14210e36607e1c01fe1524cc3",
+      "clean": "58a15572b55f1f983ba12e42ed92c1552517cac14210e36607e1c01fe1524cc3",
+      "identical": true
+    },
+    "frontend/src/App.vue": {
+      "original": "61a0f05e6d192b74777e82ef53f0e95a068ac675f7bf46ce4782edfd5ee02df8",
+      "clean": "61a0f05e6d192b74777e82ef53f0e95a068ac675f7bf46ce4782edfd5ee02df8",
+      "identical": true
+    },
+    "frontend/src/components/AssistantPanel.vue": {
+      "original": "de9d98d1829febb6c58d377fa048cfe4b5f30e60097bc7ac906999156083eac8",
+      "clean": "de9d98d1829febb6c58d377fa048cfe4b5f30e60097bc7ac906999156083eac8",
+      "identical": true
+    },
+    "frontend/src/engine.js": {
+      "original": "dc0f9046f5ae590aad2f1bf8dccdadb3dc0061be3d9a7acc84b8724c2afe0788",
+      "clean": "dc0f9046f5ae590aad2f1bf8dccdadb3dc0061be3d9a7acc84b8724c2afe0788",
+      "identical": true
+    },
+    "shared/help-content.json": {
+      "original": "87524481d8700125c3a5fc0a593418e3f83ce88887eafc470bedbad9bd70d0a4",
+      "clean": "87524481d8700125c3a5fc0a593418e3f83ce88887eafc470bedbad9bd70d0a4",
+      "identical": true
+    },
+    "requirements.txt": {
+      "original": "ed2cd9d530b1e72e5b8233c4cd27cfdc5edc1be50c71818b5f32804195fa2e12",
+      "clean": "ed2cd9d530b1e72e5b8233c4cd27cfdc5edc1be50c71818b5f32804195fa2e12",
+      "identical": true
+    },
+    "frontend/package-lock.json": {
+      "original": "85b47833abba2ca54befb6b4cf9da3c1ef4ad212e9e4abc13dbf119f1e8141f2",
+      "clean": "85b47833abba2ca54befb6b4cf9da3c1ef4ad212e9e4abc13dbf119f1e8141f2",
+      "identical": true
+    },
+    "scripts/run.sh": {
+      "original": "175b7be0573694076108f440336f6e051ef61eca4cd09ab4b1d642a3f838492e",
+      "clean": "175b7be0573694076108f440336f6e051ef61eca4cd09ab4b1d642a3f838492e",
+      "identical": true
+    }
+  }
+}

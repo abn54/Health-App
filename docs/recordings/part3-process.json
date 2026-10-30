@@ -1,0 +1,78 @@
+{
+  "capture_method": "Actual Cua browser-tab screenshots sampled approximately every 500 ms within capture blocks; silent. No UI reconstruction or synthetic app frames. H.264 repeats held frames at 10 fps; original motion sampling is ~2 fps.",
+  "editing": "Outside the uninterrupted exercise, gaps over 3 seconds are shortened to 3 seconds. Within the exercise all timestamp gaps are retained, holding the last captured frame. Last frame held 2.5 seconds. Enable English subtitles; full transcript accompanies video.",
+  "source_capture_duration_seconds": 176.653,
+  "video_duration_seconds_planned": 33.594,
+  "captured_frame_count": 53,
+  "largest_source_gap_seconds": 148.559,
+  "idle_edits": [
+    {
+      "after_frame": 10,
+      "original_gap_seconds": 148.559,
+      "retained_seconds": 3.0
+    }
+  ],
+  "chapters": [
+    {
+      "at": 1793379777366,
+      "text": "Baseline before fix: clean checkout 49ea522 on port 8002. Fictional app question; prepared reply.",
+      "video_seconds": 0
+    },
+    {
+      "at": 1793379931818,
+      "text": "Failure reproduced: Stop removed its focused button; Escape left the popup open. Inspect focus and event scope.",
+      "video_seconds": 8.892
+    },
+    {
+      "at": 1793379935422,
+      "text": "Revised application: restore focus after speech stops and capture Escape while a dialog is open.",
+      "video_seconds": 12.495999999999997
+    },
+    {
+      "at": 1793379939881,
+      "text": "Retest passes: focus stayed on Read replies; Escape closed the popup and returned to the launcher.",
+      "video_seconds": 16.954999999999995
+    },
+    {
+      "at": 1793379942470,
+      "text": "Evidence and diagnosis: BODY focus bypassed the local popup keydown handler. A profile reset behind the still-inert popup had not reached the database.",
+      "video_seconds": 19.543999999999997
+    },
+    {
+      "at": 1793379947499,
+      "text": "Generated code: the watcher waits for Vue DOM updates before restoring lost focus. A document capture listener receives Escape and calls the existing close function. Timing and model control are unchanged.",
+      "video_seconds": 24.573
+    }
+  ],
+  "checks": [
+    {
+      "stage": "baseline",
+      "observed": {
+        "activeTag": "BODY",
+        "focusInsidePopup": false,
+        "popupPresent": true
+      }
+    },
+    {
+      "stage": "revised-after-stop",
+      "observed": {
+        "activeText": "Read replies",
+        "focusInsidePopup": true
+      }
+    },
+    {
+      "stage": "revised-after-Escape",
+      "observed": {
+        "activeId": "assistant-launcher",
+        "popupPresent": false
+      }
+    }
+  ],
+  "video_sha256": "ded6f48889de0fa0caa512130ea319cb4bd854300ede30c66626be88ec19da60",
+  "ffmpeg_version": "7.1",
+  "decode_verification": {
+    "exit_code": 0,
+    "method": "FFmpeg decoded complete file to null with no decoding error; sample frame at 12s inspected separately.",
+    "output_tail": "ng:\n  Stream #0:0 -> #0:0 (h264 (native) -> wrapped_avframe (native))\nPress [q] to stop, [?] for help\nOutput #0, null, to 'pipe:':\n  Metadata:\n    major_brand     : isom\n    minor_version   : 512\n    compatible_brands: isomiso2avc1mp41\n    encoder         : Lavf61.7.100\n  Stream #0:0(und): Video: wrapped_avframe, yuvj420p(pc, bt470bg/unknown/unknown, progressive), 1280x720 [SAR 1:1 DAR 16:9], q=2-31, 200 kb/s, 10 fps, 10 tbn (default)\n      Metadata:\n        handler_name    : VideoHandler\n        vendor_id       : [0][0][0][0]\n        encoder         : Lavc61.19.100 wrapped_avframe\n[out#0/null @ 0x13fe05060] video:146KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown\nframe=  340 fps=0.0 q=-0.0 Lsize=N/A time=00:00:34.00 bitrate=N/A speed= 384x    \n"
+  }
+}

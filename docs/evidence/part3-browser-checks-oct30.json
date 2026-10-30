@@ -1,0 +1,178 @@
+{
+  "date": "2026-10-30",
+  "checks": [
+    {
+      "id": "U01",
+      "expected": "Complete animated practice without questions, \u226490 seconds",
+      "observed": "\u2713\nCOMPLETED \u00b7 PACED BREATHING\nSix cycles complete.\n\nThe planned sequence has finished. Stay here as long as you like.\n\n60.02 s\nMeasured exercise\n6.88 s\nEntry and setup\n0.00 s\nUser pause / support\n\nTiming includes application and render delays. Explicit pause and support intervals are excluded once. Interrupted sessions do not establish completion.\n\nReturn to ready \u2192\nReview saved history"
+    },
+    {
+      "id": "U02",
+      "expected": "Second uninterrupted animated run completes",
+      "observed": "\u2713\nCOMPLETED \u00b7 PACED BREATHING\nSix cycles complete.\n\nThe planned sequence has finished. Stay here as long as you like.\n\n60.01 s\nMeasured exercise\n0.28 s\nEntry and setup\n0.00 s\nUser pause / support\n\nTiming includes application and render delays. Explicit pause and support intervals are excluded once. Interrupted sessions do not establish completion.\n\nReturn to ready \u2192\nReview saved history"
+    },
+    {
+      "id": "U03",
+      "expected": "Third uninterrupted animated run completes",
+      "observed": "\u2713\nCOMPLETED \u00b7 PACED BREATHING\nSix cycles complete.\n\nThe planned sequence has finished. Stay here as long as you like.\n\n60.01 s\nMeasured exercise\n0.27 s\nEntry and setup\n0.00 s\nUser pause / support\n\nTiming includes application and render delays. Explicit pause and support intervals are excluded once. Interrupted sessions do not establish completion.\n\nReturn to ready \u2192\nReview saved history"
+    },
+    {
+      "id": "U04",
+      "expected": "First text-only run completes with identical schedule",
+      "observed": "\u2713\nCOMPLETED \u00b7 PACED BREATHING\nSix cycles complete.\n\nThe planned sequence has finished. Stay here as long as you like.\n\n60.03 s\nMeasured exercise\n0.56 s\nEntry and setup\n0.00 s\nUser pause / support\n\nTiming includes application and render delays. Explicit pause and support intervals are excluded once. Interrupted sessions do not establish completion.\n\nReturn to ready \u2192\nReview saved history"
+    },
+    {
+      "id": "U05",
+      "expected": "Second text-only run completes",
+      "observed": "\u2713\nCOMPLETED \u00b7 PACED BREATHING\nSix cycles complete.\n\nThe planned sequence has finished. Stay here as long as you like.\n\n60.01 s\nMeasured exercise\n0.27 s\nEntry and setup\n0.00 s\nUser pause / support\n\nTiming includes application and render delays. Explicit pause and support intervals are excluded once. Interrupted sessions do not establish completion.\n\nReturn to ready \u2192\nReview saved history"
+    },
+    {
+      "id": "U06",
+      "expected": "Third text-only run completes",
+      "observed": "\u2713\nCOMPLETED \u00b7 PACED BREATHING\nSix cycles complete.\n\nThe planned sequence has finished. Stay here as long as you like.\n\n60.02 s\nMeasured exercise\n0.22 s\nEntry and setup\n0.00 s\nUser pause / support\n\nTiming includes application and render delays. Explicit pause and support intervals are excluded once. Interrupted sessions do not establish completion.\n\nReturn to ready \u2192\nReview saved history"
+    },
+    {
+      "id": "U07",
+      "expected": "Per-visit override leaves remembered Text only unchanged",
+      "observed": {
+        "remembered": "Remembered setting: Text only. You can change the cue during the exercise.",
+        "animatedPressed": "true"
+      }
+    },
+    {
+      "id": "U08",
+      "expected": "Reload restores explicit remembered Text only",
+      "observed": "true"
+    },
+    {
+      "id": "U09",
+      "expected": "Opted-in brief answer refers to actual saved Completed practice without inferred emotions",
+      "observed": "Pause holds your place; Resume continues it. End stops immediately. Crisis support remains available and pauses practice when opened. Your current cue is Text only. Your latest saved practice completed its planned sequence. Starting again is optional. That practice last recorded Text only."
+    },
+    {
+      "id": "U10",
+      "expected": "Optional reply speech starts; visible text stays and Stop is available",
+      "observed": {
+        "status": "Reading assistant reply aloud.",
+        "textAvailable": "Pause holds your place; Resume continues it. End stops immediately. Crisis support remains available and pauses practice when opened. Your current cue is Text only. Your latest saved practice completed its planned sequence. Starting again is optional. That practice last recorded Text only."
+      }
+    },
+    {
+      "id": "U11-initial-failure",
+      "expected": "Escape closes popup after stopping reply speech",
+      "observed": {
+        "activeTag": "BODY",
+        "focusInsidePopup": false,
+        "popupPresent": true
+      }
+    },
+    {
+      "id": "U11-retest",
+      "expected": "After Stop removes temporary control, focus stays inside; Escape closes to launcher",
+      "observed": {
+        "activeId": "assistant-launcher",
+        "popupPresent": false,
+        "focusBeforeEscape": "Read replies button inside popup"
+      }
+    },
+    {
+      "id": "U12",
+      "expected": "After explicit profile reset, a new reply excludes saved practice context",
+      "observed": "Pause holds the current phase and count. Resume continues them. End stops the exercise. Crisis support stays available, and opening it pauses an active exercise."
+    },
+    {
+      "id": "U13-pause",
+      "expected": "Pause holds the current phase/count",
+      "observed": "Your place is held\nPaused\n2 / 6\n\nHolding exhale, count 2."
+    },
+    {
+      "id": "U14",
+      "expected": "Returning from support leaves practice paused until explicit Resume",
+      "observed": "Your place is held\nPaused\n2 / 6\n\nHolding exhale, count 2."
+    },
+    {
+      "id": "U15-initial-stale-list",
+      "expected": "History shows paused current practice consistently",
+      "observed": {
+        "banner": "Your exercise is paused. Returning does not resume it.\nReturn to exerciseEnd exercise",
+        "firstSavedRow": "In progress (observed immediately after navigation while pause save was in flight)"
+      }
+    },
+    {
+      "id": "U16",
+      "expected": "End from History produces a saved Stopped partial session",
+      "observed": "\u25cc\nSTOPPED \u00b7 PACED BREATHING\nExercise ended.\n\nThis is a partial session. You can review it or return when you choose.\n\n15.73 s\nPartial exercise time\n69.04 s\nEntry and setup\n72.19 s\nUser pause / support\n\nTiming includes application and render delays. Explicit pause and support intervals are excluded once. Interrupted sessions do not establish completion.\n\nReturn to ready \u2192\nReview saved history"
+    },
+    {
+      "id": "U15-retest",
+      "expected": "After pause save settles, History lists Paused and retains Return/End",
+      "observed": "Paused\nStarted Oct 30, 2026, 12:41 PM\nNo chat in this session\nNot recorded \u2197"
+    },
+    {
+      "id": "U17",
+      "expected": "Return from History still requires explicit Resume",
+      "observed": "Your place is held\nPaused\n1 / 4\n\nHolding inhale, count 1."
+    },
+    {
+      "id": "U18",
+      "expected": "Reloaded active session is Interrupted with unknown final timing",
+      "observed": "PACED BREATHING \u00b7 BREATHING-4-6-V1\nInterrupted\n\nStarted Oct 30, 2026, 12:41 PM\nNo chat in this session\n\n5ed2e890-440c-407f-9fbc-d1e07cc49703\nInitial cue\ntext\nLast recorded cue\ntext\nExercise duration\nNot recorded\nWall time / excluded pauses\nNot recorded / 0.00 s\nEntry and setup\n0.28 s\n\nPartial record. A missing final time is unknown, not a completed exercise.\n\nUse this cue next time\nDelete this session\nSaved conversation\n\nNo questions were submitted.\n\nRecorded events (2)"
+    },
+    {
+      "id": "U19",
+      "expected": "Simulated optional request failure gives fixed fallback; support independent",
+      "observed": "Fixed fallback\n\nThe optional explanation is unavailable. You can still start the exercise or open Crisis support.\n\nRead reply aloud\nSimulated request failure (review tool)"
+    },
+    {
+      "id": "U20",
+      "expected": "Support opens after optional request failure without model decision",
+      "observed": "Crisis support"
+    },
+    {
+      "id": "U21",
+      "expected": "Actual API outage reports question unconfirmed, with Retry",
+      "observed": "The optional explanation is unavailable. You can still start or open Crisis support. This turn is not confirmed saved; retry or review History."
+    },
+    {
+      "id": "U22",
+      "expected": "Loaded-page support opens while API is physically stopped",
+      "observed": "Crisis support"
+    },
+    {
+      "id": "U23",
+      "expected": "Offline practice can End; no successful save is invented; Retry/Leave remain",
+      "observed": {
+        "summary": "\u25cc\nSTOPPED \u00b7 PACED BREATHING\nExercise ended.\n\nThis is a partial session. You can review it or return when you choose.\n\n0.28 s\nPartial exercise time\n89.83 s\nEntry and setup\n0.00 s\nUser pause / support\n\nTiming includes application and render delays. Explicit pause and support intervals are excluded once. Interrupted sessions do not establish completion.\n\nReturn to ready \u2192\nReview saved history\n\nYou can leave without waiting for a save. Unsaved changes may be lost; records already saved remain in History.\n\nLeave without saving",
+        "save": "Not saved \u00b7 kept in this page only\nRetry save"
+      }
+    },
+    {
+      "id": "U24",
+      "expected": "After API restart, explicit Retry confirms the saved partial record",
+      "observed": "Saved locally"
+    },
+    {
+      "id": "U25-recorded-final-demo",
+      "expected": "Final revised UI completes full skill and shows saved profile/cue override, dated history, tailored prepared reply, actual bounded live answer, support and accessibility choices.",
+      "observed": {
+        "session_status": "Completed",
+        "exercise_ms": 60013.60000002384,
+        "setup_ms": 28794.20000001788,
+        "excluded_ms": 0,
+        "remembered_cue": "text",
+        "current_practice_cue": "animated",
+        "saved_profile": {
+          "reply_detail": "brief",
+          "use_history": true
+        },
+        "prepared_reply_context": "Current Animated circle; remembered Text only; latest completed practice final Animated circle.",
+        "live_question": "What is the purpose of mello?",
+        "live_reply_id": "about",
+        "host_attempts_after": 17,
+        "support_opened": true,
+        "larger_text_and_higher_contrast_selected": true,
+        "recording": "../recordings/part3-demo.mp4"
+      }
+    }
+  ]
+}
