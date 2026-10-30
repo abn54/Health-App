@@ -40,6 +40,15 @@ const audio = new AudioOutput({ synth:window.speechSynthesis, Utterance:window.S
     if (audioObservations.value.length > 80) audioObservations.value.shift()
   }
 } })
+// Speech can remove its temporary Stop button. Keep keyboard focus in the dialog.
+watch(() => audioState.value.busy, (busy, prior) => {
+  if (busy || !prior || !assistantPopup.value || support.value) return
+  nextTick(() => {
+    if (document.hidden || document.querySelector('.assistant-popup')?.contains(document.activeElement)) return
+    const voiceButton = document.querySelector('.assistant-popup .composer-voice:not(:disabled)')
+    ;(voiceButton || document.querySelector('.assistant-popup .popup-close'))?.focus()
+  })
+})
 function refreshVoices() {
   voices.value = audio.refreshVoices()
   if (!voices.value.some(v => v.voiceURI === voiceURI.value)) voiceURI.value = voices.value[0]?.voiceURI || ''
@@ -243,7 +252,12 @@ async function openHistory() {
   if (status.value === 'running') pause()
   if (active.value) { event('history_open'); queueSave() }
   view.value = 'history'; selected.value = null; historyError.value = ''
-  try { history.value = await api('/sessions') } catch { historyError.value = 'History could not load. Retry when the local server is available.' }
+  try {
+    // Navigation is immediate; let the active pause journal settle before reading it.
+    // A failed save still permits review of older saved records and independent support.
+    if (active.value) await waitForSave().catch(() => {})
+    history.value = await api('/sessions')
+  } catch { historyError.value = 'History could not load. Retry when the local server is available.' }
 }
 function returnExercise() { if (view.value === 'history' && active.value) { event('history_close'); queueSave() }; view.value = 'exercise' }
 function openAssistant() {
@@ -270,6 +284,13 @@ function closeAssistantPopup() {
     if (popupReturnFocus?.isConnected) popupReturnFocus.focus()
     else document.querySelector('#assistant-launcher')?.focus()
   })
+}
+// Capture Escape even when a disabled/removed control has left focus on body.
+function dialogEscape(event) {
+  if (event.key !== 'Escape' || (!support.value && !assistantPopup.value)) return
+  event.preventDefault(); event.stopPropagation()
+  if (support.value) closeSupport()
+  else closeAssistantPopup()
 }
 function newPopupQuestions() {
   ready(); assistantOpen.value = true
@@ -337,6 +358,7 @@ async function ask(retry = false) {
 }
 
 onMounted(async () => {
+  document.addEventListener('keydown', dialogEscape, true)
   if ('ResizeObserver' in window) {
     headerObserver = new ResizeObserver(entries => document.documentElement.style.setProperty('--header-offset', `${entries[0].target.getBoundingClientRect().height + 12}px`))
     const header = document.querySelector('.sidebar')
@@ -353,7 +375,7 @@ onMounted(async () => {
     if (prefs.cue && !cueTouched && status.value === 'ready') cue.value = prefs.cue
   } catch { appError.value = 'Local server unavailable. Exercise and Crisis support still work; saving needs the server.' }
 })
-onUnmounted(() => { headerObserver?.disconnect(); document.documentElement.style.removeProperty('--header-offset'); document.documentElement.classList.remove('higher-contrast','larger-text'); audio.dispose(); window.speechSynthesis?.removeEventListener('voiceschanged', refreshVoices); cancelAnimationFrame(raf); document.removeEventListener('visibilitychange', visibility); window.removeEventListener('pagehide', pagehide); reduced.removeEventListener('change', motionChange) })
+onUnmounted(() => { document.removeEventListener('keydown', dialogEscape, true); headerObserver?.disconnect(); document.documentElement.style.removeProperty('--header-offset'); document.documentElement.classList.remove('higher-contrast','larger-text'); audio.dispose(); window.speechSynthesis?.removeEventListener('voiceschanged', refreshVoices); cancelAnimationFrame(raf); document.removeEventListener('visibilitychange', visibility); window.removeEventListener('pagehide', pagehide); reduced.removeEventListener('change', motionChange) })
 </script>
 
 <template>
