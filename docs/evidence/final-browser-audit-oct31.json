@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-31",
+  "source": "Actual Cua UI checks in final-full-demo-oct31.mp4, with selected fictional DB rows in final-audit-oct31.json. Original user data not touched.",
+  "checks": [
+    {
+      "id": "F01",
+      "expected": "Saved cue/profile survive reload without questionnaire.",
+      "observed": {
+        "profile": "Your local profileBrief replies \u00b7 saved practice context on\uff0b",
+        "textOnly": "true"
+      }
+    },
+    {
+      "id": "F02",
+      "expected": "Current coastal app completes six 4/6 cycles under 90 seconds with confirmed local save.",
+      "observed": {
+        "summary": "\u2713\nCOMPLETED \u00b7 PACED BREATHING\nSix cycles complete.\n\nThe planned sequence has finished. Stay here as long as you like.\n\n60.02 s\nMeasured exercise\n2.68 s\nEntry and setup\n0.00 s\nUser pause / support\n\nTiming includes application and render delays. Explicit pause and support intervals are excluded once. Interrupted sessions do not establish completion.\n\nReturn to ready \u2192\nReview saved history",
+        "save": "Saved locally"
+      }
+    },
+    {
+      "id": "F03",
+      "expected": "New reviewed reply uses explicitly saved brief choice and actual latest breathing record.",
+      "observed": "You\n\nHow do I pause or stop?\n\nPrepared reply\n\nPause holds your place; Resume continues it. End stops immediately. Crisis support remains available and pauses practice when opened. Your current breathing cue is Animated circle. Your remembered cue is Text only; you can override it without changing the saved choice. Your latest saved breathing practice completed its planned sequence. Starting again is optional. That practice last recorded Animated circle.\n\nReply details\nRead reply aloud"
+    },
+    {
+      "id": "F04",
+      "expected": "Explicit live selection remains catalog text with source label and host attempt count.",
+      "observed": "You\n\nHow do I pause or stop?\n\nPrepared reply\n\nPause holds your place; Resume continues it. End stops immediately. Crisis support remains available and pauses practice when opened. Your current breathing cue is Animated circle. Your remembered cue is Text only; you can override it without changing the saved choice. Your latest saved breathing practice completed its planned sequence. Starting again is optional. That practice last recorded Animated circle.\n\nReply details\nRead reply aloud\nYou\n\nWhat is the purpose of mello?\n\nLive local model\n\nmello brings three short guided practices, optional app help, and your saved settings and history together. You choose when to start, pause, or stop.\n\nReply details\nRead reply aloud"
+    },
+    {
+      "id": "F05",
+      "expected": "Actual stopped API reports unconfirmed question and offers Retry; no successful new turn is invented.",
+      "observed": "You\n\nHow do I pause or stop?\n\nPrepared reply\n\nPause holds your place; Resume continues it. End stops immediately. Crisis support remains available and pauses practice when opened. Your current breathing cue is Animated circle. Your remembered cue is Text only; you can override it without changing the saved choice. Your latest saved breathing practice completed its planned sequence. Starting again is optional. That practice last recorded Animated circle.\n\nReply details\nRead reply aloud\nYou\n\nWhat is the purpose of mello?\n\nLive local model\n\nmello brings three short guided practices, optional app help, and your saved settings and history together. You choose when to start, pause, or stop.\n\nReply details\nRead reply aloud\nYou\n\nHow can I stop an exercise?\n\nThe optional explanation is unavailable. You can still start or open Crisis support. This turn is not confirmed saved; retry or review History.\n\nRetry this question"
+    },
+    {
+      "id": "F06",
+      "expected": "Bundled support opens with API offline.",
+      "observed": "Crisis support"
+    },
+    {
+      "id": "F07",
+      "expected": "Explicit Retry after server restart persists the turn without duplicating the user message.",
+      "observed": "You\n\nHow do I pause or stop?\n\nPrepared reply\n\nPause holds your place; Resume continues it. End stops immediately. Crisis support remains available and pauses practice when opened. Your current breathing cue is Animated circle. Your remembered cue is Text only; you can override it without changing the saved choice. Your latest saved breathing practice completed its planned sequence. Starting again is optional. That practice last recorded Animated circle.\n\nReply details\nRead reply aloud\nYou\n\nWhat is the purpose of mello?\n\nLive local model\n\nmello brings three short guided practices, optional app help, and your saved settings and history together. You choose when to start, pause, or stop.\n\nReply details\nRead reply aloud\nYou\n\nHow can I stop an exercise?\n\nPrepared reply\n\nPause holds your place; Resume continues it. End stops immediately. Crisis support remains available and pauses practice when opened. Your current breathing cue is Animated circle. Your remembered cue is Text only; you can override it without changing the saved choice. Your latest saved breathing practice completed its planned sequence. Starting again is optional. That practice last recorded Animated circle.\n\nReply details\nRead reply aloud"
+    }
+  ]
+}

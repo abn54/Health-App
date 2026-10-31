@@ -1,0 +1,191 @@
+{
+  "recorded_at": "2026-10-31T19:27:02.899650+00:00",
+  "source_commit": "44be384bc110258e2e76cc1c8db049a068da8e2b",
+  "application_commit": "9f3f9de913180c2508808914eb2ab65aaadceb6d",
+  "method": "Read-only selected fields from the isolated fictional review database after a new full current-layout demonstration. Original user database not exported. Browser checks in recording metadata/captions. No physical paint or acoustic measurement.",
+  "completed_session": {
+    "id": "aae61764-551b-4ee6-a003-1054bd872650",
+    "assignment_duration_ms": 60018.69999998808,
+    "content_version": "breathing-4-6-v1",
+    "created_at": "2026-10-31T19:23:29.010000Z",
+    "cue_final": "animated",
+    "cue_initial": "animated",
+    "events": [
+      {
+        "details": {},
+        "elapsed_ms": 0.09999999403953552,
+        "id": "b26b70cf-23eb-4a82-b892-fdc967b37501",
+        "sequence": 1,
+        "type": "start"
+      },
+      {
+        "details": {},
+        "elapsed_ms": 60000.0,
+        "id": "32a50ed2-04ad-47e4-993e-8f8473ce72da",
+        "sequence": 2,
+        "type": "completed"
+      }
+    ],
+    "excluded_ms": 0.0,
+    "final_step_at": "2026-10-31T19:24:29.031000Z",
+    "first_instruction_at": "2026-10-31T19:23:29.010000Z",
+    "revision": 3,
+    "setup_ms": 2677.5,
+    "status": "completed",
+    "wall_ms": 60018.69999998808
+  },
+  "saved_profile": {
+    "id": 1,
+    "reply_detail": "brief",
+    "use_history": 1,
+    "updated_at": "2026-10-31T19:23:22.488343+00:00"
+  },
+  "remembered_cue": {
+    "id": 1,
+    "cue": "text"
+  },
+  "new_fictional_messages": [
+    {
+      "session_id": "b3e9e3b4-ef16-42b3-af61-be6ce680635f",
+      "role": "user",
+      "content": "How do I pause or stop?",
+      "metadata": {},
+      "created_at": "2026-10-31T19:25:03.703026+00:00"
+    },
+    {
+      "session_id": "b3e9e3b4-ef16-42b3-af61-be6ce680635f",
+      "role": "assistant",
+      "content": "Pause holds your place; Resume continues it. End stops immediately. Crisis support remains available and pauses practice when opened. Your current breathing cue is Animated circle. Your remembered cue is Text only; you can override it without changing the saved choice. Your latest saved breathing practice completed its planned sequence. Starting again is optional. That practice last recorded Animated circle.",
+      "metadata": {
+        "source": "mock",
+        "reply_id": "controls",
+        "evidence_ids": [
+          "catalog:controls"
+        ],
+        "model_id": null,
+        "prompt_version": "catalog-selector-v12",
+        "catalog_version": "app-help-v6",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": null,
+        "reply_detail": "brief",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "brief",
+          "history_used": true,
+          "current_cue": "animated",
+          "remembered_cue": "text",
+          "latest_practice": {
+            "status": "completed",
+            "cue": "animated",
+            "created_at": "2026-10-31T19:23:29.010000Z",
+            "started_at": "2026-10-31T19:23:29.010000Z"
+          }
+        }
+      },
+      "created_at": "2026-10-31T19:25:03.704276+00:00"
+    },
+    {
+      "session_id": "b3e9e3b4-ef16-42b3-af61-be6ce680635f",
+      "role": "user",
+      "content": "What is the purpose of mello?",
+      "metadata": {},
+      "created_at": "2026-10-31T19:25:24.552666+00:00"
+    },
+    {
+      "session_id": "b3e9e3b4-ef16-42b3-af61-be6ce680635f",
+      "role": "assistant",
+      "content": "mello brings three short guided practices, optional app help, and your saved settings and history together. You choose when to start, pause, or stop.",
+      "metadata": {
+        "source": "live",
+        "reply_id": "about",
+        "evidence_ids": [
+          "catalog:about"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v12",
+        "catalog_version": "app-help-v6",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "56261ca1-e6a7-4af5-8745-e5d13a757d28",
+        "reply_detail": "brief",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "brief",
+          "history_used": false
+        }
+      },
+      "created_at": "2026-10-31T19:25:25.615911+00:00"
+    },
+    {
+      "session_id": "b3e9e3b4-ef16-42b3-af61-be6ce680635f",
+      "role": "user",
+      "content": "How can I stop an exercise?",
+      "metadata": {},
+      "created_at": "2026-10-31T19:26:27.250797+00:00"
+    },
+    {
+      "session_id": "b3e9e3b4-ef16-42b3-af61-be6ce680635f",
+      "role": "assistant",
+      "content": "Pause holds your place; Resume continues it. End stops immediately. Crisis support remains available and pauses practice when opened. Your current breathing cue is Animated circle. Your remembered cue is Text only; you can override it without changing the saved choice. Your latest saved breathing practice completed its planned sequence. Starting again is optional. That practice last recorded Animated circle.",
+      "metadata": {
+        "source": "mock",
+        "reply_id": "controls",
+        "evidence_ids": [
+          "catalog:controls"
+        ],
+        "model_id": null,
+        "prompt_version": "catalog-selector-v12",
+        "catalog_version": "app-help-v6",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": null,
+        "reply_detail": "brief",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "brief",
+          "history_used": true,
+          "current_cue": "animated",
+          "remembered_cue": "text",
+          "latest_practice": {
+            "status": "completed",
+            "cue": "animated",
+            "created_at": "2026-10-31T19:23:29.010000Z",
+            "started_at": "2026-10-31T19:23:29.010000Z"
+          }
+        }
+      },
+      "created_at": "2026-10-31T19:26:27.252431+00:00"
+    }
+  ],
+  "health": {
+    "status": "ok",
+    "live_enabled": true,
+    "review_tools": true,
+    "model": "qwen2.5:3b",
+    "prompt_version": "catalog-selector-v12",
+    "attempts": 11,
+    "limit": 50,
+    "test_run_id": "coast-oct31"
+  },
+  "provider_accounting": [
+    {
+      "outcome": "preload-complete",
+      "count": 1
+    },
+    {
+      "outcome": "validated-selection",
+      "count": 10
+    }
+  ],
+  "attempt_explanation": "Previous nine repeated live selections + one preload were 10/50. One actual live purpose selection in the full demo made 11/50. Same run/database restarted after intentional API outage, without preload or additional inference; failed HTTP connection never reached a provider. Retry used prepared mode.",
+  "integrity": "ok",
+  "foreign_key_violations": [],
+  "source_sha256": {
+    "frontend/src/App.vue": "b2fbfcabda031c5d896a59508d9ec03ac0ff6aa40eb58ae0df5abf33957b8bbf",
+    "frontend/src/engine.js": "dc0f9046f5ae590aad2f1bf8dccdadb3dc0061be3d9a7acc84b8724c2afe0788",
+    "frontend/src/guided.js": "c1fe968abd74f5ca60e74efe39d2653ebd0d70b167daa9c3d4264823fe95d646",
+    "backend/main.py": "45ecd17ca87c057a7294727e085148cb567aae7c2ad741fee48c0beaaabadfab",
+    "shared/help-content.json": "ade251669ca8ff868d4276ac0bbfe16094a46d83489b66af7fb329ceba69e7d4"
+  }
+}

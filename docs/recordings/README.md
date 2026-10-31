@@ -1,5 +1,9 @@
 # Part 3.3 recordings
 
+**Primary finished-app demonstration:** [final full coastal-layout demo](final-full-demo-oct31.mp4) · [transcript](final-full-demo-oct31.md) · [captions](final-full-demo-oct31.vtt). Shows saved profile/reload, cue override, a complete60-second breathing sequence, confirmed History, a tailored reply, an actual live response, actual isolated-API outage, offline support and explicit Retry. This is the current full demo; the short tour below is supplementary.
+
+**Primary process screencast:** [failure/evidence/decision/generated-code recording](part3-process.mp4) · [transcript](part3-process.md). The older visual layout is identified; the focus watcher/Escape handler it explains remain unchanged in current code.
+
 October 31 revision: [coastal interface tour](coastal-tour-oct31.mp4) · [transcript](coastal-tour-oct31.md) · [captions](coastal-tour-oct31.vtt). This new silent, agent-operated browser recording shows the three practice cards, an intentionally stopped Grounding session, sole bottom-right assistant and skill-labeled History. It does not replace the separately measured full runs. The two videos below show the October 30 interface and unchanged breathing/focus behavior.
 
 Two actual, silent browser recordings were made October 30, 2026, operated by the disclosed Codex assistant using fictional scenarios. They are not recordings of the student speaking or a peer test. Enable the embedded English subtitle track, use the `.vtt` captions, or read the linked full transcripts. Pause to inspect code or dense responses.

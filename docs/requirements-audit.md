@@ -1,19 +1,6 @@
 # Requirements audit — Part 3.3
 
-October 30 final status: the earlier Part 3.2/presentation audit below is retained as dated history. [Final evaluation](part3-evaluation.md), [revisions](part3-revisions.md), [recordings](recordings/README.md) and the final root report supersede its earlier future-work statements.
-
-| Part 3.3 requirement | Actual evidence |
-| --- | --- |
-| Completed application, history and personalization | Fixed 4/6 skill, explicit persistent profile, cue override/reset, dated records and local context; recorded final app. |
-| Revisit design choices | [Part 3.1 → 3.3 reasoning and tradeoffs](part3-revisions.md), all ten R/D codes in research mapping. |
-| Fresh checkout from README | [Final clone 83ddf65](evidence/part3-final-clean-checkout-oct30.json), fresh environment/build/start/tests/assets; same Mac, not independent human review. |
-| ≥15 fictional scenarios, expected/observed | [22 deterministic scenarios](evidence/part3-mocked-oct30.json), [24 browser checks plus failed/retested cases](evidence/part3-browser-checks-oct30.json). |
-| Three explicit behavior checks | B1 independent support, B2 fixed skill/control, B3 explicit personalization/truthful persistence in final evaluation. |
-| Mocks and repeated live selection | Zero-call 22-case runner; five live questions × three repeats; prompt/model/settings/hash and 17/50 final ledger disclosed. |
-| Surprising finding and untested limit | Consistent wrong role-topic selection; real blind-user/screen-reader validation untested. |
-| Finished app and process screencast | Two actual browser videos, captions/transcripts, reproduced failure, evidence, decision and generated-code explanation. Silent agent-operated recording method and idle edits disclosed. |
-| AI disclosure and curated failures | Updated AI-USE and evidence log; no private third-party browser content/raw database included. |
-| One submission file | Root report.md links repository, implementation commit, docs, evidence and recordings; student review and Canvas upload not performed. |
+**Current October31 audit:** [complete requirement-to-evidence checklist](part33-final-audit.md). It supersedes the earlier October30 matrix and explicitly links the current full demonstration,22 mocked cases, repeated live cases,3 behavior checks, clean checkout, research reasoning, process failure/code explanation and one-file submission. The application source is unchanged from tested9f3f9de; new evidence is separately dated. Student review/understanding and Canvas upload remain human steps, not assistant-completed claims.
 
 ## Historical Part 3.2 audit
 

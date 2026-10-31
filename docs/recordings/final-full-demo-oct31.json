@@ -1,0 +1,141 @@
+{
+  "capture_method": "Actual Cua browser-tab screenshots sampled approximately every 500 ms within capture blocks; silent. No UI reconstruction or synthetic app frames. H.264 repeats held frames at 10 fps; original motion sampling is ~2 fps.",
+  "editing": "Outside the uninterrupted exercise, gaps over 3 seconds are shortened to 3 seconds. Within the exercise all timestamp gaps are retained, holding the last captured frame. Last frame held 2.5 seconds. Enable English subtitles; full transcript accompanies video.",
+  "source_capture_duration_seconds": 197.391,
+  "video_duration_seconds_planned": 125.31200000000014,
+  "captured_frame_count": 177,
+  "largest_source_gap_seconds": 31.048,
+  "idle_edits": [
+    {
+      "after_frame": 3,
+      "original_gap_seconds": 8.135,
+      "retained_seconds": 3.0
+    },
+    {
+      "after_frame": 129,
+      "original_gap_seconds": 14.523,
+      "retained_seconds": 3.0
+    },
+    {
+      "after_frame": 142,
+      "original_gap_seconds": 17.164,
+      "retained_seconds": 3.0
+    },
+    {
+      "after_frame": 154,
+      "original_gap_seconds": 31.048,
+      "retained_seconds": 3.0
+    },
+    {
+      "after_frame": 169,
+      "original_gap_seconds": 18.709,
+      "retained_seconds": 3.0
+    }
+  ],
+  "chapters": [
+    {
+      "at": 1793474593141,
+      "text": "Final Assignment 3.3 demonstration: current coastal mello interface, running Vue/FastAPI/SQLite on localhost with fictional inputs. Three approved skills; assistant only in the lower-right popup.",
+      "video_seconds": 0.0
+    },
+    {
+      "at": 1793474602779,
+      "text": "Explicit fictional profile: remembered Text only, Brief reminders, and opted-in factual practice context. Save confirms the database write; no mood, diagnosis or distress is inferred.",
+      "video_seconds": 4.503
+    },
+    {
+      "at": 1793474606560,
+      "text": "Reload restores the saved profile and Text only cue. Override with Animated circle for this visit; the remembered choice stays Text only. The user can correct or reset these explicit choices.",
+      "video_seconds": 8.284000000000002
+    },
+    {
+      "at": 1793474609361,
+      "text": "Guided skill: four one-second counts in, six out, six cycles. No typing, model call or save response is required during pacing. Pause, End and independent Crisis support remain available. Breathing has no app audio.",
+      "video_seconds": 11.085000000000003
+    },
+    {
+      "at": 1793474681069,
+      "text": "Completed: the full six-cycle sequence finished on the current interface. Measured exercise, entry/setup, excluded pause and confirmed save status are shown separately; completion is not a clinical outcome.",
+      "video_seconds": 82.79300000000003
+    },
+    {
+      "at": 1793474700022,
+      "text": "History shows the actual skill, status, dates, initial/final cue and measured timing. This record persisted in SQLite; Completed, Stopped, Interrupted and Not started remain distinct.",
+      "video_seconds": 90.22300000000004
+    },
+    {
+      "at": 1793474704147,
+      "text": "Personalization example: the saved brief-reply profile and opted-in factual breathing history tailor reviewed text. It distinguishes current Animated circle, remembered Text only and latest completed practice. No emotional state or improvement is inferred.",
+      "video_seconds": 94.34800000000004
+    },
+    {
+      "at": 1793474724818,
+      "text": "Optional live model: current question plus approved app facts go to local Ollama. It selects a catalog topic; reviewed copy is displayed. Profile/history tailoring stays in local rules, outside the model.",
+      "video_seconds": 100.85500000000006
+    },
+    {
+      "at": 1793474761379,
+      "text": "Actual request failure: the isolated API was stopped. This question is not confirmed saved, and Retry is offered. Existing saved records are not proof that this new turn was persisted.",
+      "video_seconds": 109.36800000000008
+    },
+    {
+      "at": 1793474765302,
+      "text": "Independent support opens while the API is physically offline, without a classifier or model decision. Nobody monitors this prototype. No external call, text or service chat is initiated.",
+      "video_seconds": 113.29100000000011
+    },
+    {
+      "at": 1793474787523,
+      "text": "Recovery: the same isolated database/host run was restarted without a new model call or preload. Explicit Retry confirms this turn. The host ledger remains 11 of 50; mock replies stay the default.",
+      "video_seconds": 119.80300000000013
+    }
+  ],
+  "checks": [
+    {
+      "id": "F01",
+      "expected": "Saved cue/profile survive reload without questionnaire.",
+      "observed": {
+        "profile": "Your local profileBrief replies \u00b7 saved practice context on\uff0b",
+        "textOnly": "true"
+      }
+    },
+    {
+      "id": "F02",
+      "expected": "Current coastal app completes six 4/6 cycles under 90 seconds with confirmed local save.",
+      "observed": {
+        "summary": "\u2713\nCOMPLETED \u00b7 PACED BREATHING\nSix cycles complete.\n\nThe planned sequence has finished. Stay here as long as you like.\n\n60.02 s\nMeasured exercise\n2.68 s\nEntry and setup\n0.00 s\nUser pause / support\n\nTiming includes application and render delays. Explicit pause and support intervals are excluded once. Interrupted sessions do not establish completion.\n\nReturn to ready \u2192\nReview saved history",
+        "save": "Saved locally"
+      }
+    },
+    {
+      "id": "F03",
+      "expected": "New reviewed reply uses explicitly saved brief choice and actual latest breathing record.",
+      "observed": "You\n\nHow do I pause or stop?\n\nPrepared reply\n\nPause holds your place; Resume continues it. End stops immediately. Crisis support remains available and pauses practice when opened. Your current breathing cue is Animated circle. Your remembered cue is Text only; you can override it without changing the saved choice. Your latest saved breathing practice completed its planned sequence. Starting again is optional. That practice last recorded Animated circle.\n\nReply details\nRead reply aloud"
+    },
+    {
+      "id": "F04",
+      "expected": "Explicit live selection remains catalog text with source label and host attempt count.",
+      "observed": "You\n\nHow do I pause or stop?\n\nPrepared reply\n\nPause holds your place; Resume continues it. End stops immediately. Crisis support remains available and pauses practice when opened. Your current breathing cue is Animated circle. Your remembered cue is Text only; you can override it without changing the saved choice. Your latest saved breathing practice completed its planned sequence. Starting again is optional. That practice last recorded Animated circle.\n\nReply details\nRead reply aloud\nYou\n\nWhat is the purpose of mello?\n\nLive local model\n\nmello brings three short guided practices, optional app help, and your saved settings and history together. You choose when to start, pause, or stop.\n\nReply details\nRead reply aloud"
+    },
+    {
+      "id": "F05",
+      "expected": "Actual stopped API reports unconfirmed question and offers Retry; no successful new turn is invented.",
+      "observed": "You\n\nHow do I pause or stop?\n\nPrepared reply\n\nPause holds your place; Resume continues it. End stops immediately. Crisis support remains available and pauses practice when opened. Your current breathing cue is Animated circle. Your remembered cue is Text only; you can override it without changing the saved choice. Your latest saved breathing practice completed its planned sequence. Starting again is optional. That practice last recorded Animated circle.\n\nReply details\nRead reply aloud\nYou\n\nWhat is the purpose of mello?\n\nLive local model\n\nmello brings three short guided practices, optional app help, and your saved settings and history together. You choose when to start, pause, or stop.\n\nReply details\nRead reply aloud\nYou\n\nHow can I stop an exercise?\n\nThe optional explanation is unavailable. You can still start or open Crisis support. This turn is not confirmed saved; retry or review History.\n\nRetry this question"
+    },
+    {
+      "id": "F06",
+      "expected": "Bundled support opens with API offline.",
+      "observed": "Crisis support"
+    },
+    {
+      "id": "F07",
+      "expected": "Explicit Retry after server restart persists the turn without duplicating the user message.",
+      "observed": "You\n\nHow do I pause or stop?\n\nPrepared reply\n\nPause holds your place; Resume continues it. End stops immediately. Crisis support remains available and pauses practice when opened. Your current breathing cue is Animated circle. Your remembered cue is Text only; you can override it without changing the saved choice. Your latest saved breathing practice completed its planned sequence. Starting again is optional. That practice last recorded Animated circle.\n\nReply details\nRead reply aloud\nYou\n\nWhat is the purpose of mello?\n\nLive local model\n\nmello brings three short guided practices, optional app help, and your saved settings and history together. You choose when to start, pause, or stop.\n\nReply details\nRead reply aloud\nYou\n\nHow can I stop an exercise?\n\nPrepared reply\n\nPause holds your place; Resume continues it. End stops immediately. Crisis support remains available and pauses practice when opened. Your current breathing cue is Animated circle. Your remembered cue is Text only; you can override it without changing the saved choice. Your latest saved breathing practice completed its planned sequence. Starting again is optional. That practice last recorded Animated circle.\n\nReply details\nRead reply aloud"
+    }
+  ],
+  "video_sha256": "d9e548cc575b325fc6464fcbc805cdd7548e97794e7e0e739e7456391bbdcb8a",
+  "ffmpeg_version": "7.1",
+  "decode_verification": {
+    "exit_code": 0,
+    "output_tail": "or_brand     : isom\n    minor_version   : 512\n    compatible_brands: isomiso2avc1mp41\n    encoder         : Lavf61.7.100\n  Stream #0:0(und): Video: wrapped_avframe, yuvj420p(pc, bt470bg/unknown/unknown, progressive), 1280x720 [SAR 1:1 DAR 16:9], q=2-31, 200 kb/s, 10 fps, 10 tbn (default)\n      Metadata:\n        handler_name    : VideoHandler\n        vendor_id       : [0][0][0][0]\n        encoder         : Lavc61.19.100 wrapped_avframe\n[out#0/null @ 0x12c604ad0] video:541KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown\nframe= 1259 fps=0.0 q=-0.0 Lsize=N/A time=00:02:05.90 bitrate=N/A speed= 710x    \n"
+  }
+}
