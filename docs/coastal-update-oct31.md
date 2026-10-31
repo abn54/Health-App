@@ -38,6 +38,10 @@ R1 still informs the one-minute guides; D2 is balanced against R4 by offering th
 
 Real assistive-technology/blind-user testing, broader browsers, multi-tab reconciliation, natural voice-quality listening and clinical effectiveness remain untested. The [new coastal tour](recordings/coastal-tour-oct31.mp4) shows this revision and intentionally ends a practice early; it is not a full-duration timing run. Its captions/transcript disclose the actual browser-frame capture method. Original October 30 recordings show the previous layout and remain relevant to unchanged breathing and the focus fix. This revision’s screenshots and records are labeled October 31. No deployment or external support contact occurred.
 
+## Clean checkout
+
+[Fresh GitHub clone evidence](evidence/coast-clean-checkout-oct31.json) for implementation9f3f9de: README startup on loopback8004, fresh Python virtual environment/npm install/build/new database, page/assets200,44 backend +21 client tests and22 mocked scenarios passed, clean Git status. Selected application source hashes matched the workspace. Same Mac/agent, not an independent human or cross-OS review. No live calls were made by this default-mode checkout.
+
 ## Background asset and generation disclosure
 
 Built-in image-generation tool (model/build identifier not exposed), generated October 31. Saved project asset: `frontend/src/assets/mello-coast.png`. No stock photo or recognizable real location is asserted.
