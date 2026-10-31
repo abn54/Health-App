@@ -89,7 +89,7 @@ with client:
     sid,_=create();ask(sid,'How long is the exercise?');r=client.get('/api/sessions/'+sid).json()
     record('M16','Ask but never start a practice','Saved draft with two messages, last-chat date, no exercise time',{'status':r['status'],'messages':len(r['messages']),'last_chat_at':r['last_chat_at'],'wall_ms':r['wall_ms']},r['status']=='draft' and len(r['messages'])==2 and r['last_chat_at'] is not None and r['wall_ms'] is None)
     practice('stopped',15000);client.put('/api/profile',json={'reply_detail':'brief','use_history':True});sid,_=create();r=ask(sid,'Can I stop halfway?')
-    record('M17','Opt in to brief replies and saved practice context','Reviewed brief controls answer uses factual stopped record, no inferred emotion',r,r['reply_detail']=='brief' and r['personalization_context']['history_used'] and 'latest saved practice was stopped' in r['text'])
+    record('M17','Opt in to brief replies and saved practice context','Reviewed brief controls answer uses factual stopped record, no inferred emotion',r,r['reply_detail']=='brief' and r['personalization_context']['history_used'] and 'latest saved breathing practice was stopped' in r['text'])
     client.put('/api/profile',json={'reply_detail':'standard','use_history':False});r=ask(sid,'Can I stop halfway?')
     record('M18','Reset profile choices after tailored reply','New answer returns to standard; saved history context off',r,r['reply_detail']=='standard' and not r['personalization_context']['history_used'] and r['text']==m.CATALOG['controls'])
     turn={'turn_id':str(uuid.uuid4()),'question':'How long is the exercise?','cue':'text'}

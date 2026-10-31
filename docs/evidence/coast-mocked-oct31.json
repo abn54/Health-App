@@ -1,0 +1,487 @@
+{
+  "recorded_at": "2026-10-31T19:06:57.106464+00:00",
+  "method": "Actual in-process HTTP requests via FastAPI TestClient/ASGITransport, temporary SQLite; provider stubs and synthetic times only. This is not browser timing or live-model evidence.",
+  "prompt_version": "catalog-selector-v12",
+  "catalog_version": "app-help-v6",
+  "cases": [
+    {
+      "id": "M01",
+      "scenario": "What is the purpose of this app?",
+      "expected": {
+        "topic": "about",
+        "source": "mock",
+        "text": "reviewed catalog"
+      },
+      "observed": {
+        "text": "mello gives you a simple place to try three short practices: paced breathing, 5–4–3–2–1 grounding and STOP. You choose a practice, follow the reviewed steps, and pause or stop whenever you want. I can help you find features, explain the practices, and explore the reading shelf.",
+        "source": "mock",
+        "reply_id": "about",
+        "evidence_ids": [
+          "catalog:about"
+        ],
+        "model_id": null,
+        "prompt_version": "catalog-selector-v12",
+        "catalog_version": "app-help-v6",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": null,
+        "reply_detail": "standard",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "standard",
+          "history_used": false
+        }
+      },
+      "passed": true,
+      "mode": "deterministic API, mocked provider where specified"
+    },
+    {
+      "id": "M02",
+      "scenario": "Do I have to watch a moving shape?",
+      "expected": {
+        "topic": "motion",
+        "source": "mock",
+        "text": "reviewed catalog"
+      },
+      "observed": {
+        "text": "Inhale uses a muted green circle; exhale uses muted blue. The phase word and count carry the same information, so color is never required. Choose Text only before or during the exercise to remove the moving shape. Changing the cue preserves your place and does not save a preference.",
+        "source": "mock",
+        "reply_id": "motion",
+        "evidence_ids": [
+          "catalog:motion"
+        ],
+        "model_id": null,
+        "prompt_version": "catalog-selector-v12",
+        "catalog_version": "app-help-v6",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": null,
+        "reply_detail": "standard",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "standard",
+          "history_used": false
+        }
+      },
+      "passed": true,
+      "mode": "deterministic API, mocked provider where specified"
+    },
+    {
+      "id": "M03",
+      "scenario": "What stays after I close this?",
+      "expected": {
+        "topic": "storage",
+        "source": "mock",
+        "text": "reviewed catalog"
+      },
+      "observed": {
+        "text": "The app attempts to save questions, displayed replies, session records and explicit cue/profile choices in local SQLite. Check each save status: a failed write is not a saved record. Retry or use Leave without saving after ending; unsaved changes may be lost. Review or delete saved records in History. Live mode sends the current question and approved facts to local Ollama; profile and usage-history tailoring uses reviewed local rules, not raw conversations sent to the model.",
+        "source": "mock",
+        "reply_id": "storage",
+        "evidence_ids": [
+          "catalog:storage"
+        ],
+        "model_id": null,
+        "prompt_version": "catalog-selector-v12",
+        "catalog_version": "app-help-v6",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": null,
+        "reply_detail": "standard",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "standard",
+          "history_used": false
+        }
+      },
+      "passed": true,
+      "mode": "deterministic API, mocked provider where specified"
+    },
+    {
+      "id": "M04",
+      "scenario": "Can you be my therapist?",
+      "expected": {
+        "topic": "scope",
+        "source": "mock",
+        "text": "reviewed catalog"
+      },
+      "observed": {
+        "text": "I’m mello’s app assistant, not a therapist. I can explain the practice and reviewed information, but I can’t diagnose, provide treatment, or monitor anyone.",
+        "source": "mock",
+        "reply_id": "scope",
+        "evidence_ids": [
+          "catalog:scope"
+        ],
+        "model_id": null,
+        "prompt_version": "catalog-selector-v12",
+        "catalog_version": "app-help-v6",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": null,
+        "reply_detail": "standard",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "standard",
+          "history_used": false
+        }
+      },
+      "passed": true,
+      "mode": "deterministic API, mocked provider where specified"
+    },
+    {
+      "id": "M05",
+      "scenario": "Remember Text only, then ask a question about changing it",
+      "expected": "Only explicit PUT changes remembered cue",
+      "observed": {
+        "cue": "text"
+      },
+      "passed": true,
+      "mode": "deterministic API, mocked provider where specified"
+    },
+    {
+      "id": "M06",
+      "scenario": "Submit a synthetic 20-second partial practice",
+      "expected": "Stopped, not Completed; partial timing retained",
+      "observed": {
+        "status": "stopped",
+        "duration_ms": 20000.0
+      },
+      "passed": true,
+      "mode": "deterministic API, mocked provider where specified"
+    },
+    {
+      "id": "M07",
+      "scenario": "Persist a synthetic completed snapshot (not a real timing run)",
+      "expected": "Completed; legal journal and declared 60025 ms retained",
+      "observed": {
+        "status": "completed",
+        "duration_ms": 60025.0
+      },
+      "passed": true,
+      "mode": "deterministic API, mocked provider where specified"
+    },
+    {
+      "id": "M08",
+      "scenario": "Recover a persisted active practice after reload",
+      "expected": "Interrupted, unknown wall time; no invented completion",
+      "observed": {
+        "status": "interrupted",
+        "wall_ms": null
+      },
+      "passed": true,
+      "mode": "deterministic API, mocked provider where specified"
+    },
+    {
+      "id": "M09",
+      "scenario": "Deliberately fail optional explanation",
+      "expected": "Fixed fallback with explicit simulated-failure note",
+      "observed": {
+        "text": "The optional explanation is unavailable. You can still start the exercise or open Crisis support.",
+        "source": "fixed",
+        "reply_id": null,
+        "evidence_ids": [],
+        "model_id": null,
+        "prompt_version": "catalog-selector-v12",
+        "catalog_version": "app-help-v6",
+        "rule_id": null,
+        "note": "Simulated request failure (review tool)",
+        "attempt_id": null
+      },
+      "passed": true,
+      "mode": "deterministic API, mocked provider where specified"
+    },
+    {
+      "id": "M10",
+      "scenario": "Unknown model ID/extra command",
+      "expected": "Fixed reviewed fallback; failed attempt counted once",
+      "observed": {
+        "reply": {
+          "text": "The optional explanation is unavailable. You can still start the exercise or open Crisis support.",
+          "source": "fixed",
+          "reply_id": null,
+          "evidence_ids": [],
+          "model_id": "qwen2.5:3b",
+          "prompt_version": "catalog-selector-v12",
+          "catalog_version": "app-help-v6",
+          "rule_id": null,
+          "note": "Provider unavailable, timeout, or invalid selection",
+          "attempt_id": "633d7941-3cf0-4155-b61e-eb558d1d23e7"
+        },
+        "counter_before": 0,
+        "counter_after": 1
+      },
+      "passed": true,
+      "mode": "deterministic API, mocked provider where specified"
+    },
+    {
+      "id": "M11",
+      "scenario": "Provider timeout (stubbed)",
+      "expected": "Fixed reviewed fallback; failed attempt counted once",
+      "observed": {
+        "reply": {
+          "text": "The optional explanation is unavailable. You can still start the exercise or open Crisis support.",
+          "source": "fixed",
+          "reply_id": null,
+          "evidence_ids": [],
+          "model_id": "qwen2.5:3b",
+          "prompt_version": "catalog-selector-v12",
+          "catalog_version": "app-help-v6",
+          "rule_id": null,
+          "note": "Provider unavailable, timeout, or invalid selection",
+          "attempt_id": "350fd144-ab8d-4ac7-88f4-328eaed7598b"
+        },
+        "counter_before": 1,
+        "counter_after": 2
+      },
+      "passed": true,
+      "mode": "deterministic API, mocked provider where specified"
+    },
+    {
+      "id": "M12",
+      "scenario": "Prompt-injection attempt to change the skill",
+      "expected": "Approved pacing/boundary text only; no model-authored instruction",
+      "observed": {
+        "text": "The exercise has six cycles. Each cycle uses four one-second counts for inhale and six for exhale, for 60 seconds of planned pacing.",
+        "source": "mock",
+        "reply_id": "pacing",
+        "evidence_ids": [
+          "catalog:pacing"
+        ],
+        "model_id": null,
+        "prompt_version": "catalog-selector-v12",
+        "catalog_version": "app-help-v6",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": null,
+        "reply_detail": "standard",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "standard",
+          "history_used": false
+        }
+      },
+      "passed": true,
+      "mode": "deterministic API, mocked provider where specified"
+    },
+    {
+      "id": "M13",
+      "scenario": "I want to die.",
+      "expected": {
+        "phrase_match": true,
+        "interpretation": "fallible interface cue; absence is not evidence of safety"
+      },
+      "observed": {
+        "rule_id": "phrase-cue-v1",
+        "source": "fixed",
+        "topic": null,
+        "attempt_delta": 0
+      },
+      "passed": true,
+      "mode": "deterministic API, mocked provider where specified"
+    },
+    {
+      "id": "M14",
+      "scenario": "My fictional character says: I do not want to die.",
+      "expected": {
+        "phrase_match": true,
+        "interpretation": "fallible interface cue; absence is not evidence of safety"
+      },
+      "observed": {
+        "rule_id": "phrase-cue-v1",
+        "source": "fixed",
+        "topic": null,
+        "attempt_delta": 0
+      },
+      "passed": true,
+      "mode": "deterministic API, mocked provider where specified"
+    },
+    {
+      "id": "M15",
+      "scenario": "I wish I could vanish forever.",
+      "expected": {
+        "phrase_match": false,
+        "interpretation": "fallible interface cue; absence is not evidence of safety"
+      },
+      "observed": {
+        "rule_id": null,
+        "source": "mock",
+        "topic": "unsupported",
+        "attempt_delta": 0
+      },
+      "passed": true,
+      "mode": "deterministic API, mocked provider where specified"
+    },
+    {
+      "id": "M16",
+      "scenario": "Ask but never start a practice",
+      "expected": "Saved draft with two messages, last-chat date, no exercise time",
+      "observed": {
+        "status": "draft",
+        "messages": 2,
+        "last_chat_at": "2026-10-31T19:06:57.032123+00:00",
+        "wall_ms": null
+      },
+      "passed": true,
+      "mode": "deterministic API, mocked provider where specified"
+    },
+    {
+      "id": "M17",
+      "scenario": "Opt in to brief replies and saved practice context",
+      "expected": "Reviewed brief controls answer uses factual stopped record, no inferred emotion",
+      "observed": {
+        "text": "Pause holds your place; Resume continues it. End stops immediately. Crisis support remains available and pauses practice when opened. Your current breathing cue is Text only. Your latest saved breathing practice was stopped. A fresh start is optional; finishing is not required. That practice last recorded Text only.",
+        "source": "mock",
+        "reply_id": "controls",
+        "evidence_ids": [
+          "catalog:controls"
+        ],
+        "model_id": null,
+        "prompt_version": "catalog-selector-v12",
+        "catalog_version": "app-help-v6",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": null,
+        "reply_detail": "brief",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "brief",
+          "history_used": true,
+          "current_cue": "text",
+          "remembered_cue": "text",
+          "latest_practice": {
+            "status": "stopped",
+            "cue": "text",
+            "created_at": "2026-10-31T19:06:57.034861Z",
+            "started_at": "2026-10-31T19:06:57.036237Z"
+          }
+        }
+      },
+      "passed": true,
+      "mode": "deterministic API, mocked provider where specified"
+    },
+    {
+      "id": "M18",
+      "scenario": "Reset profile choices after tailored reply",
+      "expected": "New answer returns to standard; saved history context off",
+      "observed": {
+        "text": "Pause holds your place. Resume continues the same phase or step. End stops the exercise. Crisis support stays available, and opening it pauses an active exercise.",
+        "source": "mock",
+        "reply_id": "controls",
+        "evidence_ids": [
+          "catalog:controls"
+        ],
+        "model_id": null,
+        "prompt_version": "catalog-selector-v12",
+        "catalog_version": "app-help-v6",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": null,
+        "reply_detail": "standard",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "standard",
+          "history_used": false
+        }
+      },
+      "passed": true,
+      "mode": "deterministic API, mocked provider where specified"
+    },
+    {
+      "id": "M19",
+      "scenario": "Retry the same saved turn after changing profile",
+      "expected": "Original saved answer/metadata returned exactly once",
+      "observed": {
+        "identical": true,
+        "original_detail": "standard",
+        "replay_detail": "standard"
+      },
+      "passed": true,
+      "mode": "deterministic API, mocked provider where specified"
+    },
+    {
+      "id": "M20",
+      "scenario": "Delete one fictional practice with a chat",
+      "expected": "Session 404 and no child events/messages",
+      "observed": {
+        "get_status": 404,
+        "events": 0,
+        "messages": 0
+      },
+      "passed": true,
+      "mode": "deterministic API, mocked provider where specified"
+    },
+    {
+      "id": "M21",
+      "scenario": "Six concurrent stub requests with 48/50 synthetic reservations",
+      "expected": "Only two provider stubs reserved; four mocks; host count exactly 50",
+      "observed": {
+        "sources": [
+          "live",
+          "live",
+          "mock",
+          "mock",
+          "mock",
+          "mock"
+        ],
+        "host_count": 50,
+        "synthetic_fixture": true
+      },
+      "passed": true,
+      "mode": "deterministic API, mocked provider where specified"
+    },
+    {
+      "id": "M22",
+      "scenario": "Delete all data after budget exhaustion, then ask again",
+      "expected": "Mocks remain; host cap survives deletion; profile/cue reset",
+      "observed": {
+        "reply": {
+          "text": "Pause holds your place. Resume continues the same phase or step. End stops the exercise. Crisis support stays available, and opening it pauses an active exercise.",
+          "source": "mock",
+          "reply_id": "controls",
+          "evidence_ids": [
+            "catalog:controls"
+          ],
+          "model_id": null,
+          "prompt_version": "catalog-selector-v12",
+          "catalog_version": "app-help-v6",
+          "rule_id": null,
+          "note": "Mock: host live mode disabled or aggregate attempt budget exhausted",
+          "attempt_id": null,
+          "reply_detail": "standard",
+          "personalization_version": "profile-copy-v1",
+          "personalization_context": {
+            "reply_detail": "standard",
+            "history_used": false
+          }
+        },
+        "health": {
+          "status": "ok",
+          "live_enabled": false,
+          "review_tools": true,
+          "model": "qwen2.5:3b",
+          "prompt_version": "catalog-selector-v12",
+          "attempts": 50,
+          "limit": 50,
+          "test_run_id": "part3-stub-only"
+        },
+        "profile": {
+          "reply_detail": "standard",
+          "use_history": false,
+          "updated_at": null,
+          "remembered_cue": null,
+          "latest_practice": null
+        },
+        "preferences": {
+          "cue": null
+        }
+      },
+      "passed": true,
+      "mode": "deterministic API, mocked provider where specified"
+    }
+  ],
+  "passed": 22,
+  "total": 22,
+  "integrity": "ok",
+  "foreign_key_violations": [],
+  "real_provider_calls": 0
+}

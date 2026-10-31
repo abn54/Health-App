@@ -394,3 +394,144 @@ textarea:focus-visible { outline: 3px solid #1a5592; outline-offset: 4px; }
   .assistant-popup-top .eyebrow, .popup-save { display: none; }
 }
 .question-body .chat-composer > small { color: #625566; font-size: .65rem; }
+
+/* October 31: quiet coast. Scenery stays outside opaque task surfaces. */
+:root { --ink:#223d36; --muted:#53675e; --line:#dce4dc; --paper:#f9faf5; --coral:#345d4b; --coral-dark:#254736; color:var(--ink); background:#eff3ed; }
+body { background:linear-gradient(#eff3edd9,#eff3edf5),url('./assets/mello-coast.png') center/cover fixed; }
+h1,h2 { color:#243e35; }
+p { color:#53675e; }
+.sidebar { background:#fafcf8f5; border-color:#dde5dc; padding:16px max(28px,calc((100vw - 1200px)/2)); box-shadow:0 1px 15px #273b2f04; }
+.brand-mark { color:#527258; width:32px; height:32px; }
+.brand-copy { color:#294c3c; font-size:2.1rem; }
+.brand-copy small { color:#5a6b5d; font-size:.65rem; letter-spacing:.02em; }
+.sidebar nav { background:transparent; border:0; border-radius:0; gap:10px; padding:0; }
+.sidebar nav button { color:#5c6d62; font-size:.85rem; padding:10px 19px; border-radius:9px; }
+.sidebar nav button.selected { color:#284d3b; background:#eaf0e6; box-shadow:none; }
+.support-button { color:#3b5145; border-color:#b6c7b7; background:#fcfdf9; font-size:.8rem; }
+.support-button:hover { background:#edf3e8; border-color:#68856c; }
+main { max-width:1200px; padding:24px 0 40px; }
+.context-header { max-width:none; padding-top:0; }
+.context-header .eyebrow { color:#53664f; font-size:.65rem; }
+.local-label { color:#52654f; font-size:.7rem; }
+.coursework-notice { margin-top:9px; margin-bottom:15px!important; color:#56674f; font-size:.7rem; }
+.accessibility-tools { margin-bottom:20px; border-color:#d0dccd; background:#f8faf4; border-radius:11px; }
+.accessibility-tools > summary { font-size:.8rem; color:#38533d; padding:9px 14px; }
+.accessibility-body small { color:#4b624f; }
+.eyebrow { color:#536c55; }
+.ready-heading { position:relative; isolation:isolate; grid-template-columns:1.25fr 1fr; min-height:360px; margin-bottom:36px; padding:40px 44px; border:1px solid #dce5d5; border-radius:22px; background:linear-gradient(90deg,#f5f6eef5 0%,#f5f6eedc 32%,#f5f6ef15 75%),url('./assets/mello-coast.png') center 52%/cover; overflow:hidden; }
+.ready-heading h1 { font-size:clamp(2.7rem,4.7vw,4.3rem); letter-spacing:-.055em; line-height:1.06; margin-bottom:14px; }
+.ready-heading h1 em { color:#4c6b50; font-style:normal; }
+.ready-heading p { color:#40564a; font-size:.94rem; line-height:1.7; margin-bottom:20px; }
+.welcome-pill { background:transparent; color:#415e49; font-size:.63rem; padding:0; margin-bottom:16px; font-weight:600; letter-spacing:.16em; }
+.primary { color:#fff; border-color:#345d4b; background:#345d4b; border-radius:10px; font-weight:600; }
+.primary:hover { background:#254736; border-color:#254736; }
+.hero-start { padding:13px 20px; font-size:.8rem; gap:24px; }
+.coast-caption { position:absolute; bottom:27px; right:30px; display:grid; gap:3px; color:#fafff9; padding:12px 17px; background:#263c32d9; border:1px solid #ffffff4d; border-radius:10px; }
+.coast-caption span { font-size:.6rem; letter-spacing:.16em; font-weight:600; }
+.coast-caption small { font-size:.72rem; }
+.library-heading { display:flex; justify-content:space-between; gap:20px; align-items:end; margin-bottom:20px; }
+.library-heading h2 { font-size:1.9rem; margin:8px 0 0; }
+.library-note { font-size:.75rem; color:#576a58; padding-bottom:4px; }
+.skill-library { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px; }
+.skill-card { border:1px solid #d8e2d6; background:#fdfefa; border-radius:18px; overflow:hidden; box-shadow:0 6px 24px #2a3a2b03; }
+.skill-art { height:132px; position:relative; display:flex; align-items:center; justify-content:center; overflow:hidden; background:radial-gradient(ellipse at 50% 160%,#b8ccaa 0%,#e2e9d4 65%); color:#45644c; }
+.skill-art:before,.skill-art:after { content:''; position:absolute; width:155px; height:155px; border-radius:50%; border:1px solid #617d5e30; }
+.skill-art:after { width:210px; height:210px; }
+.skill-symbol { font:4.7rem/1 Georgia,serif; }
+.skill-art > span { position:absolute; bottom:12px; right:15px; font-size:.67rem; font-weight:600; letter-spacing:.12em; }
+.skill-card[data-skill=grounding] .skill-art { background:radial-gradient(ellipse at 50% 160%,#c4c4a4,#efedda 65%); color:#6b6741; }
+.skill-card[data-skill=grounding] .skill-symbol { font-size:4.3rem; }
+.skill-card[data-skill=stop] .skill-art { background:radial-gradient(ellipse at 50% 160%,#acc8c9,#deebeb 65%); color:#426b6d; }
+.skill-card[data-skill=stop] .skill-symbol { font-size:5.5rem; transform:rotate(-12deg); }
+.skill-card-body { padding:23px; }
+.skill-meta { display:flex; justify-content:space-between; gap:10px; font-size:.57rem; letter-spacing:.08em; color:#596c58; font-weight:600; }
+.skill-meta span:last-child { white-space:nowrap; font-weight:400; letter-spacing:0; font-size:.68rem; }
+.skill-card h3 { font-family:Georgia,serif; font-weight:400; font-size:1.65rem; margin:13px 0 10px; letter-spacing:-.04em; }
+.skill-card p { font-size:.82rem; line-height:1.75; min-height:4.3em; margin-bottom:20px; }
+.skill-card .secondary { width:100%; justify-content:space-between; background:#f0f4eb; border-color:#cedac7; color:#34533d; border-radius:9px; padding:11px 15px; }
+.skill-card .secondary:hover { background:#e2ebdb; border-color:#93ad88; }
+.practice-choice-note { margin:16px 0 30px; font-size:.75rem; color:#596a59; }
+.personal-settings { display:grid; grid-template-columns:1fr 1fr; gap:22px; align-items:start; }
+.personal-settings .local-profile { margin:0; background:#fbfcf7; border-color:#d8e2d6; border-radius:16px; }
+.personal-settings .settings-card { background:#fbfcf7; border-color:#d8e2d6; border-radius:16px; padding:25px; }
+.settings-card h2 { font-size:1.7rem; margin:8px 0 10px; }
+.settings-card p { font-size:.8rem; }
+.cue-options { gap:12px; }
+.cue-options button { min-height:92px; padding:15px; background:#fff; border-color:#d4dfcf; }
+.cue-options button.chosen { background:#edf2e6; border-color:#7c946b; box-shadow:none; }
+.cue-options strong { color:#36563d; font-size:.8rem; }
+.cue-options small { color:#596854; font-size:.7rem; }
+.text-button { color:#3d6046; }
+.local-profile summary { color:#36543d; font-size:.85rem; }
+.local-profile summary small,.profile-history small { color:#556852; }
+.profile-history { background:#edf3e8; border-color:#cbdcc4; }
+.learn-disclosure { margin-top:24px; background:#fbfcf7; border-color:#d8e2d6; border-radius:16px; }
+.learn-disclosure > summary { display:flex; justify-content:space-between; gap:20px; align-items:center; padding:20px 25px; cursor:pointer; color:#36543d; font-size:.95rem; }
+.learn-disclosure > summary small { font-size:.72rem; color:#586a53; }
+.learn-disclosure .help-center { padding:0 25px 25px; }
+.history-list,.history-detail { background:#fcfdf8; border-color:#d6e2d1; }
+.history-row.chosen { background:#eaf1e3; border-color:#8b9f7b; }
+.history-skill { color:#3c5c46!important; font-weight:500; }
+.summary-panel { background:#f7f9ef; border-color:#cddbc1; }
+.summary-panel h1 { font-size:clamp(2.5rem,4vw,3.6rem); }
+.summary-icon { color:#4c704e; background:#e1ecd6; }
+.secondary { background:#fcfdf8; border-color:#bacbb1; color:#3c5b42; }
+.secondary:hover { background:#eaf1e2; border-color:#8ca37c; }
+.exercise-panel { background:#f7faf5; border-color:#cbdcc7; margin:15px auto 0; }
+.exercise-top .eyebrow { font-size:.65rem; }
+.guided-panel { max-width:840px; padding:30px 38px 22px; }
+.guided-stepper { display:flex; justify-content:space-between; gap:8px; padding:24px 0; border-bottom:1px solid #d7e1d0; }
+.guided-stepper > span { flex:1; display:grid; gap:6px; text-align:center; font:1.5rem Georgia,serif; color:#60755a; padding:10px 3px; border-radius:10px; }
+.guided-stepper small { font: .68rem/1.3 -apple-system,BlinkMacSystemFont,sans-serif; }
+.guided-stepper .current { color:#234832; background:#e2ecd7; outline:1px solid #8ea77b; }
+.guided-stepper .passed { color:#455e40; background:#eff4e9; }
+.guided-instruction { text-align:center; padding:30px 8px 25px; }
+.guided-number { font:3.8rem/1.1 Georgia,serif; color:#63825a; margin:14px 0; }
+.guided-instruction h1 { font-size:2.5rem; margin-bottom:18px; }
+.guided-instruction > p { max-width:580px; margin:0 auto 12px; color:#3e5941; font-size:1.02rem; }
+.guided-instruction .guided-note { font-size:.8rem; color:#5b6e54; }
+.guided-pacing { text-align:center; margin:17px 0 0; font-size:.75rem; color:#566a51; }
+.guided-panel[data-phase=paused] .guided-instruction { opacity:1; }
+.save-bar { color:#52654d; font-size:.72rem; margin-top:22px; }
+.review-tools { color:#52654d; }
+footer { color:#52654d; max-width:1200px; margin:auto; font-size:.6rem; }
+.assistant-dock { position:fixed; inset:auto 22px 18px auto; width:auto; height:60px; padding:0; border:0; background:transparent; gap:10px; }
+.assistant-dock > span { padding:9px 13px; font-size:.75rem; background:#fcfdf8; border:1px solid #ccd9c5; color:#34533d; border-radius:10px; box-shadow:0 4px 15px #2233220a; }
+.assistant-dock .assistant-launcher { width:58px; height:58px; min-height:58px; background:#345d4b; color:#fff; box-shadow:0 5px 20px #223b3225; border:1px solid #ffffff80; }
+.assistant-scrim { background:#152b252e; }
+.assistant-popup { background:#fcfdf9; border-color:#cfdccc; border-radius:20px; }
+.assistant-popup-top h2 { color:#2e4e3b; }
+.assistant-popup-top .eyebrow { color:#52664c; }
+.assistant-popup .popup-close { background:#e9f0e2; color:#35543d; }
+.assistant-options { background:#f0f5e9; border-color:#cad8c3; }
+.assistant-options > summary { color:#36503a; }
+.assistant-popup-tools p,.popup-save { color:#52654b; }
+.message.assistant { background:#eef3e7; border-color:#d2dfc7; }
+.message.user { background:#f6f1e4; border-color:#e4dbc6; }
+.higher-contrast body { background:#fff; }
+.higher-contrast .ready-heading { background:#fff; border:2px solid #444; }
+.higher-contrast .coast-caption { display:none; }
+.higher-contrast .skill-card,.higher-contrast .personal-settings .settings-card,.higher-contrast .learn-disclosure { background:#fff; border:1px solid #444; }
+.higher-contrast .skill-art { background:#fff!important; color:#222!important; border-bottom:1px solid #555; }
+.higher-contrast .skill-meta { color:#222; }
+.larger-text .skill-library,.larger-text .personal-settings { grid-template-columns:1fr; }
+.larger-text .skill-card p { min-height:0; }
+@media (max-width:1250px) { main,footer { margin-inline:28px; }.sidebar { padding-inline:28px; } }
+@media (max-width:900px) { .ready-heading { padding:35px; min-height:330px; }.skill-library { gap:14px; }.skill-card-body { padding:18px; }.skill-card h3 { font-size:1.35rem; }.skill-card p { min-height:6em; }.skill-meta { flex-wrap:wrap; font-size:.55rem; }.skill-art { height:115px; }.personal-settings { grid-template-columns:1fr; } }
+@media (max-width:650px) {
+  main { margin-inline:16px; padding-top:18px; }.sidebar { padding:13px 16px; gap:12px; display:grid; grid-template-columns:1fr auto; }
+  .brand-copy { font-size:1.9rem; }.brand-copy small { font-size:.59rem; }.brand-mark { width:28px; height:28px; }
+  .sidebar nav { grid-row:2; grid-column:1/-1; display:flex; flex-direction:row; gap:6px; justify-content:stretch; width:100%; }
+  .sidebar nav button { flex:1; justify-content:center; padding:9px; font-size:.78rem; width:auto; }
+  .header-actions { grid-row:1; grid-column:2; }.header-actions .support-button { font-size:.68rem; padding:8px 11px; }
+  .local-label { display:none; }.context-header .eyebrow { font-size:.62rem; }.coursework-notice { font-size:.67rem; }
+  .ready-heading { display:block; min-height:345px; padding:27px 23px 65px; background-position:64% center; margin-bottom:28px; }
+  .ready-heading h1 { font-size:2.65rem; }.ready-heading p { font-size:.85rem; }.welcome-pill { font-size:.57rem; }.hero-start { font-size:.75rem; }
+  .coast-caption { right:15px; bottom:14px; padding:7px 11px; }.coast-caption small { display:none; }.coast-caption span { font-size:.54rem; }
+  .library-heading { display:block; margin-bottom:16px; }.library-heading h2 { font-size:1.65rem; margin-bottom:8px; }.library-note { font-size:.69rem; }
+  .skill-library { grid-template-columns:1fr; gap:16px; }.skill-card { display:grid; grid-template-columns:100px minmax(0,1fr); border-radius:14px; }.skill-art { height:100%; min-height:210px; }.skill-art > span { font-size:.5rem; right:8px; bottom:15px; letter-spacing:.05em; }.skill-symbol { font-size:3.5rem; }.skill-card[data-skill=grounding] .skill-symbol { font-size:3.2rem; }.skill-card-body { padding:18px; }.skill-card h3 { font-size:1.4rem; }.skill-card p { min-height:0; font-size:.78rem; margin-bottom:13px; }.skill-meta { font-size:.52rem; }.skill-card .secondary { font-size:.74rem; min-height:44px; }
+  .practice-choice-note { font-size:.72rem; margin-bottom:23px; }.personal-settings .settings-card { padding:23px; }.learn-disclosure > summary { padding:17px 20px; flex-wrap:wrap; gap:3px; }.learn-disclosure > summary small { width:100%; }.learn-disclosure .help-center { padding:0 16px 16px; }
+  .guided-panel { padding:22px 17px; }.guided-stepper { padding:18px 0; gap:4px; }.guided-stepper small { font-size:.56rem; }.guided-stepper > span { font-size:1.3rem; }.guided-instruction { padding:25px 0 18px; }.guided-instruction h1 { font-size:2rem; }.guided-instruction > p { font-size:.94rem; }.guided-number { font-size:3.3rem; }
+  .assistant-dock { right:16px; bottom:15px; }.assistant-dock > span { font-size:.7rem; }.assistant-dock .assistant-launcher { width:54px; height:54px; min-height:54px; }footer { margin-inline:16px; }
+  .larger-text .skill-card { grid-template-columns:1fr; }.larger-text .skill-art { min-height:115px; }.larger-text .sidebar nav { display:flex; flex-direction:row; }
+}

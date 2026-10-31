@@ -1,0 +1,43 @@
+{
+  "breathing": {
+    "version": "breathing-4-6-v1",
+    "name": "Paced breathing",
+    "eyebrow": "FOLLOW A RHYTHM",
+    "description": "Four counts in. Six counts out. Follow a gentle circle or just the words.",
+    "action": "Start breathing",
+    "icon": "◌",
+    "completion": "Six cycles complete.",
+    "steps": []
+  },
+  "grounding": {
+    "version": "grounding-54321-v1",
+    "name": "5–4–3–2–1 grounding",
+    "eyebrow": "NOTICE YOUR SURROUNDINGS",
+    "description": "Move through five senses, one small observation at a time. No writing needed.",
+    "action": "Start grounding",
+    "icon": "◎",
+    "completion": "Five steps complete.",
+    "steps": [
+      {"title":"5 things you can see", "instruction":"Notice five things you can see around you.", "note":"No need to type or name them aloud. If a sense is unavailable, you can recall a familiar example, or pause or end.", "number":"5", "sense":"See"},
+      {"title":"4 things you can feel", "instruction":"Notice four things you can feel, such as contact with your chair, clothing or the floor.", "note":"Follow in your own way. Pause if you would like more time.", "number":"4", "sense":"Feel"},
+      {"title":"3 things you can hear", "instruction":"Notice three things you can hear around you.", "note":"If this sense is unavailable, you can recall a familiar sound, or pause or end.", "number":"3", "sense":"Hear"},
+      {"title":"2 things you can smell", "instruction":"Notice two things you can smell.", "note":"A familiar scent can be recalled. There is nothing to enter or prove.", "number":"2", "sense":"Smell"},
+      {"title":"1 thing you can taste", "instruction":"Notice one thing you can taste.", "note":"You can recall a familiar taste. The sequence will finish; starting again is optional.", "number":"1", "sense":"Taste"}
+    ]
+  },
+  "stop": {
+    "version": "stop-v1",
+    "name": "The STOP practice",
+    "eyebrow": "MAKE SPACE TO CHOOSE",
+    "description": "Stop. Take a step back. Observe. Proceed mindfully. Four clear prompts.",
+    "action": "Start STOP",
+    "icon": "⌁",
+    "completion": "Four steps complete.",
+    "steps": [
+      {"title":"Stop", "instruction":"Pause what you are doing for a moment.", "note":"Nothing to type. You can pause or end this practice whenever you choose.", "number":"S", "sense":"Stop"},
+      {"title":"Take a step back", "instruction":"Take a step back from the situation for a moment.", "note":"This can be a mental pause; no physical movement is required.", "number":"T", "sense":"Step back"},
+      {"title":"Observe", "instruction":"Notice what is happening inside you and around you: thoughts, feelings and your surroundings.", "note":"You do not need to judge, explain or share what you notice.", "number":"O", "sense":"Observe"},
+      {"title":"Proceed mindfully", "instruction":"Consider how you want to proceed, then choose your next action mindfully.", "note":"The app does not choose an action for you. Take your time; continuing is your choice.", "number":"P", "sense":"Proceed"}
+    ]
+  }
+}

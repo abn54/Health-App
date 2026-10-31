@@ -1,6 +1,6 @@
 {
-  "version": "app-help-v5",
-  "reviewed_on": "2026-10-28",
+  "version": "app-help-v6",
+  "reviewed_on": "2026-10-31",
   "topics": {
     "pacing": {
       "context": "Six cycles: inhale four one-second counts, exhale six. Total planned duration 60 seconds.",
@@ -22,21 +22,21 @@
     },
     "controls": {
       "context": "Pause holds your place. Resume continues. End stops halfway immediately. Opening support pauses.",
-      "answer": "Pause holds the current phase and count. Resume continues them. End stops the exercise. Crisis support stays available, and opening it pauses an active exercise.",
+      "answer": "Pause holds your place. Resume continues the same phase or step. End stops the exercise. Crisis support stays available, and opening it pauses an active exercise.",
       "sources": [],
       "brief": "Pause holds your place; Resume continues it. End stops immediately. Crisis support remains available and pauses practice when opened."
     },
     "scope": {
-      "context": "mello is a localhost coursework skills prototype with one 60-second paced-breathing exercise. Its educational assistant explains reviewed app information. No therapy, diagnosis or human monitoring.",
+      "context": "mello is a localhost coursework skills prototype with breathing, grounding and STOP. Educational assistant explains approved application information; no therapy, diagnosis or monitoring.",
       "answer": "I’m mello’s app assistant, not a therapist. I can explain the practice and reviewed information, but I can’t diagnose, provide treatment, or monitor anyone.",
       "sources": [],
       "brief": "I’m an app assistant, not a therapist. I can explain the practice, but can’t diagnose, provide treatment, or monitor anyone."
     },
     "start": {
       "context": "Start begins the exercise from Ready. Answering a question first is optional.",
-      "answer": "The ready screen shows the 60-second exercise and your cue setting. Start is your choice. You do not need to answer questions first.",
+      "answer": "Choose a practice on the Practice page and select its Start button. Each guide has a planned 60-second sequence. Starting is your choice; you do not need to answer questions first.",
       "sources": [],
-      "brief": "Start the 60-second practice when you choose. No question or check-in is required."
+      "brief": "Choose a practice and Start when you want. No question or check-in is required."
     },
     "unsupported": {
       "context": "Personal mental-health advice or unrelated requests are outside the app-help scope.",
@@ -76,9 +76,15 @@
       "brief": "The reading shelf labels public information, professional overviews and publisher listings. No full handbook was imported, and these links do not make the app a diagnostic tool."
     },
     "about": {
-      "context": "Purpose and features: one 60-second 4/6 breathing practice, optional circle/text cues, app questions, explicit preferences and dated local history. Coursework prototype. Route therapist, diagnosis or monitoring questions to scope instead.",
-      "answer": "mello gives you a simple place to practice a one-minute breathing exercise. Follow four counts in and six counts out, choose a moving circle or text, and pause or stop whenever you want. I can help you find features, explain the practice, and explore the reading shelf.",
-      "brief": "mello brings a one-minute breathing practice, optional app help, and your saved settings and history together. You choose when to start, pause, or stop.",
+      "context": "Purpose/features: three fixed 60-second coursework practices (4/6 breathing, 5-4-3-2-1 grounding and STOP), optional app questions, explicit breathing cue/profile preferences and dated history. No therapy/diagnosis/monitoring.",
+      "answer": "mello gives you a simple place to try three short practices: paced breathing, 5–4–3–2–1 grounding and STOP. You choose a practice, follow the reviewed steps, and pause or stop whenever you want. I can help you find features, explain the practices, and explore the reading shelf.",
+      "brief": "mello brings three short guided practices, optional app help, and your saved settings and history together. You choose when to start, pause, or stop.",
+      "sources": []
+    },
+    "skills": {
+      "context": "Three fixed 60-second practices: 4/6 breathing; 5-4-3-2-1 sensory grounding (see five, feel four, hear three, smell two, taste one); STOP (stop, take a step back, observe, proceed mindfully). Direct Start, no typing. Pause for more time; End anytime. App owns steps and timing.",
+      "answer": "Choose from three practices on the Practice page: paced breathing, 5–4–3–2–1 grounding, or STOP. Each has a 60-second guided sequence, with Pause for more time and End whenever you choose. Grounding moves through seeing, feeling, hearing, smelling and tasting; the interface offers recalled examples when a sense is unavailable. STOP follows Stop, Take a step back, Observe, and Proceed mindfully. No response or written answer is required.",
+      "brief": "Practice offers breathing, 5–4–3–2–1 grounding and STOP. Each has a fixed one-minute guide. Pause for more time, or End whenever you choose.",
       "sources": []
     }
   },
@@ -135,6 +141,11 @@
     }
   ],
   "faqs": [
+    {
+      "group": "practice",
+      "question": "What other exercises can I choose?",
+      "topic": "skills"
+    },
     {
       "group": "practice",
       "question": "How long is the breathing exercise?",
@@ -195,28 +206,28 @@
     "How long is the exercise?",
     "Can I turn off the moving circle?",
     "Can it remember my usual cue?",
-    "Does this app infer stress from clicks?",
+    "What exercises can I choose?",
     "What is stress?",
     "What can mello help me with?"
   ],
   "personalization": {
     "current": {
-      "text": "Your current cue is Text only.",
-      "animated": "Your current cue is Animated circle."
+      "text": "Your current breathing cue is Text only.",
+      "animated": "Your current breathing cue is Animated circle."
     },
     "remembered": {
       "text": "Your remembered cue is Text only; you can override it without changing the saved choice.",
       "animated": "Your remembered cue is Animated circle; you can override it without changing the saved choice."
     },
     "last_status": {
-      "stopped": "Your latest saved practice was stopped. A fresh start is optional; finishing is not required.",
-      "interrupted": "Your latest saved practice was interrupted. A new exercise starts from Ready rather than resuming that record.",
-      "completed": "Your latest saved practice completed its planned sequence. Starting again is optional."
+      "stopped": "Your latest saved breathing practice was stopped. A fresh start is optional; finishing is not required.",
+      "interrupted": "Your latest saved breathing practice was interrupted. A new exercise starts from Ready rather than resuming that record.",
+      "completed": "Your latest saved breathing practice completed its planned sequence. Starting again is optional."
     },
     "last_cue": {
       "text": "That practice last recorded Text only.",
       "animated": "That practice last recorded Animated circle."
     },
-    "none": "There is no saved finished, stopped or interrupted practice to refer to yet."
+    "none": "There is no saved finished, stopped or interrupted breathing practice to refer to yet."
   }
 }

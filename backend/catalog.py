@@ -31,6 +31,7 @@ def mock_reply(text):
         "stress": ("what is stress", "what stress is", "define stress", "stress mean"),
         "motion": ("circle", "motion", "moving", "text only", "text-only", "animation"),
         "storage": ("sav", "stor", "record", "close", "history", "data", "delet"),
+        "skills": ("grounding", "5-4-3", "5–4–3", "stop practice", "stop exercise", "exercises", "available skills", "other practice"),
         "controls": ("stop", "pause", "resume", "end", "halfway"),
         "pacing": ("long", "count", "cycle", "pace", "pacing", "breath", "seconds"),
         "start": ("start", "begin", "question first"),

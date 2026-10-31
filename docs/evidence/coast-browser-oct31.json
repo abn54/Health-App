@@ -1,0 +1,1063 @@
+{
+  "date": "2026-10-31",
+  "method": "Actual Cua browser interactions on isolated fictional SQLite host; no personal workspace records exported.",
+  "checks": [
+    {
+      "id": "C01",
+      "expected": "No assistant in top navigation or inline; one lower-right launcher; three practice cards.",
+      "observed": {
+        "inlinePanels": 0,
+        "launcher": "{\"bottom\":701,\"height\":58,\"left\":1200,\"right\":1258,\"top\":643,\"width\":58,\"x\":1200,\"y\":643}",
+        "launchers": 1,
+        "navigation": "◌ Practice↗▤ Session history↗",
+        "skills": [
+          "Paced breathing",
+          "5–4–3–2–1 grounding",
+          "The STOP practice"
+        ]
+      }
+    },
+    {
+      "id": "C02",
+      "expected": "Grounding renders all five approved steps and completes/saves at about 60 seconds.",
+      "observed": {
+        "headings": [
+          "5 things you can see",
+          "4 things you can feel",
+          "3 things you can hear",
+          "2 things you can smell",
+          "1 thing you can taste"
+        ],
+        "summary": "✓\nCOMPLETED · 5–4–3–2–1 GROUNDING\nFive steps complete.\n\nThe planned sequence has finished. Stay here as long as you like.\n\n60.01 s\nMeasured exercise\n25.48 s\nEntry and setup\n0.00 s\nUser pause / support\n\nTiming includes application and render delays. Explicit pause and support intervals are excluded once. Interrupted sessions do not establish completion.\n\nReturn to ready →\nReview saved history",
+        "save": "Saved locally"
+      }
+    },
+    {
+      "id": "C03",
+      "expected": "Opening support during STOP preserves the paused step; return requires explicit Resume.",
+      "observed": {
+        "heading": "Take a step back",
+        "resumeAvailable": true,
+        "progressBefore": "17879.5",
+        "progressAfter": "17879.5"
+      }
+    },
+    {
+      "id": "C04",
+      "expected": "History distinguishes STOP and Grounding and shows Paused after saving.",
+      "observed": "On this computer\n2\nPaused\nThe STOP practice\nStarted Oct 31, 2026, 3:08 PM\nNo chat in this session\nNot recorded ↗\nCompleted\n5–4–3–2–1 grounding\nStarted Oct 31, 2026, 3:07 PM\nNo chat in this session\n60.01 s ↗"
+    },
+    {
+      "id": "C05",
+      "expected": "STOP preserves four-step order and reaches Completed; only explicit pause excluded.",
+      "observed": {
+        "headings": [
+          "Stop",
+          "Take a step back",
+          "Observe"
+        ],
+        "summary": "✓\nCOMPLETED · THE STOP PRACTICE\nFour steps complete.\n\nThe planned sequence has finished. Stay here as long as you like.\n\n60.01 s\nMeasured exercise\n0.31 s\nEntry and setup\n17.50 s\nUser pause / support\n\nTiming includes application and render delays. Explicit pause and support intervals are excluded once. Interrupted sessions do not establish completion.\n\nReturn to ready →\nReview saved history",
+        "save": "Saved locally"
+      }
+    },
+    {
+      "id": "C06",
+      "expected": "390px phone layout fits viewport, assistant remains bottom right.",
+      "observed": {
+        "launcher": {
+          "bottom": 826,
+          "height": 54,
+          "left": 320,
+          "right": 374,
+          "top": 772,
+          "width": 54,
+          "x": 320,
+          "y": 772
+        },
+        "nav": "◌ Practice↗▤ Session history↗",
+        "scrollWidth": 390,
+        "width": 390
+      }
+    },
+    {
+      "id": "C07",
+      "expected": "Popup answers new-skill question using reviewed prepared copy; composer fits phone viewport.",
+      "observed": {
+        "reply": "You\n\nWhat grounding exercises can I choose?\n\nPrepared reply\n\nChoose from three practices on the Practice page: paced breathing, 5–4–3–2–1 grounding, or STOP. Each has a 60-second guided sequence, with Pause for more time and End whenever you choose. Grounding moves through seeing, feeling, hearing, smelling and tasting; the interface offers recalled examples when a sense is unavailable. STOP follows Stop, Take a step back, Observe, and Proceed mindfully. No response or written answer is required.\n\nReply details\nRead reply aloud",
+        "layout": {
+          "composer": {
+            "bottom": 630.5390625,
+            "height": 142,
+            "left": 24,
+            "right": 366,
+            "top": 488.5390625,
+            "width": 342,
+            "x": 24,
+            "y": 488.5390625
+          },
+          "popup": {
+            "bottom": 760,
+            "height": 748,
+            "left": 8,
+            "right": 382,
+            "top": 12,
+            "width": 374,
+            "x": 8,
+            "y": 12
+          },
+          "scrollWidth": 390,
+          "width": 390
+        }
+      }
+    },
+    {
+      "id": "C08",
+      "expected": "Escape closes the sole assistant popup and restores launcher focus.",
+      "observed": {
+        "focus": "assistant-launcher",
+        "popup": false
+      }
+    },
+    {
+      "id": "C09",
+      "expected": "320px layout has no horizontal overflow.",
+      "observed": {
+        "overflow": [],
+        "scrollWidth": 320,
+        "width": 320
+      }
+    },
+    {
+      "id": "C10",
+      "expected": "320px higher contrast/larger text removes decorative hero imagery and fits layout.",
+      "observed": {
+        "classes": "higher-contrast larger-text",
+        "heroBackground": "none",
+        "scrollWidth": 320,
+        "width": 320
+      }
+    },
+    {
+      "id": "C11",
+      "expected": "Original breathing still transitions from 4-count inhale to 6-count exhale in the new library.",
+      "observed": "FOLLOW THE WORDS AND COUNT\nCycle 1 of 6\nInhale · 4\nExhale · 6\nRelease · blue cue\nExhale\n2 / 6\n\nSix counts out.\n\nⅡ Pause\nEnd exercise\nPacing cue\nAnimated circle\nText only\nChanging the cue keeps your place."
+    },
+    {
+      "id": "C12",
+      "expected": "Opening bottom-right assistant during breathing pauses it and disables questions.",
+      "observed": {
+        "banner": "Your exercise is paused at exhale count 2. Close this window to return; Resume remains your choice.\nReturn to exerciseEnd exercise",
+        "questionDisabled": ""
+      }
+    }
+  ],
+  "groundingSamples": [
+    {
+      "at": 1793473656112,
+      "observed": {
+        "heading": "5 things you can see",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473656882,
+      "observed": {
+        "heading": "5 things you can see",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473657645,
+      "observed": {
+        "heading": "5 things you can see",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473658410,
+      "observed": {
+        "heading": "5 things you can see",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473659173,
+      "observed": {
+        "heading": "5 things you can see",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473659936,
+      "observed": {
+        "heading": "4 things you can feel",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473660699,
+      "observed": {
+        "heading": "4 things you can feel",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473661459,
+      "observed": {
+        "heading": "4 things you can feel",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473662219,
+      "observed": {
+        "heading": "4 things you can feel",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473662986,
+      "observed": {
+        "heading": "4 things you can feel",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473663752,
+      "observed": {
+        "heading": "4 things you can feel",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473664517,
+      "observed": {
+        "heading": "4 things you can feel",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473665282,
+      "observed": {
+        "heading": "4 things you can feel",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473666046,
+      "observed": {
+        "heading": "4 things you can feel",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473666810,
+      "observed": {
+        "heading": "4 things you can feel",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473667576,
+      "observed": {
+        "heading": "4 things you can feel",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473668343,
+      "observed": {
+        "heading": "4 things you can feel",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473669104,
+      "observed": {
+        "heading": "4 things you can feel",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473669872,
+      "observed": {
+        "heading": "4 things you can feel",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473670638,
+      "observed": {
+        "heading": "4 things you can feel",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473671403,
+      "observed": {
+        "heading": "4 things you can feel",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473672168,
+      "observed": {
+        "heading": "3 things you can hear",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473672937,
+      "observed": {
+        "heading": "3 things you can hear",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473673702,
+      "observed": {
+        "heading": "3 things you can hear",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473674464,
+      "observed": {
+        "heading": "3 things you can hear",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473675227,
+      "observed": {
+        "heading": "3 things you can hear",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473675991,
+      "observed": {
+        "heading": "3 things you can hear",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473676753,
+      "observed": {
+        "heading": "3 things you can hear",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473677515,
+      "observed": {
+        "heading": "3 things you can hear",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473694793,
+      "observed": {
+        "heading": "2 things you can smell",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473695564,
+      "observed": {
+        "heading": "2 things you can smell",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473696323,
+      "observed": {
+        "heading": "1 thing you can taste",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473697085,
+      "observed": {
+        "heading": "1 thing you can taste",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473697846,
+      "observed": {
+        "heading": "1 thing you can taste",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473698612,
+      "observed": {
+        "heading": "1 thing you can taste",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473699376,
+      "observed": {
+        "heading": "1 thing you can taste",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473700136,
+      "observed": {
+        "heading": "1 thing you can taste",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473700896,
+      "observed": {
+        "heading": "1 thing you can taste",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473701662,
+      "observed": {
+        "heading": "1 thing you can taste",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473702424,
+      "observed": {
+        "heading": "1 thing you can taste",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473703186,
+      "observed": {
+        "heading": "1 thing you can taste",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473703943,
+      "observed": {
+        "heading": "1 thing you can taste",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473704704,
+      "observed": {
+        "heading": "1 thing you can taste",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473705462,
+      "observed": {
+        "heading": "1 thing you can taste",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473706229,
+      "observed": {
+        "heading": "1 thing you can taste",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473706996,
+      "observed": {
+        "heading": "1 thing you can taste",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473707761,
+      "observed": {
+        "summary": "Five steps complete."
+      }
+    },
+    {
+      "at": 1793473708521,
+      "observed": {
+        "summary": "Five steps complete."
+      }
+    },
+    {
+      "at": 1793473709280,
+      "observed": {
+        "summary": "Five steps complete."
+      }
+    },
+    {
+      "at": 1793473710043,
+      "observed": {
+        "summary": "Five steps complete."
+      }
+    },
+    {
+      "at": 1793473710803,
+      "observed": {
+        "summary": "Five steps complete."
+      }
+    },
+    {
+      "at": 1793473711568,
+      "observed": {
+        "summary": "Five steps complete."
+      }
+    },
+    {
+      "at": 1793473712329,
+      "observed": {
+        "summary": "Five steps complete."
+      }
+    },
+    {
+      "at": 1793473713093,
+      "observed": {
+        "summary": "Five steps complete."
+      }
+    },
+    {
+      "at": 1793473713853,
+      "observed": {
+        "summary": "Five steps complete."
+      }
+    },
+    {
+      "at": 1793473714614,
+      "observed": {
+        "summary": "Five steps complete."
+      }
+    },
+    {
+      "at": 1793473715377,
+      "observed": {
+        "summary": "Five steps complete."
+      }
+    },
+    {
+      "at": 1793473716137,
+      "observed": {
+        "summary": "Five steps complete."
+      }
+    },
+    {
+      "at": 1793473716898,
+      "observed": {
+        "summary": "Five steps complete."
+      }
+    },
+    {
+      "at": 1793473717662,
+      "observed": {
+        "summary": "Five steps complete."
+      }
+    }
+  ],
+  "stopSamples": [
+    {
+      "at": 1793473732165,
+      "observed": {
+        "heading": "Stop",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473732925,
+      "observed": {
+        "heading": "Stop",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473733682,
+      "observed": {
+        "heading": "Stop",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473734446,
+      "observed": {
+        "heading": "Stop",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473735206,
+      "observed": {
+        "heading": "Stop",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473735970,
+      "observed": {
+        "heading": "Stop",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473736733,
+      "observed": {
+        "heading": "Stop",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473737495,
+      "observed": {
+        "heading": "Stop",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473738253,
+      "observed": {
+        "heading": "Stop",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473739015,
+      "observed": {
+        "heading": "Stop",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473739776,
+      "observed": {
+        "heading": "Stop",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473740541,
+      "observed": {
+        "heading": "Stop",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473741309,
+      "observed": {
+        "heading": "Stop",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473742071,
+      "observed": {
+        "heading": "Stop",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473742837,
+      "observed": {
+        "heading": "Stop",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473743601,
+      "observed": {
+        "heading": "Stop",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473744367,
+      "observed": {
+        "heading": "Stop",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473745131,
+      "observed": {
+        "heading": "Stop",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473745894,
+      "observed": {
+        "heading": "Stop",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473746661,
+      "observed": {
+        "heading": "Stop",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473747426,
+      "observed": {
+        "heading": "Take a step back",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473748192,
+      "observed": {
+        "heading": "Take a step back",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473748953,
+      "observed": {
+        "heading": "Take a step back",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473767479,
+      "observed": {
+        "heading": "Take a step back",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473768236,
+      "observed": {
+        "heading": "Take a step back",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473768996,
+      "observed": {
+        "heading": "Take a step back",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473769759,
+      "observed": {
+        "heading": "Take a step back",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473770522,
+      "observed": {
+        "heading": "Take a step back",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473771285,
+      "observed": {
+        "heading": "Take a step back",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473772045,
+      "observed": {
+        "heading": "Take a step back",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473772804,
+      "observed": {
+        "heading": "Take a step back",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473773569,
+      "observed": {
+        "heading": "Take a step back",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473774330,
+      "observed": {
+        "heading": "Take a step back",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473775094,
+      "observed": {
+        "heading": "Take a step back",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473775855,
+      "observed": {
+        "heading": "Take a step back",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473776618,
+      "observed": {
+        "heading": "Take a step back",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473777379,
+      "observed": {
+        "heading": "Take a step back",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473778146,
+      "observed": {
+        "heading": "Take a step back",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473778907,
+      "observed": {
+        "heading": "Take a step back",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473779672,
+      "observed": {
+        "heading": "Observe",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473780436,
+      "observed": {
+        "heading": "Observe",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473781196,
+      "observed": {
+        "heading": "Observe",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473781956,
+      "observed": {
+        "heading": "Observe",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473782718,
+      "observed": {
+        "heading": "Observe",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473783475,
+      "observed": {
+        "heading": "Observe",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473784231,
+      "observed": {
+        "heading": "Observe",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473784993,
+      "observed": {
+        "heading": "Observe",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473785756,
+      "observed": {
+        "heading": "Observe",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473786519,
+      "observed": {
+        "heading": "Observe",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473787280,
+      "observed": {
+        "heading": "Observe",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473788038,
+      "observed": {
+        "heading": "Observe",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473788796,
+      "observed": {
+        "heading": "Observe",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473789557,
+      "observed": {
+        "heading": "Observe",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473790318,
+      "observed": {
+        "heading": "Observe",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473791076,
+      "observed": {
+        "heading": "Observe",
+        "progress": ""
+      }
+    },
+    {
+      "at": 1793473814732,
+      "observed": {
+        "summary": "Four steps complete."
+      }
+    },
+    {
+      "at": 1793473815497,
+      "observed": {
+        "summary": "Four steps complete."
+      }
+    },
+    {
+      "at": 1793473816256,
+      "observed": {
+        "summary": "Four steps complete."
+      }
+    },
+    {
+      "at": 1793473817017,
+      "observed": {
+        "summary": "Four steps complete."
+      }
+    },
+    {
+      "at": 1793473817777,
+      "observed": {
+        "summary": "Four steps complete."
+      }
+    },
+    {
+      "at": 1793473818543,
+      "observed": {
+        "summary": "Four steps complete."
+      }
+    },
+    {
+      "at": 1793473819303,
+      "observed": {
+        "summary": "Four steps complete."
+      }
+    },
+    {
+      "at": 1793473820069,
+      "observed": {
+        "summary": "Four steps complete."
+      }
+    },
+    {
+      "at": 1793473820827,
+      "observed": {
+        "summary": "Four steps complete."
+      }
+    },
+    {
+      "at": 1793473821587,
+      "observed": {
+        "summary": "Four steps complete."
+      }
+    },
+    {
+      "at": 1793473822348,
+      "observed": {
+        "summary": "Four steps complete."
+      }
+    },
+    {
+      "at": 1793473823111,
+      "observed": {
+        "summary": "Four steps complete."
+      }
+    },
+    {
+      "at": 1793473823876,
+      "observed": {
+        "summary": "Four steps complete."
+      }
+    },
+    {
+      "at": 1793473824637,
+      "observed": {
+        "summary": "Four steps complete."
+      }
+    },
+    {
+      "at": 1793473825397,
+      "observed": {
+        "summary": "Four steps complete."
+      }
+    },
+    {
+      "at": 1793473826158,
+      "observed": {
+        "summary": "Four steps complete."
+      }
+    },
+    {
+      "at": 1793473826918,
+      "observed": {
+        "summary": "Four steps complete."
+      }
+    },
+    {
+      "at": 1793473827687,
+      "observed": {
+        "summary": "Four steps complete."
+      }
+    },
+    {
+      "at": 1793473828453,
+      "observed": {
+        "summary": "Four steps complete."
+      }
+    }
+  ]
+}

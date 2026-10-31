@@ -1,0 +1,279 @@
+{
+  "date": "2026-10-31",
+  "method": "Dev-only axe-core 4.14.0 harness; selected actual states, incomplete contrast checks retained. Not WCAG certification or assistive-technology testing.",
+  "initialFinding": "Ready scan had no violations, with incomplete aria-prohibited-attr on a labeled generic skill-library div. Added explicit region/group roles to named library/stepper containers; retest retains only contrast-incomplete items.",
+  "scans": [
+    {
+      "state": "ready-initial",
+      "result": {
+        "version": "4.14.0",
+        "date": "2026-10-31T19:14:10.808Z",
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "aria-prohibited-attr",
+            "targets": [
+              [
+                ".skill-library"
+              ]
+            ]
+          },
+          {
+            "id": "color-contrast",
+            "targets": [
+              [
+                ".brand-copy"
+              ],
+              [
+                ".brand-copy > small"
+              ],
+              [
+                ".selected > span[aria-hidden=\"true\"]"
+              ],
+              [
+                "nav > button:nth-child(2)"
+              ],
+              [
+                "nav > button:nth-child(2) > span[aria-hidden=\"true\"]"
+              ],
+              [
+                "#support-control > span[aria-hidden=\"true\"]"
+              ],
+              [
+                ".context-header > .eyebrow"
+              ],
+              [
+                ".local-label"
+              ],
+              [
+                ".coursework-notice"
+              ],
+              [
+                ".welcome-pill"
+              ],
+              [
+                "h1"
+              ],
+              [
+                "em"
+              ],
+              [
+                ".hero-copy > p"
+              ],
+              [
+                ".coast-caption > span"
+              ],
+              [
+                ".coast-caption > small"
+              ],
+              [
+                ".library-heading > div > .eyebrow"
+              ],
+              [
+                ".library-heading > div > h2"
+              ],
+              [
+                ".library-note"
+              ],
+              [
+                "article[data-skill=\"breathing\"] > .skill-art[aria-hidden=\"true\"] > .skill-symbol"
+              ],
+              [
+                "article[data-skill=\"breathing\"] > .skill-art[aria-hidden=\"true\"] > span"
+              ],
+              [
+                "article[data-skill=\"grounding\"] > .skill-art[aria-hidden=\"true\"] > .skill-symbol"
+              ],
+              [
+                "article[data-skill=\"grounding\"] > .skill-art[aria-hidden=\"true\"] > span"
+              ],
+              [
+                "article[data-skill=\"stop\"] > .skill-art[aria-hidden=\"true\"] > .skill-symbol"
+              ],
+              [
+                "article[data-skill=\"stop\"] > .skill-art[aria-hidden=\"true\"] > span"
+              ],
+              [
+                ".practice-choice-note"
+              ],
+              [
+                ".chosen > span[aria-hidden=\"true\"]"
+              ],
+              [
+                ".save-bar"
+              ],
+              [
+                ".review-tools > summary"
+              ],
+              [
+                "footer"
+              ],
+              [
+                "footer > span"
+              ]
+            ]
+          }
+        ],
+        "passedRules": 39
+      }
+    },
+    {
+      "state": "ready-final",
+      "result": {
+        "version": "4.14.0",
+        "date": "2026-10-31T19:14:48.726Z",
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "targets": [
+              [
+                ".brand-copy"
+              ],
+              [
+                ".brand-copy > small"
+              ],
+              [
+                ".selected > span[aria-hidden=\"true\"]"
+              ],
+              [
+                "nav > button:nth-child(2)"
+              ],
+              [
+                "nav > button:nth-child(2) > span[aria-hidden=\"true\"]"
+              ],
+              [
+                "#support-control > span[aria-hidden=\"true\"]"
+              ],
+              [
+                ".context-header > .eyebrow"
+              ],
+              [
+                ".local-label"
+              ],
+              [
+                ".coursework-notice"
+              ],
+              [
+                ".welcome-pill"
+              ],
+              [
+                "h1"
+              ],
+              [
+                "em"
+              ],
+              [
+                ".hero-copy > p"
+              ],
+              [
+                ".coast-caption > span"
+              ],
+              [
+                ".coast-caption > small"
+              ],
+              [
+                ".library-heading > div > .eyebrow"
+              ],
+              [
+                ".library-heading > div > h2"
+              ],
+              [
+                ".library-note"
+              ],
+              [
+                "article[data-skill=\"breathing\"] > .skill-art[aria-hidden=\"true\"] > .skill-symbol"
+              ],
+              [
+                "article[data-skill=\"breathing\"] > .skill-art[aria-hidden=\"true\"] > span"
+              ],
+              [
+                "article[data-skill=\"grounding\"] > .skill-art[aria-hidden=\"true\"] > .skill-symbol"
+              ],
+              [
+                "article[data-skill=\"grounding\"] > .skill-art[aria-hidden=\"true\"] > span"
+              ],
+              [
+                "article[data-skill=\"stop\"] > .skill-art[aria-hidden=\"true\"] > .skill-symbol"
+              ],
+              [
+                "article[data-skill=\"stop\"] > .skill-art[aria-hidden=\"true\"] > span"
+              ],
+              [
+                ".practice-choice-note"
+              ],
+              [
+                ".chosen > span[aria-hidden=\"true\"]"
+              ],
+              [
+                ".save-bar"
+              ],
+              [
+                ".review-tools > summary"
+              ],
+              [
+                "footer"
+              ],
+              [
+                "footer > span"
+              ]
+            ]
+          }
+        ],
+        "passedRules": 39
+      }
+    },
+    {
+      "state": "STOP-paused",
+      "result": {
+        "version": "4.14.0",
+        "date": "2026-10-31T19:15:00.867Z",
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "targets": [
+              [
+                ".brand-copy"
+              ],
+              [
+                ".brand-copy > small"
+              ],
+              [
+                ".selected > span[aria-hidden=\"true\"]"
+              ],
+              [
+                "button:nth-child(2) > span[aria-hidden=\"true\"]"
+              ],
+              [
+                "#support-control > span[aria-hidden=\"true\"]"
+              ],
+              [
+                ".context-header > .eyebrow"
+              ],
+              [
+                ".local-label"
+              ],
+              [
+                ".coursework-notice"
+              ],
+              [
+                ".save-bar"
+              ],
+              [
+                ".review-tools > summary"
+              ],
+              [
+                "footer"
+              ],
+              [
+                "footer > span"
+              ]
+            ]
+          }
+        ],
+        "passedRules": 39
+      }
+    }
+  ]
+}

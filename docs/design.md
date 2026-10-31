@@ -281,3 +281,8 @@ Reduced repeated demo/role language while retaining accurate coursework and resp
 ## October 30 — Part 3.3 final decisions
 
 The core skill and flow remain. [Final revisions](part3-revisions.md) explains the Part 3.1 decisions revisited after implementation, including explicit profile/history tailoring, silent breathing, optional chatbot speech, top navigation and lower-right popup. Actual Stop/Escape focus loss and a pause/history save race led to two small refinements; the [evaluation](part3-evaluation.md) preserves initial failures and retests. No clinical adaptation or broader skill library was added. Final recordings and clean-checkout evidence are linked there.
+
+
+## October 31 — requested coastal library
+
+The student requested two more exercises and a professional location-based layout. The Ready library now offers breathing, 5–4–3–2–1 grounding and STOP, each one minute at its intended pace. This broadens the original single-skill choice after the first vertical slice was implemented/evaluated. Active practice still presents one step and explicit pause/exit. Sensory recall options and no required movement are explicit access adaptations, not tested clinical substitutes. The sole assistant is a bottom-right popup. The original generated coastal scenery is decorative and removed in higher contrast. [Actual changes, reasoning and evidence](coastal-update-oct31.md).

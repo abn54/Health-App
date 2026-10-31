@@ -191,7 +191,7 @@ def test_expanded_help_is_catalog_text_without_preference_or_session_control(cli
     result = ask(client, sid, question).json()
     assert result['source'] == 'mock' and result['reply_id'] == topic
     assert result['text'] == m.CATALOG[topic]
-    assert result['catalog_version'] == 'app-help-v5'
+    assert result['catalog_version'] == 'app-help-v6'
     detail = client.get('/api/sessions/' + sid).json()
     assert detail['status'] == 'draft' and detail['events'] == []
     assert detail['messages'][-1]['content'] == result['text']
@@ -270,13 +270,13 @@ def test_opt_in_tailors_from_real_saved_history_and_opt_out_removes_context(clie
     sid, _ = create(client)
     assert client.get('/api/profile').json()['latest_practice'] is None
     before = ask(client,sid,'Can I stop halfway?').json()
-    assert 'latest saved practice' not in before['text']
+    assert 'latest saved breathing practice' not in before['text']
     client.put('/api/preferences',json={'cue':'animated'})
     client.put('/api/profile',json={'reply_detail':'brief','use_history':True})
     after = ask(client,sid,'Can I stop halfway?').json()
-    assert 'current cue is Text only' in after['text']
+    assert 'current breathing cue is Text only' in after['text']
     assert 'remembered cue is Animated circle' in after['text']
-    assert 'latest saved practice was stopped' in after['text']
+    assert 'latest saved breathing practice was stopped' in after['text']
     assert 'finishing is not required' in after['text']
     assert 'last recorded Animated circle' in after['text']
     context = after['personalization_context']
@@ -287,7 +287,7 @@ def test_opt_in_tailors_from_real_saved_history_and_opt_out_removes_context(clie
     client.put('/api/profile',json={'reply_detail':'brief','use_history':True})
     client.delete('/api/sessions/' + practice)
     empty = ask(client,sid,'How long is the exercise?').json()
-    assert 'no saved finished' in empty['text'] and 'latest saved practice was stopped' not in empty['text']
+    assert 'no saved finished' in empty['text'] and 'latest saved breathing practice was stopped' not in empty['text']
 
 
 def test_live_selector_receives_no_profile_or_raw_history_but_display_is_tailored(client,monkeypatch):
@@ -303,7 +303,7 @@ def test_live_selector_receives_no_profile_or_raw_history_but_display_is_tailore
     result = ask(client,sid,'Can I turn off the moving circle?',mode='live').json()
     assert calls == [('Can I turn off the moving circle?','text')]
     assert result['source'] == 'live' and result['personalization_context']['history_used'] is True
-    assert 'latest saved practice was stopped' in result['text']
+    assert 'latest saved breathing practice was stopped' in result['text']
     assert client.get('/api/health').json()['attempts'] == 1
     assert client.get('/api/profile').json()['reply_detail'] == 'brief'
 
@@ -316,7 +316,7 @@ def test_profile_does_not_tailor_boundary_or_unrelated_topics_and_delete_all_res
     assert boundary['text'] == m.BOUNDARY and 'personalization_context' not in boundary
     scope = ask(client,sid,'Can you be my therapist?').json()
     assert scope['personalization_context']['history_used'] is False
-    assert 'not a therapist' in scope['text'] and 'latest saved practice' not in scope['text']
+    assert 'not a therapist' in scope['text'] and 'latest saved breathing practice' not in scope['text']
     failure = ask(client,sid,'How long is the exercise?',simulate_failure=True).json()
     assert failure['text'] == m.FALLBACK and 'personalization_context' not in failure
     client.delete('/api/local-data')
@@ -383,3 +383,43 @@ def test_role_questions_still_receive_explicit_honest_limits(client,text):
     assert result['reply_id']=='scope'
     assert 'not a therapist' in result['text']
     assert result['source']=='mock'
+
+
+@pytest.mark.parametrize('version', ['grounding-54321-v1', 'stop-v1'])
+def test_added_skill_records_recover_and_keep_identity(client, version):
+    sid, data = create(client)
+    data = started({**data, 'content_version': version})
+    assert client.put('/api/sessions/' + sid, json=data).status_code == 200
+    wrong = {**data, 'revision': 3, 'content_version': 'breathing-4-6-v1'}
+    assert client.put('/api/sessions/' + sid, json=wrong).status_code == 409
+    client.post('/api/recover')
+    actual = client.get('/api/sessions/' + sid).json()
+    assert actual['status'] == 'interrupted'
+    assert actual['content_version'] == version
+    assert actual['wall_ms'] is None
+    assert client.delete('/api/sessions/' + sid).status_code == 200
+    assert client.get('/api/sessions/' + sid).status_code == 404
+
+
+@pytest.mark.parametrize('version', ['grounding-54321-v1', 'stop-v1'])
+def test_new_skill_completion_and_profile_context_are_truthful(client, version):
+    sid, data = create(client)
+    data = started({**data, 'content_version': version})
+    assert client.put('/api/sessions/' + sid, json=data).status_code == 200
+    event = {'id':str(uuid.uuid4()), 'sequence':2, 'type':'completed', 'elapsed_ms':60000, 'details':{}}
+    done = {**data,'revision':3,'status':'completed','wall_ms':60020,'assignment_duration_ms':60020,'excluded_ms':0,'final_step_at':datetime.now(timezone.utc).isoformat(),'events':data['events']+[event]}
+    short = {**done,'wall_ms':59999,'assignment_duration_ms':59999}
+    assert client.put('/api/sessions/' + sid, json=short).status_code == 422
+    assert client.put('/api/sessions/' + sid, json=done).status_code == 200
+    result = client.get('/api/sessions').json()
+    assert result[0]['content_version'] == version
+    client.put('/api/profile',json={'reply_detail':'brief','use_history':True})
+    assert client.get('/api/profile').json()['latest_practice'] is None  # breathing context cannot borrow grounding/STOP outcome
+
+
+def test_new_skills_answer_is_authored_not_model_instructions(client):
+    sid, _ = create(client)
+    response = ask(client,sid,'What grounding exercises can I choose?').json()
+    assert response['reply_id'] == 'skills'
+    assert response['text'] == m.CATALOG['skills']
+    assert response['source'] == 'mock'

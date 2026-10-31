@@ -9,7 +9,7 @@ The authorized milestone is Part 3.3: final refinement, evaluation, clean-checko
 - This is a localhost coursework prototype. Use fictional inputs and demonstrations only.
 - Do not diagnose, promise symptom improvement, claim therapy, or imply human monitoring.
 - Do not offer or deploy the prototype as a mental health support service.
-- Preserve the chosen skill: inhale four counts, exhale six counts, six cycles at one second per count.
+- Preserve paced breathing: inhale four counts, exhale six counts, six cycles at one second per count. The October 31 request additionally authorizes the assignment’s 5–4–3–2–1 grounding and STOP guides; keep their reviewed steps in shared/exercises.json, with one-minute intended pacing, Pause, End and independent support.
 - The model may interpret questions about approved application content; it cannot change the skill, prescribe advice, set timing, write preferences, or control navigation.
 - Crisis-support information must be available from the application shell independently of any API, model, or classifier. Preserve this route during loading and error states.
 - Treat any phrase matching as a fallible interface cue, never a clinical assessment or proof of safety.

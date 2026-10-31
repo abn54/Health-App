@@ -1,0 +1,48 @@
+{
+  "capture_method": "Actual Cua browser-tab screenshots sampled approximately every 500 ms within capture blocks; silent. No UI reconstruction or synthetic app frames. H.264 repeats held frames at 10 fps; original motion sampling is ~2 fps.",
+  "editing": "Outside the uninterrupted exercise, gaps over 3 seconds are shortened to 3 seconds. Within the exercise all timestamp gaps are retained, holding the last captured frame. Last frame held 2.5 seconds. Enable English subtitles; full transcript accompanies video.",
+  "source_capture_duration_seconds": 23.393,
+  "video_duration_seconds_planned": 25.89299999999999,
+  "captured_frame_count": 41,
+  "largest_source_gap_seconds": 1.523,
+  "idle_edits": [],
+  "chapters": [
+    {
+      "at": 1793474242330,
+      "text": "October 31: mello quiet coast. Original generated scenery, solid task surfaces, and no assistant in the top navigation. Fictional coursework demonstration; no clinical claims.",
+      "video_seconds": 0.0
+    },
+    {
+      "at": 1793474245125,
+      "text": "Three direct choices: unchanged 4/6 breathing, 5-4-3-2-1 grounding, and STOP. Each has one-minute intended pacing, no required writing, and explicit pause/exit.",
+      "video_seconds": 2.795
+    },
+    {
+      "at": 1793474248609,
+      "text": "Approved grounding steps are fixed in application data. The model cannot alter instructions or pacing. Pause allows more time; sensory recall is an explicit access option.",
+      "video_seconds": 6.279
+    },
+    {
+      "at": 1793474254510,
+      "text": "This demonstration intentionally ends early: Stopped is a partial record, never Completed. Separate actual complete Grounding and STOP timings are linked in the evaluation.",
+      "video_seconds": 12.18
+    },
+    {
+      "at": 1793474258044,
+      "text": "The only assistant lives in this lower-right popup. Prepared replies use reviewed copy; optional voice retains a text alternative. New-skill questions have their own approved topic.",
+      "video_seconds": 15.714
+    },
+    {
+      "at": 1793474262711,
+      "text": "History names the actual skill and distinguishes Completed, Stopped, Interrupted and never-started conversations. Dates and truthful save states remain.",
+      "video_seconds": 20.380999999999997
+    }
+  ],
+  "checks": [],
+  "video_sha256": "0bd7f562c73b339fdb7682df4051ca6f9c283011b8aeddfabe5b4f76743d9334",
+  "ffmpeg_version": "7.1",
+  "decode_verification": {
+    "exit_code": 0,
+    "output_tail": "p\nOutput #0, null, to 'pipe:':\n  Metadata:\n    major_brand     : isom\n    minor_version   : 512\n    compatible_brands: isomiso2avc1mp41\n    encoder         : Lavf61.7.100\n  Stream #0:0(und): Video: wrapped_avframe, yuvj420p(pc, bt470bg/unknown/unknown, progressive), 1280x720 [SAR 1:1 DAR 16:9], q=2-31, 200 kb/s, 10 fps, 10 tbn (default)\n      Metadata:\n        handler_name    : VideoHandler\n        vendor_id       : [0][0][0][0]\n        encoder         : Lavc61.19.100 wrapped_avframe\n[out#0/null @ 0x1211063f0] video:113KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown\nframe=  263 fps=0.0 q=-0.0 Lsize=N/A time=00:00:26.30 bitrate=N/A speed= 437x    \n"
+  }
+}

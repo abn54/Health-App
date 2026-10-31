@@ -1,0 +1,359 @@
+{
+  "date": "2026-10-31",
+  "method": "9 actual local Ollama topic selections through isolated FastAPI; 3 authored questions repeated 3 times. Separate from mocked tests. One counted preload. Same fictional host-run ID/database retained after restart.",
+  "before": {
+    "status": "ok",
+    "live_enabled": true,
+    "review_tools": true,
+    "model": "qwen2.5:3b",
+    "prompt_version": "catalog-selector-v12",
+    "attempts": 1,
+    "limit": 50,
+    "test_run_id": "coast-oct31"
+  },
+  "after": {
+    "status": "ok",
+    "live_enabled": true,
+    "review_tools": true,
+    "model": "qwen2.5:3b",
+    "prompt_version": "catalog-selector-v12",
+    "attempts": 10,
+    "limit": 50,
+    "test_run_id": "coast-oct31"
+  },
+  "preload": {
+    "returncode": 0,
+    "output": "Local model preloaded. The UI still defaults to mocked replies."
+  },
+  "models": {
+    "models": [
+      {
+        "name": "qwen2.5:3b",
+        "model": "qwen2.5:3b",
+        "modified_at": "2026-10-21T10:21:12.290743706-04:00",
+        "size": 1929912432,
+        "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 32768,
+          "embedding_length": 2048
+        },
+        "capabilities": [
+          "completion",
+          "tools"
+        ]
+      },
+      {
+        "name": "qwen2.5:1.5b",
+        "model": "qwen2.5:1.5b",
+        "modified_at": "2026-10-19T14:43:34.113973655-04:00",
+        "size": 986061892,
+        "digest": "65ec06548149b04c096a120e4a6da9d4017ea809c91734ea5631e89f96ddc57b",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "1.5B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 32768,
+          "embedding_length": 1536
+        },
+        "capabilities": [
+          "completion",
+          "tools"
+        ]
+      },
+      {
+        "name": "qwen2.5:0.5b",
+        "model": "qwen2.5:0.5b",
+        "modified_at": "2026-10-19T14:35:16.05057697-04:00",
+        "size": 397821319,
+        "digest": "a8b0c51577010a279d933d14c2a8ab4b268079d44c5c8830c0a93900f1827c67",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "494.03M",
+          "quantization_level": "Q4_K_M",
+          "context_length": 32768,
+          "embedding_length": 896
+        },
+        "capabilities": [
+          "completion",
+          "tools"
+        ]
+      }
+    ]
+  },
+  "source_hashes": {
+    "backend/main.py": "45ecd17ca87c057a7294727e085148cb567aae7c2ad741fee48c0beaaabadfab",
+    "backend/catalog.py": "c409fe48dae3a391648ea930a119425429d3a0da25069c9b69a50d075ce78c4d",
+    "shared/help-content.json": "ade251669ca8ff868d4276ac0bbfe16094a46d83489b66af7fb329ceba69e7d4"
+  },
+  "settings": {
+    "temperature": 0,
+    "num_predict": 80,
+    "schema": "Selection JSON",
+    "timeout_seconds": 8
+  },
+  "cases": [
+    {
+      "question": "What exercises can I choose?",
+      "repeat": 1,
+      "expected": "skills",
+      "observed": {
+        "text": "Choose from three practices on the Practice page: paced breathing, 5\u20134\u20133\u20132\u20131 grounding, or STOP. Each has a 60-second guided sequence, with Pause for more time and End whenever you choose. Grounding moves through seeing, feeling, hearing, smelling and tasting; the interface offers recalled examples when a sense is unavailable. STOP follows Stop, Take a step back, Observe, and Proceed mindfully. No response or written answer is required.",
+        "source": "live",
+        "reply_id": "skills",
+        "evidence_ids": [
+          "catalog:skills"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v12",
+        "catalog_version": "app-help-v6",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "edf69c55-177d-4000-9608-dd12d7fba254",
+        "reply_detail": "standard",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "standard",
+          "history_used": false
+        }
+      },
+      "elapsed_ms": 1835.46,
+      "relevance_match": true
+    },
+    {
+      "question": "What exercises can I choose?",
+      "repeat": 2,
+      "expected": "skills",
+      "observed": {
+        "text": "Choose from three practices on the Practice page: paced breathing, 5\u20134\u20133\u20132\u20131 grounding, or STOP. Each has a 60-second guided sequence, with Pause for more time and End whenever you choose. Grounding moves through seeing, feeling, hearing, smelling and tasting; the interface offers recalled examples when a sense is unavailable. STOP follows Stop, Take a step back, Observe, and Proceed mindfully. No response or written answer is required.",
+        "source": "live",
+        "reply_id": "skills",
+        "evidence_ids": [
+          "catalog:skills"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v12",
+        "catalog_version": "app-help-v6",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "dd847f0a-1924-4727-a4b7-bcbf94a4485b",
+        "reply_detail": "standard",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "standard",
+          "history_used": false
+        }
+      },
+      "elapsed_ms": 266.46,
+      "relevance_match": true
+    },
+    {
+      "question": "What exercises can I choose?",
+      "repeat": 3,
+      "expected": "skills",
+      "observed": {
+        "text": "Choose from three practices on the Practice page: paced breathing, 5\u20134\u20133\u20132\u20131 grounding, or STOP. Each has a 60-second guided sequence, with Pause for more time and End whenever you choose. Grounding moves through seeing, feeling, hearing, smelling and tasting; the interface offers recalled examples when a sense is unavailable. STOP follows Stop, Take a step back, Observe, and Proceed mindfully. No response or written answer is required.",
+        "source": "live",
+        "reply_id": "skills",
+        "evidence_ids": [
+          "catalog:skills"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v12",
+        "catalog_version": "app-help-v6",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "ac360e8e-7f7a-4428-831a-c64aecc34273",
+        "reply_detail": "standard",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "standard",
+          "history_used": false
+        }
+      },
+      "elapsed_ms": 265.59,
+      "relevance_match": true
+    },
+    {
+      "question": "How does the STOP practice work?",
+      "repeat": 1,
+      "expected": "skills",
+      "observed": {
+        "text": "Choose from three practices on the Practice page: paced breathing, 5\u20134\u20133\u20132\u20131 grounding, or STOP. Each has a 60-second guided sequence, with Pause for more time and End whenever you choose. Grounding moves through seeing, feeling, hearing, smelling and tasting; the interface offers recalled examples when a sense is unavailable. STOP follows Stop, Take a step back, Observe, and Proceed mindfully. No response or written answer is required.",
+        "source": "live",
+        "reply_id": "skills",
+        "evidence_ids": [
+          "catalog:skills"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v12",
+        "catalog_version": "app-help-v6",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "c641b1e8-827b-4afa-aa52-57da3f8662ba",
+        "reply_detail": "standard",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "standard",
+          "history_used": false
+        }
+      },
+      "elapsed_ms": 389.22,
+      "relevance_match": true
+    },
+    {
+      "question": "How does the STOP practice work?",
+      "repeat": 2,
+      "expected": "skills",
+      "observed": {
+        "text": "Choose from three practices on the Practice page: paced breathing, 5\u20134\u20133\u20132\u20131 grounding, or STOP. Each has a 60-second guided sequence, with Pause for more time and End whenever you choose. Grounding moves through seeing, feeling, hearing, smelling and tasting; the interface offers recalled examples when a sense is unavailable. STOP follows Stop, Take a step back, Observe, and Proceed mindfully. No response or written answer is required.",
+        "source": "live",
+        "reply_id": "skills",
+        "evidence_ids": [
+          "catalog:skills"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v12",
+        "catalog_version": "app-help-v6",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "5e313c21-4605-490e-a2d9-94f1a38f0ae8",
+        "reply_detail": "standard",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "standard",
+          "history_used": false
+        }
+      },
+      "elapsed_ms": 309.94,
+      "relevance_match": true
+    },
+    {
+      "question": "How does the STOP practice work?",
+      "repeat": 3,
+      "expected": "skills",
+      "observed": {
+        "text": "Choose from three practices on the Practice page: paced breathing, 5\u20134\u20133\u20132\u20131 grounding, or STOP. Each has a 60-second guided sequence, with Pause for more time and End whenever you choose. Grounding moves through seeing, feeling, hearing, smelling and tasting; the interface offers recalled examples when a sense is unavailable. STOP follows Stop, Take a step back, Observe, and Proceed mindfully. No response or written answer is required.",
+        "source": "live",
+        "reply_id": "skills",
+        "evidence_ids": [
+          "catalog:skills"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v12",
+        "catalog_version": "app-help-v6",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "8d241a88-d1bf-4eb3-8ca4-0820e105d610",
+        "reply_detail": "standard",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "standard",
+          "history_used": false
+        }
+      },
+      "elapsed_ms": 275.24,
+      "relevance_match": true
+    },
+    {
+      "question": "What is the purpose of mello?",
+      "repeat": 1,
+      "expected": "about",
+      "observed": {
+        "text": "mello gives you a simple place to try three short practices: paced breathing, 5\u20134\u20133\u20132\u20131 grounding and STOP. You choose a practice, follow the reviewed steps, and pause or stop whenever you want. I can help you find features, explain the practices, and explore the reading shelf.",
+        "source": "live",
+        "reply_id": "about",
+        "evidence_ids": [
+          "catalog:about"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v12",
+        "catalog_version": "app-help-v6",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "ebc404d6-289f-45fd-93e0-3c5f04bc588d",
+        "reply_detail": "standard",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "standard",
+          "history_used": false
+        }
+      },
+      "elapsed_ms": 341.52,
+      "relevance_match": true
+    },
+    {
+      "question": "What is the purpose of mello?",
+      "repeat": 2,
+      "expected": "about",
+      "observed": {
+        "text": "mello gives you a simple place to try three short practices: paced breathing, 5\u20134\u20133\u20132\u20131 grounding and STOP. You choose a practice, follow the reviewed steps, and pause or stop whenever you want. I can help you find features, explain the practices, and explore the reading shelf.",
+        "source": "live",
+        "reply_id": "about",
+        "evidence_ids": [
+          "catalog:about"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v12",
+        "catalog_version": "app-help-v6",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "e74f1a3c-8b8b-4a08-b221-10afa8e510fb",
+        "reply_detail": "standard",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "standard",
+          "history_used": false
+        }
+      },
+      "elapsed_ms": 278.16,
+      "relevance_match": true
+    },
+    {
+      "question": "What is the purpose of mello?",
+      "repeat": 3,
+      "expected": "about",
+      "observed": {
+        "text": "mello gives you a simple place to try three short practices: paced breathing, 5\u20134\u20133\u20132\u20131 grounding and STOP. You choose a practice, follow the reviewed steps, and pause or stop whenever you want. I can help you find features, explain the practices, and explore the reading shelf.",
+        "source": "live",
+        "reply_id": "about",
+        "evidence_ids": [
+          "catalog:about"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v12",
+        "catalog_version": "app-help-v6",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "e48a2ac0-ba7a-40fd-8ff1-a761eb8d2c28",
+        "reply_detail": "standard",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "standard",
+          "history_used": false
+        }
+      },
+      "elapsed_ms": 267.99,
+      "relevance_match": true
+    }
+  ],
+  "matches": 9,
+  "limitations": "Small developmental sample; not broad relevance, clinical validation or acoustic assessment. Historical v11 results remain separate."
+}

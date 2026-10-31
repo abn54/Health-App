@@ -41,3 +41,8 @@ The new explicit local profile adds a reversible standard/brief reply choice and
 ## October 30 final revision
 
 [Final revisions](part3-revisions.md) revisit the one-skill/D2 scope, R1 timing, activity-based D1 simplification, D3 effort, D5/R4 explicit profile/history compromise, R2/D4 independent support and D6 silent/color/text choices. Actual keyboard and history races led to focus/escape and save-ordering changes. [Final evaluation](part3-evaluation.md) records six timing runs, 22 deterministic cases, repeated live limits and three explicit cross-case checks. Mention counts remain source observations, never clinical-effect measures.
+
+
+## October 31 — requested scope expansion
+
+[Coastal revision](coastal-update-oct31.md) adds Grounding and STOP after the working breathing slice. Three explicit choices on Ready strengthen R4 at some entry-effort cost; one instruction at a time during practice retains D2. Each is planned for60s (R1), with optional Pause/End/support (R2/R3/D4). D3 avoids required writing; D5 remains explicit breathing cue/profile choices rather than inferred needs. Static muted scenery and word-based access options reflect D6, without claiming that a coastal image improves symptoms. D1 remains activity-based simplification. New actual evidence is dated separately from the October30 evaluation.

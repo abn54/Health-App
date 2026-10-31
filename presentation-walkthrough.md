@@ -78,3 +78,7 @@ Current October 28 popup layout: open the bottom-right circle. The rounded compo
 
 
 Late October 28 wording: purpose questions now use the reviewed about answer; direct therapist/diagnosis questions keep explicit scope limits. Prepared reply is the friendly display label for the mock path, not real clinical or live-generated data. Expand Reply & voice options for the source explanation and Reply details for personalization metadata. Current catalog/prompt: app-help-v5 / catalog-selector-v11. Live relevance for the revised prompt has not been evaluated. Older saved replies keep their original text.
+
+## October 31 interface revision
+
+Use the **bottom-right Ask mello button** for every assistant step; the top navigation and inline chat were removed. The Practice library now has breathing, 5–4–3–2–1 grounding and STOP. Choose **Start breathing** for the original full walkthrough; it retains the same four/six counts and six cycles. **Start grounding** and **Start STOP** demonstrate additional fixed sequences, with Pause/End and skill-labeled History. Saved-profile context is explicitly breathing-specific. The original generated coastal image is decorative and disappears in higher contrast. Current catalog/prompt are app-help-v6/catalog-selector-v12; nine selected repeated live checks are separate from the historical role-topic limitation. [Current revision evidence and limits](docs/coastal-update-oct31.md).

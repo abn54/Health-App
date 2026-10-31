@@ -1,0 +1,113 @@
+{
+  "date": "2026-10-31",
+  "method": "Actual browser runs, read-only export of selected new fictional DB snapshots. Same monotonic engine and final Vue/frame-inclusive timing; no physical screen-paint measurement.",
+  "assumptions": "No required typing/model/network delay. Grounding: 5 steps \u00d712s, uninterrupted. STOP: 4 steps \u00d715s, explicit pause for support/history excluded once. These are single browser observations, not clinical evidence.",
+  "runs": [
+    {
+      "id": "52b007c7-5c30-46a3-b3ff-fed97d9e087b",
+      "assignment_duration_ms": 60011.09999999404,
+      "content_version": "grounding-54321-v1",
+      "created_at": "2026-10-31T19:07:27.683000Z",
+      "cue_final": "text",
+      "cue_initial": "text",
+      "events": [
+        {
+          "details": {},
+          "elapsed_ms": 0.09999999403953552,
+          "id": "ebf53cd6-25cc-4641-9638-7e25c54c4eed",
+          "sequence": 1,
+          "type": "start"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 60000.0,
+          "id": "8beee3a0-bf58-4925-bf05-a6e07c0bd386",
+          "sequence": 2,
+          "type": "completed"
+        }
+      ],
+      "excluded_ms": 0.0,
+      "final_step_at": "2026-10-31T19:08:27.694000Z",
+      "first_instruction_at": "2026-10-31T19:07:27.683000Z",
+      "revision": 3,
+      "setup_ms": 25476.20000001788,
+      "status": "completed",
+      "wall_ms": 60011.09999999404
+    },
+    {
+      "id": "f1ae69f7-9db2-4f88-9721-31ce3c1ce9a1",
+      "assignment_duration_ms": 60013.09999999404,
+      "content_version": "stop-v1",
+      "created_at": "2026-10-31T19:08:51.875000Z",
+      "cue_final": "text",
+      "cue_initial": "text",
+      "events": [
+        {
+          "details": {},
+          "elapsed_ms": 0.0,
+          "id": "2337ae0d-e36c-4924-9a9b-aa36fad13eb8",
+          "sequence": 1,
+          "type": "start"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 17879.5,
+          "id": "03d39c02-7d87-4867-b2bb-ae4a9bc15e24",
+          "sequence": 2,
+          "type": "pause"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 17879.5,
+          "id": "8065088a-b796-4929-a011-a127fa0d0d72",
+          "sequence": 3,
+          "type": "support_open"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 17879.5,
+          "id": "a881143f-4e19-4557-8dba-9b035157bd77",
+          "sequence": 4,
+          "type": "support_close"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 17879.5,
+          "id": "e5c4b991-336e-4f18-9d0e-a74f7f2b2de3",
+          "sequence": 5,
+          "type": "history_open"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 17879.5,
+          "id": "8bc5e317-a86f-468b-8ff0-b2ce22b613a8",
+          "sequence": 6,
+          "type": "history_close"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 17879.59999999404,
+          "id": "a9bfcebf-c13b-4615-9952-da00fb53b7c6",
+          "sequence": 7,
+          "type": "resume"
+        },
+        {
+          "details": {},
+          "elapsed_ms": 60000.0,
+          "id": "f374768a-d160-417e-bdb0-61b7007a1d89",
+          "sequence": 8,
+          "type": "completed"
+        }
+      ],
+      "excluded_ms": 17503.09999999404,
+      "final_step_at": "2026-10-31T19:10:09.392000Z",
+      "first_instruction_at": "2026-10-31T19:08:51.875000Z",
+      "revision": 9,
+      "setup_ms": 309.5,
+      "status": "completed",
+      "wall_ms": 77516.19999998808
+    }
+  ],
+  "integrity": "ok",
+  "foreign_keys": []
+}
