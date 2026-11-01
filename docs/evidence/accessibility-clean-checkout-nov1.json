@@ -1,0 +1,94 @@
+{
+  "date": "2026-11-01",
+  "method": "Actual fresh GitHub checkout, fresh virtual environment/npm ci/build through README scripts/run.sh, isolated SQLite. Same Mac and agent, not independent human/cross-OS verification. Mocked/default mode; no model provider call.",
+  "source_commit": "7c3397868e622e5d31c078f18514cb2fb452620c",
+  "checks": [
+    {
+      "command": [
+        "git",
+        "clone",
+        "--single-branch",
+        "--branch",
+        "codex/part2-prototype",
+        "https://github.com/abn54/Health-App.git",
+        "<fresh-checkout>"
+      ],
+      "expected": "exit 0",
+      "returncode": 0,
+      "output_tail": "Cloning into '<fresh-checkout>'...\n"
+    },
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "expected": "exit 0",
+      "returncode": 0,
+      "output_tail": "7c3397868e622e5d31c078f18514cb2fb452620c\n"
+    },
+    {
+      "command": [
+        "<fresh-checkout>/.venv/bin/python",
+        "-m",
+        "pytest",
+        "backend/test_api.py",
+        "-q"
+      ],
+      "expected": "exit 0",
+      "returncode": 0,
+      "output_tail": "...................................................................      [100%]\n=============================== warnings summary ===============================\n.venv/lib/python3.14/site-packages/fastapi/testclient.py:1\n  /private<fresh-checkout>/.venv/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n    from starlette.testclient import TestClient as TestClient  # noqa\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n67 passed, 1 warning in 1.58s\n"
+    },
+    {
+      "command": [
+        "npm",
+        "test"
+      ],
+      "expected": "exit 0",
+      "returncode": 0,
+      "output_tail": "\n> mello-coursework@0.2.0 test\n> node --test tests/*.test.js\n\n\u2714 phase announcements contain cycle, direction and prescribed duration, without every-frame chatter (0.72775ms)\n\u2714 optional count announcements are concise and respect different phase lengths (0.100625ms)\n\u2714 paused state offers explicit resume/end; announcements can be switched off (0.231583ms)\n\u2714 reduce motion overrides remembered or reused animation; switching it off permits explicit choice (0.744708ms)\n\u2714 reply choices exclude remote/non-English/novelty voices and rank enhanced options first (1.891ms)\n\u2714 no suitable voice has a truthful text fallback without a speech attempt (0.451083ms)\n\u2714 speech lifecycle and Stop invalidate stale callbacks (0.27275ms)\n\u2714 speech awaiting startup is cancelled if practice/navigation makes it invalid (0.120958ms)\n\u2714 blocked speech times out and stale timer cannot cancel later output (0.135292ms)\n\u2714 browser speech and rejected voice errors are contained (0.141167ms)\n\u2714 selected on-device voice, controlled speed and preview labels reach browser speech (0.125334ms)\n\u2714 voice discovery failure remains explicit (0.095792ms)\n\u2714 all six cycles retain exact 4/6 boundaries without accumulated interval drift (0.89325ms)\n\u2714 pause preserves the fraction of a count; overlapping support is excluded once (1.129083ms)\n\u2714 scheduling interruption includes app delay, without false completion or exclusion (0.109375ms)\n\u2714 End is immediate, and a terminal exercise does not resume (0.157625ms)\n\u2714 a new session resets elapsed time and pause accounting (0.191ms)\n\u2714 phrase cue is bounded and normalized; negations still match (documented limitation) (0.581417ms)\n\u2714 grounding: approved steps remain ordered across all 60 seconds (2.147917ms)\n\u2714 stop: approved steps remain ordered across all 60 seconds (0.236125ms)\n\u2714 guided pause holds a step; resume excludes only the explicit pause (0.148791ms)\n\u2714 guided hidden/scheduled interruption is partial, and End cannot resume (0.096833ms)\n\u2139 tests 22\n\u2139 suites 0\n\u2139 pass 22\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 128.432958\n"
+    },
+    {
+      "command": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "expected": "exit 0",
+      "returncode": 0,
+      "output_tail": ""
+    }
+  ],
+  "README_startup": {
+    "health": {
+      "status": "ok",
+      "live_enabled": false,
+      "review_tools": false,
+      "model": "qwen2.5:3b",
+      "prompt_version": "catalog-selector-v13",
+      "attempts": 0,
+      "limit": 50,
+      "test_run_id": "part2-local"
+    },
+    "page_status": 200,
+    "assets": [
+      {
+        "path": "/assets/index-ytr6qw_z.js",
+        "status": 200
+      },
+      {
+        "path": "/assets/index-a3o-1k9t.css",
+        "status": 200
+      }
+    ]
+  },
+  "source_matches_workspace": {
+    "frontend/src/App.vue": true,
+    "frontend/src/accessibility.js": true,
+    "frontend/src/style.css": true,
+    "shared/exercises.json": true
+  },
+  "git_status": "",
+  "result": "passed",
+  "redaction": "Temporary checkout path replaced with <fresh-checkout>; actual commands/results otherwise retained."
+}

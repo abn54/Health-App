@@ -1,10 +1,18 @@
 # IST 402 — Assignment 3, Part 3 (3.3)
 
-**mello — November 1, 2026 conversation refinement**
+**mello — November 1, 2026 conversation and accessibility refinements**
 
-Current application/evidence snapshot: [`3e687bd35ee794df1ce3ac12fc4449d893f53eaa`](https://github.com/abn54/Health-App/commit/3e687bd35ee794df1ce3ac12fc4449d893f53eaa), branch `codex/part2-prototype`. Later report metadata commits do not change application code. Upload this one `report.md`; the prior full Part 3.3 report is retained below as explicitly dated evidence.
+Current application source: [`7c3397868e622e5d31c078f18514cb2fb452620c`](https://github.com/abn54/Health-App/commit/7c3397868e622e5d31c078f18514cb2fb452620c), branch `codex/part2-prototype`. Later evidence/report commits do not change application code. Upload this one `report.md`; dated earlier results remain below.
 
-## Latest change and observed results
+## Latest accessibility refinement
+
+Accessibility options adds Simple reading font, More text spacing, Hide decorative scenery and Reduce motion alongside existing contrast/size choices. Named groups, keyboard tips, clearer step/phase/count announcements and Reset keep choices explicit and reversible. They last for this visit; saved profile/history are separate. Reduce motion takes precedence over a remembered or reused animated cue, preserves the paused place, and never starts a practice. The three existing prescribed skills already meet the brief's one-or-more requirement; a fourth written reframe is not needed merely to increase the feature list.
+
+Actual checks: **67 backend /22 client tests and build passed**, with12 selected browser cases including combined options,320px reflow, pause/reset, history reuse and keyboard popup/support. One axe4.14 scan found0 violations with3 contrast-incomplete targets; real blind-user/screen-reader testing and full WCAG conformance are unverified. A fresh GitHub checkout of7c33978 followed README startup in a fresh virtual environment/npm ci/build, returned page/assets200, passed67/22 tests and stayed clean. Same Mac/agent, not independent human/cross-OS verification. No new full-duration recording or provider call was needed for this display refinement.
+
+[Accessibility choices, research tradeoffs, W3C references and limitations](https://github.com/abn54/Health-App/blob/codex/part2-prototype/docs/accessibility-options-nov1.md) · [actual browser checks](https://github.com/abn54/Health-App/blob/codex/part2-prototype/docs/evidence/accessibility-options-browser-nov1.json) · [fresh-checkout evidence](https://github.com/abn54/Health-App/blob/codex/part2-prototype/docs/evidence/accessibility-clean-checkout-nov1.json) · [verified screenshot](https://github.com/abn54/Health-App/blob/codex/part2-prototype/docs/evidence/accessibility-options-nov1.jpg) · [updated walkthrough](https://github.com/abn54/Health-App/blob/codex/part2-prototype/presentation-walkthrough.md). These latest documentation links follow the named branch; the tested application source above is immutable.
+
+## Earlier November 1 conversation revision
 
 An ordinary exam-stress question previously fell through to a generic role-limits paragraph. Catalog `app-help-v7` / prompt `catalog-selector-v13` now covers independently worded exam pressure, study/workload, overwhelm, rest, connection, finding support, comparing skills and greetings. Suggested questions are optional. Approved answers link primary NHS/NIMH resources; unknown topics ask for clarification. The model still selects reviewed copy, with no diagnosis, treatment generation or navigation/timing/profile authority. Default mocks, fixed skill sequences, persistence and independent support remain. Long answers now open at their beginning without moving keyboard focus.
 
@@ -12,7 +20,7 @@ Actual results: **67 backend tests, 21 client tests, production build and 22 det
 
 [Changes, sources, expected/observed checks, initial failure and limits](https://github.com/abn54/Health-App/blob/3e687bd35ee794df1ce3ac12fc4449d893f53eaa/docs/conversation-update-nov1.md) · [current screenshot](https://github.com/abn54/Health-App/blob/3e687bd35ee794df1ce3ac12fc4449d893f53eaa/docs/evidence/conversation-exam-nov1.png) · [browser checks](https://github.com/abn54/Health-App/blob/3e687bd35ee794df1ce3ac12fc4449d893f53eaa/docs/evidence/conversation-browser-nov1.json) · [live evidence](https://github.com/abn54/Health-App/blob/3e687bd35ee794df1ce3ac12fc4449d893f53eaa/docs/evidence/conversation-live-nov1.json) · [deterministic scenarios](https://github.com/abn54/Health-App/blob/3e687bd35ee794df1ce3ac12fc4449d893f53eaa/docs/evidence/conversation-mocked-nov1.json) · [updated requirement checklist](https://github.com/abn54/Health-App/blob/3e687bd35ee794df1ce3ac12fc4449d893f53eaa/docs/part33-final-audit.md) · [AI disclosure](https://github.com/abn54/Health-App/blob/3e687bd35ee794df1ce3ac12fc4449d893f53eaa/AI-USE.md).
 
-The complete-skill recordings, real timings, clean-checkout run and broader accessibility scans below remain **October 30–31 observations of their pinned source**. They are not new November 1 runs and show earlier assistant copy. The new screenshot/browser/live/test evidence supplements those dated artifacts. The skill engine, steps and database schema were not changed in this conversation revision. No new full-duration recording or fresh-checkout test is claimed. Real screen-reader-user testing, broad semantic coverage and clinical effectiveness remain untested.
+The complete-skill recordings, real timings, clean-checkout run and broader accessibility scans below remain **October 30–31 observations of their pinned source**. They are not new November 1 runs and show earlier assistant copy. The new screenshot/browser/live/test evidence supplements those dated artifacts. The skill engine, steps and database schema were not changed in this conversation revision. No new full-duration recording was made for the November 1 refinements; the latest accessibility clean-checkout verification is linked above. Real screen-reader-user testing, broad semantic coverage and clinical effectiveness remain untested.
 
 ---
 

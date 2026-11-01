@@ -285,3 +285,5 @@ Actual verification:67 backend/21 client tests, build,22 deterministic scenarios
 ## November 1 — additional accessibility options
 
 Request: add useful access options/exercises if needed. Brief requires one or more; retained three guides, added explicit font/spacing/scenery/motion choices and Reset/tips. Inspection found direct saved-cue assignment bypassed motion defaults; guarded all paths and verified reuse. Actual22 client/67 backend/build passed.12 isolated browser checks cover combined options,320px, pause/reset, popup focus/Escape, support and history reuse; one axe4.14 scan had0 detected violations and3 contrast-incomplete targets. Empty DOM progress fields were retained, not used as timing. [Detailed expected/observed evidence and limits](accessibility-options-nov1.md).
+
+Additional November1 evidence: a fresh GitHub checkout of7c33978 ran README setup in a fresh environment, returned page/assets200, passed67 backend/22 client tests and stayed clean; source hashes matched. Selected screenshot export was inspected and replaced with a complete JPEG capture. No new full-duration recording or app-model inference.
