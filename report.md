@@ -1,5 +1,23 @@
 # IST 402 — Assignment 3, Part 3 (3.3)
 
+**mello — November 1, 2026 conversation refinement**
+
+Current application/evidence snapshot: [`3e687bd35ee794df1ce3ac12fc4449d893f53eaa`](https://github.com/abn54/Health-App/commit/3e687bd35ee794df1ce3ac12fc4449d893f53eaa), branch `codex/part2-prototype`. Later report metadata commits do not change application code. Upload this one `report.md`; the prior full Part 3.3 report is retained below as explicitly dated evidence.
+
+## Latest change and observed results
+
+An ordinary exam-stress question previously fell through to a generic role-limits paragraph. Catalog `app-help-v7` / prompt `catalog-selector-v13` now covers independently worded exam pressure, study/workload, overwhelm, rest, connection, finding support, comparing skills and greetings. Suggested questions are optional. Approved answers link primary NHS/NIMH resources; unknown topics ask for clarification. The model still selects reviewed copy, with no diagnosis, treatment generation or navigation/timing/profile authority. Default mocks, fixed skill sequences, persistence and independent support remain. Long answers now open at their beginning without moving keyboard focus.
+
+Actual results: **67 backend tests, 21 client tests, production build and 22 deterministic scenarios passed**. **9/9 actual local topic selections** matched exam/rest/overwhelmed across three repeats each; one counted preload gives **10/50** in a separate `conversation-nov1` ledger. This small sample does not prove arbitrary-topic coverage. Explicit role/medical-scope requests bypass model inference. Browser checks used fictional records in an isolated database; no original user conversation was exported.
+
+[Changes, sources, expected/observed checks, initial failure and limits](https://github.com/abn54/Health-App/blob/3e687bd35ee794df1ce3ac12fc4449d893f53eaa/docs/conversation-update-nov1.md) · [current screenshot](https://github.com/abn54/Health-App/blob/3e687bd35ee794df1ce3ac12fc4449d893f53eaa/docs/evidence/conversation-exam-nov1.png) · [browser checks](https://github.com/abn54/Health-App/blob/3e687bd35ee794df1ce3ac12fc4449d893f53eaa/docs/evidence/conversation-browser-nov1.json) · [live evidence](https://github.com/abn54/Health-App/blob/3e687bd35ee794df1ce3ac12fc4449d893f53eaa/docs/evidence/conversation-live-nov1.json) · [deterministic scenarios](https://github.com/abn54/Health-App/blob/3e687bd35ee794df1ce3ac12fc4449d893f53eaa/docs/evidence/conversation-mocked-nov1.json) · [updated requirement checklist](https://github.com/abn54/Health-App/blob/3e687bd35ee794df1ce3ac12fc4449d893f53eaa/docs/part33-final-audit.md) · [AI disclosure](https://github.com/abn54/Health-App/blob/3e687bd35ee794df1ce3ac12fc4449d893f53eaa/AI-USE.md).
+
+The complete-skill recordings, real timings, clean-checkout run and broader accessibility scans below remain **October 30–31 observations of their pinned source**. They are not new November 1 runs and show earlier assistant copy. The new screenshot/browser/live/test evidence supplements those dated artifacts. The skill engine, steps and database schema were not changed in this conversation revision. No new full-duration recording or fresh-checkout test is claimed. Real screen-reader-user testing, broad semantic coverage and clinical effectiveness remain untested.
+
+---
+
+# October 31 baseline report (historical)
+
 **mello — final Part 3.3 requirement audit · October 31, 2026**
 
 Repository: [abn54/Health-App](https://github.com/abn54/Health-App). Submitted version: [`29eebcf3d82f3afb082ed9f7da361b27f6a3f297`](https://github.com/abn54/Health-App/commit/29eebcf3d82f3afb082ed9f7da361b27f6a3f297), branch `codex/part2-prototype`. Application source is `9f3f9de913180c2508808914eb2ab65aaadceb6d`; the submitted snapshot includes the final requirement audit, full current-layout demonstration and verification evidence for that unchanged tested source. Later report-only commits do not change that application code. The [October 30 submission](https://github.com/abn54/Health-App/blob/29eebcf3d82f3afb082ed9f7da361b27f6a3f297/submissions/part3/report-oct30.md) is retained as history.
