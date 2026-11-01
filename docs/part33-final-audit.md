@@ -1,5 +1,7 @@
 # Assignment 3.3 — requirement-to-evidence checklist
 
+**November 1 update:** [Conversation revision](conversation-update-nov1.md) supersedes the chat-topic/prompt and answer-scrolling portions of the October 31 source audit below. Current versions are catalog v7 / prompt v13; actual checks passed 67 backend tests, 21 client tests, build and 22 deterministic scenarios, plus 9/9 selected live topic matches. The October 31 clean checkout, recordings, full-skill timings and broader browser scans remain dated evidence for their original source; they were not all repeated for this conversation-only change.
+
 Checked October 31, 2026 against the student's latest pasted Assignment 3 overview. This is a software/evidence audit, **not a predicted grade**. The application remains source commit `9f3f9de913180c2508808914eb2ab65aaadceb6d`; this audit adds documentation, a full demonstration of that current interface, and further observed checks without changing product code. Source hashes were compared with the tested clean-checkout version.
 
 ## Required submission content

@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-01",
+  "method": "Actual Cua UI on a separate fictional SQLite database, prepared replies; no original user conversation exported.",
+  "checks": [
+    {
+      "id": "Q01",
+      "expected": "An exam-pressure question written independently of suggestion buttons receives reviewed exam support, not generic scope refusal.",
+      "observed": "You\n\nA fictional student is stressed for an upcoming exam. What is something they can do?\n\nPrepared reply\n\nAn upcoming exam can feel like a lot. One practical option is to choose a small revision task, work on that part, and leave room for a break. If you would like a short pause first, mello has one-minute breathing, grounding and STOP practices. You choose whether to use one; it is not a test you have to finish. Would you like help with a study plan or with choosing a practice?\n\nReply details\nRead reply aloud\nNHS ↗"
+    },
+    {
+      "id": "Q02",
+      "expected": "A rest question gets general sleep information with NHS source, without diagnosis or medication advice.",
+      "observed": "Prepared reply\n\nIt can be frustrating when it is hard to wind down. General NHS sleep guidance includes keeping a regular routine and making space to relax before bed. This app cannot tell what is causing sleep difficulties. If they keep happening or affect your day, a health professional can help you explore them. Would you like general sleep information or an explanation of a quiet, text-only practice?\n\nReply details\nRead reply aloud\nNHS Every Mind Matters ↗"
+    },
+    {
+      "id": "Q03",
+      "expected": "Friend/weekend wording selects social-support information rather than matching the substring end.",
+      "observed": "Prepared reply\n\nFeeling alone or under pressure with other people can be difficult. One option is to reach out to someone you trust, such as a friend, family member, tutor or student-support team. You can choose how much to share. I cannot decide a relationship situation for you, but I can explain the practices or help you think about what kind of support you are looking for.\n\nReply details\nRead reply aloud\nNHS ↗"
+    },
+    {
+      "id": "Q04",
+      "expected": "New long answer starts at the beginning in the scroll area; it does not hide above the composer.",
+      "observed": {
+        "activeTag": "BODY",
+        "reply": "Prepared replyAn upcoming exam can feel like a lot. One practical option is to choose a small revision task, work on that part, and leave room for a break. If you would like a short pause first, mello has one-minute breathing, grounding and STOP practices. You choose whether to use one; it is not a test you have to finish. Would you like help with a study plan or with choosing a practice?Reply detailsStandard reply · Saved reply-length choice; practice context not usedRead reply aloudNHS ↗",
+        "replyTop": 158.8203125,
+        "scrollAreaTop": 150.6328125
+      }
+    }
+  ]
+}

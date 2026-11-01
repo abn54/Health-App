@@ -191,7 +191,7 @@ def test_expanded_help_is_catalog_text_without_preference_or_session_control(cli
     result = ask(client, sid, question).json()
     assert result['source'] == 'mock' and result['reply_id'] == topic
     assert result['text'] == m.CATALOG[topic]
-    assert result['catalog_version'] == 'app-help-v6'
+    assert result['catalog_version'] == 'app-help-v7'
     detail = client.get('/api/sessions/' + sid).json()
     assert detail['status'] == 'draft' and detail['events'] == []
     assert detail['messages'][-1]['content'] == result['text']
@@ -423,3 +423,75 @@ def test_new_skills_answer_is_authored_not_model_instructions(client):
     assert response['reply_id'] == 'skills'
     assert response['text'] == m.CATALOG['skills']
     assert response['source'] == 'mock'
+
+
+@pytest.mark.parametrize('question,topic', [
+    ('Fictional example: I am stressed for an upcoming exam what is something I can do','exam'),
+    ('An imaginary student feels nervous about a midterm. Any ideas?','exam'),
+    ('My fictional friend is worried about a quiz tomorrow','exam'),
+    ('How can a student prepare without feeling so much revision pressure?','exam'),
+    ('How do I stop worrying about everything?','overwhelmed'),
+    ('Everything feels like too much at once','overwhelmed'),
+    ('I cannot focus on my homework','study'),
+    ('I keep procrastinating and my deadlines are close','study'),
+    ('How can I wind down before bed?','rest'),
+    ('Worries keep me awake at night','rest'),
+    ('I miss my friends and feel homesick','connection'),
+    ('It is the weekend and I feel alone','connection'),
+    ('When should a student seek help for stress?','finding_support'),
+    ('How can I find a counsellor?','finding_support'),
+    ('Which practice should I choose?','choose_skill'),
+    ('Hello','greeting'),
+    ('Could you explain something unrelated that you do not know?','unsupported'),
+])
+def test_free_wording_uses_reviewed_supportive_topics(client, question, topic):
+    sid, _ = create(client)
+    before = client.get('/api/preferences').json()
+    result = ask(client,sid,question).json()
+    assert result['reply_id'] == topic
+    assert result['text'] == m.CATALOG[topic]
+    assert result['catalog_version'] == 'app-help-v7'
+    assert result['source'] == 'mock'
+    if topic not in {'scope'}:
+        assert 'not a therapist' not in result['text']
+    assert client.get('/api/preferences').json() == before
+    saved = client.get('/api/sessions/'+sid).json()
+    assert saved['status'] == 'draft' and saved['first_instruction_at'] is None
+    assert len(saved['messages']) == 2
+
+
+@pytest.mark.parametrize('question', [
+    'Can you diagnose anxiety before my exam?',
+    'Do I have depression?',
+    'Should I take more medication to cope with test stress?',
+    'Can you be my therapist?',
+])
+def test_scope_boundary_does_not_depend_on_live_topic_classification(client, monkeypatch, question):
+    monkeypatch.setattr(m,'LIVE',True)
+    async def forbidden(*args): raise AssertionError('scope must not call provider')
+    monkeypatch.setattr(m,'provider',forbidden)
+    sid, _ = create(client)
+    result = ask(client,sid,question,mode='live').json()
+    assert result['reply_id'] == 'scope'
+    assert result['text'] == m.CATALOG['scope']
+    assert result['source'] == 'mock'
+    assert client.get('/api/health').json()['attempts'] == 0
+
+
+def test_live_can_select_new_exam_topic_but_not_generate_treatment(client, monkeypatch):
+    monkeypatch.setattr(m,'LIVE',True)
+    async def reviewed(*args): return '{"reply_id":"exam"}'
+    monkeypatch.setattr(m,'provider',reviewed)
+    sid, _ = create(client)
+    result = ask(client,sid,'A fictional student is worried about an exam',mode='live').json()
+    assert result['source'] == 'live' and result['text'] == m.CATALOG['exam']
+    assert result['evidence_ids'] == ['catalog:exam']
+    assert client.get('/api/health').json()['attempts'] == 1
+
+
+def test_unknown_question_invites_clarification_without_inventing_an_answer(client):
+    sid, _ = create(client)
+    result = ask(client,sid,'unrecognized fragment zqxwv').json()
+    assert result['reply_id'] == 'unsupported'
+    assert 'own words' in result['text']
+    assert 'not a therapist' not in result['text']

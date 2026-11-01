@@ -286,3 +286,8 @@ The core skill and flow remain. [Final revisions](part3-revisions.md) explains t
 ## October 31 — requested coastal library
 
 The student requested two more exercises and a professional location-based layout. The Ready library now offers breathing, 5–4–3–2–1 grounding and STOP, each one minute at its intended pace. This broadens the original single-skill choice after the first vertical slice was implemented/evaluated. Active practice still presents one step and explicit pause/exit. Sensory recall options and no required movement are explicit access adaptations, not tested clinical substitutes. The sole assistant is a bottom-right popup. The original generated coastal scenery is decorative and removed in higher contrast. [Actual changes, reasoning and evidence](coastal-update-oct31.md).
+
+
+## November1 — broader reviewed everyday questions
+
+The student's exam-pressure example exposed the narrow app-help fallback. The conversational scope now includes reviewed exam/study/rest/social-support information, with natural-worded input and optional suggestions. Ordinary concerns receive an acknowledgement and user-chosen general options; unclear questions invite clarification. App skill timing/steps and support remain independent. The wider catalog increases interpretation work and does not guarantee every question will be covered. [Evidence, sources and limits](conversation-update-nov1.md).

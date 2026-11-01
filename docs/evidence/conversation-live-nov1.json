@@ -1,0 +1,364 @@
+{
+  "date": "2026-11-01",
+  "method": "9 actual local Ollama requests through isolated FastAPI; 3 authored fictional questions repeated3 times; separate from stubs. One counted warm-up. No original user conversation exported.",
+  "before": {
+    "status": "ok",
+    "live_enabled": true,
+    "review_tools": true,
+    "model": "qwen2.5:3b",
+    "prompt_version": "catalog-selector-v13",
+    "attempts": 1,
+    "limit": 50,
+    "test_run_id": "conversation-nov1"
+  },
+  "after": {
+    "status": "ok",
+    "live_enabled": true,
+    "review_tools": true,
+    "model": "qwen2.5:3b",
+    "prompt_version": "catalog-selector-v13",
+    "attempts": 10,
+    "limit": 50,
+    "test_run_id": "conversation-nov1"
+  },
+  "preload": {
+    "returncode": 0,
+    "output": "Local model preloaded. The UI still defaults to mocked replies."
+  },
+  "settings": {
+    "temperature": 0,
+    "num_predict": 80,
+    "timeout_seconds": 8,
+    "format": "Selection JSON schema"
+  },
+  "models": {
+    "models": [
+      {
+        "name": "qwen2.5:3b",
+        "model": "qwen2.5:3b",
+        "modified_at": "2026-10-21T10:21:12.290743706-04:00",
+        "size": 1929912432,
+        "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 32768,
+          "embedding_length": 2048
+        },
+        "capabilities": [
+          "completion",
+          "tools"
+        ]
+      },
+      {
+        "name": "qwen2.5:1.5b",
+        "model": "qwen2.5:1.5b",
+        "modified_at": "2026-10-19T14:43:34.113973655-04:00",
+        "size": 986061892,
+        "digest": "65ec06548149b04c096a120e4a6da9d4017ea809c91734ea5631e89f96ddc57b",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "1.5B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 32768,
+          "embedding_length": 1536
+        },
+        "capabilities": [
+          "completion",
+          "tools"
+        ]
+      },
+      {
+        "name": "qwen2.5:0.5b",
+        "model": "qwen2.5:0.5b",
+        "modified_at": "2026-10-19T14:35:16.05057697-04:00",
+        "size": 397821319,
+        "digest": "a8b0c51577010a279d933d14c2a8ab4b268079d44c5c8830c0a93900f1827c67",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "494.03M",
+          "quantization_level": "Q4_K_M",
+          "context_length": 32768,
+          "embedding_length": 896
+        },
+        "capabilities": [
+          "completion",
+          "tools"
+        ]
+      }
+    ]
+  },
+  "source_sha256": {
+    "backend/catalog.py": "df2a09a1d1322439ae97af2f2810f389a364b251d71476a5965d3a200a3a2b53",
+    "backend/main.py": "3ecee2c68bb9bb16dd5981451f10ed6eda635976fdd2f17f9a95f89a2c30d1e8",
+    "shared/help-content.json": "733ba24c4f5ab644bf5770b814d1aadaed14b47a723699acc6f63706c77a4c26"
+  },
+  "cases": [
+    {
+      "question": "A fictional student is stressed about an upcoming exam. What could they try?",
+      "repeat": 1,
+      "expected": "exam",
+      "observed": {
+        "text": "An upcoming exam can feel like a lot. One practical option is to choose a small revision task, work on that part, and leave room for a break. If you would like a short pause first, mello has one-minute breathing, grounding and STOP practices. You choose whether to use one; it is not a test you have to finish. Would you like help with a study plan or with choosing a practice?",
+        "source": "live",
+        "reply_id": "exam",
+        "evidence_ids": [
+          "catalog:exam"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v13",
+        "catalog_version": "app-help-v7",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "639144d5-428c-4690-a59d-f1f19851f4d5",
+        "reply_detail": "standard",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "standard",
+          "history_used": false
+        }
+      },
+      "elapsed_ms": 3196.4,
+      "matched": true
+    },
+    {
+      "question": "A fictional student is stressed about an upcoming exam. What could they try?",
+      "repeat": 2,
+      "expected": "exam",
+      "observed": {
+        "text": "An upcoming exam can feel like a lot. One practical option is to choose a small revision task, work on that part, and leave room for a break. If you would like a short pause first, mello has one-minute breathing, grounding and STOP practices. You choose whether to use one; it is not a test you have to finish. Would you like help with a study plan or with choosing a practice?",
+        "source": "live",
+        "reply_id": "exam",
+        "evidence_ids": [
+          "catalog:exam"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v13",
+        "catalog_version": "app-help-v7",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "a81a962a-8b23-4880-a3ea-992d99a8d4b1",
+        "reply_detail": "standard",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "standard",
+          "history_used": false
+        }
+      },
+      "elapsed_ms": 359.48,
+      "matched": true
+    },
+    {
+      "question": "A fictional student is stressed about an upcoming exam. What could they try?",
+      "repeat": 3,
+      "expected": "exam",
+      "observed": {
+        "text": "An upcoming exam can feel like a lot. One practical option is to choose a small revision task, work on that part, and leave room for a break. If you would like a short pause first, mello has one-minute breathing, grounding and STOP practices. You choose whether to use one; it is not a test you have to finish. Would you like help with a study plan or with choosing a practice?",
+        "source": "live",
+        "reply_id": "exam",
+        "evidence_ids": [
+          "catalog:exam"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v13",
+        "catalog_version": "app-help-v7",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "0ae5c1f2-bba9-4b61-a6f5-c066177f870a",
+        "reply_detail": "standard",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "standard",
+          "history_used": false
+        }
+      },
+      "elapsed_ms": 332.58,
+      "matched": true
+    },
+    {
+      "question": "How can I wind down before bed?",
+      "repeat": 1,
+      "expected": "rest",
+      "observed": {
+        "text": "It can be frustrating when it is hard to wind down. General NHS sleep guidance includes keeping a regular routine and making space to relax before bed. This app cannot tell what is causing sleep difficulties. If they keep happening or affect your day, a health professional can help you explore them. Would you like general sleep information or an explanation of a quiet, text-only practice?",
+        "source": "live",
+        "reply_id": "rest",
+        "evidence_ids": [
+          "catalog:rest"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v13",
+        "catalog_version": "app-help-v7",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "6d6077b7-03c3-4d8c-996e-45041d31c704",
+        "reply_detail": "standard",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "standard",
+          "history_used": false
+        }
+      },
+      "elapsed_ms": 403.48,
+      "matched": true
+    },
+    {
+      "question": "How can I wind down before bed?",
+      "repeat": 2,
+      "expected": "rest",
+      "observed": {
+        "text": "It can be frustrating when it is hard to wind down. General NHS sleep guidance includes keeping a regular routine and making space to relax before bed. This app cannot tell what is causing sleep difficulties. If they keep happening or affect your day, a health professional can help you explore them. Would you like general sleep information or an explanation of a quiet, text-only practice?",
+        "source": "live",
+        "reply_id": "rest",
+        "evidence_ids": [
+          "catalog:rest"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v13",
+        "catalog_version": "app-help-v7",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "562c25e1-43e5-4d69-ae76-b61e7a1e9a84",
+        "reply_detail": "standard",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "standard",
+          "history_used": false
+        }
+      },
+      "elapsed_ms": 332.23,
+      "matched": true
+    },
+    {
+      "question": "How can I wind down before bed?",
+      "repeat": 3,
+      "expected": "rest",
+      "observed": {
+        "text": "It can be frustrating when it is hard to wind down. General NHS sleep guidance includes keeping a regular routine and making space to relax before bed. This app cannot tell what is causing sleep difficulties. If they keep happening or affect your day, a health professional can help you explore them. Would you like general sleep information or an explanation of a quiet, text-only practice?",
+        "source": "live",
+        "reply_id": "rest",
+        "evidence_ids": [
+          "catalog:rest"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v13",
+        "catalog_version": "app-help-v7",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "f92e3f03-9611-4075-9bd2-a37c986e0849",
+        "reply_detail": "standard",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "standard",
+          "history_used": false
+        }
+      },
+      "elapsed_ms": 348.39,
+      "matched": true
+    },
+    {
+      "question": "How do I stop worrying about everything?",
+      "repeat": 1,
+      "expected": "overwhelmed",
+      "observed": {
+        "text": "That sounds like a lot to hold at once. If a pause would be useful, you can choose one of the short practices here, or simply take a break from the app. You could also talk things through with someone you trust. What would be most useful right now: understanding the feeling, learning about a practice, or finding someone to talk to?",
+        "source": "live",
+        "reply_id": "overwhelmed",
+        "evidence_ids": [
+          "catalog:overwhelmed"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v13",
+        "catalog_version": "app-help-v7",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "dbe36fef-2186-4fb0-8609-27c391b0f1eb",
+        "reply_detail": "standard",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "standard",
+          "history_used": false
+        }
+      },
+      "elapsed_ms": 435.12,
+      "matched": true
+    },
+    {
+      "question": "How do I stop worrying about everything?",
+      "repeat": 2,
+      "expected": "overwhelmed",
+      "observed": {
+        "text": "That sounds like a lot to hold at once. If a pause would be useful, you can choose one of the short practices here, or simply take a break from the app. You could also talk things through with someone you trust. What would be most useful right now: understanding the feeling, learning about a practice, or finding someone to talk to?",
+        "source": "live",
+        "reply_id": "overwhelmed",
+        "evidence_ids": [
+          "catalog:overwhelmed"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v13",
+        "catalog_version": "app-help-v7",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "4dbd3af4-3b83-4f9e-bdf2-e0c4c00a1331",
+        "reply_detail": "standard",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "standard",
+          "history_used": false
+        }
+      },
+      "elapsed_ms": 365.25,
+      "matched": true
+    },
+    {
+      "question": "How do I stop worrying about everything?",
+      "repeat": 3,
+      "expected": "overwhelmed",
+      "observed": {
+        "text": "That sounds like a lot to hold at once. If a pause would be useful, you can choose one of the short practices here, or simply take a break from the app. You could also talk things through with someone you trust. What would be most useful right now: understanding the feeling, learning about a practice, or finding someone to talk to?",
+        "source": "live",
+        "reply_id": "overwhelmed",
+        "evidence_ids": [
+          "catalog:overwhelmed"
+        ],
+        "model_id": "qwen2.5:3b",
+        "prompt_version": "catalog-selector-v13",
+        "catalog_version": "app-help-v7",
+        "rule_id": null,
+        "note": null,
+        "attempt_id": "d42f6a4d-ba92-4bcc-a13f-5ed6ac003b26",
+        "reply_detail": "standard",
+        "personalization_version": "profile-copy-v1",
+        "personalization_context": {
+          "reply_detail": "standard",
+          "history_used": false
+        }
+      },
+      "elapsed_ms": 376.62,
+      "matched": true
+    }
+  ],
+  "matches": 9,
+  "limits": "Small development sample, not proof of arbitrary-question coverage or clinical accuracy. Model remains allowlisted selection, not unrestricted generated advice.",
+  "post_evaluation_note": {
+    "change": "After the live run, only the two new source resource kind labels changed from reviewed to source inspected November 1. Topic context/answer/brief and backend prompt were unchanged. Original evaluated source_sha256 values above are retained.",
+    "current_catalog_sha256": "1f47f54bfa3683d6afb5b2b17f2f7c9dbc49fb78b4f6c1a38bcaf02d8a7f8bb3",
+    "model_context_definition": "backend/catalog.py MODEL_CONTEXT includes topics[key].context only, not resource kind labels."
+  }
+}

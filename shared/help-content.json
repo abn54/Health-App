@@ -1,6 +1,6 @@
 {
-  "version": "app-help-v6",
-  "reviewed_on": "2026-10-31",
+  "version": "app-help-v7",
+  "reviewed_on": "2026-11-01",
   "topics": {
     "pacing": {
       "context": "Six cycles: inhale four one-second counts, exhale six. Total planned duration 60 seconds.",
@@ -39,10 +39,10 @@
       "brief": "Choose a practice and Start when you want. No question or check-in is required."
     },
     "unsupported": {
-      "context": "Personal mental-health advice or unrelated requests are outside the app-help scope.",
-      "answer": "I am a coursework app assistant, not a therapist, and nobody monitors this prototype. I can explain the exercise, controls, saved records and reviewed general information. Personal assessments, diagnoses and treatment advice are outside this prototype. The Crisis support control is always available.",
+      "context": "Question is unclear or outside the reviewed stress/study/rest/social support and app-help material. Ask a focused clarifying question; do not claim to answer every subject or invent facts.",
+      "answer": "I’m not sure which part you would like help with. You do not need to choose a suggested question: ask in your own words about exam pressure, workload, rest, finding support or the practices. What are you hoping to understand or do next?",
       "sources": [],
-      "brief": "I am a coursework app assistant, not a therapist, and nobody monitors this prototype. I can explain reviewed app information, but cannot diagnose or provide treatment. Crisis support is always available."
+      "brief": "You can ask in your own words. Is your question about stress, studying, rest, finding support or using a practice?"
     },
     "preferences": {
       "context": "Remember explicitly saves the cue. Local profile explicitly saves standard/brief reply detail and optional saved-practice context, off by default. Reset and override remain available. No inferred mood.",
@@ -76,15 +76,75 @@
       "brief": "The reading shelf labels public information, professional overviews and publisher listings. No full handbook was imported, and these links do not make the app a diagnostic tool."
     },
     "about": {
-      "context": "Purpose/features: three fixed 60-second coursework practices (4/6 breathing, 5-4-3-2-1 grounding and STOP), optional app questions, explicit breathing cue/profile preferences and dated history. No therapy/diagnosis/monitoring.",
-      "answer": "mello gives you a simple place to try three short practices: paced breathing, 5–4–3–2–1 grounding and STOP. You choose a practice, follow the reviewed steps, and pause or stop whenever you want. I can help you find features, explain the practices, and explore the reading shelf.",
-      "brief": "mello brings three short guided practices, optional app help, and your saved settings and history together. You choose when to start, pause, or stop.",
+      "context": "Purpose/features: three fixed one-minute coursework practices, reviewed general stress/study/rest information, optional natural-language questions, explicit breathing preferences and dated history. No therapy, diagnosis or monitoring.",
+      "answer": "mello brings together three short practices, reviewed information about everyday stress and studying, and your saved settings and history. You can ask questions in your own words, choose a practice, or pause or stop whenever you want.",
+      "brief": "mello offers three short practices, reviewed everyday-stress information, optional questions in your own words, and saved settings and history.",
       "sources": []
     },
     "skills": {
       "context": "Three fixed 60-second practices: 4/6 breathing; 5-4-3-2-1 sensory grounding (see five, feel four, hear three, smell two, taste one); STOP (stop, take a step back, observe, proceed mindfully). Direct Start, no typing. Pause for more time; End anytime. App owns steps and timing.",
       "answer": "Choose from three practices on the Practice page: paced breathing, 5–4–3–2–1 grounding, or STOP. Each has a 60-second guided sequence, with Pause for more time and End whenever you choose. Grounding moves through seeing, feeling, hearing, smelling and tasting; the interface offers recalled examples when a sense is unavailable. STOP follows Stop, Take a step back, Observe, and Proceed mindfully. No response or written answer is required.",
       "brief": "Practice offers breathing, 5–4–3–2–1 grounding and STOP. Each has a fixed one-minute guide. Pause for more time, or End whenever you choose.",
+      "sources": []
+    },
+    "exam": {
+      "context": "Upcoming exams, test nerves, fear of failing, revision pressure. Acknowledge pressure; offer manageable study planning, breaks and an optional fixed app practice. Do not assess the person or predict grades.",
+      "answer": "An upcoming exam can feel like a lot. One practical option is to choose a small revision task, work on that part, and leave room for a break. If you would like a short pause first, mello has one-minute breathing, grounding and STOP practices. You choose whether to use one; it is not a test you have to finish. Would you like help with a study plan or with choosing a practice?",
+      "brief": "Exam pressure can feel like a lot. You could pick one small revision task and leave room for a break. An optional one-minute practice is also available here. Would you prefer study-planning ideas or a practice explanation?",
+      "sources": [
+        "nhs-student-stress"
+      ]
+    },
+    "study": {
+      "context": "Concentration, procrastination, workload, homework, deadlines and revision planning. Offer one small manageable task and planned breaks, without demanding a productivity schedule.",
+      "answer": "Getting started can be difficult when the workload feels large. One general planning example is to choose a topic, review a small section, then check your understanding with a practice question before a break. You can change that example to fit your own workload. A short practice here is optional; you do not have to finish one before studying.",
+      "brief": "You could choose one manageable next step from the workload and plan a break. Would you like a small planning example or an explanation of a practice?",
+      "sources": [
+        "nhs-student-stress"
+      ]
+    },
+    "overwhelmed": {
+      "context": "Feeling overwhelmed, stressed, nervous, anxious or worried in ordinary daily situations. Supportive acknowledgement, optional pause and user choice; no diagnosis or inference from history.",
+      "answer": "That sounds like a lot to hold at once. If a pause would be useful, you can choose one of the short practices here, or simply take a break from the app. You could also talk things through with someone you trust. What would be most useful right now: understanding the feeling, learning about a practice, or finding someone to talk to?",
+      "brief": "That sounds like a lot at once. A short practice, a break, or talking with someone you trust are options. Would you like an explanation of a practice or information about finding support?",
+      "sources": [
+        "nimh-stress"
+      ]
+    },
+    "rest": {
+      "context": "Trouble winding down, sleep routine, lying awake with worries, tiredness. General NHS sleep information only; do not diagnose insomnia or recommend medication.",
+      "answer": "It can be frustrating when it is hard to wind down. General NHS sleep guidance includes keeping a regular routine and making space to relax before bed. This app cannot tell what is causing sleep difficulties. If they keep happening or affect your day, a health professional can help you explore them. Would you like general sleep information or an explanation of a quiet, text-only practice?",
+      "brief": "A regular routine and time to wind down are general sleep options. If sleep difficulties persist or affect your day, a health professional can help. Would you like sleep information or a practice explanation?",
+      "sources": [
+        "nhs-sleep"
+      ]
+    },
+    "connection": {
+      "context": "Loneliness, homesickness, friendship or relationship pressure and difficulty talking to people. Offer connection to a trusted person/tutor/counsellor, without deciding relationship actions.",
+      "answer": "Feeling alone or under pressure with other people can be difficult. One option is to reach out to someone you trust, such as a friend, family member, tutor or student-support team. You can choose how much to share. I cannot decide a relationship situation for you, but I can explain the practices or help you think about what kind of support you are looking for.",
+      "brief": "You can choose how much to share with someone you trust or a student-support team. I can explain a practice or the different ways to find support; I cannot decide a relationship for you.",
+      "sources": [
+        "nhs-student-stress"
+      ]
+    },
+    "finding_support": {
+      "context": "How or when to find counselling or professional help; stress that persists or disrupts daily life. No diagnosis, treatment choice or promise that prototype provides care.",
+      "answer": "You do not have to figure everything out alone. If stress is hard to manage, keeps returning or interferes with daily life, a qualified health professional or a campus counselling service can help you explore support. You can ask what they offer before deciding what to share. This app can explain general information and its practices; it does not connect you to a person or monitor the chat.",
+      "brief": "If stress is persistent, hard to manage or disrupting daily life, a health professional or campus counselling service can help you explore support. Nobody monitors this chat.",
+      "sources": [
+        "nimh-stress"
+      ]
+    },
+    "choose_skill": {
+      "context": "Compare app practices or ask which one to choose; offer choice rather than personal treatment selection. Breathing uses counts, grounding uses five senses with recall alternatives, STOP uses four prompts.",
+      "answer": "You can choose by the kind of guide you prefer. Breathing follows a four-in, six-out rhythm. Grounding moves through five senses, with recalled examples available when a sense is unavailable. STOP uses four prompts: Stop, Take a step back, Observe, and Proceed mindfully. Each guide is about one minute, with Pause and End available. I cannot know which will suit you best; trying any is optional.",
+      "brief": "Breathing offers a rhythm; grounding offers sensory prompts; STOP offers four reflection prompts. Each is optional, with Pause and End. Which kind of guide would you like to hear more about?",
+      "sources": []
+    },
+    "greeting": {
+      "context": "A greeting, thanks or request to talk. Invite a question in their own words without requiring disclosure or promising human companionship.",
+      "answer": "Hi, I’m mello’s app assistant. You can ask in your own words about everyday stress, exams, rest, finding support or the practices. The suggested questions are just starting points. What would you like to explore?",
+      "brief": "Hi. You can ask in your own words about everyday stress, exams, rest or the practices. What would you like to explore?",
       "sources": []
     }
   },
@@ -124,12 +184,34 @@
       "kind": "Professional reference overview",
       "description": "An overview of a diagnostic classification reference. This prototype does not apply diagnostic criteria.",
       "icon": "book"
+    },
+    {
+      "id": "nhs-student-stress",
+      "label": "NHS",
+      "title": "Student stress and study pressure",
+      "url": "https://www.nhs.uk/mental-health/children-and-young-adults/help-for-teenagers-young-adults-and-students/student-stress-self-help-tips/",
+      "kind": "Public information · source inspected November 1",
+      "description": "General information about student stress, manageable work and finding support. No personal assessment.",
+      "icon": "book"
+    },
+    {
+      "id": "nhs-sleep",
+      "label": "NHS Every Mind Matters",
+      "title": "Sleep and winding down",
+      "url": "https://www.nhs.uk/every-mind-matters/mental-health-issues/sleep/",
+      "kind": "Public information · source inspected November 1",
+      "description": "General sleep information; the app does not diagnose a sleep condition or recommend medication.",
+      "icon": "leaf"
     }
   ],
   "faq_groups": [
     {
       "id": "practice",
       "label": "The practice"
+    },
+    {
+      "id": "everyday",
+      "label": "Everyday questions"
     },
     {
       "id": "choices",
@@ -200,15 +282,45 @@
       "group": "learn",
       "question": "Can I ask for a diagnosis or personal advice?",
       "topic": "unsupported"
+    },
+    {
+      "group": "everyday",
+      "question": "What could I try when an exam feels stressful?",
+      "topic": "exam"
+    },
+    {
+      "group": "everyday",
+      "question": "Where can I start with a large workload?",
+      "topic": "study"
+    },
+    {
+      "group": "everyday",
+      "question": "What if everything feels like too much?",
+      "topic": "overwhelmed"
+    },
+    {
+      "group": "everyday",
+      "question": "What can I read about winding down?",
+      "topic": "rest"
+    },
+    {
+      "group": "everyday",
+      "question": "How can I find someone to talk to?",
+      "topic": "finding_support"
+    },
+    {
+      "group": "everyday",
+      "question": "How do I choose between the practices?",
+      "topic": "choose_skill"
     }
   ],
   "suggestions": [
-    "How long is the exercise?",
-    "Can I turn off the moving circle?",
-    "Can it remember my usual cue?",
-    "What exercises can I choose?",
-    "What is stress?",
-    "What can mello help me with?"
+    "I’m worried about an upcoming exam. What could I try?",
+    "Everything feels like too much. What are my options?",
+    "How can I wind down before bed?",
+    "Which practice can I choose?",
+    "What gets saved?",
+    "Can I turn off the moving circle?"
   ],
   "personalization": {
     "current": {

@@ -6,7 +6,7 @@ Vue, FastAPI, and SQLite application running on **localhost only**. Choose paced
 
 Repository: [abn54/Health-App](https://github.com/abn54/Health-App). Submission: [report.md](report.md). The original design report is retained in [submissions/part1/report.md](submissions/part1/report.md). Earlier Part 2 reports remain in [submissions/part2/](submissions/part2/), including the last submitted [Part 2 report](submissions/part2/latest-report.md).
 
-Part 3.3 current submission index: [requirement-by-requirement final checklist](docs/part33-final-audit.md), [new full demonstration of the coastal interface](docs/recordings/final-full-demo-oct31.mp4), [process screencast/code explanation](docs/recordings/part3-process.mp4), [design revisions](docs/part3-revisions.md), [coastal revision evidence](docs/coastal-update-oct31.md), and [current clean-checkout evidence](docs/evidence/coast-clean-checkout-oct31.json). Application code remains9f3f9de; the final audit adds evidence/docs without changing that tested source. Older dated plans, tests and recordings remain explicitly historical.
+Part 3.3 October 31 baseline index: [requirement-by-requirement final checklist](docs/part33-final-audit.md), [new full demonstration of the coastal interface](docs/recordings/final-full-demo-oct31.mp4), [process screencast/code explanation](docs/recordings/part3-process.mp4), [design revisions](docs/part3-revisions.md), [coastal revision evidence](docs/coastal-update-oct31.md), and [current clean-checkout evidence](docs/evidence/coast-clean-checkout-oct31.json). That audit and clean checkout cover source9f3f9de. The November 1 conversation revision and its new tests/browser/live evidence are documented below; the earlier recordings and full-skill timing remain dated baseline observations.
 
 Presentation preparation: [rubric-aligned walkthrough and speaking notes](presentation-walkthrough.md), [profile changes and actual checks](docs/presentation-readiness-oct28.md). Expand **Your local profile** on Practice for **Standard explanations / Brief reminders** and an opt-in switch to use cue/saved practice context in replies. **Save profile** persists these choices; **Reset profile** restores standard replies and context off while keeping cue/history. One profile is shared by anyone using this localhost server; no account, name, diagnosis or mood rating is needed.
 
@@ -18,9 +18,11 @@ Current interface (October 31): **mello — the quiet coast**. The top bar has P
 
 New guides: **5–4–3–2–1 grounding** uses five 12-second prompts; **STOP** uses four 15-second prompts. Both have an intended one-minute sequence, Pause for more time, immediate End, interruption recovery and skill-labeled local history. The model cannot edit their steps or timing. All practice audio remains off. Profile/history response tailoring deliberately remains specific to breathing records and is labeled accordingly.
 
+November1 conversation update: **ask in your own words** about exam pressure, workload, overwhelm, winding down, social pressure, finding support or the practices. Suggestions are optional examples. Prepared mode maps wording to reviewed answers; live mode selects from the same broader catalog. Replies link relevant NHS/NIMH sources. Unclear/out-of-scope questions receive a clarifying prompt rather than a repetitive role warning. This does not mean the app can answer every subject or provide clinical care. Explicit role/diagnosis/medication requests get reviewed limits without relying on a model selection. [Actual changes, evidence and limits](docs/conversation-update-nov1.md).
+
 The assistant popup keeps a rounded message composer visible while the conversation scrolls. Enter sends; Shift+Enter adds a line. Read replies enables optional spoken replies; Reply & voice options expands voice/speed and prepared/live controls. Existing storage names remain compatible.
 
-Earlier functional refinements: color-coded inhale/exhale, an optional assistant popup, eleven FAQs, six editable suggested questions, an SVG rhythm guide and a source-labeled reading shelf. [October 27 changes and actual verification](docs/ui-refinement-oct27.md).
+Earlier functional refinements: color-coded inhale/exhale, an optional assistant popup, FAQs, editable suggested questions, an SVG rhythm guide and a source-labeled reading shelf. [October 27 changes and actual verification](docs/ui-refinement-oct27.md).
 
 ## Run a clean checkout
 
@@ -80,7 +82,7 @@ For deliberate fictional failures, launch with `REVIEW_TOOLS=1`. Expand **Course
 4. Review History: Started and Last chatted dates/times, per-message timestamps in the device’s time zone, status, initial/final cue, timing, events, and conversation source labels. Draft questions are “Not started.” Reuse copies a recorded cue into Ready without starting or remembering it.
 5. Deleting a session removes its conversation/events. Delete all additionally resets cue and profile choices after confirmation. Provider-attempt accounting remains. Unsaved records stay only in page memory with Retry; the summary also offers Leave without saving, so a failed write cannot trap someone after End. Unsaved changes may be lost; already saved records remain in History.
 
-The current catalog is `app-help-v6`, prompt template `catalog-selector-v12`, and personalization copy `profile-copy-v1`. The model remains `qwen2.5:3b`.
+The current catalog is `app-help-v7`, prompt template `catalog-selector-v13`, and personalization copy `profile-copy-v1`. The model remains `qwen2.5:3b`.
 
 To use a different loopback port for an isolated review, set `MELLO_PORT=8002 sh scripts/run.sh`; the default remains 8000.
 
