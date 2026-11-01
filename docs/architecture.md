@@ -259,3 +259,8 @@ The profile's last-practice query intentionally filters breathing content versio
 ## November1 — catalog-v7 / selector-v13
 
 Eight new allowlisted everyday-information topics extend the shared catalog and Selection literal. Prepared routing normalizes wording and uses ordered word-boundary/intent patterns, avoiding the former friend/weekend→end substring collision. A scope content check precedes live-call reservation for explicit role/diagnosis/medication requests; reviewed prepared scope text is returned without an inference or false budget note. Crisis phrase handling and manual support remain unchanged. Live prompts still contain current question and authored facts/examples only, with no raw profile/history. The same renderer, source/version persistence, budget and text-only display apply. A miss returns a reviewed clarifying question. The popup message watcher now aligns a new assistant answer's top instead of its tail, retaining input focus. No skill engine/schema/migration change. [Actual tests and browser evidence](conversation-update-nov1.md).
+
+
+## November 1 — motion precedence and display state
+
+Visit-only Vue refs toggle root classes for font/spacing/scenery/contrast/size/motion. motionSafeCue enforces text-only while Reduce motion is enabled across startup, explicit changes, reset and saved-history reuse. Active cue changes retain the existing event/persistence path; timing/model/schema are unchanged. Native fieldsets/labels and keyboard tips use the existing focus/escape behavior. [Actual evidence](accessibility-options-nov1.md).

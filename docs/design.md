@@ -291,3 +291,8 @@ The student requested two more exercises and a professional location-based layou
 ## November1 — broader reviewed everyday questions
 
 The student's exam-pressure example exposed the narrow app-help fallback. The conversational scope now includes reviewed exam/study/rest/social-support information, with natural-worded input and optional suggestions. Ordinary concerns receive an acknowledgement and user-chosen general options; unclear questions invite clarification. App skill timing/steps and support remain independent. The wider catalog increases interpretation work and does not guarantee every question will be covered. [Evidence, sources and limits](conversation-update-nov1.md).
+
+
+## November 1 — optional accessibility setup
+
+Named reading/motion groups add optional font, spacing, scenery and motion choices; one disclosure and Reset limit setup effort (D3/R4/D6). The three prescribed guides already satisfy the one-or-more skill scope. No fourth written reframe was added. Choices are visit-only and separate from saved profile/history. [Reasoning and actual checks](accessibility-options-nov1.md).

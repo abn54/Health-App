@@ -46,3 +46,8 @@ The new explicit local profile adds a reversible standard/brief reply choice and
 ## October 31 — requested scope expansion
 
 [Coastal revision](coastal-update-oct31.md) adds Grounding and STOP after the working breathing slice. Three explicit choices on Ready strengthen R4 at some entry-effort cost; one instruction at a time during practice retains D2. Each is planned for60s (R1), with optional Pause/End/support (R2/R3/D4). D3 avoids required writing; D5 remains explicit breathing cue/profile choices rather than inferred needs. Static muted scenery and word-based access options reflect D6, without claiming that a coastal image improves symptoms. D1 remains activity-based simplification. New actual evidence is dated separately from the October30 evaluation.
+
+
+## November 1 — accessibility choices
+
+D6/R4 support explicit reversible scenery/motion/reading choices; D3 supports optional grouped setup and no required disclosure. The tradeoff is added optional configuration, not a clinically inferred persona. Three existing skills satisfy the brief; no fourth skill is needed. [Decisions and verification](accessibility-options-nov1.md).

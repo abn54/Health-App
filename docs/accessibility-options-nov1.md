@@ -1,0 +1,32 @@
+# November 1 — accessibility choices for Part 3.3
+
+The student's request was to improve accessibility where useful and add exercises only if needed for Part 3.3. The supplied overview requires **one or more** of its four listed skills; it explicitly does not require all four. Breathing, Grounding and STOP already meet that scope. A fourth cognitive-reframe exercise would add written judgments and more verification; it is not added merely to enlarge the feature list. This is a scope decision, not a claim that three skills guarantee full credit.
+
+## Implemented choices
+
+Accessibility options now groups native labeled controls in two named fieldsets. Existing Higher contrast and Larger text remain. New choices are **Simple reading font**, **More text spacing**, **Hide decorative scenery**, and **Reduce motion**. The spacing option uses line-height1.5, letter-spacing0.12em, word-spacing0.16em and paragraph margin2em; headings/buttons wrap. Simple font removes decorative serif headings. Hide scenery removes the body/hero image and decorative skill art, while retaining names and Start controls. None changes the approved skill steps.
+
+Reduce motion starts from the system setting, switches breathing to text, and disables choosing animation while enabled. Remembered/reused animated cues cannot silently override it. Turning it off permits an explicit animated choice; it does not automatically re-enable animation or restart timing. Cue changes during an active breathing practice use the existing event journal. Existing remembered cue/profile data are written only through their separate explicit Save/Remember controls.
+
+Screen-reader choices are now labeled **Each step or breathing phase**, **Each step or breathing count**, and **Off**, so they describe Grounding/STOP as well as breathing. This changes labels, not the announcement engine. Instructions, Pause/Resume/End, redundant color/words and the independent support route remain. Practices still have no app-generated audio. Keyboard tips explain Tab/Shift+Tab, activation and Escape; no new global single-key shortcuts are introduced. Reset display options restores system motion/contrast defaults, ordinary font/spacing/size/scenery and phase/step announcements, leaving saved profile/history intact. These options last for the current page visit; they are not persisted or inferred from a disability.
+
+## Research and standards reasoning
+
+D6 motivates an explicit way to reduce imagery/movement. R4 motivates reversible choices and retaining text/control alternatives. D3 motivates putting setup behind one disclosure, requiring no questionnaire and keeping settings optional. D1 remains simplification by chosen activity, not distress detection. Six choices add configuration effort; grouping, defaults and Reset are the compromise. Existing profile/history personalization remains separate, rather than making a disability profile.
+
+[W3C Text Spacing guidance](https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html) supports checking that spacing changes do not lose content; it does not require an on-page toggle. [W3C Animation from Interactions guidance](https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html) supports user control over nonessential motion. These pages were inspected November1,2026. Neither these references nor a settings panel establish WCAG conformance.
+
+## Actual verification
+
+- **22 client tests passed**, including a new motion-policy check; **67 backend tests passed** and the production build passed. Existing Starlette/httpx deprecation warning remains. No backend/model/skill sequence/schema change was made.
+- [Twelve actual browser checks](evidence/accessibility-options-browser-nov1.json) use a separate fictional SQLite database. All six choices applied together; imagery was removed, simple font/spacing applied, and text cue selected. Breathing paused at cycle1/exhale/count5; changing announcements to Off, allowing explicit animation and resetting options kept the paused place. End saved a stopped partial run. This is not a new full-duration exercise measurement.
+- At320px with all six choices, the document width stayed320px and fieldsets reflowed to250px. The popup stayed within the viewport with a visible composer and a scrollable answer area. Shift+Tab wrapped inside; Escape restored launcher focus. Support remained available and closed by Escape. The viewport override was reset afterward.
+- Reusing the saved final **animated** cue with Reduce motion on still yielded **Text only**, disabled animation and no active exercise. Reload/navigation reset visit options; saved history remained. Read-only database inspection afterward found one fictional stopped session, four events, unchanged null remembered cue/default profile and **zero model attempts**.
+- The development audit harness ran **axe4.14.0** in Ready with all six options: **0 detected violations,43 passed rules**, with3 color-contrast-incomplete targets on decorative navigation/support symbols. This is one selected scan, not an audit of every view or certification. [Full scan and browser observations](evidence/accessibility-options-browser-nov1.json). The harness is excluded from the scan and absent from production.
+- [Production screenshot](evidence/accessibility-options-nov1.png) shows the finished panel. The main user's database/history were not used for these tests or exported; no provider call was needed.
+
+## Finding and limitations
+
+Code inspection found that the earlier startup/history paths assigned a saved animated cue directly, bypassing the initial system-motion default. The new shared motion policy covers startup, explicit choice, reset and reuse; the browser reuse check demonstrates the corrected precedence. This was an inspection finding, not a fabricated pre-fix browser test.
+
+The read-only browser surface returned empty `progress.value` fields in A02–A04; the evidence retains those empty values and relies on the actual visible/AX phase/count, not a made-up numerical timing. No real VoiceOver/NVDA session, blind-user study, universal disability access, acoustic-quality guarantee or full WCAG assessment is claimed. The existing dated full-skill timings/recordings remain historical; this refinement has selected new browser evidence rather than a new full demonstration video.

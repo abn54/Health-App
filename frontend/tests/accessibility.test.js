@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { exerciseAnnouncement } from '../src/accessibility.js'
+import { exerciseAnnouncement, motionSafeCue } from '../src/accessibility.js'
 
 test('phase announcements contain cycle, direction and prescribed duration, without every-frame chatter', () => {
   const r={cycle:2,phase:'Inhale',count:1}
@@ -17,4 +17,11 @@ test('paused state offers explicit resume/end; announcements can be switched off
   assert.match(exerciseAnnouncement('paused',r),/Exercise paused.*Cycle 3 of 6, exhale, count 2.*Resume or End/)
   assert.equal(exerciseAnnouncement('paused',r,'off'),'')
   for(const state of ['ready','completed','stopped','interrupted']) assert.equal(exerciseAnnouncement(state,r),'')
+})
+
+test('reduce motion overrides remembered or reused animation; switching it off permits explicit choice', () => {
+  assert.equal(motionSafeCue('animated', true), 'text')
+  assert.equal(motionSafeCue('text', true), 'text')
+  assert.equal(motionSafeCue('animated', false), 'animated')
+  assert.equal(motionSafeCue('text', false), 'text')
 })

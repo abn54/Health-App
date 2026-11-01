@@ -5,3 +5,8 @@ export function exerciseAnnouncement(status, reading, mode = 'phase') {
   const length = reading.phase === 'Inhale' ? 4 : 6
   return mode === 'count' ? `${reading.phase}, ${reading.count} of ${length}.` : `Cycle ${reading.cycle} of 6. ${reading.phase} for ${length} one-second counts.`
 }
+
+// Apply the same explicit motion choice to stored, reused and active cues.
+export function motionSafeCue(requested, reduceMotion) {
+  return reduceMotion ? 'text' : requested
+}

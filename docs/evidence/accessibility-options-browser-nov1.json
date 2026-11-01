@@ -1,0 +1,233 @@
+{
+  "date": "2026-11-01",
+  "method": "Actual Cua UI with isolated fictional SQLite; production build on 8001 and Vite read-only audit harness on 8002. No original user records exported. Scans do not establish full WCAG or real screen-reader compatibility.",
+  "checks": [
+    {
+      "id": "A01",
+      "expected": "All six explicitly selected options apply without changing saved profile; text-only cue and disabled animation under Reduce motion.",
+      "observed": {
+        "animationButtonDisabled": true,
+        "bodyBackground": "none",
+        "classes": "higher-contrast larger-text reading-font text-spacing plain-background reduce-motion",
+        "cuePressed": [
+          [
+            "\u25ef\nAnimated circle\nMovement + words",
+            "false"
+          ],
+          [
+            "Aa\nText only\nWords + count",
+            "true"
+          ]
+        ],
+        "font": "-apple-system, \"system-ui\", \"Segoe UI\", sans-serif",
+        "heroBackground": "none",
+        "overflow": false,
+        "paragraphSpacing": "2.04px"
+      }
+    },
+    {
+      "id": "A02",
+      "expected": "Breathing stays text-only; Pause holds a count while settings are reviewed.",
+      "observed": {
+        "heading": "Paused",
+        "live": "Exercise paused. Cycle 1 of 6, exhale, count 5. Resume or End exercise is your choice.",
+        "orbitCount": 0,
+        "phase": "Your place is held\nPaused\n5 / 6\n\nHolding exhale, count 5.",
+        "progress": ""
+      }
+    },
+    {
+      "id": "A03",
+      "expected": "Explicit animation becomes available after turning Reduce motion off; paused count stays held and announcement Off removes live text.",
+      "observed": {
+        "cue": "animated",
+        "heading": "Paused",
+        "live": "",
+        "orbitCount": 1,
+        "progress": ""
+      }
+    },
+    {
+      "id": "A04",
+      "expected": "Reset restores default display/announcement settings, without restarting paused practice.",
+      "observed": {
+        "announcement": "phase",
+        "classes": "",
+        "heading": "Paused",
+        "progress": "",
+        "status": "Display options reset to system defaults. Your saved profile and history are unchanged. Reset does not restart an exercise or enable animation automatically."
+      }
+    },
+    {
+      "id": "A05",
+      "expected": "End records a partial stopped practice rather than completion.",
+      "observed": {
+        "heading": "Exercise ended.",
+        "summary": "\u25cc\nSTOPPED \u00b7 PACED BREATHING\nExercise ended.\n\nThis is a partial session. You can review it or return when you choose.\n\n8.09 s\nPartial exercise time\n16.49 s\nEntry and setup\n27.77 s\nUser pause / support\n\nTiming includes application and render delays. Explicit pause and support intervals are excluded once. Interrupted sessions do not establish completion.\n\nReturn to ready \u2192\nReview saved history"
+      }
+    },
+    {
+      "id": "A06",
+      "expected": "At 320px with larger text and spacing, content reflows without page-wide horizontal scrolling.",
+      "observed": {
+        "buttonLabels": [
+          "Start breathing\n\u2197",
+          "Start grounding\n\u2197",
+          "Start STOP\n\u2197"
+        ],
+        "fieldsetWidths": [
+          250,
+          250
+        ],
+        "headerHeight": 192.1953125,
+        "scrollWidth": 320,
+        "width": 320
+      }
+    },
+    {
+      "id": "A07",
+      "expected": "Narrow assistant stays within viewport, composer remains reachable, Escape returns focus to launcher.",
+      "observed": {
+        "activeId": "assistant-popup-heading",
+        "composer": "{\"bottom\":635,\"height\":281.6015625,\"left\":24,\"right\":296,\"top\":353.3984375,\"width\":272,\"x\":24,\"y\":353.3984375}",
+        "popup": "{\"bottom\":714,\"height\":702,\"left\":8,\"right\":312,\"top\":12,\"width\":304,\"x\":8,\"y\":12}",
+        "scrollArea": "{\"bottom\":353.3984375,\"height\":81.5,\"left\":24,\"right\":296,\"top\":271.8984375,\"width\":272,\"x\":24,\"y\":271.8984375}",
+        "scrollWidth": 320,
+        "width": 320
+      }
+    },
+    {
+      "id": "A08",
+      "expected": "Shift+Tab from dialog heading wraps to last dialog control.",
+      "observed": {
+        "activeText": "Close assistant \u2192",
+        "inside": true
+      }
+    },
+    {
+      "id": "A09",
+      "expected": "Escape closes popup and restores launcher focus.",
+      "observed": {
+        "activeId": "assistant-launcher",
+        "popupExists": false
+      }
+    },
+    {
+      "id": "A10",
+      "expected": "Support remains available at narrow width with all options; Escape returns focus.",
+      "observed": {
+        "panel": "{\"bottom\":783,\"height\":768,\"left\":15,\"right\":305,\"top\":15,\"width\":290,\"x\":15,\"y\":15}",
+        "scrollWidth": 320,
+        "supportExists": true,
+        "width": 320
+      }
+    },
+    {
+      "id": "A11",
+      "expected": "Visit-only options reset on reload/navigation; saved records remain separate.",
+      "observed": {
+        "classes": "",
+        "options": [
+          {
+            "checked": false,
+            "label": "Higher contrast"
+          },
+          {
+            "checked": false,
+            "label": "Larger text"
+          },
+          {
+            "checked": false,
+            "label": "Simple reading font"
+          },
+          {
+            "checked": false,
+            "label": "More text spacing"
+          },
+          {
+            "checked": false,
+            "label": "Hide decorative scenery"
+          },
+          {
+            "checked": false,
+            "label": "Reduce motion"
+          }
+        ]
+      }
+    },
+    {
+      "id": "A12",
+      "expected": "Reusing a saved final animated cue respects the current Reduce motion choice and never starts an exercise.",
+      "observed": {
+        "activeExercise": false,
+        "classes": "reduce-motion",
+        "copy": "Nothing remembered. Your system motion setting is the default. Reduce motion is on; text only applies to this visit. Your remembered choice is unchanged.",
+        "cueButtons": [
+          {
+            "disabled": true,
+            "pressed": "false",
+            "text": "\u25ef\nAnimated circle\nMovement + words"
+          },
+          {
+            "disabled": false,
+            "pressed": "true",
+            "text": "Aa\nText only\nWords + count"
+          }
+        ]
+      }
+    }
+  ],
+  "scans": [
+    {
+      "state": "Ready, desktop, all six options",
+      "result": {
+        "version": "4.14.0",
+        "date": "2026-11-01T19:26:08.615Z",
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "targets": [
+              [
+                ".selected > span[aria-hidden=\"true\"]"
+              ],
+              [
+                "nav > button:nth-child(2) > span[aria-hidden=\"true\"]"
+              ],
+              [
+                "#support-control > span[aria-hidden=\"true\"]"
+              ]
+            ]
+          }
+        ],
+        "passedRules": 43
+      }
+    }
+  ],
+  "measurementNote": "Progress.value was not exposed by the read-only DOM surface and is empty in A02-A04. Actual AX snapshots held cycle1/exhale/count5 before and after toggles/reset; no numerical timing result is inferred from those empty fields.",
+  "source_sha256": {
+    "frontend/src/App.vue": "15f1f38a275044f65c6aec612e2a933ad161921403c340e340e1b95a3006e38b",
+    "frontend/src/accessibility.js": "6c389880e5309b8386cbcbe5e794a17e72f3be87060f1e1d99e0e6ce16fcc309",
+    "frontend/src/style.css": "610ea32993f5eaed7be4a029ea43e9f4871cb4cc5bee044060b29050273a2596",
+    "shared/exercises.json": "14564889f4236355368cd2fd740c8861a3008766a3a1255b6c21ec168c2ed28d"
+  },
+  "isolated_db_observed": {
+    "preferences": [
+      {
+        "id": 1,
+        "cue": null
+      }
+    ],
+    "profile": [
+      {
+        "id": 1,
+        "reply_detail": "standard",
+        "use_history": 0,
+        "updated_at": null
+      }
+    ],
+    "session_count": 1,
+    "event_count": 4,
+    "provider_attempts": 0
+  }
+}

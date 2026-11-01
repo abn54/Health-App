@@ -4,14 +4,15 @@ import { Exercise, phraseCue } from './engine.js'
 import { GuidedExercise } from './guided.js'
 import exercises from '../../shared/exercises.json'
 import { AudioOutput } from './audio.js'
-import { exerciseAnnouncement } from './accessibility.js'
+import { exerciseAnnouncement, motionSafeCue } from './accessibility.js'
 import AssistantPanel from './components/AssistantPanel.vue'
 import LocalProfile from './components/LocalProfile.vue'
 import HelpCenter from './components/HelpCenter.vue'
 import helpContent from '../../shared/help-content.json'
 
 const reduced = matchMedia('(prefers-reduced-motion: reduce)')
-const cue = ref(reduced.matches ? 'text' : 'animated')
+const reduceMotion = ref(reduced.matches)
+const cue = ref(motionSafeCue('animated', reduceMotion.value))
 const remembered = ref(null), prefStatus = ref(''), view = ref('ready'), support = ref(false)
 const status = ref('ready'), reading = ref({ elapsed: 0, cycle: 1, phase: 'Inhale', count: 1, scale: .7 })
 const current = ref(null), saved = ref('No session started'), pendingSave = ref(false), appError = ref('')
@@ -32,15 +33,25 @@ const skillName = version => Object.values(exercises).find(item => item.version 
 const practiceCue = () => breathing.value ? cue.value : 'text'
 const voices = ref([]), voiceURI = ref(''), voiceRate = ref(.95), autoRead = ref(false)
 const highContrast = ref(matchMedia('(prefers-contrast: more)').matches), largeText = ref(false), screenReaderUpdates = ref('phase')
+const plainBackground = ref(false), readingFont = ref(false), textSpacing = ref(false), accessibilityStatus = ref('')
 const exerciseLiveText = computed(() => {
   if (breathing.value) return exerciseAnnouncement(status.value, reading.value, screenReaderUpdates.value)
   if (!active.value || screenReaderUpdates.value === 'off') return ''
   return `${status.value === 'paused' ? 'Paused. ' : ''}Step ${reading.value.step} of ${reading.value.totalSteps}. ${reading.value.title}. ${reading.value.instruction} Pause and End remain available.`
 })
-watch([highContrast, largeText], ([contrast, large]) => {
-  document.documentElement.classList.toggle('higher-contrast', contrast)
-  document.documentElement.classList.toggle('larger-text', large)
+watch([highContrast, largeText, plainBackground, readingFont, textSpacing, reduceMotion], ([contrast, large, plain, font, spacing, motion]) => {
+  for (const [name, enabled] of Object.entries({'higher-contrast':contrast, 'larger-text':large, 'plain-background':plain, 'reading-font':font, 'text-spacing':spacing, 'reduce-motion':motion})) {
+    document.documentElement.classList.toggle(name, enabled)
+  }
 }, {immediate:true})
+watch(reduceMotion, enabled => { if (enabled) changeCue('text') }, {flush:'sync'})
+function resetAccessibility() {
+  highContrast.value = matchMedia('(prefers-contrast: more)').matches
+  largeText.value = plainBackground.value = readingFont.value = textSpacing.value = false
+  screenReaderUpdates.value = 'phase'
+  reduceMotion.value = reduced.matches
+  accessibilityStatus.value = 'Display options reset to system defaults. Your saved profile and history are unchanged. Reset does not restart an exercise or enable animation automatically.'
+}
 const audioState = ref({ busy:false, message:'Chatbot voice is off.' }), audioObservations = ref([])
 const audio = new AudioOutput({ synth:window.speechSynthesis, Utterance:window.SpeechSynthesisUtterance, changed:state => {
   audioState.value = state
@@ -228,6 +239,7 @@ function loop() {
 function visibility() { if (document.hidden) { stopAudio('Page hidden. Chatbot voice stopped.'); if (active.value) void finish('interrupted', 'Page hidden or left') } }
 function pagehide() { stopAudio(); if (active.value) { engine.finish('interrupted'); status.value = 'interrupted' } /* Next page recovers last persisted state; unload writes are not promised. */ }
 function changeCue(value) {
+  value = motionSafeCue(value, reduceMotion.value)
   cueTouched = true
   if (value === cue.value) return
   const before = cue.value; cue.value = value
@@ -239,10 +251,10 @@ async function remember() {
   catch { prefStatus.value = 'Preference not saved. Try again.' }
 }
 async function resetPreference() {
-  try { await api('/preferences', {method:'PUT',body:JSON.stringify({cue:null})}); remembered.value = null; cue.value = reduced.matches ? 'text' : 'animated'; prefStatus.value = 'Preference reset to system setting' }
+  try { await api('/preferences', {method:'PUT',body:JSON.stringify({cue:null})}); remembered.value = null; cue.value = motionSafeCue('animated', reduceMotion.value); prefStatus.value = 'Preference reset to system setting' }
   catch { prefStatus.value = 'Preference reset failed' }
 }
-function motionChange(e) { if (e.matches) changeCue('text') }
+function motionChange(e) { reduceMotion.value = e.matches }
 function openSupport() {
   stopAudio('Crisis support opened. Chatbot voice stopped.')
   if (support.value) return
@@ -327,7 +339,7 @@ function reuse() {
   const setting = selected.value.cue_final
   const version = selected.value.content_version
   ready(); chosenSkill.value = Object.keys(exercises).find(id => exercises[id].version === version) || 'breathing'
-  if (chosenSkill.value === 'breathing') cue.value = setting
+  if (chosenSkill.value === 'breathing') changeCue(setting)
   prefStatus.value = 'Copied from history for review; not remembered'
 }
 function reopenDraft() {
@@ -343,7 +355,7 @@ async function deleteSession(id) {
 }
 async function deleteAll() {
   if (active.value || pendingSave.value || asking.value) return
-  try { await api('/local-data',{method:'DELETE'}); deleteConfirm.value = false; history.value = []; selected.value = null; current.value = null; status.value = 'ready'; messages.value = []; remembered.value = null; cue.value = reduced.matches ? 'text' : 'animated'; saved.value = 'No session started'; profileTouched = false; await refreshProfile(true) }
+  try { await api('/local-data',{method:'DELETE'}); deleteConfirm.value = false; history.value = []; selected.value = null; current.value = null; status.value = 'ready'; messages.value = []; remembered.value = null; cue.value = motionSafeCue('animated', reduceMotion.value); saved.value = 'No session started'; profileTouched = false; await refreshProfile(true) }
   catch { historyError.value = 'Deletion failed; local data may still exist.' }
 }
 async function ask(retry = false) {
@@ -382,10 +394,10 @@ onMounted(async () => {
     await api('/recover', {method:'POST'})
     const [prefs, health] = await Promise.all([api('/preferences'),api('/health')])
     capabilities.value = health; remembered.value = prefs.cue
-    if (prefs.cue && !cueTouched && status.value === 'ready') cue.value = prefs.cue
+    if (prefs.cue && !cueTouched && status.value === 'ready') cue.value = motionSafeCue(prefs.cue, reduceMotion.value)
   } catch { appError.value = 'Local server unavailable. Exercise and Crisis support still work; saving needs the server.' }
 })
-onUnmounted(() => { document.removeEventListener('keydown', dialogEscape, true); headerObserver?.disconnect(); document.documentElement.style.removeProperty('--header-offset'); document.documentElement.classList.remove('higher-contrast','larger-text'); audio.dispose(); window.speechSynthesis?.removeEventListener('voiceschanged', refreshVoices); cancelAnimationFrame(raf); document.removeEventListener('visibilitychange', visibility); window.removeEventListener('pagehide', pagehide); reduced.removeEventListener('change', motionChange) })
+onUnmounted(() => { document.removeEventListener('keydown', dialogEscape, true); headerObserver?.disconnect(); document.documentElement.style.removeProperty('--header-offset'); document.documentElement.classList.remove('higher-contrast','larger-text','plain-background','reading-font','text-spacing','reduce-motion'); audio.dispose(); window.speechSynthesis?.removeEventListener('voiceschanged', refreshVoices); cancelAnimationFrame(raf); document.removeEventListener('visibilitychange', visibility); window.removeEventListener('pagehide', pagehide); reduced.removeEventListener('change', motionChange) })
 </script>
 
 <template>
@@ -405,7 +417,31 @@ onUnmounted(() => { document.removeEventListener('keydown', dialogEscape, true);
       <div class="context-header"><span class="eyebrow">{{ view === 'history' ? 'YOUR SAVED RECORDS' : view === 'assistant' ? 'YOUR OPTIONAL APP ASSISTANT' : 'A LITTLE ROOM TO PRACTICE' }}</span><span class="local-label"><i></i> Local coursework prototype</span></div>
       <div class="coursework-notice"><span class="notice-dot"></span> Coursework prototype · demo use only. Not therapy, diagnosis, or human monitoring.</div>
 
-        <details class="accessibility-tools"><summary>Accessibility options</summary><div class="accessibility-body"><p>Use a keyboard or screen reader throughout. Color is always paired with words. These choices apply to this visit.</p><label><input v-model="highContrast" type="checkbox"> Higher contrast</label><label><input v-model="largeText" type="checkbox"> Larger text</label><label for="screen-reader-updates">Screen-reader practice updates</label><select id="screen-reader-updates" v-model="screenReaderUpdates"><option value="phase">Phase and cycle</option><option value="count">Each count</option><option value="off">Off</option></select><small>Practices have no app-generated voice or sounds. Your screen reader can read these updates in its own voice. Announcements may lag; Pause and End are always available. Chatbot voice is separate and optional.</small></div></details>
+        <details class="accessibility-tools">
+          <summary>Accessibility options</summary>
+          <div class="accessibility-body">
+            <p>Choose what makes this easier to use. These options apply to this visit; they do not change your saved profile.</p>
+            <div class="accessibility-groups">
+              <fieldset><legend>Display and reading</legend>
+                <label><input v-model="highContrast" type="checkbox"> Higher contrast</label>
+                <label><input v-model="largeText" type="checkbox"> Larger text</label>
+                <label><input v-model="readingFont" type="checkbox"> Simple reading font</label>
+                <label><input v-model="textSpacing" type="checkbox"> More text spacing</label>
+                <label><input v-model="plainBackground" type="checkbox"> Hide decorative scenery</label>
+              </fieldset>
+              <fieldset><legend>Motion and screen reader</legend>
+                <label><input v-model="reduceMotion" type="checkbox" aria-describedby="motion-help"> Reduce motion</label>
+                <small id="motion-help">Uses text-only breathing and removes transitions. Turn this off before choosing an animated circle. The rhythm and your place stay the same.</small>
+                <label for="screen-reader-updates">Screen-reader practice updates</label>
+                <select id="screen-reader-updates" v-model="screenReaderUpdates"><option value="phase">Each step or breathing phase</option><option value="count">Each step or breathing count</option><option value="off">Off</option></select>
+                <small>Practices have no app-generated voice or sounds. Your screen reader can announce the words; updates may lag. Chatbot voice is separate and optional.</small>
+              </fieldset>
+            </div>
+            <details class="keyboard-help"><summary>Keyboard and screen-reader tips</summary><p>Use Tab and Shift+Tab to move, Enter or Space to activate buttons, and Escape to close the assistant or support window. Pause gives you more time; Resume is always your choice. Color is paired with words. You can skip any sense in grounding or recall an example instead; nothing needs to be typed.</p></details>
+            <div><button class="secondary" @click="resetAccessibility">Reset display options</button></div>
+            <p v-if="accessibilityStatus" role="status">{{ accessibilityStatus }}</p>
+          </div>
+        </details>
         <div class="sr-only" role="status" aria-live="polite" aria-atomic="true">{{ exerciseLiveText }}</div>
         <template v-if="view === 'history'">
           <div class="page-heading"><div><div class="eyebrow">A RECORD, WITHOUT A SCORE</div><h1 tabindex="-1">Session history<span>.</span></h1><p>Review saved sessions and when you last chatted. Dates and times use this device’s time zone.</p></div><button class="secondary" @click="active ? returnExercise() : view = 'ready'">{{ active ? 'Return to paused exercise' : 'Back to practice' }} →</button></div>
@@ -441,11 +477,11 @@ onUnmounted(() => { document.removeEventListener('keydown', dialogEscape, true);
             <article v-for="(item,id) in exercises" :key="id" class="skill-card" :data-skill="id"><div class="skill-art" aria-hidden="true"><div class="skill-symbol">{{ item.icon }}</div><span>{{ id === 'breathing' ? '4 / 6' : id === 'grounding' ? '5 · 4 · 3 · 2 · 1' : 'S · T · O · P' }}</span></div><div class="skill-card-body"><div class="skill-meta"><span>{{ item.eyebrow }}</span><span>60 sec</span></div><h3>{{ item.name }}</h3><p>{{ item.description }}</p><button class="secondary" :disabled="pendingSave || asking" @click="startSkill(id)">{{ item.action }} <span aria-hidden="true">↗</span></button></div></article>
           </div>
           <p class="practice-choice-note">No answers to enter. Each practice follows a fixed sequence; pause for more time, or end whenever you choose.</p>
-          <div class="personal-settings"><section class="settings-card card"><span class="eyebrow">MAKE IT YOURS</span><h2>Your breathing cue.</h2><p>Same rhythm. Choose how you follow it.</p><div class="cue-options" role="group" aria-label="Pacing cue"><button :aria-pressed="cue === 'animated'" :class="{chosen:cue === 'animated'}" @click="changeCue('animated')"><span aria-hidden="true">◯</span><strong>Animated circle</strong><small>Movement + words</small></button><button :aria-pressed="cue === 'text'" :class="{chosen:cue === 'text'}" @click="changeCue('text')"><span aria-hidden="true">Aa</span><strong>Text only</strong><small>Words + count</small></button></div><p class="small-copy">{{ remembered ? `Remembered setting: ${remembered === 'text' ? 'Text only' : 'Animated circle'}.` : 'Nothing remembered. Your system motion setting is the default.' }} You can change this during breathing.</p><div class="button-row"><button class="text-button" @click="remember">Remember this choice</button><button v-if="remembered" class="text-button" @click="resetPreference">Reset preference</button></div><p v-if="prefStatus" role="status" class="small-copy">{{ prefStatus }}</p></section>
+          <div class="personal-settings"><section class="settings-card card"><span class="eyebrow">MAKE IT YOURS</span><h2>Your breathing cue.</h2><p>Same rhythm. Choose how you follow it.</p><div class="cue-options" role="group" aria-label="Pacing cue"><button :disabled="reduceMotion" :aria-pressed="cue === 'animated'" :class="{chosen:cue === 'animated'}" @click="changeCue('animated')"><span aria-hidden="true">◯</span><strong>Animated circle</strong><small>Movement + words</small></button><button :aria-pressed="cue === 'text'" :class="{chosen:cue === 'text'}" @click="changeCue('text')"><span aria-hidden="true">Aa</span><strong>Text only</strong><small>Words + count</small></button></div><p class="small-copy">{{ remembered ? `Remembered setting: ${remembered === 'text' ? 'Text only' : 'Animated circle'}.` : 'Nothing remembered. Your system motion setting is the default.' }} {{ reduceMotion ? 'Reduce motion is on; text only applies to this visit. Your remembered choice is unchanged.' : 'You can change this during breathing.' }}</p><div class="button-row"><button class="text-button" @click="remember">Remember this choice</button><button v-if="remembered" class="text-button" @click="resetPreference">Reset preference</button></div><p v-if="prefStatus" role="status" class="small-copy">{{ prefStatus }}</p></section>
           <LocalProfile :saved="profileSaved" :draft="profileDraft" :remembered="remembered" :busy="profileBusy || asking" :status="profileStatus" :error="profileError" @detail="editProfileDetail" @history="editProfileHistory" @save="saveProfile()" @reset="saveProfile(true)" @retry="reloadProfile" @reuse="reuseLastPracticeCue" /></div>
         </template>
         <template v-else>
-          <section v-if="active && breathing" class="exercise-panel" :data-phase="status === 'paused' ? 'paused' : reading.phase.toLowerCase()" aria-label="Active exercise"><div class="exercise-top"><span class="eyebrow">{{ status === 'paused' ? 'PAUSED · YOUR CHOICE TO CONTINUE' : 'FOLLOW THE WORDS AND COUNT' }}</span><span class="pill">Cycle {{ reading.cycle }} of 6</span></div><div class="phase-key" role="group" aria-label="Phase colors"><span :class="{current:status === 'running' && reading.phase === 'Inhale'}"><i class="phase-dot inhale-dot"></i> Inhale · 4</span><span :class="{current:status === 'running' && reading.phase === 'Exhale'}"><i class="phase-dot exhale-dot"></i> Exhale · 6</span></div><div class="exercise-space"><div v-if="cue === 'animated'" class="breathing-orbit" :style="{'--breath-scale':reading.scale}" aria-hidden="true"><div></div></div><div class="instruction"><span class="phase-tag">{{ status === 'paused' ? 'Your place is held' : reading.phase === 'Inhale' ? 'Expand · green cue' : 'Release · blue cue' }}</span><h1 id="exercise-heading" tabindex="-1">{{ status === 'paused' ? 'Paused' : reading.phase }}</h1><div class="count">{{ reading.count }}<span> / {{ reading.phase === 'Inhale' ? 4 : 6 }}</span></div><p>{{ status === 'paused' ? `Holding ${reading.phase.toLowerCase()}, count ${reading.count}.` : reading.phase === 'Inhale' ? 'Four counts in.' : 'Six counts out.' }}</p></div></div><div class="cycle-dots" aria-hidden="true"><span v-for="n in 6" :key="n" :class="{passed:n < reading.cycle,current:n === reading.cycle}"></span></div><progress max="60000" :value="reading.elapsed" aria-label="Exercise progress" :aria-valuetext="`Cycle ${reading.cycle} of 6, ${reading.phase.toLowerCase()}, count ${reading.count}`"></progress><div class="exercise-controls"><button v-if="status === 'running'" class="primary" @click="pause">Ⅱ Pause</button><button v-else class="primary" @click="resume">Resume →</button><button class="secondary" @click="finish('stopped')">End exercise</button></div><div class="cue-inline"><label for="active-cue">Pacing cue</label><select id="active-cue" :value="cue" @change="changeCue($event.target.value)"><option value="animated">Animated circle</option><option value="text">Text only</option></select><small>Changing the cue keeps your place.</small></div></section>
+          <section v-if="active && breathing" class="exercise-panel" :data-phase="status === 'paused' ? 'paused' : reading.phase.toLowerCase()" aria-label="Active exercise"><div class="exercise-top"><span class="eyebrow">{{ status === 'paused' ? 'PAUSED · YOUR CHOICE TO CONTINUE' : 'FOLLOW THE WORDS AND COUNT' }}</span><span class="pill">Cycle {{ reading.cycle }} of 6</span></div><div class="phase-key" role="group" aria-label="Phase colors"><span :class="{current:status === 'running' && reading.phase === 'Inhale'}"><i class="phase-dot inhale-dot"></i> Inhale · 4</span><span :class="{current:status === 'running' && reading.phase === 'Exhale'}"><i class="phase-dot exhale-dot"></i> Exhale · 6</span></div><div class="exercise-space"><div v-if="cue === 'animated'" class="breathing-orbit" :style="{'--breath-scale':reading.scale}" aria-hidden="true"><div></div></div><div class="instruction"><span class="phase-tag">{{ status === 'paused' ? 'Your place is held' : reading.phase === 'Inhale' ? 'Expand · green cue' : 'Release · blue cue' }}</span><h1 id="exercise-heading" tabindex="-1">{{ status === 'paused' ? 'Paused' : reading.phase }}</h1><div class="count">{{ reading.count }}<span> / {{ reading.phase === 'Inhale' ? 4 : 6 }}</span></div><p>{{ status === 'paused' ? `Holding ${reading.phase.toLowerCase()}, count ${reading.count}.` : reading.phase === 'Inhale' ? 'Four counts in.' : 'Six counts out.' }}</p></div></div><div class="cycle-dots" aria-hidden="true"><span v-for="n in 6" :key="n" :class="{passed:n < reading.cycle,current:n === reading.cycle}"></span></div><progress max="60000" :value="reading.elapsed" aria-label="Exercise progress" :aria-valuetext="`Cycle ${reading.cycle} of 6, ${reading.phase.toLowerCase()}, count ${reading.count}`"></progress><div class="exercise-controls"><button v-if="status === 'running'" class="primary" @click="pause">Ⅱ Pause</button><button v-else class="primary" @click="resume">Resume →</button><button class="secondary" @click="finish('stopped')">End exercise</button></div><div class="cue-inline"><label for="active-cue">Pacing cue</label><select id="active-cue" :value="cue" @change="changeCue($event.target.value)"><option value="animated" :disabled="reduceMotion">Animated circle</option><option value="text">Text only</option></select><small>Changing the cue keeps your place.</small></div></section>
           <section v-else-if="active" class="exercise-panel guided-panel" :data-phase="status === 'paused' ? 'paused' : 'guided'" aria-label="Active exercise"><div class="exercise-top"><span class="eyebrow">{{ skill.name }}</span><span class="pill">Step {{ reading.step }} of {{ reading.totalSteps }}</span></div><div class="guided-stepper" role="group" aria-label="Practice sequence"><span v-for="(step,i) in skill.steps" :key="step.sense" :class="{current:reading.step === i+1,passed:reading.step > i+1}" :aria-current="reading.step === i+1 ? 'step' : undefined">{{ step.number }}<small>{{ step.sense }}</small></span></div><div class="guided-instruction"><span class="phase-tag">{{ status === 'paused' ? 'Paused · your place is held' : 'ONE STEP AT A TIME' }}</span><div class="guided-number" aria-hidden="true">{{ reading.number }}</div><h1 id="exercise-heading" tabindex="-1">{{ reading.title }}</h1><p>{{ reading.instruction }}</p><p class="guided-note">{{ reading.note }}</p></div><progress max="60000" :value="reading.elapsed" aria-label="Exercise progress" :aria-valuetext="`Step ${reading.step} of ${reading.totalSteps}: ${reading.title}`"></progress><div class="exercise-controls"><button v-if="status === 'running'" class="primary" @click="pause">Ⅱ Pause</button><button v-else class="primary" @click="resume">Resume →</button><button class="secondary" @click="finish('stopped')">End exercise</button></div><p class="guided-pacing">{{ status === 'paused' ? 'Resume only when you choose.' : `Next step in ${reading.remaining} seconds. Pause for more time.` }}</p></section>
           <section v-else class="summary-panel"><span class="summary-icon">{{ status === 'completed' ? '✓' : '◌' }}</span><div class="eyebrow">{{ label(status) }} · {{ skill.name }}</div><h1 id="summary-heading" tabindex="-1">{{ title }}</h1><p>{{ status === 'completed' ? 'The planned sequence has finished. Stay here as long as you like.' : status === 'interrupted' ? 'The page was hidden or scheduling stopped. Review your settings before starting a new exercise.' : 'This is a partial session. You can review it or return when you choose.' }}</p><div class="timing-grid"><div><strong>{{ seconds(current?.assignment_duration_ms) }}</strong><span>{{ status === 'completed' ? 'Measured exercise' : 'Partial exercise time' }}</span></div><div><strong>{{ seconds(current?.setup_ms) }}</strong><span>Entry and setup</span></div><div><strong>{{ seconds(current?.excluded_ms) }}</strong><span>User pause / support</span></div></div><p class="small-copy">Timing includes application and render delays. Explicit pause and support intervals are excluded once. Interrupted sessions do not establish completion.</p><div class="button-row"><button class="primary" :disabled="pendingSave || asking || finalizing" @click="ready">Return to ready →</button><button class="secondary" @click="openHistory">Review saved history</button></div><div v-if="pendingSave" class="unsaved-exit"><p class="small-copy">You can leave without waiting for a save. Unsaved changes may be lost; records already saved remain in History.</p><button class="secondary" @click="ready(true)">Leave without saving</button></div></section>
         </template>
