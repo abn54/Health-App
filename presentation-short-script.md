@@ -1,49 +1,35 @@
-# mello — short presentation script
+# mello — brief-based presentation script
 
-About 4 minutes of speaking, plus the 60-second exercise and brief clicks. Brackets are actions, not spoken text. Use fictional inputs only. This is a proposed script, not evidence that a presentation or recording has occurred.
+Prepared November 2, 2026 from the latest supplied assignment overview. About 2–3 minutes of speaking, plus the full 60-second exercise and demonstration clicks. Brackets are actions, not narration. Use fictional records and the isolated review setup for failure demonstrations. This is a script, not a completed recording or claim of a presentation.
 
-[Show Practice.]
+[Show Practice and the design flow.]
 
-“This is **mello**, my IST 402 coursework skills prototype, built with Vue, FastAPI and SQLite on localhost. It offers short guided practices, an optional assistant and saved history. The coastal background is decorative. The app does not provide therapy, diagnosis or human monitoring.
+“The problem is how to present mental-health skills with little reading, typing or decision-making while preserving choice and access to support. My solution is mello, a Vue, FastAPI and SQLite coursework prototype. It is not therapy, diagnosis or human monitoring.”
 
-“My example user is Alex, a fictional student preparing for an exam. The app uses explicit choices, such as text-only pacing and reply length. It does not detect Alex’s distress from clicks, text or past activity.”
+[Save Text only and Brief reminders; enable saved-practice context. Reload, then show override/reset.]
 
-[Open Your local profile. Choose Brief reminders, enable saved-practice context, and Save profile. Choose Text only and Remember this choice. Wait for confirmed saves; reload to show restoration.]
+“For fictional student Alex, explicit preferences and factual breathing history personalize relevant replies. Choices can be corrected or reset; the app does not infer distress. Optional settings reduce repeated effort but add some setup.”
 
-“These choices persist. I can change or reset them. Starting a practice simplifies the page to one current instruction. This addresses D1 and D2 through the selected activity, rather than an assumed emotional state. D5 and R4 inform the explicit, reversible personalization.”
+[Show all three cards. Complete breathing; demonstrate Pause, support, Return and explicit Resume.]
 
-[Show the three cards, then start breathing. Demonstrate Pause, Crisis support, Return and explicit Resume. Let all six cycles finish.]
+“Breathing follows four counts in and six out for six cycles. Grounding and STOP offer other fixed sequences. I expanded Part 3.1’s one-skill design to three choices while keeping each active view simple. One-minute pacing and one instruction at a time address R1 and D1–D3. Pause, immediate End and independent crisis support preserve control. The summary separates actual exercise duration, including app delays, from setup and explicit pauses.”
 
-“There are three practices: paced breathing, five-senses grounding and STOP. Breathing uses four counts in and six out, repeated six times at one second per count. Grounding follows five things seen, four felt, three heard, two smelled and one tasted. STOP means Stop, Take a step back, Observe and Proceed mindfully. Nothing needs to be typed.
+[Show accessibility options, assistant and one response. Ask “Can I stop halfway?” to demonstrate profile/history context.]
 
-“Each has an intended one-minute sequence, addressing R1’s attention constraint. Pause preserves my place; End stops immediately. Support stays available independently of the model, including after a request failure. Returning leaves the exercise paused. These choices address R2, R3 and D4. The summary separates measured exercise time, setup and explicit pauses.”
+“Accessibility includes contrast, text size, font, spacing, reduced motion and hidden scenery, plus keyboard and screen-reader controls. Optional chatbot voice retains text. Questions, FAQs and source links are optional. Replies offer supportive choices. In live mode, the model selects reviewed content; it cannot change timing, navigate or prescribe. Prepared replies are the default; live attempts are capped at fifty.”
 
-[Open Session history and select the new record.]
+[Show dated History, a failed-request/Retry example and support remaining available.]
 
-“History shows dates, last-chat times, conversations, the chosen skill, available timing and whether a session completed, stopped or was interrupted. I can reuse settings without automatically starting, or delete records. Saved-state labels reflect actual writes; failed writes offer Retry or an unsaved exit.”
+“SQLite saves dated conversations, settings and session outcomes. History supports review, reuse and deletion. Failed writes remain unconfirmed. Phrase matching is fallible and never controls access to support.”
 
-[Return to Practice. Expand Accessibility options and demonstrate selected controls.]
+[Show the process recording’s failure/evidence/fix and corresponding code, then the report’s evaluation links.]
 
-“Access choices include higher contrast, larger text, a simpler font, more spacing, hidden scenery and reduced motion. Reduce motion overrides saved animation while keeping the rhythm. Screen-reader updates can announce steps, phases or counts, or be switched off. Keyboard navigation, visible focus and Escape support the dialogs. These choices address D3 and D6 without asking for disability information. Display options last for this visit; saved profile settings are separate.”
+“Testing covers 22 fictional scenarios and three checks: independent support, fixed user-controlled skills and truthful saving. Mocked tests are separate from repeated live checks. Surprisingly, valid model output sometimes chose the wrong topic. A keyboard-focus failure led to code that waits for Vue’s DOM update and captures Escape. Documentation records that revision, clean-checkout checks and AI use. Real screen-reader-user testing remains unverified.”
 
-[Open the bottom-right assistant. Keep Prepared replies selected. Ask: “Can I stop halfway?” Expand Reply details. Then ask: “A fictional student is worried about an upcoming exam. What could they try?”]
+## What must be visible, beyond the narration
 
-“The controls answer uses my brief-reply preference and, with permission, factual saved breathing history. Everyday exam answers do not infer how I feel from that history. The tone acknowledges pressure without judgment and offers choices rather than commands.
-
-“Suggested questions are optional. I can type my own words, browse FAQs and source links, or use optional reply voice with a voice choice, speed and Stop control. Visible text remains available; practices themselves have no app-generated audio.
-
-“I’m demonstrating prepared replies. In live mode, a local model selects a topic from reviewed content. It cannot invent treatment advice, change steps or timing, save preferences or navigate. Unknown topics ask for clarification. Live attempts, including failures and retries, are capped at fifty per host session.”
-
-[Show the report’s verification links. For the process section, show the existing process recording and the corresponding Escape/focus code.]
-
-“Verification includes 22 fictional scenarios, three behavior checks, 67 backend tests and 22 client tests. The behavior checks cover independent support, fixed user-controlled skills and truthful persistence. Nine recent live selections matched their expected topics; those are separate from mocked tests. A fresh checkout also ran successfully.
-
-“A surprising earlier finding was that valid model output could still select the wrong topic. Another observed failure left keyboard focus outside the assistant after Stop voice disappeared. The process recording shows that evidence and the fix: wait for Vue’s DOM update before restoring focus, and capture Escape even when focus reaches the page body. Real blind-user screen-reader testing and broad model accuracy remain unverified.”
-
-## Demonstration notes
-
-- If Reduce motion is on, turn it off before demonstrating an explicit switch to Animated circle. Turning it off alone does not restart animation.
-- Saved-history tailoring is breathing-specific and applies to relevant app-help answers, including the controls prompt above; do not claim the exam response used a clinical profile.
-- Do not say a live call happened while Prepared replies is selected. Show a separately labeled live result if demonstrating inference.
-- The process recording and full-skill recordings are dated evidence. They show earlier interface details; current accessibility/conversation checks are linked separately in report.md.
-- Show the failed-request evidence or use the isolated review setup for failure simulations. Do not claim a failure demonstration occurred if you only described it.
+- Show an actual full skill and its measured summary; do not claim the current run finished until it does. Earlier timing evidence is explicitly dated in report.md.
+- Show a saved preference surviving reload and a relevant reply using opt-in factual history. Everyday exam answers do not use clinical-history inference.
+- Show request failure/Retry and independent support using the isolated review setup or clearly dated existing evidence. Do not contact a support service.
+- Include the process screencast’s actual failure, evidence, resulting decision and generated-code explanation. The written script alone is not a substitute for either required recording section.
+- Report links provide the scenario expected/observed results, separate mocked/live evidence, repository/commit, design documents, clean-checkout verification, recordings and AI disclosure. This script does not guarantee a grade.

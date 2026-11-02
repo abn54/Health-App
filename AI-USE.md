@@ -152,3 +152,5 @@ Codex generated local Vue/CSS changes and a motion-policy test after reviewing t
 Additional November1 evidence: a fresh GitHub checkout of7c33978 ran README setup in a fresh environment, returned page/assets200, passed67 backend/22 client tests and stayed clean; source hashes matched. Selected screenshot export was inspected and replaced with a complete JPEG capture. No new full-duration recording or app-model inference.
 
 November1 presentation aid: Codex drafted presentation-short-script.md from the implemented features, supplied four-part rubric and recorded Part3.3 evidence. It is proposed narration/action cues, not a completed student presentation, new recording, test run or claim of student understanding. No application code changed.
+
+November2 presentation revision: Codex shortened the script against the newly pasted assignment overview, added an explicit problem statement and kept action cues for the required running-app and process demonstrations. Proposed narration is not a completed recording or new evaluation. No product code changed.
