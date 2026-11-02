@@ -1,5 +1,7 @@
 # Assignment 3.3 — requirement-to-evidence checklist
 
+**November2 consolidated submission:** [report.md](../report.md) is the single current Part3.3 upload, replacing the repeated dated report bodies. It includes the student Kaltura feature tour and explicit therapist/source-use correction, while retaining separately dated full-skill/outage/process recordings and latest evaluation. The source/observations below are historical where dated; a student-narrated video is no longer included in the description of silent agent-operated local MP4s. [Kaltura scope review](kaltura-review-nov2.md).
+
 **November 1 accessibility refinement:** [New optional controls and actual evidence](accessibility-options-nov1.md) add font/spacing/scenery/motion choices, Reset and tips. 22 client/67 backend tests and build passed;12 selected browser checks include320px and keyboard dialogs. Three existing skills meet the one-or-more requirement; no fourth exercise is required. Earlier full recordings/timing/scans remain dated, not repeated results.
 
 **November 1 update:** [Conversation revision](conversation-update-nov1.md) supersedes the chat-topic/prompt and answer-scrolling portions of the October 31 source audit below. Current versions are catalog v7 / prompt v13; actual checks passed 67 backend tests, 21 client tests, build and 22 deterministic scenarios, plus 9/9 selected live topic matches. The October 31 clean checkout, recordings, full-skill timings and broader browser scans remain dated evidence for their original source; they were not all repeated for this conversation-only change.
@@ -48,6 +50,6 @@ The new `GuidedExercise.read()` inherits one monotonic elapsed-time source, then
 
 ## Recording method and remaining human steps
 
-All submitted videos are actual task-tab screen frames, silently captured by the disclosed agent, with captions/transcripts and declared sampling/idle edits. The new full demo retains original timing throughout the exercise; video frame rate is not the timing instrument. The full MP4 was decoded without error and a completed-screen frame inspected. No student speech or understanding is fabricated.
+The local MP4s covered by this October31 audit are actual task-tab screen frames, silently captured by the disclosed agent, with captions/transcripts and declared sampling/idle edits. The new full demo retains original timing throughout the exercise; video frame rate is not the timing instrument. The full MP4 was decoded without error and a completed-screen frame inspected. No student speech or understanding is fabricated.
 
 The student must review the code and recordings, ensure they can explain the generated code and tradeoffs, and upload the one report.md to Canvas. No extra cognitive-reframe feature, speech input, paid API, physiological detector, clinical dataset or public deployment is required. This audit cannot guarantee a grade or replace the student's own explanation.

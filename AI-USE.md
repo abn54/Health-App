@@ -156,3 +156,8 @@ November1 presentation aid: Codex drafted presentation-short-script.md from the 
 November2 presentation revision: Codex shortened the script against the newly pasted assignment overview, added an explicit problem statement and kept action cues for the required running-app and process demonstrations. Proposed narration is not a completed recording or new evaluation. No product code changed.
 
 November2 recording review: Codex used the user-authorized Kaltura link, Cua playback/transcript UI and selected paused frames to prepare a timestamped review and add the recording to report.md. The web text reader could not access it. This was not continuous listening/viewing of the full recording; captions may contain recognition errors. The user/student made the Zoom feature tour; earlier local browser-frame recordings remain separately attributed to the agent. Therapist/whole-handbook-use implications in the new narration were explicitly corrected; no application code, remote video, credentials or data changed.
+
+
+## November 2 — consolidated Part 3.3 report
+
+At the user's request, Codex replaced repeated dated report bodies with one complete Part3.3 report, retaining the student Kaltura link and explicit role/source correction, separate dated full-run/process evidence, required research/evaluation/behavior checks, AI disclosure and limitations. The root and submissions/part3 copies are identical. Verification checked32 pinned repository artifacts with git object lookup and HTTP HEAD200; no media was downloaded, no application tests/inference were rerun and no video was edited. Report-only source metadata pins a complete repository snapshot while retaining tested application source7c33978 and each historical observation's actual date.

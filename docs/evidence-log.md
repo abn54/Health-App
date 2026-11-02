@@ -292,3 +292,8 @@ Additional November1 evidence: a fresh GitHub checkout of7c33978 ran README setu
 ## November 2 — student Kaltura walkthrough review
 
 User supplied the Penn State Mediaspace link and explicitly chose review plus adding it to report.md. The text web reader failed; the actual browser played it and exposed the full caption list. Reviewed displayed captions, duration and selected paused frames, not continuous audiovisual playback. Added the link as a student feature tour, retaining separate dated full-run/outage/process evidence. Found therapist/source-use wording needing correction around7:39, described rather than confirmed reload around6:06, an intentionally partial run and review controls without a failure/fix demonstration. Recorded precise corrections and evidence limits in [review notes](kaltura-review-nov2.md); no raw transcript/meeting identifiers/user database exported, no video edit or new test/model call.
+
+
+## November 2 — single complete Part 3.3 upload
+
+Request: add the review/correction and provide the complete3.3 Markdown file. Finding: report.md accumulated multiple dated report bodies with different version/count labels. Decision: consolidate into one submission with problem statement, current scope, all R/D design tradeoffs, profile/model/safety boundaries,22 expected/observed fictional cases, three explicit checks, separate live results, actual dated timing/setup, recordings/correction, generated code, source/run/AI-use links and unresolved limits. Preserved older evidence in Git/docs without presenting it as a new run. Root/submission copies match;32 version-pinned repository artifact links resolved locally and returned HTTP200. No product change, new test run, video edit, student-understanding claim or grade prediction.
