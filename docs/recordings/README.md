@@ -1,6 +1,8 @@
 # Part 3.3 recordings
 
-**Primary finished-app demonstration:** [final full coastal-layout demo](final-full-demo-oct31.mp4) · [transcript](final-full-demo-oct31.md) · [captions](final-full-demo-oct31.vtt). Shows saved profile/reload, cue override, a complete60-second breathing sequence, confirmed History, a tailored reply, an actual live response, actual isolated-API outage, offline support and explicit Retry. This is the current full demo; the short tour below is supplementary.
+**November2 student feature tour:** [Penn State Mediaspace,8:07](https://psu.mediaspace.kaltura.com/media/t/1_ybfzcs27). [Timestamped review/corrections](../kaltura-review-nov2.md). It supplements the recordings below: its exercise is partial, reload is described rather than clearly shown, and failure-tool controls do not replace a process demonstration. Therapist/source-use wording near7:39 is explicitly corrected in report.md. No new full-run/process evidence is claimed from this tour.
+
+**Primary finished-app demonstration:** [final full coastal-layout demo](final-full-demo-oct31.mp4) · [transcript](final-full-demo-oct31.md) · [captions](final-full-demo-oct31.vtt). Shows saved profile/reload, cue override, a complete60-second breathing sequence, confirmed History, a tailored reply, an actual live response, actual isolated-API outage, offline support and explicit Retry. This is dated October31 full-run evidence; the later feature tours are supplementary and show newer interface details.
 
 **Primary process screencast:** [failure/evidence/decision/generated-code recording](part3-process.mp4) · [transcript](part3-process.md). The older visual layout is identified; the focus watcher/Escape handler it explains remain unchanged in current code.
 

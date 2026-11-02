@@ -1,8 +1,19 @@
 # IST 402 — Assignment 3, Part 3 (3.3)
 
-**mello — November 1, 2026 conversation and accessibility refinements**
+**mello — November 2, 2026 submission update; November 1 application refinements**
 
 Current application source: [`7c3397868e622e5d31c078f18514cb2fb452620c`](https://github.com/abn54/Health-App/commit/7c3397868e622e5d31c078f18514cb2fb452620c), branch `codex/part2-prototype`. Later evidence/report commits do not change application code. Upload this one `report.md`; dated earlier results remain below.
+
+
+## Student-recorded walkthrough — November 2
+
+**[Watch my mello feature walkthrough on Penn State Mediaspace (8:07)](https://psu.mediaspace.kaltura.com/media/t/1_ybfzcs27).** It shows the problem statement, accessibility controls, partial breathing/exit, dated History and prepared replies, assistant voice, manual support, cue choices, FAQs and the reading shelf. It supplements the complete-skill and process evidence below; it does not replace them.
+
+**Narration correction:** around7:39, the phrase about behaving like a therapist is inaccurate. This is a coursework app assistant offering reviewed general information; it is not a therapist, does not diagnose/provide treatment, and has no human monitoring. The reading shelf links reference pages; whole handbooks/dataset replies were not imported or used to train the model.
+
+At6:06, reload persistence is described but not clearly demonstrated; the breathing session is intentionally ended early, and failure-tool checkboxes are shown without the failure→evidence→fix sequence. For those requirements, retain the [dated full exercise/profile/outage demonstration](https://raw.githubusercontent.com/abn54/Health-App/29eebcf3d82f3afb082ed9f7da361b27f6a3f297/docs/recordings/final-full-demo-oct31.mp4), its [transcript](https://github.com/abn54/Health-App/blob/29eebcf3d82f3afb082ed9f7da361b27f6a3f297/docs/recordings/final-full-demo-oct31.md), and the [process failure/fix/code recording](https://raw.githubusercontent.com/abn54/Health-App/29eebcf3d82f3afb082ed9f7da361b27f6a3f297/docs/recordings/part3-process.mp4) with [transcript](https://github.com/abn54/Health-App/blob/29eebcf3d82f3afb082ed9f7da361b27f6a3f297/docs/recordings/part3-process.md). Their earlier layout and agent operation remain disclosed.
+
+[Timestamped review and limits](https://github.com/abn54/Health-App/blob/codex/part2-prototype/docs/kaltura-review-nov2.md) distinguishes the caption/selected-frame review from continuous audio playback. Kaltura was accessible in the browser during review. No recording was edited and no new model/test run is implied.
 
 ## Latest accessibility refinement
 
